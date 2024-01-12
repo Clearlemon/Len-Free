@@ -1,0 +1,51 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "LXGWWenKaiGBScreen";
+}
+
+li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none
+}
+
+:root {
+    --len-a-link-color: black;
+
+    /* 日期全局颜色 */
+    --dark-text: #f8fbff;
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #f0f0f0;
+    --light-text: #151426;
+    --light-btn: #9796f0;
+    --blue: #0000ff;
+    --white: #fff;
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --font-family: consolas;
+}
+
+/*字体*/
+@font-face {
+    font-family: "LXGWWenKaiGBScreen";
+    src: url(/wp-content/themes/Len-Free/Assets/Len-Font/LXGWWenKaiGBScreen.ttf);
+}
+
+.len-header-main {
+    display: flex;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.len-head {
+    background: white;
+}
+
+.len-logo-fig {
+    height: 100%;
+    object-fit: cover;
+}

@@ -1,0 +1,19 @@
+# Copyright (C) 2024 Codestar
+# This file is distributed under the same license as the Codestar Framework package.
+msgid ""
+msgstr ""
+"POT-Creation-Date: 2024-01-4 12:32:35+00:00\n"
+"PO-Revision-Date: 2024-01-4 12:18+0800\n"
+"Last-Translator: Seaton Jiang <seatonjiang@vtrois.com>\n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"Project-Id-Version: \n"
+
+#: classes/admin-options.class.php:226
+msgid "Error while saving the changes."
+msgstr "保存失败"
+
