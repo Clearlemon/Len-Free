@@ -148,38 +148,30 @@ $prefix_page_opts = 'leaf-theme-page-article';
 
 //文章功能模块
 
-$Module_Post_1 = 'Len_Post_Thumbnail_Module';
-$Module_Post_2 = 'Len_Post_Seo_Module';
-$Module_Post_3 = 'Len_Post_Source_Module';
+$Module_Post_1 = 'Len_Post_Seo_Module';
+$Module_Post_2 = 'Len_Post_Source_Module';
+
+
+
 
 CSF::createMetabox($Module_Post_1, array(
-  'title'        => '文章外链特色图模块',
-  'post_type'    => 'post',
-));
-
-CSF::createSection($Module_Post_1, array(
-  'fields' => array(),
-));
-
-
-CSF::createMetabox($Module_Post_2, array(
   'title'        => '文章独立SEO模块',
   'post_type'    => 'post',
 ));
 
-CSF::createSection($Module_Post_2, array(
+CSF::createSection($Module_Post_1, array(
   'fields' => array(
 
     array(
-      'id'    => 'Module_Switcher',
+      'id'    => 'Module_Switcher_SEO',
       'type'  => 'switcher',
       'title' => '是否开启独立SEO',
-      'desc'     => '如需要字段与文章SEO则开启此功能<b class="leaf_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
+      'desc'     => '如需要字段与文章SEO则开启此功能<b class="Len_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
     ),
 
     array(
       'title'    => "SEO标题",
-      'id'       => 'post_seo_title',
+      'id'       => 'Module_Title_SEO',
       'type' => 'text',
       'class' => 'fields_no_padding-bottom fields_no_padding-top',
       'desc'     => '用于推动给SEO标题',
@@ -187,7 +179,7 @@ CSF::createSection($Module_Post_2, array(
 
     array(
       'title'    => "SEO关键字",
-      'id'       => 'post_seo_keywords',
+      'id'       => 'Module_Keywords_SEO',
       'type' => 'text',
       'class' => 'fields_no_padding-bottom fields_no_padding-top',
       'desc'     => '用于推送给SEO关键字',
@@ -195,7 +187,7 @@ CSF::createSection($Module_Post_2, array(
 
     array(
       'title'    => "SEO内容",
-      'id'       => 'post_seo_description',
+      'id'       => 'Module_Description_SEO',
       'type' => 'textarea',
       'class' => 'fields_no_padding-bottom fields_no_padding-top',
       'desc'     => '用于推送给SEO内容',
@@ -203,58 +195,93 @@ CSF::createSection($Module_Post_2, array(
   ),
 ));
 
-CSF::createMetabox($Module_Post_3, array(
+CSF::createMetabox($Module_Post_2, array(
   'title'     => '文章来源地址模块',
   'post_type' => 'post',
 ));
 
-CSF::createSection($Module_Post_3, array(
-  'fields' => array(),
+CSF::createSection($Module_Post_2, array(
+  'fields' => array(
+    array(
+      'id'      => 'Module_Source_Address',
+      'type'    => 'text',
+      'title'   => '转载[用户名]',
+      'desc'     => '如未填写为空白则输出为<b class="Len_emphasis_fonts">未知作者</b>',
+    ),
+    array(
+      'id'      => 'Module_Source_Author_Name',
+      'type'    => 'text',
+      'title'   => '转载[网站名]',
+      'desc'     => '如未填写为空白则输出为<b class="Len_emphasis_fonts">未知网站</b>',
+    ),
+    array(
+      'id'      => 'Module_Source_Link',
+      'type'    => 'text',
+      'title'   => '转载[网站链接]',
+      'desc'     => '如未填写为空白则输出为<b class="Len_emphasis_fonts">未知链接</b>',
+    ),
+  ),
 ));
 
 
 //侧边栏模块功能
 
-$Module_Post_Sidebars_1 = 'Len_Post_Sidebars';
+
+$Module_Post_Sidebars_1 = 'Len_Post_Module_Thumbnail_Sidebars';
+$Module_Post_Sidebars_2 = 'Len_Post_Module_Switcher_Sidebars';
 
 CSF::createMetabox($Module_Post_Sidebars_1, array(
+  'title'        => '文章外链特色图模块',
+  'post_type' => array('post'),
+  'context'   => 'side',
+));
+
+CSF::createSection($Module_Post_Sidebars_1, array(
+  'fields' => array(array(
+    'id'    => 'Len_Backlinks_Thumbnail',
+    'type'  => 'upload',
+    'title' => '文章外链缩略图上传',
+    'preview' => true,
+    'desc'     => '缩略图的展现顺序为 ><b class="Len_emphasis_fonts"> 文章外链缩略图 </b>><b class="Len_emphasis_fonts"> 特色图片 </b>><b class="Len_emphasis_fonts"> 文章内第一张图 </b>><b class="Len_emphasis_fonts"> 自定义缩略图 </b>此顺序展示',
+    'library'      => 'image',
+  ),),
+));
+
+CSF::createMetabox($Module_Post_Sidebars_2, array(
   'title'     => '模块展示开关',
   'post_type' => array('post'),
   'context'   => 'side',
 
 ));
 
-CSF::createSection($Module_Post_Sidebars_1, array(
+CSF::createSection($Module_Post_Sidebars_2, array(
   'fields' => array(
     array(
       'id'    => 'Module_Switcher_User_Show',
       'type'  => 'switcher',
       'title' => '是否开启文章内嵌用户展示模块',
-      'desc'     => '如需要字段与文章SEO则开启此功能<b class="leaf_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
-    ),
-    array(
-      'id'    => 'Module_Switcher_Nex_Post',
-      'type'  => 'switcher',
-      'title' => '是否开启上下篇文章展示模块',
-      'desc'     => '如需要字段与文章SEO则开启此功能<b class="leaf_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
-    ),
-    array(
-      'id'    => 'Module_Switcher_Interaction',
-      'type'  => 'switcher',
-      'title' => '是否开启用户互动模块',
-      'desc'     => '如需要字段与文章SEO则开启此功能<b class="leaf_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
+      'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为Yes</b><br><b class="Len_emphasis_fonts">此功能脱离全局模块控制</b>',
+      'text_on'  => 'Yes',
+      'text_off' => 'No',
+      'default' => true,
     ),
     array(
       'id'    => 'Module_Switcher_Copyright',
       'type'  => 'switcher',
       'title' => '是否开版权告示模块',
-      'desc'     => '如需要字段与文章SEO则开启此功能<b class="leaf_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
+      'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能脱离全局模块控制</b>',
+      'text_on'  => 'Yes',
+      'text_off' => 'No',
+      'default' => false,
     ),
     array(
       'id'    => 'Module_Switcher_Source',
       'type'  => 'switcher',
       'title' => '是否开启文章来源地址模块',
-      'desc'     => '如需要字段与文章SEO则开启此功能<b class="leaf_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
+      'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能脱离全局模块控制</b>',
+      'text_on'  => 'Yes',
+      'text_off' => 'No',
+      'default' => false,
     ),
   )
 ));

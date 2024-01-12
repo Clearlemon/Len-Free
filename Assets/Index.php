@@ -30,6 +30,6 @@ function Len_scripts_styles()
     wp_enqueue_style('Len-article', get_template_directory_uri() . '/Assets/Len-Css/article.css', array(), $var, 'all');
 
     //图标引用
-    wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4353348_7qbxjdu8sab.js', array(), $var, true);
+    wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4353348_7ymlde7ymd6.js', array(), $var, true);
 }
 add_action('wp_enqueue_scripts', 'Len_scripts_styles');

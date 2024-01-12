@@ -21,6 +21,12 @@ $files = array(
      * 引用主题编辑器函数功能
      */
     'Functions/Len-Editor/Post.php',
+
+    /**
+     * 页面函数文件
+     * 'Module/Single.php',| 主题文章详情页函数模块文件
+     */
+    'Module/Single.php',
     /**
  * 此引用链接是用户自定义设置
  * 如想自定义设置和主题则删除链接的注释

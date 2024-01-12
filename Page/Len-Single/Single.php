@@ -30,7 +30,7 @@
                     </div>
                     <div class="len-article-min-blcok">
                         <div class="len-article-thumbnail-block-min">
-                            <img class="len-thumbnail-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/post-background-1.png" alt="">
+                            <img class="len-thumbnail-block" src="<?php echo  Len_Thumbnail_Module(get_the_ID()); ?>" alt="">
                         </div>
                         <div class="len-article-block-min">
                             <div class="len-article-showcase-main">
@@ -95,6 +95,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="len-article-tag">
                                     <svg class="len-tag-post-icon" aria-hidden="true">
                                         <use xlink:href="#icon-biaoqian1"></use>标签
@@ -106,9 +107,11 @@
                                         </ul>
                                     </svg>
                                 </div>
+                                <?php Len_Source_Module(); ?>
                             </div>
                         </div>
                     </div>
+
                     <!-- 互动模块开始 -->
                     <div class="len-article-mutual-min">
                         <div class="len-article-mutual-blcok">
