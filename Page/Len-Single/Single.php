@@ -37,38 +37,7 @@
                                 <div class="len-article-title-min">
                                     <h1 class="len-article-title-block">Lemon ———— 极简的双边栏主题</h1>
                                 </div>
-                                <div class="len-article-showcase-block">
-                                    <div class="len-article-user-min">
-                                        <div class="len-article-avatar-min">
-                                            <img class="len-article-avatar-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
-                                        </div>
-                                        <div class="len-article-name-min">
-                                            <p class="len-article-name-blcok">青桔柠檬</p>
-                                            <p class="len-article-introduce-blcok">『青桔柠檬，一个长在树上酸酸的柠檬』 </p>
-                                        </div>
-                                    </div>
-                                    <div class="len-article-stats-min">
-                                        <p class="len-article-time-block">
-                                            <svg class="len-stats-post-icon" aria-hidden="true">
-                                                <use xlink:href="#icon-shijianzhouqi"></use>
-                                            </svg>8天前
-                                        </p>
-                                        <div class="len-article-stats-all-min">
-                                            <span class="len-stats-browse-block">
-                                                <svg class="len-stats-post-icon" aria-hidden="true">
-                                                    <use xlink:href="#icon-liulan"></use>
-                                                </svg>64</span>
-                                            <span class="len-stats-comments-block">
-                                                <svg class="len-stats-post-icon" aria-hidden="true">
-                                                    <use xlink:href="#icon-pinglun"></use>
-                                                </svg>12</span>
-                                            <span class="len-stats-like-block">
-                                                <svg class="len-stats-post-icon" aria-hidden="true">
-                                                    <use xlink:href="#icon-xihuan"></use>
-                                                </svg>30</span>
-                                        </div>
-                                    </div>
-                                </div>
+
                                 <div class="len-article-showcase-content">
                                     <p>主题相对于某些主题来说，算得上是简洁了，没有过多且复杂的主题设置，但又不会使得主题内容单一无趣,主题内的图标多数使用了阿里巴巴的失衡图标库内的图标，主题内并未使用UI框架。
                                     </p>

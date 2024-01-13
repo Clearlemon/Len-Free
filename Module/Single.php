@@ -120,3 +120,48 @@ function Len_Thumbnail_Module($post_id = '')
     // 返回缩略图 URL
     return $Thumbnail;
 }
+
+
+function Len_Module_Switcher()
+{
+    $User_Show = _Len_Post_Module('', '', '', 'Module_Switcher_User_Show');
+    $Copyright = _Len_Post_Module('', '', '', 'Module_Switcher_Copyright');
+    $Source = _Len_Post_Module('', '', '', 'Module_Switcher_Source');
+
+    if ($User_Show = true) {
+        echo '                                <div class="len-article-showcase-block">
+        <div class="len-article-user-min">
+            <div class="len-article-avatar-min">
+                <img class="len-article-avatar-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
+            </div>
+            <div class="len-article-name-min">
+                <p class="len-article-name-blcok">青桔柠檬</p>
+                <p class="len-article-introduce-blcok">『青桔柠檬，一个长在树上酸酸的柠檬』 </p>
+            </div>
+        </div>
+        <div class="len-article-stats-min">
+            <p class="len-article-time-block">
+                <svg class="len-stats-post-icon" aria-hidden="true">
+                    <use xlink:href="#icon-shijianzhouqi"></use>
+                </svg>8天前
+            </p>
+            <div class="len-article-stats-all-min">
+                <span class="len-stats-browse-block">
+                    <svg class="len-stats-post-icon" aria-hidden="true">
+                        <use xlink:href="#icon-liulan"></use>
+                    </svg>64</span>
+                <span class="len-stats-comments-block">
+                    <svg class="len-stats-post-icon" aria-hidden="true">
+                        <use xlink:href="#icon-pinglun"></use>
+                    </svg>12</span>
+                <span class="len-stats-like-block">
+                    <svg class="len-stats-post-icon" aria-hidden="true">
+                        <use xlink:href="#icon-xihuan"></use>
+                    </svg>30</span>
+            </div>
+        </div>
+    </div>';
+    } elseif ($Copyright = true) {
+    } elseif ($Copyright = true) {
+    }
+}
