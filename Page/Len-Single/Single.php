@@ -194,20 +194,19 @@
                         <div class="len-comments-blcok">
                             <div class="len-comments-main">
                                 <div class="len-user-comments-avatar-blcok">
-                                    <img class="user-comments-avatar" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
+                                    <img class="user-comments-avatar" src="/Images/user-avatar.jpg" alt="">
                                     <p class="user-comments-name-blcok">青桔柠檬</p>
                                 </div>
                                 <div class="len-user-comments-content">
                                     <div class="len-comments-input-block">
-                                        <input class="len-comments-input" type="text">
-                                        <input class="len-comments-input" type="text">
-                                        <input class="len-comments-input" type="text">
-                                        <input class="len-comments-input" type="text">
+                                        <input class="len-comments-input lan-len-comments-inputcolour" placeholder="昵称" type="text">
+                                        <input class="len-comments-input lan-len-comments-inputcolour"  placeholder="邮箱" type="text">
                                     </div>
                                     <div class="len-comments-textarea">
-                                        <textarea class="len-comments-textarea-block" name="" id="" cols="30" rows="10"></textarea>
+                                        <textarea class="len-comments-textarea-block lan-len-comments-inputcolour" name="" id="" cols="30"
+                                            rows="10" placeholder="下面由我我简单喵两句"></textarea>
                                         <div class="len-comments-submit-button-block">
-                                            <button class="comments-submit-button">发表评论</button>
+                                            <button class="comments-submit-button comments-submit-buttoneffect">发表评论</button>
                                         </div>
                                     </div>
                                     <div class="len-comments"><span>表情</span></div>

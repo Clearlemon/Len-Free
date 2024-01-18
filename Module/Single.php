@@ -29,6 +29,23 @@ function Len_Source_Module()
 ?>
     <div class="len-source-min">
         <div class="len-source-blcoik">
+       
+        <div class="len-source-div">
+                <svg class="len-source-post-icon" aria-hidden="true">
+                    <use xlink:href="#icon-dian"></use>
+                    <li class="len-soure-li">
+                        <!-- 获取当前标题 -->
+                        来源标题： <?php echo get_the_title($ID); ?>
+                    </li>
+            </div>
+            <div class="len-source-div">
+                <svg class="len-source-post-icon" aria-hidden="true">
+                    <use xlink:href="#icon-dian"></use>
+                    <li class="len-soure-li">
+                        <!-- 获取当前链接 -->
+                        文章链接： <?php the_permalink(); ?>
+                    </li>
+            </div>
             <div class="len-source-div">
                 <svg class="len-source-post-icon" aria-hidden="true">
                     <use xlink:href="#icon-dian"></use>
@@ -47,6 +64,7 @@ function Len_Source_Module()
                                             echo '未知作者';
                                         } ?>创造编写</li>
             </div>
+
             <div class="len-source-div">
                 <svg class="len-source-post-icon" aria-hidden="true">
                     <use xlink:href="#icon-dian"></use>
