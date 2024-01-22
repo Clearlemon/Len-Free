@@ -18,6 +18,9 @@ function Len_scripts_styles()
     wp_enqueue_script('Len-swiper', get_template_directory_uri() . '/Assets/Lne-JavaScript/swiper-bundle.min.js', array(), $var, true);
     wp_enqueue_script('main', get_template_directory_uri() . '/Assets/Lne-JavaScript/main.js', array(), $var, true);
 
+    wp_enqueue_script('Len-jquery', get_template_directory_uri() . '/Assets/Lne-JavaScript/jquery.js', array(), $var, false);
+    wp_enqueue_script('article', get_template_directory_uri() . '/Assets/Lne-JavaScript/article.js', array(), $var, true);
+
     //引用Css样式文件
     wp_enqueue_style('Len-header', get_template_directory_uri() . '/Assets/Len-Css/header.css', array(), $var, 'all');
     wp_enqueue_style('Len-main', get_template_directory_uri() . '/Assets/Len-Css/main.css', array(), $var, 'all');

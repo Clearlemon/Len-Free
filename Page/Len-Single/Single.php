@@ -37,7 +37,7 @@
                                 <div class="len-article-title-min">
                                     <h1 class="len-article-title-block">Lemon ———— 极简的双边栏主题</h1>
                                 </div>
-
+                                <?php Len_Module_Switcher(true, false, false); ?>
                                 <div class="len-article-showcase-content">
                                     <p>主题相对于某些主题来说，算得上是简洁了，没有过多且复杂的主题设置，但又不会使得主题内容单一无趣,主题内的图标多数使用了阿里巴巴的失衡图标库内的图标，主题内并未使用UI框架。
                                     </p>
@@ -47,24 +47,8 @@
                                     <p>主题是一个极简的双边栏的主题，我初步采样了Typecho的handsome主题和Wordpress的Giligili主题知只采集了这两个的部分布局和样式。</p>
                                     <p>主题后台设置不是很多，设置你可以用不到5分钟的时间就可以看完，多处设置有着该设置的介绍和使用方法，</p>
                                 </div>
-                                <div class="len-article-copyright">
-                                    <legend class="copyright-title">版权声明</legend>
-                                    <div class="copyright-block">
-                                        <img class="copyright-background-img" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
-                                        <div class="copyright-min-blcok">
-                                            <div class="copyright-text-min">
-                                                <p>1.此主题并不是十全十美请勿吹捧</p>
-                                                <p>2.文章转载需经过作者授权</p>
-                                                <p>3.文章转载请标注来源地址</p>
-                                            </div>
-                                            <hr>
-                                            <div class="copyright-remind">
-                                                <p>温习提示：主题不支持商用哦！~</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
+                                <?php Len_Module_Switcher(false, true, false); ?>
                                 <div class="len-article-tag">
                                     <svg class="len-tag-post-icon" aria-hidden="true">
                                         <use xlink:href="#icon-biaoqian1"></use>标签
@@ -76,7 +60,7 @@
                                         </ul>
                                     </svg>
                                 </div>
-                                <?php Len_Source_Module(); ?>
+                                <?php Len_Module_Switcher(false, false, true); ?>
                             </div>
                         </div>
                     </div>
@@ -89,7 +73,10 @@
                                     <svg class="len-post-mutual-icon" aria-hidden="true">
                                         <use xlink:href="#icon-dianzan"></use>
                                     </svg>
-                                    <p class="len-post-mutal-text">点赞</p>
+                                    <a href="javascript:;" rel="external nofollow" target="_self" rel="external nofollow" target="_blank" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if (isset($_COOKIE['bigfa_ding_' . $post->ID])) echo ' done'; ?>"><span class="count">
+                                            <?php echo Len_Like_Comments_Browse_Time_Module(get_the_ID(), '', '', '') ?>
+                                        </span>
+                                    </a>
                                 </div>
                             </div>
                             <div class="len-mutaual-block">
@@ -194,19 +181,20 @@
                         <div class="len-comments-blcok">
                             <div class="len-comments-main">
                                 <div class="len-user-comments-avatar-blcok">
-                                    <img class="user-comments-avatar" src="/Images/user-avatar.jpg" alt="">
+                                    <img class="user-comments-avatar" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
                                     <p class="user-comments-name-blcok">青桔柠檬</p>
                                 </div>
                                 <div class="len-user-comments-content">
                                     <div class="len-comments-input-block">
-                                        <input class="len-comments-input lan-len-comments-inputcolour" placeholder="昵称" type="text">
-                                        <input class="len-comments-input lan-len-comments-inputcolour"  placeholder="邮箱" type="text">
+                                        <input class="len-comments-input" type="text">
+                                        <input class="len-comments-input" type="text">
+                                        <input class="len-comments-input" type="text">
+                                        <input class="len-comments-input" type="text">
                                     </div>
                                     <div class="len-comments-textarea">
-                                        <textarea class="len-comments-textarea-block lan-len-comments-inputcolour" name="" id="" cols="30"
-                                            rows="10" placeholder="下面由我我简单喵两句"></textarea>
+                                        <textarea class="len-comments-textarea-block" name="" id="" cols="30" rows="10"></textarea>
                                         <div class="len-comments-submit-button-block">
-                                            <button class="comments-submit-button comments-submit-buttoneffect">发表评论</button>
+                                            <button class="comments-submit-button">发表评论</button>
                                         </div>
                                     </div>
                                     <div class="len-comments"><span>表情</span></div>

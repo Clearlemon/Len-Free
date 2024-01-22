@@ -64,16 +64,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-function togglePayment(paymentMethod) {
-    var alipayQr = document.querySelector('.wx-alpay-qr .pay-qr-img:nth-child(1)');
-    var wechatQr = document.querySelector('.wx-alpay-qr .pay-qr-img:nth-child(2)');
-
-    if (paymentMethod === 'alipay') {
-        alipayQr.style.display = 'block';
-        wechatQr.style.display = 'none';
-    } else if (paymentMethod === 'wechat') {
-        alipayQr.style.display = 'none';
-        wechatQr.style.display = 'block';
+$.fn.postLike = function () {
+    if ($(this).hasClass('done')) {
+        return false;
+    } else {
+        $(this).addClass('done');
+        var id = $(this).data("id"),
+            action = $(this).data('action'),
+            rateHolder = $(this).children('.count');
+        var ajax_data = {
+            action: "bigfa_like",
+            um_id: id,
+            um_action: action
+        };
+        $.post("/wp-admin/admin-ajax.php", ajax_data,
+            function (data) {
+                $(rateHolder).html(data);
+            });
+        return false;
     }
-}
-
+};
+$(document).on("click", ".favorite",
+    function () {
+        $(this).postLike();
+    });
