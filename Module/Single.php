@@ -51,19 +51,19 @@ function Len_Source_Module()
                 <svg class="len-source-post-icon" aria-hidden="true">
                     <use xlink:href="#icon-dian"></use>
                     <li class="len-soure-li">
-                        本文章由<?php
-                            //如果值为空则输出 '未知网站'
-                            if ($Address != '') {
-                                echo $Address;
-                            } else {
-                                echo '未知网站';
-                            } ?>创造编写,转载地址是<?php
-                                            //如果值为空则输出 '未知作者'
-                                            if ($Author_Name != '') {
-                                                echo $Author_Name;
-                                            } else {
-                                                echo '未知作者';
-                                            } ?></li>
+                        本文章转载地址是<?php
+                                //如果值为空则输出 '未知网站'
+                                if ($Address != '') {
+                                    echo $Address;
+                                } else {
+                                    echo '未知网站';
+                                } ?>,由<?php
+                                    //如果值为空则输出 '未知作者'
+                                    if ($Author_Name != '') {
+                                        echo $Author_Name;
+                                    } else {
+                                        echo '未知作者';
+                                    } ?>创造编写</li>
             </div>
 
             <div class="len-source-div">
@@ -309,6 +309,16 @@ function Len_Post_Time_Module($Post_id = '')
     return $time;
 }
 
+/**
+ * Len_Like_Comments_Browse_Time_Module 函数用于根据传入的参数获取相应的内容。
+ *
+ * @param string $Like     点赞相关参数。
+ * @param string $Comments 评论相关参数。
+ * @param string $Browse   浏览相关参数。
+ * @param string $Time     时间相关参数。
+ *
+ * @return string 返回根据参数获取的内容，如果没有匹配的情况，返回空字符串。
+ */
 function Len_Like_Comments_Browse_Time_Module($Like = '', $Comments = '', $Browse = '', $Time = '')
 {
     // 判断 $Browse 是否有值，如果有则返回对应的内容
@@ -332,6 +342,7 @@ function Len_Like_Comments_Browse_Time_Module($Like = '', $Comments = '', $Brows
     // 如果没有匹配的情况，返回空字符串
     return '';
 }
+
 
 
 

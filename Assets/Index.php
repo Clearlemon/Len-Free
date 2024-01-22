@@ -25,6 +25,7 @@ function Len_scripts_styles()
     wp_enqueue_style('Len-header', get_template_directory_uri() . '/Assets/Len-Css/header.css', array(), $var, 'all');
     wp_enqueue_style('Len-main', get_template_directory_uri() . '/Assets/Len-Css/main.css', array(), $var, 'all');
     wp_enqueue_style('Len-footer', get_template_directory_uri() . '/Assets/Len-Css/footer.css', array(), $var, 'all');
+    wp_enqueue_style('Len-diary', get_template_directory_uri() . '/Assets/Len-Css/diary.css', array(), $var, 'all');
 
     //幻灯片样式
     wp_enqueue_style('Len-swiper', get_template_directory_uri() . '/Assets/Len-Css/swiper-bundle.min.css', array(), $var, 'all');
