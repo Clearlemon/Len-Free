@@ -58,12 +58,12 @@ function Len_Source_Module()
                                 } else {
                                     echo '未知网站';
                                 } ?>,由<?php
-                                    //如果值为空则输出 '未知作者'
-                                    if ($Author_Name != '') {
-                                        echo $Author_Name;
-                                    } else {
-                                        echo '未知作者';
-                                    } ?>创造编写</li>
+                                        //如果值为空则输出 '未知作者'
+                                        if ($Author_Name != '') {
+                                            echo $Author_Name;
+                                        } else {
+                                            echo '未知作者';
+                                        } ?>创造编写</li>
             </div>
 
             <div class="len-source-div">
@@ -173,8 +173,7 @@ function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = tru
 
 
 
-function Len_Modeule_Copyright()
-{
+function Len_Modeule_Copyright(){
 ?> <div class="len-article-copyright">
         <legend class="copyright-title">版权声明</legend>
         <div class="copyright-block">
@@ -438,4 +437,60 @@ function bigfa_like()
 
     // 终止 WordPress 请求处理
     die;
+}
+
+
+/**
+ * Len_Post_Tag function.
+ *
+ * 输出当前文章的标签列表，包括标签名称和链接。
+ */
+function Len_Post_Tag_Module()
+{
+    // 获取当前文章的标签列表
+    $tags = get_the_tags();
+
+    // 检查是否存在标签
+    if ($tags) {
+        // 遍历每个标签
+        foreach ($tags as $tag) {
+            // 输出每个标签的名称和链接
+            echo '<a class="len-link-all" href="' . esc_url(get_tag_link($tag->term_id)) . '"><li class="article-tag-li">' . esc_html($tag->name) . '</li></a>';
+        }
+    }
+}
+
+
+
+/**
+ * Len_parent_category function.
+ *
+ * 输出当前文章的主要（顶级）分类名称和链接。
+ *
+ * @param int $Post_ID 文章ID，默认为空，使用当前文章的ID。
+ */
+function Len_Parent_Category_Module($Post_ID = '')
+{
+    // 获取当前文章的分类列表
+    $categories = get_the_category($Post_ID);
+
+    if ($categories) {
+        // 只考虑第一个分类，因为通常一个文章只属于一个主要分类
+        $parent_category = $categories[0];
+
+        // 循环获取父级分类，直到没有父级分类为止
+        while ($parent_category->parent) {
+            $parent_category = get_category($parent_category->parent);
+        }
+
+        $category_name = $parent_category->name; // 获取父级分类的名称
+        $category_link = get_category_link($parent_category->term_id); // 获取父级分类的链接
+
+        // 输出分类名称和链接
+        if ($category_name && $category_link) {
+            echo '<div class="article-parent-classification"><span><a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a></span></div>';
+        } else {
+            echo esc_html($category_name);
+        }
+    }
 }

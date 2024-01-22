@@ -14,26 +14,108 @@ if (class_exists('CSF')) {
     'footer_text'        => '',
   ));
   //主题首页设置
+  //模块设置
   CSF::createSection($Module, array(
-    'title'  => '首页设置',
-    'icon' => 'icon-shouye',
-    'fields' => array()
-  ));
-
-  CSF::createSection($Module, array(
-    'title'  => '文章页设置',
-    'icon' => 'icon-shouye',
-    'fields' => array()
-  ));
-
-  CSF::createSection($Module, array(
-    'title'  => '说说页设置',
+    'title'  => '模块设置',
     'icon' => 'icon-beifenhuifu',
-    'fields' => array()
+    'id'  => 'Module',
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Module',
+    'title'       => '头部模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Module',
+    'title'       => '底部模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Module',
+    'title'       => 'Seo模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Module',
+    'title'       => '网站图标模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
   ));
 
+  //全局设置
   CSF::createSection($Module, array(
-    'title'  => '友情链接页设置',
+    'title'  => '全局设置',
+    'icon' => 'icon-shouye',
+    'id'  => 'Global',
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '首页全局',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+
+  //页面设置
+  CSF::createSection($Module, array(
+    'title'  => '页面设置',
+    'icon' => 'icon-shouye',
+    'id'  => 'Page',
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '首页模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '分类模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '标签模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '说说模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '归档模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '友链模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+
+
+
+  CSF::createSection($Module, array(
+    'title'  => '其他设置',
     'icon' => 'icon-beifenhuifu',
     'fields' => array()
   ));
@@ -258,6 +340,11 @@ if (class_exists('CSF')) {
         'type' => 'backup',
       ),
     ),
+  ));
+  CSF::createSection($Module, array(
+    'title'  => '待开发',
+    'icon' => 'icon-beifenhuifu',
+    'fields' => array()
   ));
 }
 add_filter('admin_footer_text', 'admin_footer', 99999);

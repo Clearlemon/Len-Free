@@ -36,6 +36,7 @@
                             <div class="len-article-showcase-main">
                                 <div class="len-article-title-min">
                                     <h1 class="len-article-title-block">Lemon ———— 极简的双边栏主题</h1>
+                                    <?php echo Len_Parent_Category_Module(get_the_ID()) ?>
                                 </div>
                                 <?php Len_Module_Switcher(true, false, false); ?>
                                 <div class="len-article-showcase-content">
@@ -53,10 +54,7 @@
                                     <svg class="len-tag-post-icon" aria-hidden="true">
                                         <use xlink:href="#icon-biaoqian1"></use>标签
                                         <ul class="article-tag-ul-blcok">
-                                            <li class="article-tag-li-">说说</li>
-                                            <li class="article-tag-li-">Wordpress</li>
-                                            <li class="article-tag-li-">主题</li>
-                                            <li class="article-tag-li-">Len</li>
+                                            <?php Len_Post_Tag_Module() ?>
                                         </ul>
                                     </svg>
                                 </div>
