@@ -5,7 +5,9 @@ use function PHPSTORM_META\type;
 if (class_exists('CSF')) {
 
   $Module = 'Len_Free';
-
+  $Image_Format = '.webp';
+  $Image_Url = get_template_directory_uri() . '/Assets/Len-Images/';
+  $Image_Url_Admin = get_template_directory_uri() . '/Assets/Len-Images/Admin/';
 
   CSF::createOptions($Module, array(
     'menu_title' => 'Len主题设置',
@@ -57,49 +59,118 @@ if (class_exists('CSF')) {
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '首页设置',
+    'title'       => '首页模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '分类设置',
+    'title'       => '文章模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array(
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----文章页面全局模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
+        'content' => '版权模块 | 互动模块 | 评论模块',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是版权模块设置区【文字模块支持Html】',
+      ),
+      array(
+        'id'    => 'Post_Copyright_Module_1',
+        'type'  => 'upload',
+        'title' => '版权模块图片',
+        'preview' => true,
+        'desc'     => '此图片可展示二维码或者其他类型<b class="Len_emphasis_fonts">图片大小建议100*100，格式建议为webp</b>',
+        'library'      => 'image',
+      ),
+      array(
+        'id'      => 'Post_Copyright_Module_2',
+        'type'    => 'textarea',
+        'title'   => '版权模块文字【上】',
+        'default' => '<p>1.此主题并不是十全十美请勿吹捧</p><p>2.文章转载需经过作者授权</p><p>3.文章转载请标注来源地址</p>'
+      ),
+      array(
+        'id'      => 'Post_Copyright_Module_3',
+        'type'    => 'textarea',
+        'title'   => '版权模块文字【下】',
+        'default' => '<p>温习提示：主题不支持商用哦！~</p>'
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是互动模块设置区',
+      ),
+      array(
+        'id'    => 'Post_Pay_Img_Module_1',
+        'type'  => 'upload',
+        'title' => '支付宝收款码',
+        'preview' => true,
+        'desc'     => '支付宝收款码图片上传<b class="Len_emphasis_fonts">图片大小建议200*200，格式建议为webp</b>',
+        'library'      => 'image',
+        'default' => $Image_Url . 'zfb' . $Image_Format,
+      ),
+      array(
+        'id'    => 'Post_Pay_Img_Module_2',
+        'type'  => 'upload',
+        'title' => '微信收款码',
+        'preview' => true,
+        'desc'     => '微信收款码图片上传<b class="Len_emphasis_fonts">图片大小建议200*200，格式建议为webp</b>',
+        'library'      => 'image',
+        'default' => $Image_Url . 'wx' . $Image_Format,
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这里是评论模块设置区',
+      ),
+    )
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '分类模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '标签设置',
+    'title'       => '标签模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '搜索设置',
+    'title'       => '搜索模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '说说设置',
+    'title'       => '说说模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '归档设置',
+    'title'       => '归档模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Global',
-    'title'       => '友链设置',
+    'title'       => '友链模块',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
@@ -112,49 +183,56 @@ if (class_exists('CSF')) {
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '首页模块',
+    'title'       => '首页设置',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '文章设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '搜索模块',
+    'title'       => '搜索设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '分类模块',
+    'title'       => '分类设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '标签模块',
+    'title'       => '标签设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '说说模块',
+    'title'       => '说说设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '归档模块',
+    'title'       => '归档设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',
-    'title'       => '友链模块',
+    'title'       => '友链设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
     'fields'      => array()

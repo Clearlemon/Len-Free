@@ -107,8 +107,8 @@
                                 </header>
                             </div>
                             <div class="wx-alpay-qr">
-                                <img class="pay-qr-img" style="display: block;" src="/wp-content/themes/Len-Free/Assets/Len-Images/zfb.png" alt="">
-                                <img class="pay-qr-img" style="display: none;" src="/wp-content/themes/Len-Free/Assets/Len-Images/wx.png" alt="">
+                                <img class="pay-qr-img" style="display: block;" src="<?php echo Len_Mutaual_Module(false, true) ?>" alt="">
+                                <img class="pay-qr-img" style="display: none;" src="<?php echo Len_Mutaual_Module(true, false) ?>" alt="">
                             </div>
                             <div class="pay-choose">
                                 <div class="pay-choose-link " onclick="togglePayment('alipay')">

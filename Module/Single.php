@@ -170,30 +170,45 @@ function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = tru
     }
 }
 
-
-
-
 function Len_Modeule_Copyright()
 {
-?> <div class="len-article-copyright">
+    // 获取版权声明模块的背景图片路径
+    $Img = _len('Post_Copyright_Module_1');
+
+    // 获取版权声明的文本内容部分1
+    $Text_1 = _len('Post_Copyright_Module_2');
+
+    // 获取版权声明的文本内容部分2
+    $Text_2 = _len('Post_Copyright_Module_3');
+?>
+
+    <!-- 版权声明模块的HTML结构开始 -->
+    <div class="len-article-copyright">
         <legend class="copyright-title">版权声明</legend>
+
         <div class="copyright-block">
-            <img class="copyright-background-img" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
+            <!-- 版权声明模块的背景图片 -->
+            <img class="copyright-background-img" src="<?php echo $Img; ?>" alt="">
+
             <div class="copyright-min-blcok">
+                <!-- 版权声明文本内容部分1 -->
                 <div class="copyright-text-min">
-                    <p>1.此主题并不是十全十美请勿吹捧</p>
-                    <p>2.文章转载需经过作者授权</p>
-                    <p>3.文章转载请标注来源地址</p>
+                    <?php echo $Text_1; ?>
                 </div>
+
                 <hr>
+
+                <!-- 版权声明文本内容部分2 -->
                 <div class="copyright-remind">
-                    <p>温习提示：主题不支持商用哦！~</p>
+                    <?php echo $Text_2; ?>
                 </div>
             </div>
         </div>
     </div>
+    <!-- 版权声明模块的HTML结构结束 -->
 <?php
 }
+
 /**
  * 获取用户静态模块
  *
@@ -499,20 +514,37 @@ function Len_Parent_Category_Module($Post_ID = '')
 
 add_filter('pre_option_link_manager_enabled', '__return_true');
 
-// 修改“Link Manager”为“友情链接”
+// 通过过滤器修改链接管理菜单名称
 function Len_modify_link_manager_name($name)
 {
     return '友情链接';
 }
 add_filter('admin_menu', 'Len_modify_link_manager_menu');
 
+// 修改链接管理菜单
 function Len_modify_link_manager_menu()
 {
     global $menu;
+
+    // 遍历菜单项，找到原始的“链接”菜单
     foreach ($menu as $key => $value) {
-        if ($value[0] == '链接') { // 找到原始的“链接”菜单
-            $menu[$key][0] = '友情链接'; // 修改菜单名称
+        if ($value[0] == '链接') {
+            // 将原始的“链接”菜单名称修改为“友情链接”
+            $menu[$key][0] = '友情链接';
             break;
         }
+    }
+}
+
+
+function Len_Mutaual_Module($wx = true, $zfb = true)
+{
+    $Wx_Qr = _len('Post_Pay_Img_Module_2');
+    $Zfb_Qr = _len('Post_Pay_Img_Module_1');
+
+    if ($wx === true) {
+        return $Wx_Qr;
+    } elseif ($zfb === true) {
+        return $Zfb_Qr;
     }
 }
