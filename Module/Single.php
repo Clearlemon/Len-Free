@@ -173,7 +173,8 @@ function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = tru
 
 
 
-function Len_Modeule_Copyright(){
+function Len_Modeule_Copyright()
+{
 ?> <div class="len-article-copyright">
         <legend class="copyright-title">版权声明</legend>
         <div class="copyright-block">
@@ -491,6 +492,27 @@ function Len_Parent_Category_Module($Post_ID = '')
             echo '<div class="article-parent-classification"><span><a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a></span></div>';
         } else {
             echo esc_html($category_name);
+        }
+    }
+}
+
+
+add_filter('pre_option_link_manager_enabled', '__return_true');
+
+// 修改“Link Manager”为“友情链接”
+function Len_modify_link_manager_name($name)
+{
+    return '友情链接';
+}
+add_filter('admin_menu', 'Len_modify_link_manager_menu');
+
+function Len_modify_link_manager_menu()
+{
+    global $menu;
+    foreach ($menu as $key => $value) {
+        if ($value[0] == '链接') { // 找到原始的“链接”菜单
+            $menu[$key][0] = '友情链接'; // 修改菜单名称
+            break;
         }
     }
 }
