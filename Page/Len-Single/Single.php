@@ -1,4 +1,5 @@
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 
 <body>
     <img class="bady-background-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/body-background.jpg" alt="">
@@ -175,32 +176,16 @@
                     </div>
                     <!-- 上下文章结束 -->
                     <!-- 评论模块开始 -->
-                    <div class="len-post-comments">
-                        <div class="len-comments-blcok">
-                            <div class="len-comments-main">
-                                <div class="len-user-comments-avatar-blcok">
-                                    <img class="user-comments-avatar" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
-                                    <p class="user-comments-name-blcok">青桔柠檬</p>
-                                </div>
-                                <div class="len-user-comments-content">
-                                    <div class="len-comments-input-block">
-                                        <input class="len-comments-input" type="text">
-                                        <input class="len-comments-input" type="text">
-                                        <input class="len-comments-input" type="text">
-                                        <input class="len-comments-input" type="text">
-                                    </div>
-                                    <div class="len-comments-textarea">
-                                        <textarea class="len-comments-textarea-block" name="" id="" cols="30" rows="10"></textarea>
-                                        <div class="len-comments-submit-button-block">
-                                            <button class="comments-submit-button">发表评论</button>
-                                        </div>
-                                    </div>
-                                    <div class="len-comments"><span>表情</span></div>
-                                </div>
-                            </div>
-                            <div class="len-comments-part"></div>
-                        </div>
-                    </div>
+                    <?php
+                    /**
+                     * 引用评论样式
+                     * require_once get_theme_file_path('comments.php');
+                     * 评论模块样式文件目录
+                     */
+                    if (comments_open()) {
+                        comments_template();
+                    }
+                    ?>
                     <!-- 评论模块结束 -->
                     <!-- 文章展示模块结束 -->
                 </div>

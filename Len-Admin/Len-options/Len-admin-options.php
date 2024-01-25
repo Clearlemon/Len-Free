@@ -131,6 +131,16 @@ if (class_exists('CSF')) {
         'style'   => 'success',
         'content' => '这里是评论模块设置区',
       ),
+      array(
+        'id'    => 'Post_Comments_Module_1',
+        'type'  => 'switcher',
+        'title' => '评论模块开启',
+      ),
+      array(
+        'id'    => 'Post_Comments_Module_2',
+        'type'  => 'switcher',
+        'title' => '评论表情包模块开启',
+      ),
     )
   ));
   CSF::createSection($Module, array(

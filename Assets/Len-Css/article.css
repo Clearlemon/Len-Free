@@ -298,6 +298,14 @@
     display: flex;
 }
 
+.len-no-comments-block-content {
+    height: 100px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .user-comments-avatar {
     width: 80px;
     height: 80px;
@@ -328,7 +336,7 @@
 }
 
 .len-comments-textarea-block {
-    width: 77%;
+    width: 76%;
     height: 70px;
     margin-right: 5px;
     border-radius: 5px;
@@ -337,9 +345,9 @@
 }
 
 .len-comments-input {
-    width: 45%;
+    width: 30%;
     padding: 5px;
-    margin: 5px;
+    margin: 3px;
     height: 25px;
     border-radius: 5px;
     border: 1px solid #e1e8ed;
@@ -357,7 +365,7 @@
 .len-comments-blcok {
     background: white;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .len-comments {

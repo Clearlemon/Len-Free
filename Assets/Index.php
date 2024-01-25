@@ -37,3 +37,14 @@ function Len_scripts_styles()
     wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4353348_7ymlde7ymd6.js', array(), $var, true);
 }
 add_action('wp_enqueue_scripts', 'Len_scripts_styles');
+
+/**
+ * 在WordPress主题的<head>部分添加自定义的<meta>标签。
+ */
+function add_custom_meta_tags()
+{
+    echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">' . PHP_EOL;
+}
+
+// 将函数挂载到wp_head动作上
+add_action('wp_head', 'add_custom_meta_tags');
