@@ -141,6 +141,7 @@ function Len_Thumbnail_Module($post_id = '')
 }
 
 
+
 /**
  * 根据条件执行相应的模块函数
  *
@@ -232,9 +233,6 @@ function User_Show_Static_Module()
     // 获取文章发布时间
     $Post_Time = Len_Like_Comments_Browse_Time_Module('', '', '', $Post_ID);
 
-    //获取浏览数量
-    $Post_Views = Len_Like_Comments_Browse_Time_Module('', '', $Post_ID, '');
-
     //获取评论数量
     $Post_Comments = Len_Like_Comments_Browse_Time_Module('', $Post_ID, '', '');
     //获取喜欢数量
@@ -260,7 +258,7 @@ function User_Show_Static_Module()
                 <span class="len-stats-browse-block">
                     <svg class="len-stats-post-icon" aria-hidden="true">
                         <use xlink:href="#icon-liulan"></use>
-                    </svg><?php echo $Post_Views ?></span>
+                    </svg><?php echo Len_post_views($Post_ID); ?></span>
                 <span class="len-stats-comments-block">
                     <svg class="len-stats-post-icon" aria-hidden="true">
                         <use xlink:href="#icon-pinglun"></use>
@@ -359,6 +357,97 @@ function Len_Like_Comments_Browse_Time_Module($Like = '', $Comments = '', $Brows
 }
 
 
+/**
+ * Len_Post_Above_Next 函数用于获取当前文章的上一篇和下一篇相关内容。
+ *
+ * @return void
+ */
+function Len_Post_Above_Next_Module()
+{
+    /*
+     * 获取当前文章的ID
+     *
+     * @var int
+     */
+    $post_id = get_the_ID();
+
+    /*
+     * 获取上一篇和下一篇文章的ID
+     *
+     * @var WP_Post|null $previous_post 上一篇文章对象。
+     * @var WP_Post|null $next_post     下一篇文章对象。
+     */
+    $previous_post = get_previous_post();
+    $next_post = get_next_post();
+
+    /*
+     * 初始化 $previous_post_Above_class 和 $previous_post_Next_class 变量
+     *
+     * @var string $previous_post_Above_class 包含上一篇文章类的字符串。
+     * @var string $previous_post_Next_class  包含下一篇文章类的字符串。
+     */
+    $previous_post_Above_class = '';
+    $previous_post_Next_class = '';
+
+    /*
+     * 进行上一篇或者下一篇来判断
+     */
+    if (!empty($previous_post)) {
+        $previous_post_id = $previous_post->ID;
+        $previous_post_Above_class = "Above_post"; // 如果有上一篇，添加 Above_post 类
+    }
+
+    if (!empty($next_post)) {
+        $next_post_id = $next_post->ID;
+        $previous_post_Next_class = "Next_post"; // 如果有下一篇，添加 Next_post 类
+    }
+
+    /*
+     * 判断是否存在上一篇或下一篇文章
+     */
+    if ($previous_post || $next_post) {
+        // 输出 HTML 结构
+        echo '<div class="len-arrow-post-block-min ">
+        <div class="len-arrow-blcok-flex ' . $previous_post_Above_class . $previous_post_Next_class . '"> ';
+
+        // 如果上一篇有文章的话则输出这些HTML，如果没有则不会输出相关内容
+        if ($previous_post) {
+            echo '<div class="len-arrow-above-post positioning-right">
+            <a href="' . get_permalink($previous_post->ID) . '">
+                <img class="above-post-background" src="' . Len_Thumbnail_Module($previous_post_id) . '" alt="">
+                <div class="arrow-text-blcok-right">
+                    <span>
+                        <svg class="len-arrow-icon" aria-hidden="true">
+                            <use xlink:href="#icon-arrow_left"></use>
+                        </svg>上一篇</span>
+                    <p>【' . $previous_post->post_title . '】</p>
+                </div>
+            </a>
+        </div>';
+        }
+
+        // 如果下一篇有文章的话则输出这些HTML，如果没有则不会输出相关内容
+        if ($next_post) {
+            echo '<div class="len-arrow-under-post positioning-left">
+            <a href="' . get_permalink($next_post->ID) . '">
+                <img class="under-post-background" src="' . Len_Thumbnail_Module($next_post_id) . '" alt="">
+                <div class="arrow-text-blcok-left">
+                    <span>
+                        下一篇
+                        <svg class="len-arrow-icon" aria-hidden="true">
+                            <use xlink:href="#icon-arrow_right"></use>
+                        </svg>
+                    </span>
+                    <p>【' . $next_post->post_title . '】</p>
+                </div>
+            </a>
+        </div>';
+        }
+
+        echo '</div></div>';
+    }
+}
+
 
 
 
@@ -377,13 +466,14 @@ function Len_post_views($post_id)
     $count = get_post_meta($post_id, $count_key, true);
 
     // 如果浏览次数为空，则设置为0，并更新元数据
-    if ($count === '') {
-        $count = 0;
-        update_post_meta($post_id, $count_key, $count);
+    if ($count == '') {
+        delete_post_meta($post_id, $count_key);
+        add_post_meta($post_id, $count_key, '0');
+        $count = '0';
     }
 
     // 返回文章的浏览次数
-    return $count;
+    echo number_format_i18n($count);
 }
 
 /**
@@ -393,19 +483,20 @@ function Len_post_views($post_id)
  */
 function Set_post_views($post_id)
 {
-    // 定义浏览次数的存储键名
+    global $post;
+
+    $post_id = $post->ID;
     $count_key = 'views';
+    $count = get_post_meta($post_id, $count_key, true);
 
-    // 只在单页和文章页面更新阅读次数
     if (is_single() || is_page()) {
-        // 获取当前文章的浏览次数
-        $count = get_post_meta($post_id, $count_key, true);
 
-        // 如果浏览次数为空，将其设置为0，否则加1
-        $count = $count === '' ? 0 : $count + 1;
-
-        // 更新文章的浏览次数元数据
-        update_post_meta($post_id, $count_key, $count);
+        if ($count == '') {
+            delete_post_meta($post_id, $count_key);
+            add_post_meta($post_id, $count_key, '0');
+        } else {
+            update_post_meta($post_id, $count_key, $count + 1);
+        }
     }
 }
 
@@ -548,3 +639,36 @@ function Len_Mutaual_Module($wx = true, $zfb = true)
         return $Zfb_Qr;
     }
 }
+
+function Len_Post_Bread_Navigation_Module()
+{
+    // 获取当前文章的分类信息
+    $categories = get_the_category();
+
+    // 遍历分类信息
+
+    $home_url = home_url();
+
+    // 输出链接
+
+
+?>
+    <div class="len-article-banner-nav-blcok">
+        <div class="len-article-nav-block"><a href="<?php echo esc_url($home_url); ?>" class="len-article-links-block len-pjax-link-all-blcok" href="">首页</a> </div>
+        <div class="len-article-nav-block"><a href="<?php if (!empty($categories)) {
+                                                        // 获取第一个分类的ID
+                                                        $category_id = $categories[0]->term_id;
+
+                                                        // 获取分类链接
+                                                        $category_link = get_category_link($category_id);
+
+                                                        // 输出链接
+                                                        echo esc_url($category_link);
+                                                    } ?>" class="len-article-links-block len-pjax-link-all-blcok" href="">
+                <?php
+                foreach ($categories as $category) {
+                    echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>';
+                } ?></a> </div>
+        <div class="len-article-block"><?php the_title(); ?></div>
+    </div><?php
+        }

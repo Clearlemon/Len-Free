@@ -44,6 +44,7 @@ add_action('wp_enqueue_scripts', 'Len_scripts_styles');
 function add_custom_meta_tags()
 {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">' . PHP_EOL;
+    echo Len_Seo_Module();
 }
 
 // 将函数挂载到wp_head动作上

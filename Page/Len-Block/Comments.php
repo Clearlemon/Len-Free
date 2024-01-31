@@ -1,5 +1,5 @@
-<form method="post" id="commentform" class="comment-form">
-    <div class="len-post-comments">
+<div id="respond" class="len-post-comments">
+    <form method="post" id="commentform" class="comment-form">
         <div class="len-comments-blcok">
             <div class="len-comments-main">
                 <div class="len-user-comments-avatar-blcok">
@@ -21,17 +21,21 @@
                             <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
                         </div>
                     </div>
-                    <!-- <div class="len-comments"><span>表情</span></div> -->
+                    <div class="len-comments">
+                        <!-- <div class="OwO">OwO表情</div> -->
+                    </div>
                 </div>
             </div>
             <div class="len-comments-part"></div>
         </div>
-    </div>
-    <p class="form-submit">
-        <?php comment_id_fields(); ?>
-    </p>
-    <?php do_action('comment_form', $post->ID); ?>
-</form>
+        <p class="form-submit">
+            <?php comment_id_fields(); ?>
+        </p>
+        <?php do_action('comment_form', $post->ID); ?>
+    </form>
+</div>
+
+
 <div id="comments" class="len-comments-content">
     <?php
     // 防止直接加载 comments.php
@@ -73,10 +77,13 @@
 </div>
 <script>
     jQuery(document).ready(function($) {
+        var initialFormLocation = $('#commentform').parent();
+        var replyTargetId = null;
+
+        // 提交评论
         $('#commentform').submit(function(event) {
             event.preventDefault();
 
-            // Serialize the form data
             var formData = $(this).serialize();
 
             $.ajax({
@@ -85,23 +92,41 @@
                 data: formData,
                 dataType: 'html',
                 success: function(response) {
-                    // Optional: You can do something with the response HTML if needed
                     console.log(response);
 
-                    // Optional: Display a success message
-                    alert('评论成功！');
-
-                    // Optional: Clear the form fields after successful submission
                     $('#commentform')[0].reset();
 
-                    // Optional: You may reload the comments section to show the new comment
                     $('#comments').load(location.href + ' #comments');
+
+                    // 如果存在回复目标 ID，则将表单放回原始位置
+                    if (replyTargetId !== null) {
+                        $('#commentform').detach().appendTo(initialFormLocation);
+                        replyTargetId = null;
+                    }
                 },
                 error: function(error) {
-                    // Optional: Handle errors
                     console.error('Error:', error);
                 },
             });
+        });
+
+        // 回复评论
+        $('.comment-reply-link').click(function(event) {
+            event.preventDefault();
+
+            var parentCommentId = $(this).data('commentid');
+
+            // 如果用户再次点击相同的回复链接，将表单放回原始位置
+            if (replyTargetId === parentCommentId) {
+                $('#commentform').detach().appendTo(initialFormLocation);
+                replyTargetId = null;
+            } else {
+                // 否则，将表单移到新的回复目标位置
+                $('#commentform').detach().appendTo('#comment-' + parentCommentId);
+                replyTargetId = parentCommentId;
+            }
+
+            $('#comment_parent').val(parentCommentId);
         });
     });
 </script>
