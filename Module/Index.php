@@ -1,5 +1,9 @@
 <?php
 
+
+
+
+
 function Len_index_article()
 
 

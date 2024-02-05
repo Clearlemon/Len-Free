@@ -24,13 +24,13 @@ function Len_Seo_Module()
         // 如果是单篇文章页的逻辑
 
         if (_Len_Post_Module('Module_Switcher_SEO', '', '', '', get_the_ID()) == true) {
-            $title = _Len_Post_Module('Module_Title_SEO', '', '', '', get_the_ID());
-            $keywords = _Len_Post_Module('Module_Keywords_SEO', '', '', '', get_the_ID());
-            $description = _Len_Post_Module('Module_Description_SEO', '', '', '', get_the_ID());
+            $Title = _Len_Post_Module('Module_Title_SEO', '', '', '', get_the_ID());
+            $Keywords = _Len_Post_Module('Module_Keywords_SEO', '', '', '', get_the_ID());
+            $Description = _Len_Post_Module('Module_Description_SEO', '', '', '', get_the_ID());
         ?>
-            <title><?php echo $title; ?></title>
-            <meta name="keywords" content="<?php echo $keywords; ?>">
-            <meta name="description" content="<?php echo $description; ?>">
+            <title><?php echo $Title; ?></title>
+            <meta name="keywords" content="<?php echo $Keywords; ?>">
+            <meta name="description" content="<?php echo $Description; ?>">
         <?php
         } else {
             // 获取文章标题
