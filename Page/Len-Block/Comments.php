@@ -21,8 +21,8 @@
                             <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
                         </div>
                     </div>
-                    <div class="len-comments">
-                        <!-- <div class="OwO">OwO表情</div> -->
+                    <div class="OwO">
+                       <div class="OwO-logo"><span>OωO表情</span></div>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,17 @@
     }
     ?>
 </div>
+<script src="./wp-content/themes/Len-Free-main/Assets/Lne-JavaScript/OwO.min.js"></script>
 <script>
+        var OwO_demo = new OwO({
+        logo: 'OωO表情',
+        container: document.getElementsByClassName('OwO')[0],
+        target: document.getElementsByClassName('OwO-textarea')[0],
+        api: './wp-content/themes/Len-Free-main/Assets/Lne-JavaScript/123.json',
+        position: 'down',
+        width: '100%',
+        maxHeight: '250px'
+    });
     jQuery(document).ready(function($) {
         var initialFormLocation = $('#commentform').parent();
         var replyTargetId = null;
