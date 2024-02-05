@@ -102,6 +102,93 @@ function Len_Comments_Module($comment, $args, $depth)
 
 
         </div>
-<?php
+    <?php
     }
 }
+
+function Len_Comments_Blcok_Module()
+{
+    $commenter = wp_get_current_commenter(); // 定义 $commenter
+    $req = get_option('require_name_email'); // 定义 $req
+    // 获取评论模块设置
+    $comments_module = _len('Post_Comments_Module_2');
+
+    // 检查评论模块设置是否不为空
+    if (!empty($comments_module)) {
+        // 遍历评论模块设置
+        foreach ($comments_module as $key => $value) {
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            if ($key === 'Post_Comments_Module_2_1') {
+                $Expression = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_2'，将值赋给 $nickname
+            elseif ($key === 'Post_Comments_Module_2_2') {
+                $Nickname = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_3') {
+                $Mailbox = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_4') {
+                $Url = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_5') {
+                $Textarea = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_6') {
+                $User_avatar_log = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_7') {
+                $User_name_log = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_8') {
+                $User_avatar_nolog = $value;
+            }
+            // 如果键为 'Post_Comments_Module_2_5'，将值赋给 $Textarea
+            elseif ($key === 'Post_Comments_Module_2_9') {
+                $User_name_nolog = $value;
+            }
+            // 其他字段的处理，可以根据需要添加类似的条件
+            // ...
+        }
+    }
+
+    ?>
+    <div class="len-comments-main">
+        <div class="len-user-comments-avatar-blcok">
+            <?php if (is_user_logged_in()) : ?>
+                <img class="user-comments-avatar" src="<?php echo $User_avatar_log; ?>" alt="">
+                <p class="user-comments-name-blcok"><?php echo $User_name_log; ?></p>
+            <?php else : ?>
+                <img class="user-comments-avatar" src="<?php echo $User_avatar_nolog; ?>" alt="">
+                <p class="user-comments-name-blcok"><?php echo $User_name_nolog; ?></p>
+            <?php endif; ?>
+        </div>
+        <div class="len-user-comments-content">
+            <?php if (is_user_logged_in()) : ?>
+            <?php else : ?>
+                <div class="len-comments-input-block">
+                    <input class="len-comments-input lan-len-comments-inputcolour" placeholder="<?php echo $Nickname; ?>" type="text" name="author" id="author" value="<?php echo esc_attr($commenter['comment_author']); ?>" <?php if ($req) echo 'required'; ?>>
+                    <input class="len-comments-input lan-len-comments-inputcolour" placeholder="<?php echo $Mailbox; ?>" type="email" name="email" id="email" value="<?php echo esc_attr($commenter['comment_author_email']); ?>" <?php if ($req) echo 'required'; ?>>
+                    <input class="len-comments-input lan-len-comments-inputcolour" placeholder="<?php echo $Url; ?>" type="url" name="url" id="url" value="<?php echo esc_attr($commenter['comment_author_url']); ?>">
+                </div>
+            <?php endif; ?>
+            <div class="len-comments-textarea">
+                <textarea class="len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="<?php echo $Textarea; ?>"></textarea>
+                <div class="len-comments-submit-button-block">
+                    <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
+                </div>
+            </div>
+            <div class="len-comments">
+                <!-- <div class="OwO">OwO表情</div> -->
+            </div>
+        </div>
+    </div>
+<?php
+}
+?>

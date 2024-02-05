@@ -137,9 +137,87 @@ if (class_exists('CSF')) {
         'title' => '评论模块开启',
       ),
       array(
-        'id'    => 'Post_Comments_Module_2',
-        'type'  => 'switcher',
-        'title' => '评论表情包模块开启',
+        'id'     => 'Post_Comments_Module_2',
+        'type'   => 'fieldset',
+        'title'  => '评论模块功能',
+        'fields' => array(
+
+          array(
+            'id'    => 'Post_Comments_Module_2_1',
+            'type'  => 'switcher',
+            'title' => '评论表情包模块开启',
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_2',
+            'class' => '',
+            'type'  => 'text',
+            'title' => '昵称placeholder',
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_3',
+            'type'  => 'text',
+            'title' => '邮箱placeholder',
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_4',
+            'type'  => 'text',
+            'title' => '网址placeholder',
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_5',
+            'type'  => 'text',
+            'title' => '评论placeholder',
+          ),
+          array(
+            'type'    => 'submessage',
+            'style'   => 'success',
+            'content' => '用户登录显示模块',
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_6',
+            'type'  => 'upload',
+            'title' => '已登录用户头像',
+            'preview' => true,
+            'desc'     => '用户头像图片上传<b class="Len_emphasis_fonts">图片大小建议80*80，格式建议为webp</b>',
+            'library'      => 'image',
+            'default' => $Image_Url . 'wx' . $Image_Format,
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_7',
+            'type'  => 'text',
+            'title' => '已登录用户名',
+          ),
+          array(
+            'type'    => 'submessage',
+            'style'   => 'danger',
+            'content' => '用户未登录显示模块',
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_8',
+            'type'  => 'upload',
+            'title' => '未登录用户头像',
+            'preview' => true,
+            'desc'     => '用户头像图片上传<b class="Len_emphasis_fonts">图片大小建议80*80，格式建议为webp</b>',
+            'library'      => 'image',
+            'default' => $Image_Url . 'wx' . $Image_Format,
+          ),
+          array(
+            'id'    => 'Post_Comments_Module_2_9',
+            'type'  => 'text',
+            'title' => '未登录用户名',
+          ),
+        ),
+        'default'        => array(
+          'Post_Comments_Module_2_1'     => false,
+          'Post_Comments_Module_2_2'     => '昵称',
+          'Post_Comments_Module_2_3'     => '邮箱',
+          'Post_Comments_Module_2_4'     => '网址',
+          'Post_Comments_Module_2_5'     => '接下来由我来简单的喵喵两句',
+          'Post_Comments_Module_2_6'     => $Image_Url . 'wx' . $Image_Format,
+          'Post_Comments_Module_2_7'     => '小青柠',
+          'Post_Comments_Module_2_8'     => $Image_Url . 'wx' . $Image_Format,
+          'Post_Comments_Module_2_9'     => '未成熟的小青柠',
+        ),
       ),
     )
   ));
@@ -199,7 +277,7 @@ if (class_exists('CSF')) {
     'fields'      => array()
   ));
   CSF::createSection($Module, array(
-    'parent'      => 'Global',
+    'parent'      => 'Page',
     'title'       => '文章设置',
     'icon'        => 'icon-yezi-',
     'description' => '',
