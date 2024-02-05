@@ -24,12 +24,8 @@ function Len_Article_Showcase()
 
 
 function Len_index_article()
-
-
-
-
-
 {
+    
 ?>
     <div class="len-post-block">
         <a class="len-links-post len-pjax-link-all-blcok" href="Post/post-1.html">

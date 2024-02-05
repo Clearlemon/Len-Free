@@ -277,12 +277,12 @@
                 "text": "face2" 
             },
             {
-                "icon": "<img src='//localhost/wp-content/uploads/2024/02/1707061408-0218d88123583cc997c3a92ae6628b12.jpg'>", 
+                "icon": "<img src='/wp-content/uploads/2024/02/1707061408-0218d88123583cc997c3a92ae6628b12.jpg'>", 
                 "code":"[666]",               
                 "text": "face1" 
             },
             {
-                "icon": "<img src='//localhost/wp-content/uploads/2024/02/1707061408-0218d88123583cc997c3a92ae6628b12.jpg'>",  
+                "icon": "<img src='/wp-content/uploads/2024/02/1707061408-0218d88123583cc997c3a92ae6628b12.jpg'>",  
                 "code":"[777]",               
                 "text": "face2"
             },
