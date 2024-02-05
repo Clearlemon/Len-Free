@@ -16,13 +16,13 @@
                         </div>
                     <?php endif; ?>
                     <div class="len-comments-textarea">
-                        <textarea class="len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="下面由我我简单喵两句"></textarea>
+                        <textarea class="OwO-textarea len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="下面由我我简单喵两句"></textarea>
                         <div class="len-comments-submit-button-block">
                             <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
                         </div>
                     </div>
                     <div class="OwO">
-                       <div class="OwO-logo"><span>OωO表情</span></div>
+                        <div class="OwO-logo"><span>OωO表情</span></div>
                     </div>
                 </div>
             </div>
@@ -75,13 +75,13 @@
     }
     ?>
 </div>
-<script src="./wp-content/themes/Len-Free-main/Assets/Lne-JavaScript/OwO.min.js"></script>
+
 <script>
-        var OwO_demo = new OwO({
+    var OwO_demo = new OwO({
         logo: 'OωO表情',
         container: document.getElementsByClassName('OwO')[0],
         target: document.getElementsByClassName('OwO-textarea')[0],
-        api: './wp-content/themes/Len-Free-main/Assets/Lne-JavaScript/123.json',
+        api: '<?php echo esc_url(get_template_directory_uri()); ?>/Assets/Lne-JavaScript/123.json',
         position: 'down',
         width: '100%',
         maxHeight: '250px'
