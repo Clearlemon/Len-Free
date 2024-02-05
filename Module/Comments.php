@@ -179,16 +179,69 @@ function Len_Comments_Blcok_Module()
                 </div>
             <?php endif; ?>
             <div class="len-comments-textarea">
-                <textarea class="len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="<?php echo $Textarea; ?>"></textarea>
+                <textarea class="OwO-textarea len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="<?php echo $Textarea; ?>"></textarea>
                 <div class="len-comments-submit-button-block">
                     <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
                 </div>
             </div>
-            <div class="len-comments">
-                <!-- <div class="OwO">OwO表情</div> -->
+            <div class="OwO">
+                <div class="OwO-logo"><span>OωO表情</span></div>
             </div>
         </div>
     </div>
 <?php
 }
-?>
+
+function preprocess_comment_content($commentdata)
+{
+    // 获取评论内容
+    $comment_content = $commentdata['comment_content'];
+
+    // 替换特定代码为<img>标签
+    $comment_content = preg_replace('/\[bili-01\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-01.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-02\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-02.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-03\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-03.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-04\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-04.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-05\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-05.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-06\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-06.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-07\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-07.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-08\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-08.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-09\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-09.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-10\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-10.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-11\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-11.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-12\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-12.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-13\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-13.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-14\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-14.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-15\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-15.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-16\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-16.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-17\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-17.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-18\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-18.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-19\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-19.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-20\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-20.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-21\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-21.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-22\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-22.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-23\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-23.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-24\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-24.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-25\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-25.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-26\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-26.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-27\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-27.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-28\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-28.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-29\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-29.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-30\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-30.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-31\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-31.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-32\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-32.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-33\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-33.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-34\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-34.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-35\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-35.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-36\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-36.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-37\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-37.png">', $comment_content);
+    $comment_content = preg_replace('/\[bili-38\]/', '<img class="len-comment-menmes" src="' . get_template_directory_uri() . '/Assets/Len-Images/Memes/Bilbil_Menmes/bili-38.png">', $comment_content);
+
+    // 更新评论内容
+    $commentdata['comment_content'] = $comment_content;
+
+    return $commentdata;
+}
+
+// 将preprocess_comment_content函数连接到preprocess_comment钩子
+add_filter('preprocess_comment', 'preprocess_comment_content');

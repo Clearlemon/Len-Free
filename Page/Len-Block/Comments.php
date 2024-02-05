@@ -1,31 +1,7 @@
 <div id="respond" class="len-post-comments">
     <form method="post" id="commentform" class="comment-form">
         <div class="len-comments-blcok">
-            <div class="len-comments-main">
-                <div class="len-user-comments-avatar-blcok">
-                    <img class="user-comments-avatar" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
-                    <p class="user-comments-name-blcok">青桔柠檬</p>
-                </div>
-                <div class="len-user-comments-content">
-                    <?php if (is_user_logged_in()) : ?>
-                    <?php else : ?>
-                        <div class="len-comments-input-block">
-                            <input class="len-comments-input lan-len-comments-inputcolour" placeholder="昵称" type="text" name="author" id="author" value="<?php echo esc_attr($commenter['comment_author']); ?>" <?php if ($req) echo 'required'; ?>>
-                            <input class="len-comments-input lan-len-comments-inputcolour" placeholder="邮箱" type="email" name="email" id="email" value="<?php echo esc_attr($commenter['comment_author_email']); ?>" <?php if ($req) echo 'required'; ?>>
-                            <input class="len-comments-input lan-len-comments-inputcolour" placeholder="网站" type="url" name="url" id="url" value="<?php echo esc_attr($commenter['comment_author_url']); ?>">
-                        </div>
-                    <?php endif; ?>
-                    <div class="len-comments-textarea">
-                        <textarea class="OwO-textarea len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="下面由我我简单喵两句"></textarea>
-                        <div class="len-comments-submit-button-block">
-                            <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
-                        </div>
-                    </div>
-                    <div class="OwO">
-                        <div class="OwO-logo"><span>OωO表情</span></div>
-                    </div>
-                </div>
-            </div>
+            <?php Len_Comments_Blcok_Module(); ?>
             <div class="len-comments-part"></div>
         </div>
         <p class="form-submit">
@@ -83,7 +59,7 @@
         target: document.getElementsByClassName('OwO-textarea')[0],
         api: '<?php echo esc_url(get_template_directory_uri()); ?>/Assets/Lne-JavaScript/123.json',
         position: 'down',
-        width: '100%',
+        width: '50%',
         maxHeight: '250px'
     });
     jQuery(document).ready(function($) {
