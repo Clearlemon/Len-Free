@@ -1,6 +1,25 @@
 <?php
 
+function Len_Article_Showcase()
+{
+    if (is_home() && !is_paged() && is_sticky()) {
+        $args = array(
+            'posts_per_page' => -1,
+            'post__in'  => get_option('sticky_posts')
+        );
+        $sticky_posts = new WP_Query($args);
 
+        while ($sticky_posts->have_posts()) : $sticky_posts->the_post();
+            Len_index_article();
+        endwhile;
+        wp_reset_query();
+    }
+    //普通文章输出
+    while (have_posts()) {
+        the_post();
+        Len_index_article();
+    }
+}
 
 
 
