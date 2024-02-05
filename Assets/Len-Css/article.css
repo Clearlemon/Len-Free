@@ -628,7 +628,42 @@ svg.len-source-post-icon {
     padding: 10px;
     border-radius: 10px;
 }
-
+a.comment-edit-link {
+    /* border: 1px solid #ddd; */
+    position: relative;
+    display: inline-block;
+    color: #888;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 2px 6px;
+    cursor: pointer;
+    height: 22px;
+    box-sizing: border-box;
+    z-index: 2;
+    line-height: 16px;
+    margin-right: 3px;
+}
+a.comment-reply-link {
+    position: relative;
+    display: inline-block;
+    color: #888;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 13px;
+    padding: 2px 6px;
+    cursor: pointer;
+    height: 22px;
+    box-sizing: border-box;
+    z-index: 2;
+    line-height: 16px;
+    margin-right: 3px;
+}
+.comments-reply-div {
+    margin-bottom: 5px;
+}
 /*标题右边分类*/
 .article-parent-classification {
     position: absolute;
