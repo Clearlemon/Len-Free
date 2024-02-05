@@ -18,13 +18,13 @@
 
             <div class="len-calendar-body">
                 <div class="len-calendar-week-days">
-                    <div>日</div>
-                    <div>一</div>
-                    <div>二</div>
-                    <div>三</div>
-                    <div>四</div>
-                    <div>五</div>
-                    <div>六</div>
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
                 </div>
                 <div class="len-calendar-days">
                 </div>
@@ -32,10 +32,10 @@
             <div class="len-calendar-footer">
             </div>
             <div class="date-time-formate">
-                <div class="day-text-formate">今日</div>
+                <div class="day-text-formate">TODAY</div>
                 <div class="date-time-value">
-                    <div class="time-formate">0:0:0</div>
-                    <div class="date-formate">0 - 0 - 0</div>
+                    <div class="time-formate">02:51:20</div>
+                    <div class="date-formate">23 - july - 2022</div>
                 </div>
             </div>
             <div class="month-list"></div>

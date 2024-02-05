@@ -20,43 +20,67 @@
                  * 左侧边栏模块样式文件目录
                  */
                 require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
-                ?> <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                        <div class="len-showcase-main">
-                            <!-- 文章展示模块开始 -->
-                            <?php Len_Post_Bread_Navigation_Module() ?>
-                            <div class="len-article-min-blcok">
-                                <div class="len-article-thumbnail-block-min">
-                                    <img class="len-thumbnail-block" src="<?php echo  Len_Thumbnail_Module(get_the_ID()); ?>" alt="">
+                ?>
+                <div class="len-showcase-main">
+                    <!-- 文章展示模块开始 -->
+                    <div class="len-article-banner-nav-blcok">
+                        <div class="len-article-nav-block"><a class="len-article-links-block len-pjax-link-all-blcok" href="">首页</a> </div>
+                        <div class="len-article-nav-block"><a class="len-article-links-block len-pjax-link-all-blcok" href="">分类</a> </div>
+                        <div class="len-article-block">Lemon ———— 极简的双边栏主题</div>
+                    </div>
+                    <div class="len-article-min-blcok">
+                        <div class="len-article-thumbnail-block-min">
+                            <img class="len-thumbnail-block" src="<?php echo  Len_Thumbnail_Module(get_the_ID()); ?>" alt="">
+                        </div>
+                        <div class="len-article-block-min">
+                            <div class="len-article-showcase-main">
+                                <div class="len-article-title-min">
+                                    <h1 class="len-article-title-block">Lemon ———— 极简的双边栏主题</h1>
                                 </div>
-                                <div class="len-article-block-min">
-                                    <div class="len-article-showcase-main">
-                                        <div class="len-article-title-min">
-                                            <h1 class="len-article-title-block"><?php the_title(); ?></h1>
-                                            <?php echo Len_Parent_Category_Module(get_the_ID()) ?>
-                                        </div>
-                                        <?php Len_Module_Switcher(true, false, false); ?>
-                                        <div class="len-article-showcase-content">
 
-                                            <?php the_content(); ?>
-
+                                <div class="len-article-showcase-content">
+                                    <p>主题相对于某些主题来说，算得上是简洁了，没有过多且复杂的主题设置，但又不会使得主题内容单一无趣,主题内的图标多数使用了阿里巴巴的失衡图标库内的图标，主题内并未使用UI框架。
+                                    </p>
+                                    <h1 class="len-article-heading">Lemon主题介绍</h1>
+                                    <p>柠檬[Lemon]主题是我第二个开发的Wordpress主题，是基于读一个主题之后的项目有着一定的经验，布局样式算不上畸形，
+                                        在第一版的主题开发中也是积累了不少的布局美观和灵感，以及采集了不少主题的优点之处。</p>
+                                    <p>主题是一个极简的双边栏的主题，我初步采样了Typecho的handsome主题和Wordpress的Giligili主题知只采集了这两个的部分布局和样式。</p>
+                                    <p>主题后台设置不是很多，设置你可以用不到5分钟的时间就可以看完，多处设置有着该设置的介绍和使用方法，</p>
+                                </div>
+                                <div class="len-article-copyright">
+                                    <legend class="copyright-title">版权声明</legend>
+                                    <div class="copyright-block">
+                                        <img class="copyright-background-img" src="/wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
+                                        <div class="copyright-min-blcok">
+                                            <div class="copyright-text-min">
+                                                <p>1.此主题并不是十全十美请勿吹捧</p>
+                                                <p>2.文章转载需经过作者授权</p>
+                                                <p>3.文章转载请标注来源地址</p>
+                                            </div>
+                                            <hr>
+                                            <div class="copyright-remind">
+                                                <p>温习提示：主题不支持商用哦！~</p>
+                                            </div>
                                         </div>
-
-                                        <?php Len_Module_Switcher(false, true, false); ?>
-                                        <div class="len-article-tag">
-                                            <svg class="len-tag-post-icon" aria-hidden="true">
-                                                <use xlink:href="#icon-biaoqian1"></use>标签
-                                                <ul class="article-tag-ul-blcok">
-                                                    <?php Len_Post_Tag_Module() ?>
-                                                </ul>
-                                            </svg>
-                                        </div>
-                                        <?php Len_Module_Switcher(false, false, true); ?>
                                     </div>
                                 </div>
+
+                                <div class="len-article-tag">
+                                    <svg class="len-tag-post-icon" aria-hidden="true">
+                                        <use xlink:href="#icon-biaoqian1"></use>标签
+                                        <ul class="article-tag-ul-blcok">
+                                            <li class="article-tag-li-">说说</li>
+                                            <li class="article-tag-li-">Wordpress</li>
+                                            <li class="article-tag-li-">主题</li>
+                                            <li class="article-tag-li-">Len</li>
+                                        </ul>
+                                    </svg>
+                                </div>
+                                <?php Len_Source_Module(); ?>
                             </div>
-                    <?php
-                        endwhile;
-                    endif; ?>
+                        </div>
+                    </div>
+
                     <!-- 互动模块开始 -->
                     <div class="len-article-mutual-min">
                         <div class="len-article-mutual-blcok">
@@ -65,10 +89,7 @@
                                     <svg class="len-post-mutual-icon" aria-hidden="true">
                                         <use xlink:href="#icon-dianzan"></use>
                                     </svg>
-                                    <a href="javascript:;" rel="external nofollow" target="_self" rel="external nofollow" target="_blank" data-action="ding" data-id="<?php the_ID(); ?>" class="favorite<?php if (isset($_COOKIE['bigfa_ding_' . $post->ID])) echo ' done'; ?>"><span class="count">
-                                            <?php echo Len_Like_Comments_Browse_Time_Module(get_the_ID(), '', '', '') ?>
-                                        </span>
-                                    </a>
+                                    <p class="len-post-mutal-text">点赞</p>
                                 </div>
                             </div>
                             <div class="len-mutaual-block">
@@ -101,8 +122,8 @@
                                 </header>
                             </div>
                             <div class="wx-alpay-qr">
-                                <img class="pay-qr-img" style="display: block;" src="<?php echo Len_Mutaual_Module(false, true) ?>" alt="">
-                                <img class="pay-qr-img" style="display: none;" src="<?php echo Len_Mutaual_Module(true, false) ?>" alt="">
+                                <img class="pay-qr-img" style="display: block;" src="/wp-content/themes/Len-Free/Assets/Len-Images/zfb.png" alt="">
+                                <img class="pay-qr-img" style="display: none;" src="/wp-content/themes/Len-Free/Assets/Len-Images/wx.png" alt="">
                             </div>
                             <div class="pay-choose">
                                 <div class="pay-choose-link " onclick="togglePayment('alipay')">
@@ -141,33 +162,72 @@
                     </div>
                     <!-- 互动模块结束 -->
                     <!-- 上下文章开始 -->
-                    <?php Len_Post_Above_Next_Module() ?>
+                    <div class="len-arrow-post-block-min">
+                        <div class="len-arrow-blcok-flex">
+                            <div class="len-arrow-above-post positioning-right">
+                                <img class="above-post-background" src="/wp-content/themes/Len-Free/Assets/Len-Images/post-background-2.png" alt="">
+                                <div class="arrow-text-blcok-right">
+                                    <span>
+                                        <svg class="len-arrow-icon" aria-hidden="true">
+                                            <use xlink:href="#icon-arrow_left"></use>
+                                        </svg>上一篇</span>
+                                    <p>Lemon pro</p>
+                                </div>
+                            </div>
+                            <div class="len-arrow-under-post positioning-left">
+                                <img class="under-post-background" src="/wp-content/themes/Len-Free/Assets/Len-Images/post-background-3.jpg" alt="">
+                                <div class="arrow-text-blcok-left">
+                                    <span>
+                                        下一篇
+                                        <svg class="len-arrow-icon" aria-hidden="true">
+                                            <use xlink:href="#icon-arrow_right"></use>
+                                        </svg>
+                                    </span>
+                                    <p>你好世界</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!-- 上下文章结束 -->
                     <!-- 评论模块开始 -->
-                    <?php
-                    /**
-                     * 引用评论样式
-                     * require_once get_theme_file_path('comments.php');
-                     * 评论模块样式文件目录
-                     */
-                    if (comments_open()) {
-                        comments_template();
-                    }
-                    ?>
+                    <div class="len-post-comments">
+                        <div class="len-comments-blcok">
+                            <div class="len-comments-main">
+                                <div class="len-user-comments-avatar-blcok">
+                                    <img class="user-comments-avatar" src="/Images/user-avatar.jpg" alt="">
+                                    <p class="user-comments-name-blcok">青桔柠檬</p>
+                                </div>
+                                <div class="len-user-comments-content">
+                                    <div class="len-comments-input-block">
+                                        <input class="len-comments-input lan-len-comments-inputcolour" placeholder="昵称" type="text">
+                                        <input class="len-comments-input lan-len-comments-inputcolour"  placeholder="邮箱" type="text">
+                                    </div>
+                                    <div class="len-comments-textarea">
+                                        <input class="len-comments-textarea-block lan-len-comments-inputcolour"  placeholder="下面由我我简单喵两句"></input>
+                                        <div class="len-comments-submit-button-block">
+                                            <button class="comments-submit-button comments-submit-buttoneffect">发表评论</button>
+                                        </div>
+                                    </div>
+                                    <div class="len-comments"><span>表情</span></div>
+                                </div>
+                            </div>
+                            <div class="len-comments-part"></div>
+                        </div>
+                    </div>
                     <!-- 评论模块结束 -->
                     <!-- 文章展示模块结束 -->
-                        </div>
+                </div>
 
 
 
-                        <?php
-                        /**
-                         * 引用右侧边栏样式
-                         * require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
-                         * 右侧边栏模块样式文件目录
-                         */
-                        require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
-                        ?>
+                <?php
+                /**
+                 * 引用右侧边栏样式
+                 * require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
+                 * 右侧边栏模块样式文件目录
+                 */
+                require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
+                ?>
             </div>
         </div>
         </div>

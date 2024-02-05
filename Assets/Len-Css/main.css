@@ -2,11 +2,6 @@ body {
     background: #f7f7f7;
 }
 
-/*全局Css样式*/
-.len-link-all {
-    color: #000;
-}
-
 .bady-background-block {
     height: 100%;
     width: 100%;
@@ -623,7 +618,6 @@ li>.iconfont {
 .date-formate.showtime {
     animation: showtime 1s forwards;
 }
-
 .len-thirdparty {
     background: rgb(255, 255, 255);
     border-radius: 4px;
@@ -632,32 +626,25 @@ li>.iconfont {
     padding: 12px 16px;
 
 }
-
 .len-thirdparty-line {
     height: 35px;
     line-height: 35px;
     border-bottom: 1px solid #f0f0f0;
 }
-
 .len-thirdparty-icon {
     height: 20px;
     width: 20px;
     vertical-align: -6px;
 }
-
 .user-statistics-right {
     /* position: relative; */
     overflow: hidden;
     padding: 15px 0;
     list-style: none;
 }
-
-.user-statistics-article,
-.user-statistics-comment,
-.user-statistics-like {
+.user-statistics-article,.user-statistics-comment,.user-statistics-like{
     border-right: 1px solid #e5e9ef;
 }
-
 .user-statistics-li {
     float: left;
     width: 32%;
@@ -668,11 +655,9 @@ li>.iconfont {
     font-family: microsoft yahei light;
     line-height: 16px;
 }
-
-.user-statistics-span {
+.user-statistics-span{
     display: block;
 }
-
 @keyframes to-top {
     0% {
         transform: translateY(0);

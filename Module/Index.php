@@ -65,34 +65,3 @@ function Len_index_article()
 
 <?php
 }
-
-/**
- * 获取文章摘要内容
- *
- * @param int $excerpt_length 摘要长度
- * @param int $post_id 文章ID
- *
- * @return string 文章摘要
- */
-function Len_Article_Content($excerpt_length = 55, $post_id = '')
-{
-    global $post;
-
-    // 如果未传入文章ID，则使用当前文章的ID
-    if (!$post_id) {
-        $post_id = $post->ID;
-    }
-
-    $excerpt = '';
-
-    // 获取文章内容
-    $post_content = get_post_field('post_content', $post_id);
-
-    // 如果文章内容存在
-    if ($post_content) {
-        // 对文章内容进行处理：去除HTML标签，应用内容过滤器，然后使用 mb_strimwidth 截取摘要
-        $excerpt = mb_strimwidth(strip_tags(apply_filters('the_content', $post_content)), 0, $excerpt_length, '…');
-    }
-
-    return $excerpt;
-}
