@@ -310,10 +310,10 @@
 }
 
 .len_comment_pagination_block_all>.prev {
-    background: white !important;
+    background: #f4f4f5 !important;
 }
 
-.len_comment_pagination_block_all>.page-numbers,
+.len_comment_pagination_block_all>,
 .len_comment_pagination_block_all>span {
     margin: 0px 10px;
     padding: 5px;
@@ -696,4 +696,28 @@ a.comment-reply-link {
 
 .len-article-title-min {
     position: relative;
+}
+
+.len_comment_pagination_block_all>.next.page-numbers {
+    padding: 10px 20px 10px;
+    background-color: #f4f4f5;
+    color: #606266;
+    border-radius: 10px;
+}
+
+.len_comment_pagination_block_all>.page-numbers {
+    padding: 10px 15px 10px;
+    background: #eff2ff;
+    border-radius: 10px;
+    color: #868787;
+}
+
+.page-numbers {
+    margin: 0 5px;
+
+}
+
+.len_comment_pagination_block_all>.page-numbers.current {
+    color: #8483d3;
+    background: #9796f066;
 }
