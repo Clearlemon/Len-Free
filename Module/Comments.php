@@ -179,7 +179,8 @@ function Len_Comments_Blcok_Module()
                 </div>
             <?php endif; ?>
             <div class="len-comments-textarea">
-                <textarea class="OwO-textarea len-comments-textarea-block lan-len-comments-inputcolour" name="comment" id="comment" rows="5" placeholder="<?php echo $Textarea; ?>"></textarea>
+                <textarea class="OwO-textarea len-comments-textarea-block lan-len-comments-inputcolour" maxheight="188" name="comment" id="comment" rows="5" placeholder="<?php echo $Textarea; ?>"></textarea>
+
                 <div class="len-comments-submit-button-block">
                     <input id="submit" type="submit" name="submit" value="提交评论" class="comments-submit-button comments-submit-buttoneffect"></input>
                 </div>
