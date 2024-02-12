@@ -264,10 +264,10 @@ li>.iconfont {
 
 .len-links-post:hover .len-classify-box-blcok {
     position: absolute;
-    left: -3px;
+    left: 5px;
     font-size: 14px;
-    top: 14px;
-    border-radius: 4px 0px 0px 4px;
+    top: 3px;
+    border-radius:4px;
     z-index: 1;
     background: linear-gradient(180deg, hsl(165.05deg 20.7% 89.67%), hsl(176.12deg 71.91% 84.3% / 95%) 85%, #ccecdc);
     display: block;
