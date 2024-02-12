@@ -39,17 +39,7 @@
     <?php endif; ?>
 </div>
 <div class="len_comment_pagination_block_all">
-    <?php
-    $post_info = get_post(get_the_ID(), ARRAY_A);
-    if (!$post_info['comment_count']) {
-    ?>
-    <?php }
-    if ($post_info['comment_count']) {
-        paginate_comments_links(array(
-            'prev_next' => true
-        ));
-    }
-    ?>
+    <div><span>加载更多</span></div>
 </div>
 
 <script>
@@ -62,6 +52,32 @@
         width: '50%',
         maxHeight: '250px'
     });
+    jQuery(document).ready(function($) {
+        var page = 1;
+        var loading = false;
+
+        $('.len-load-more').on('click', function() {
+            if (!loading) {
+                loading = true;
+                page++;
+
+                $.ajax({
+                    url: ajaxurl, // WordPress 提供的全局变量，指向 admin-ajax.php
+                    type: 'post',
+                    data: {
+                        action: 'len_load_more_comments',
+                        page: page
+                    },
+                    success: function(response) {
+                        $('#len-comments-container .len-comments-ol-block').append(response);
+                        loading = false;
+                    }
+                });
+            }
+        });
+    });
+
+
     jQuery(document).ready(function($) {
         var initialFormLocation = $('#commentform').parent();
         var replyTargetId = null;

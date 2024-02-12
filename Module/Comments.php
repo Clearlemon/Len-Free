@@ -40,7 +40,7 @@ function Len_Comments_Module($comment, $args, $depth)
     }
 
     if ($is_reply) { ?>
-        <div id="comment-<?php echo $comment_id; ?>" class="len-comments-reply-body len-comments-reply">
+        <div id="comment-<?php echo $comment_id; ?> len-comments-container" class="len-comments-reply-body len-comments-reply">
             <div class="len-comment-author len-comment-name">
                 <img alt="" src="<?php echo $avatar_url; ?>" class="" height="40" width="40" loading="lazy" decoding="async">
                 <cite class="len-comment-cite">
@@ -245,3 +245,18 @@ function preprocess_comment_content($commentdata)
 
 // 将preprocess_comment_content函数连接到preprocess_comment钩子
 add_filter('preprocess_comment', 'preprocess_comment_content');
+
+function len_load_more_comments()
+{
+    $page = $_POST['page'];
+
+    // 使用你的获取额外评论的函数或方法
+    $additional_comments_html = get_additional_comments_html($page);
+
+    echo $additional_comments_html;
+
+    wp_die(); // 必须调用 wp_die() 来终止脚本执行
+}
+
+add_action('wp_ajax_len_load_more_comments', 'len_load_more_comments');
+add_action('wp_ajax_nopriv_len_load_more_comments', 'len_load_more_comments');
