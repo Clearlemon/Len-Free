@@ -101,3 +101,4 @@ $(document).on("click", ".favorite",
     function () {
         $(this).postLike();
     });
+

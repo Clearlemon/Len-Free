@@ -2,6 +2,8 @@
   die;
 }
 
+
+
 //分类页设置扩展
 // $prefix = '_prefix_taxonomy_options';
 

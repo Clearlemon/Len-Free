@@ -24,6 +24,11 @@ $files = array(
     'Functions/Len-Editor/Post.php',
 
     /**
+     * 引用主题AJAX功能
+     */
+    'Functions/Len-Ajax/Comments.php',
+
+    /**
      * 页面函数文件
      * 'Module/Single.php',| 主题文章详情页函数模块文件
      * 'Module/Comments.php',| 主题文章评论函数模块文件
