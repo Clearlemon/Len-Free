@@ -686,17 +686,20 @@ a.comment-reply-link {
 }
 
 /*标题右边分类*/
-.article-parent-classification {
+.article-parent-classification{
     position: absolute;
     right: -20px;
     top: -10;
     backdrop-filter: saturate(200%) blur(30px);
-    background-color: hsl(0deg 0% 100% / 50%);
+    /* background-color: hsl(0deg 0% 100% / 50%); */
+    background: #ccff9959;
     padding: 5px;
     font-size: 14px;
-    border-radius: 10px 3px 3px 10px;
+    border-radius: 6px;
 }
-
+.article-parent-classification a{
+    color: #66CCCC;
+}
 .len-article-title-min {
     position: relative;
 }
@@ -723,4 +726,14 @@ a.comment-reply-link {
 .len_comment_pagination_block_all>.page-numbers.current {
     color: #8483d3;
     background: #9796f066;
+}
+.comment_loadmore{
+    background: aliceblue;
+    /* width: 100%; */
+    /* height: 50px; */
+    text-align: center;
+    /* padding: 0px; */
+    display: flex;
+    justify-content: center;
+    padding: 2%;
 }
