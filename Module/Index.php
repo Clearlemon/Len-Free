@@ -25,12 +25,30 @@ function Len_Article_Showcase()
 
 function Len_index_article()
 {
-    
+    //获取文章ID
+    $Post_Id = get_the_ID();
+    //获取文章内容
+    $Content = Len_Article_Content($excerpt_length = 140, $Post_Id);
+    //获取文章标题
+    $Title = get_the_title();
+    //获取文章特色图
+    $Thumbnail = Len_Thumbnail_Module($Post_Id);
+    // 获取文章发布时间
+    $Post_Time = Len_Like_Comments_Browse_Time_Module('', '', '', $Post_ID);
+    //获取评论数量
+    $Post_Comments = Len_Like_Comments_Browse_Time_Module('', $Post_ID, '', '');
+    //获取喜欢数量
+    $Post_Like = Len_Like_Comments_Browse_Time_Module($Post_ID, '', '', '');
+    //获取文章用户ID以及信息
+    $Author_ID = get_post_field('post_author', $Post_ID);
+    $User = get_user_by('ID', $Author_ID);
+    $User_avatar = get_avatar_url($Author_ID);
+    $User_name = $User->display_name;
 ?>
     <div class="len-post-block">
-        <a class="len-links-post len-pjax-link-all-blcok" href="Post/post-1.html">
+        <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
             <div class="len-post-thumbnail-blcok">
-                <img class="thumbnail-background-min" src="wp-content/themes/Len-Free/Assets/Len-Images/post-background-1.png" alt="">
+                <img class="thumbnail-background-min" src="<?php echo $Thumbnail; ?>" alt="">
                 <div class="len-classify-box-blcok">
                     <p class="len-classify-title-blcok">其他</p>
                 </div>
@@ -38,18 +56,20 @@ function Len_index_article()
         </a>
         <div class="len-post-content-block">
             <div class="len-post-content-min">
-                <h3 class="len-post-title-block">Lemon ———— 极简的双边栏主题</h3>
+                <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
+                    <h3 class="len-post-title-block"><?php echo $Title; ?></h3>
+                </a>
                 <hr>
                 <p class="len-post-part-block">
-                    主题相对于某些主题来说，算得上是简洁了，没有过多且复杂的主题设置，但又不会使得主题内容单一无趣,主题内的图标多数使用了阿里巴巴的失衡图标库内的图标，主题内并未使用UI框架全手搓....
+                    <?php echo $Content; ?>
                 </p>
                 <div class="len-like-comments-browse-avatar-name-time-block-min">
                     <div class="len-post-statistics-user">
                         <div class="len-avatar-block-min">
-                            <img class="avatar-background-block" src="wp-content/themes/Len-Free/Assets/Len-Images/user-avatar.jpg" alt="">
+                            <img class="avatar-background-block" src="<?php echo $User_avatar; ?>" alt="">
                         </div>
                         <div class="len-name-block-min">
-                            <p class="name-text-block">青桔柠檬</p>
+                            <p class="name-text-block"><?php echo $User_name; ?></p>
                         </div>
                     </div>
 
@@ -58,22 +78,22 @@ function Len_index_article()
                             <svg class="len-left-post-icon" aria-hidden="true">
                                 <use xlink:href="#icon-liulan"></use>
                             </svg>
-                            64
+                            <?php echo Len_post_views($Post_ID); ?>
                         </div>
                         <div class="len-comments-block-min">
                             <svg class="len-left-post-icon" aria-hidden="true">
                                 <use xlink:href="#icon-pinglun"></use>
-                            </svg>12
+                            </svg><?php echo $Post_Comments; ?>
                         </div>
                         <div class="len-like-block-min">
                             <svg class="len-left-post-icon" aria-hidden="true">
                                 <use xlink:href="#icon-xihuan"></use>
-                            </svg>30
+                            </svg><?php echo $Post_Like; ?>
                         </div>
                         <div class="len-time-block-min">
                             <svg class="len-left-post-icon" aria-hidden="true">
                                 <use xlink:href="#icon-shijianzhouqi"></use>
-                            </svg>5天前
+                            </svg><?php echo $Post_Time; ?>
                         </div>
                     </div>
 

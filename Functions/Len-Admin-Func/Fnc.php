@@ -27,6 +27,7 @@ $files = array(
      * 引用主题AJAX功能
      */
     'Functions/Len-Ajax/Comments.php',
+    'Functions/Len-Ajax/Post.php',
 
     /**
      * 页面函数文件

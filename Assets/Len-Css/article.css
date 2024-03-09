@@ -41,6 +41,15 @@
     border-left: .25em solid #ddd;
 }
 
+.len-article-title-block {
+    width: 95%;
+}
+
+.len-article-title-min {
+    position: relative;
+    margin-bottom: 10px;
+}
+
 /*文章and用户介绍样式*/
 .len-article-showcase-block {
     display: flex;
@@ -98,6 +107,10 @@
     height: 20px;
     width: 20px;
     vertical-align: -4px;
+}
+
+.len-article-showcase-content {
+    padding: 0px 1vh 0px 1vh;
 }
 
 /*文章底部互动样式模块*/

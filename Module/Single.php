@@ -232,7 +232,6 @@ function User_Show_Static_Module()
 
     // 获取文章发布时间
     $Post_Time = Len_Like_Comments_Browse_Time_Module('', '', '', $Post_ID);
-
     //获取评论数量
     $Post_Comments = Len_Like_Comments_Browse_Time_Module('', $Post_ID, '', '');
     //获取喜欢数量
