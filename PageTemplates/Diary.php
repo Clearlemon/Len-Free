@@ -38,24 +38,7 @@ wp_head();
                         <img class="say" src="../Images/say.jpg" alt="" class="img-night" style="">
                     </div>
 
-                    <div class="say-main">
-                        <div class="say-author">
-                            <div class="say-bode">
-                                <div class="say-information">
-                                    <img alt="" src="https://q.qlogo.cn/headimg_dl?dst_uin=1992890443&amp;spec=640" srcset="https://q.qlogo.cn/headimg_dl?dst_uin=1992890443&amp;spec=640 2x" class="avatar avatar-96 photo" height="96" width="96" decoding="async">
-
-                                    <div class="say-content">
-                                        <div class="say-information-name">大绵羊</div>
-                                        <div class="say-information-time">2024年1月13日 00:10</div>
-                                    </div>
-                                </div>
-                                <div class="say-substance">
-                                    青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                    <?php Len_Say_Showcase(); ?>
                     <!-- 说说结束 -->
                 </div>
 

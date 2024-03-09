@@ -34,10 +34,12 @@ $files = array(
      * 'Module/Single.php',| 主题文章详情页函数模块文件
      * 'Module/Comments.php',| 主题文章评论函数模块文件
      * 'Module/Index.php',| 首页文章函数模块文件
+     * 'Module/PageTemplates/Diary.php',| 说说页函数模块文件
      */
     'Module/Single.php',
     'Module/Comments.php',
     'Module/Index.php',
+    'Module/PageTemplates/Diary.php',
     /**
  * 此引用链接是用户自定义设置
  * 如想自定义设置和主题则删除链接的注释
