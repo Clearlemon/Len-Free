@@ -743,24 +743,24 @@ a.comment-reply-link {
 }
 /* 瀑布流 */
 
-#hot {
+#len-waterfall {
     columns: 4;
     column-gap: 6px;
     margin: 10px auto;
 }
 
-.item {
+.len-waterfall-content {
     width: 100%;
     break-inside: avoid;
     margin-bottom: 4px;
 }
 
-.item a img {
+.len-waterfall-content a img {
     width: 100%;
     border-radius: 15px;
 }
 
-.item a img:hover {
+.len-waterfall-content a img:hover {
     filter: gray;
     /* filter为滤镜 gray为颜色 */
     filter: grayscale(100);
