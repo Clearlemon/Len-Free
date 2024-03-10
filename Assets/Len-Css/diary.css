@@ -19,7 +19,7 @@
 }
 
 .say-bode {
-    background: linear-gradient(180.00deg, rgba(125, 125, 125, 0.77), rgba(125, 125, 125, 0) 100%);
+    background: linear-gradient(180.00deg, rgba(125, 125, 125, 0.77), rgb(125 125 125 / 29%) 100%);
     backdrop-filter: blur(5px);
     border-radius: 10px;
 
@@ -31,6 +31,7 @@
     /* padding-top: 15px; */
     padding: 15px 15px 0px;
     margin-bottom: 15px;
+    margin-top: 10px;
 }
 
 .say-information>img {
@@ -50,6 +51,7 @@
     font-size: 15px;
     font-weight: 700;
     color: #fff;
+
 }
 
 .say-information-time {
@@ -58,7 +60,7 @@
     margin-top: 5px;
 }
 .say-substance {
-    padding: 0 20px;
+    padding: 20px;
     color: #fff;
 }
 /* 复用 */

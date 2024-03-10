@@ -35,6 +35,16 @@ function Len_say_article()
                         <div class="say-information-time">2024年1月13日 00:10</div>
                     </div>
                 </div>
+                                <!-- 这个要加一个图片模块 （沪上清柠要求） -->
+                <div class=" say-information">
+<img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="">
+<img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="">
+<img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="">
+<img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="">
+<img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="">
+<img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="">
+
+                </div>
                 <div class="say-substance">
                     青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕青桔柠檬 咕咕咕
                 </div>
