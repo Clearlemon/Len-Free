@@ -156,7 +156,7 @@ $Module_Post_2 = 'Len_Post_Source_Module';
 
 CSF::createMetabox($Module_Post_1, array(
   'title'        => '文章独立SEO模块',
-  'post_type'    => 'post',
+  'post_type'    => array('post', 'diary', 'photo'),
 ));
 
 CSF::createSection($Module_Post_1, array(
@@ -197,7 +197,7 @@ CSF::createSection($Module_Post_1, array(
 
 CSF::createMetabox($Module_Post_2, array(
   'title'     => '文章来源地址模块',
-  'post_type' => 'post',
+  'post_type'    => array('post', 'photo'),
 ));
 
 CSF::createSection($Module_Post_2, array(
@@ -232,7 +232,7 @@ $Module_Post_Sidebars_2 = 'Len_Post_Module_Switcher_Sidebars';
 
 CSF::createMetabox($Module_Post_Sidebars_1, array(
   'title'        => '文章外链特色图模块',
-  'post_type' => array('post'),
+  'post_type'    => array('post', 'diary', 'photo'),
   'context'   => 'side',
 ));
 
