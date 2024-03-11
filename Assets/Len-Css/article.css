@@ -90,8 +90,7 @@
 
 .len-article-min-blcok {
     background: white;
-    border-radius: 15px;
-    margin-bottom: 20px;
+    border-radius: 15px 15px 0px 0px;
 }
 
 .len-stats-post-icon {

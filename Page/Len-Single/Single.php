@@ -52,9 +52,10 @@
                                         </div>
                                         <?php Len_Module_Switcher(false, false, true); ?>
                                     </div>
-                                    <div id="aplayer"></div>
+
                                 </div>
                             </div>
+                            <div id="aplayer"></div>
                     <?php
                         endwhile;
                     endif; ?>

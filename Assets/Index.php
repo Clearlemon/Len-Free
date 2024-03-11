@@ -73,7 +73,12 @@ function Len_footer_content()
                 display: {
                     left: ["infobar"],
                     middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY", ],
-                    right: ["slideshow", "thumbs", "download", "close"],
+                    right: ["iterateZoom",
+                        "slideshow",
+                        "fullscreen",
+                        "thumbs",
+                        "close",
+                    ],
                 },
             },
         });
