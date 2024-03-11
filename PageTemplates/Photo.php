@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 /*
 Template Name: Photo【相册】
@@ -36,37 +37,46 @@ wp_head();
                     <!-- 图片开始 -->
                     <div id="len-waterfall">
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt=""></a>
-
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp"><img src="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp"><img src="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024021408193873.jpg" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024021408193873.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024021408193873.jpg" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
+                            <a data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
                         </div>
                         <div class="len-waterfall-content">
-                            <a href="javascript:void(0)"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
+                            <a data-fancybox="gallery" data-download-src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
                         </div>
                     </div>
                     <!-- 图片结束 -->
                 </div>
-
+                <script type="text/javascript">
+                    Fancybox.bind('[data-fancybox="gallery"]', {
+                        Toolbar: {
+                            display: {
+                                left: ["infobar"],
+                                middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY", ],
+                                right: ["slideshow", "thumbs", "download", "close"],
+                            },
+                        },
+                    });
+                </script>
 
 
 
