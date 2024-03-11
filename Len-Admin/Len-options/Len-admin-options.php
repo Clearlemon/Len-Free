@@ -41,7 +41,55 @@ if (class_exists('CSF')) {
     'title'       => 'Seo模块',
     'icon'        => 'icon-SEO',
     'description' => '',
-    'fields'      => array()
+    'fields'      => array(
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----Seo模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'danger',
+        'content' => '注：此功能模块可能与其他插件冲突！慎重开启！！！',
+      ),
+      array(
+        'id'    => 'Seo_Module_1',
+        'type'  => 'switcher',
+        'title' => 'Seo模块开启',
+      ),
+      array(
+        'title'    => "SEO标题",
+        'id'       => 'Seo_Module_2',
+        'type' => 'text',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推动给SEO标题',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+      array(
+        'title'    => "SEO标题",
+        'id'       => 'Seo_Module_2_1',
+        'type' => 'text',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推动给SEO标题',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+      array(
+        'title'    => "SEO关键字",
+        'id'       => 'Seo_Module_3',
+        'type' => 'text',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推送给SEO关键字',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+
+      array(
+        'title'    => "SEO内容",
+        'id'       => 'Seo_Module_4',
+        'type' => 'textarea',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推送给SEO内容',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+    )
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Module',

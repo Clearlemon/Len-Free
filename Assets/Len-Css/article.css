@@ -578,7 +578,7 @@
 }
 
 .copyright-block {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     display: flex;
     justify-content: space-around;
 }
@@ -741,6 +741,7 @@ a.comment-reply-link {
     justify-content: center;
     padding: 2%;
 }
+
 /* 瀑布流 */
 
 #len-waterfall {

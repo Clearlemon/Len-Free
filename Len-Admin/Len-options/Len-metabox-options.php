@@ -175,6 +175,7 @@ CSF::createSection($Module_Post_1, array(
       'type' => 'text',
       'class' => 'fields_no_padding-bottom fields_no_padding-top',
       'desc'     => '用于推动给SEO标题',
+      'dependency' => array('Module_Switcher_SEO', '==', true),
     ),
 
     array(
@@ -183,6 +184,7 @@ CSF::createSection($Module_Post_1, array(
       'type' => 'text',
       'class' => 'fields_no_padding-bottom fields_no_padding-top',
       'desc'     => '用于推送给SEO关键字',
+      'dependency' => array('Module_Switcher_SEO', '==', true),
     ),
 
     array(
@@ -191,6 +193,7 @@ CSF::createSection($Module_Post_1, array(
       'type' => 'textarea',
       'class' => 'fields_no_padding-bottom fields_no_padding-top',
       'desc'     => '用于推送给SEO内容',
+      'dependency' => array('Module_Switcher_SEO', '==', true),
     ),
   ),
 ));
