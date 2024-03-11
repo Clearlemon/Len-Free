@@ -66,17 +66,8 @@ wp_head();
                     </div>
                     <!-- 图片结束 -->
                 </div>
-                <script type="text/javascript">
-                    Fancybox.bind('[data-fancybox="gallery"]', {
-                        Toolbar: {
-                            display: {
-                                left: ["infobar"],
-                                middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY", ],
-                                right: ["slideshow", "thumbs", "download", "close"],
-                            },
-                        },
-                    });
-                </script>
+                <!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> -->
+                
 
 
 
