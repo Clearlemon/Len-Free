@@ -17,6 +17,19 @@ if (class_exists('CSF')) {
   ));
   //主题首页设置
   //模块设置
+
+  CSF::createSection($Module, array(
+    'title'  => '网站信息',
+    'icon' => 'icon-beifenhuifu',
+    'fields' => array(
+      // A Callback Field Example
+      array(
+        'type'     => 'callback',
+        'function' => 'Len_Content',
+      ),
+    )
+  ));
+
   CSF::createSection($Module, array(
     'title'  => '模块设置',
     'icon' => 'icon-mokuai',

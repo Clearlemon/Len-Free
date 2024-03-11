@@ -7,11 +7,13 @@ $files = array(
      * 'Functions/Optimize.php', | 主题前后端优化函数文件
      * 'Functions/Set.php',| 主题前后端设置控制函数文件
      * 'Functions/Seo.php',| 主题SEO函数文件
+     * 'Functions/Content.php',|后台信息文件
      */
     'Assets/Index.php',
     'Functions/Set.php',
     'Functions/Optimize.php',
     'Functions/Seo.php',
+    'Functions/Content.php',
     /**
      * 引用主题文件函数模板
      */
