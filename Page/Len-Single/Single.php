@@ -2,7 +2,17 @@
 
 <body>
     <img class="bady-background-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/body-background.jpg" alt="">
-    
+    <script> 
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            audio: [{
+                name: 'name',
+                artist: 'artist',
+                url: 'url.mp3',
+                cover: 'cover.jpg'
+            }]
+        });
+        </script>
     <main class="len-body-main len-body-m">
         <?php
         /**
@@ -53,7 +63,7 @@
                                         </div>
                                         <?php Len_Module_Switcher(false, false, true); ?>
                                     </div>
-                                    <div id="aplayer" class=""></div>
+                                    <div id="aplayer"></div>
                                 </div>
                             </div>
                     <?php
