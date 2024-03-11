@@ -2,6 +2,7 @@
 
 <body>
     <img class="bady-background-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/body-background.jpg" alt="">
+    
     <main class="len-body-main len-body-m">
         <?php
         /**
@@ -52,6 +53,7 @@
                                         </div>
                                         <?php Len_Module_Switcher(false, false, true); ?>
                                     </div>
+                                    <div id="aplayer" class=""></div>
                                 </div>
                             </div>
                     <?php
