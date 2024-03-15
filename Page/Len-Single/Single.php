@@ -34,14 +34,14 @@
                                             <h1 class="len-article-title-block"><?php the_title(); ?></h1>
                                             <?php echo Len_Parent_Category_Module(get_the_ID()) ?>
                                         </div>
-                                        <?php Len_Module_Switcher(true, false, false); ?>
+                                        <?php Len_Module_Switcher(true, false, false, false, false, false); ?>
                                         <div class="len-article-showcase-content">
 
                                             <?php the_content(); ?>
 
                                         </div>
 
-                                        <?php Len_Module_Switcher(false, true, false); ?>
+                                        <?php Len_Module_Switcher(false, true, false, false, false, false); ?>
                                         <div class="len-article-tag">
                                             <svg class="len-tag-post-icon" aria-hidden="true">
                                                 <use xlink:href="#icon-biaoqian1"></use>标签
@@ -50,13 +50,14 @@
                                                 </ul>
                                             </svg>
                                         </div>
-                                        <?php Len_Module_Switcher(false, false, true); ?>
+                                        <?php Len_Module_Switcher(false, false, true, false, false, false); ?>
                                     </div>
 
                                 </div>
                             </div>
-                            <div id="aplayer"></div>
+
                     <?php
+                            Len_Module_Switcher(false, false, false, true, false, false);
                         endwhile;
                     endif; ?>
                     <!-- 互动模块开始 -->
@@ -152,9 +153,7 @@
                      * require_once get_theme_file_path('comments.php');
                      * 评论模块样式文件目录
                      */
-                    if (comments_open()) {
-                        comments_template();
-                    }
+                    Len_Module_Switcher(false, false, false, false, false, true);
                     ?>
                     <!-- 评论模块结束 -->
                     <!-- 文章展示模块结束 -->

@@ -11,9 +11,9 @@
  * 
  * 这个函数获取转载文章的值并判断输出结果
  * 
- * @param string $Address            要获取的 '_Len_Post_Module('', 'Module_Source_Address', '', '');' 中的键。
- * @param string $Author_Name        要获取的 '_Len_Post_Module('', 'Module_Source_Author_Name', '', '');' 中的键。
- * @param string $Link               要获取的 '_Len_Post_Module('', 'Module_Source_Link', '', '');' 中的键。
+ * @param string $Address            要获取的 '_Len_Post_Module('', 'Module_Source_Address', '','','', '');' 中的键。
+ * @param string $Author_Name        要获取的 '_Len_Post_Module('', 'Module_Source_Author_Name', '','','', '');' 中的键。
+ * @param string $Link               要获取的 '_Len_Post_Module('', 'Module_Source_Link', '','','', '');' 中的键。
  * @param mixed  $default            如果未找到对应值时返回的默认值。
  * @return mixed 返回获取到的元数据值或默认值。
  */
@@ -22,11 +22,11 @@ function Len_Source_Module()
     //获取值
     $Post_ID = get_the_ID();
     //获取转载网站名称
-    $Address =  _Len_Post_Module('', 'Module_Source_Address', '', '', $Post_ID);
+    $Address =  _Len_Post_Module('', 'Module_Source_Address', '', '', '', $Post_ID);
     //获取转载作者名
-    $Author_Name =  _Len_Post_Module('', 'Module_Source_Author_Name', '', '', $Post_ID);
+    $Author_Name =  _Len_Post_Module('', 'Module_Source_Author_Name', '', '', '', $Post_ID);
     //获取转载网站地址
-    $Link =  _Len_Post_Module('', 'Module_Source_Link', '', '', $Post_ID);
+    $Link =  _Len_Post_Module('', 'Module_Source_Link', '', '', '', $Post_ID);
 
 ?>
     <div class="len-source-min">
@@ -51,19 +51,19 @@ function Len_Source_Module()
                 <svg class="len-source-post-icon" aria-hidden="true">
                     <use xlink:href="#icon-dian"></use>
                     <li class="len-soure-li">
-                        本文章转载地址是<?php
-                                //如果值为空则输出 '未知网站'
+                        本文章转载作者是<?php
+                                //如果值为空则输出 '未知作者'
                                 if ($Address != '') {
                                     echo $Address;
                                 } else {
-                                    echo '未知网站';
-                                } ?>,由<?php
-                                        //如果值为空则输出 '未知作者'
-                                        if ($Author_Name != '') {
-                                            echo $Author_Name;
-                                        } else {
-                                            echo '未知作者';
-                                        } ?>创造编写</li>
+                                    echo '未知作者';
+                                } ?>,转载网站名为<?php
+                                            //如果值为空则输出 '未知名称'
+                                            if ($Author_Name != '') {
+                                                echo $Author_Name;
+                                            } else {
+                                                echo '未知名称';
+                                            } ?>。</li>
             </div>
 
             <div class="len-source-div">
@@ -80,7 +80,7 @@ function Len_Source_Module()
             </div>
         </div>
     </div>
-<?php
+    <?php
 }
 
 
@@ -140,7 +140,54 @@ function Len_Thumbnail_Module($post_id = '')
     return $Thumbnail;
 }
 
+function Len_Modeule_Music_Js()
+{
 
+    $Music_Module_All = _len('Music_Module_All');
+
+    if ($Music_Module_All == false) {
+        $Post_ID = get_the_ID();
+        $Module_Music_1 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_1', $Post_ID);
+        $Module_Music_2 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_2', $Post_ID);
+        $Module_Music_3 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_3', $Post_ID);
+        $Module_Music_4 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_4', $Post_ID);
+        $Module_Music_5 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_5', $Post_ID);
+    ?>
+        <script type="text/javascript">
+            const ap = new APlayer({
+                container: document.getElementById('aplayer'),
+                audio: [{
+                    name: '<?php echo $Module_Music_1; ?>',
+                    artist: '<?php echo $Module_Music_2; ?>',
+                    url: '<?php echo $Module_Music_3; ?>',
+                    cover: '<?php echo $Module_Music_4; ?>',
+                    lrc: '<?php echo $Module_Music_5; ?>',
+                }]
+            });
+        </script>
+    <?php
+    } else {
+        $Module_Music_All_1 = _len('Module_Music_Post_All_1');
+        $Module_Music_All_2 = _len('Module_Music_Post_All_2');
+        $Module_Music_All_3 = _len('Module_Music_Post_All_3');
+        $Module_Music_All_4 = _len('Module_Music_Post_All_4');
+        $Module_Music_All_5 = _len('Module_Music_Post_All_5');
+    ?>
+        <script type="text/javascript">
+            const ap = new APlayer({
+                container: document.getElementById('aplayer'),
+                audio: [{
+                    name: '<?php echo $Module_Music_All_1; ?>',
+                    artist: '<?php echo $Module_Music_All_2; ?>',
+                    url: '<?php echo $Module_Music_All_3; ?>',
+                    cover: '<?php echo $Module_Music_All_4; ?>',
+                    lrc: '<?php echo $Module_Music_All_5; ?>',
+                }]
+            });
+        </script>
+    <?php
+    }
+}
 
 /**
  * 根据条件执行相应的模块函数
@@ -151,26 +198,63 @@ function Len_Thumbnail_Module($post_id = '')
  *
  * @return mixed 根据条件返回相应模块的内容
  */
-function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = true)
+function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = true, $Music = true, $Music_Js = true, $Comments = true)
 {
     // 获取当前文章 ID
     $Post_ID = get_the_ID();
 
+    $Post_Content_Show_Module = _len('Post_Content_Show_Module_1');
+    $Global_User_Show = _len('Post_Content_Show_Module_1_1'); // 这里获取的是同一个模块
+    $Global_Copyright = _len('Post_Content_Show_Module_1_1'); // 这里获取的是同一个模块
+    $Global_Source = _len('Post_Content_Show_Module_1_1'); // 这里获取的是同一个模块
+    $Global_Music = _len('Post_Content_Show_Module_1_1'); // 这里获取的是同一个模块
+    $Global_Comments = _len('Post_Content_Show_Module_1_1'); // 这里获取的是同一个模块
+
     // 获取相应的元数据键值
-    $User_Show_key = _Len_Post_Module('', '', '', 'Module_Switcher_User_Show', $Post_ID);
-    $Copyright_key = _Len_Post_Module('', '', '', 'Module_Switcher_Copyright', $Post_ID);
-    $Source_key = _Len_Post_Module('', '', '', 'Module_Switcher_Source', $Post_ID);
+    $User_Show_key = _Len_Post_Module('', '', '', 'Module_Switcher_User_Show', '', $Post_ID);
+    $Copyright_key = _Len_Post_Module('', '', '', 'Module_Switcher_Copyright', '', $Post_ID);
+    $Source_key = _Len_Post_Module('', '', '', 'Module_Switcher_Source', '', $Post_ID);
+    $Music_key = _Len_Post_Module('', '', '', 'Module_Switcher_Music', '', $Post_ID);
+    $Comments_key = _Len_Post_Module('', '', '', 'Module_Switcher_Comments', '', $Post_ID);
 
     // 根据传入的参数，决定执行哪个函数
-    if ($User_Show && $User_Show_key) {
+    if ($Post_Content_Show_Module == true && isset($Global_User_Show) && in_array('user', $Global_User_Show) && $User_Show && $User_Show_key) {
         return User_Show_Static_Module();
-    } elseif ($Copyright && $Copyright_key) {
+    } elseif ($Post_Content_Show_Module == true && isset($Global_Copyright) && in_array('copyright', $Global_Copyright) && $Copyright && $Copyright_key) {
         return Len_Modeule_Copyright();
-    } elseif ($Source && $Source_key) {
+    } elseif ($Post_Content_Show_Module == true && isset($Global_Source) && in_array('source', $Global_Source) && $Source && $Source_key) {
         return Len_Source_Module();
+    } elseif ($Post_Content_Show_Module == true && isset($Global_Music) && in_array('music', $Global_Music) && $Music && $Music_key) {
+        return Len_Modeule_Music();
+    } elseif ($Post_Content_Show_Module == true && isset($Global_Music) && in_array('music', $Global_Music) && $Music_Js && $Music_key) {
+        return Len_Modeule_Music_Js();
+    } elseif ($Post_Content_Show_Module == true && isset($Global_Comments) && in_array('comments', $Global_Comments) && $Comments && $Comments_key) {
+        if (comments_open()) {
+            return  comments_template();
+        }
     }
 }
 
+/**
+ * Len_Modeule_Music 函数用于生成底部播放器模块的 HTML 结构。
+ *
+ * 最终将生成的 HTML 结构输出到页面上。
+ */
+function Len_Modeule_Music()
+{
+    echo '<div id="aplayer"></div>';
+}
+
+
+
+
+/**
+ * Len_Modeule_Copyright 函数用于生成版权声明模块的 HTML 结构。
+ *
+ * 该函数首先获取版权声明模块的背景图片路径、文本内容部分1和文本内容部分2。
+ * 然后，根据获取到的内容，生成版权声明模块的 HTML 结构，包括背景图片、文本内容部分1和文本内容部分2。
+ * 最终将生成的 HTML 结构输出到页面上。
+ */
 function Len_Modeule_Copyright()
 {
     // 获取版权声明模块的背景图片路径
@@ -181,7 +265,7 @@ function Len_Modeule_Copyright()
 
     // 获取版权声明的文本内容部分2
     $Text_2 = _len('Post_Copyright_Module_3');
-?>
+    ?>
 
     <!-- 版权声明模块的HTML结构开始 -->
     <div class="len-article-copyright">
@@ -209,6 +293,7 @@ function Len_Modeule_Copyright()
     <!-- 版权声明模块的HTML结构结束 -->
 <?php
 }
+
 
 /**
  * 获取用户静态模块

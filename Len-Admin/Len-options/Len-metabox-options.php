@@ -150,7 +150,7 @@ $prefix_page_opts = 'leaf-theme-page-article';
 
 $Module_Post_1 = 'Len_Post_Seo_Module';
 $Module_Post_2 = 'Len_Post_Source_Module';
-
+$Module_Post_3 = 'Len_Post_Music_Module';
 
 
 
@@ -161,14 +161,12 @@ CSF::createMetabox($Module_Post_1, array(
 
 CSF::createSection($Module_Post_1, array(
   'fields' => array(
-
     array(
       'id'    => 'Module_Switcher_SEO',
       'type'  => 'switcher',
       'title' => '是否开启独立SEO',
       'desc'     => '如需要字段与文章SEO则开启此功能<b class="Len_emphasis_fonts">功能可能会与插件起冲突，慎用！！！</b>',
     ),
-
     array(
       'title'    => "SEO标题",
       'id'       => 'Module_Title_SEO',
@@ -226,6 +224,45 @@ CSF::createSection($Module_Post_2, array(
   ),
 ));
 
+CSF::createMetabox($Module_Post_3, array(
+  'title'     => '文章底部音乐播放器模块',
+  'post_type'    => array('post', 'photo'),
+));
+
+CSF::createSection($Module_Post_3, array(
+  'fields' => array(
+    array(
+      'id'      => 'Module_Music_Post_1',
+      'type'    => 'text',
+      'title'   => '音乐[作曲名]',
+      'desc'     => '填写歌曲名如果未填写则输出<b class="Len_emphasis_fonts">未知歌曲</b>',
+    ),
+    array(
+      'id'      => 'Module_Music_Post_2',
+      'type'    => 'text',
+      'title'   => '音乐[作者名]',
+      'desc'     => '填写歌曲作者名如果未填写则输出<b class="Len_emphasis_fonts">未知作者</b>',
+    ),
+    array(
+      'id'      => 'Module_Music_Post_3',
+      'type'    => 'text',
+      'title'   => '音乐[作曲链接]',
+      'desc'     => '填写歌曲链接如果未填写则输出<b class="Len_emphasis_fonts">未知链接</b>',
+    ),
+    array(
+      'id'      => 'Module_Music_Post_4',
+      'type'    => 'text',
+      'title'   => '音乐[作曲图封面]',
+      'desc'     => '填写歌曲封面如果未填写则<b class="Len_emphasis_fonts">不输出内容</b>',
+    ),
+    array(
+      'id'      => 'Module_Music_Post_5',
+      'type'    => 'text',
+      'title'   => '音乐[作曲歌词]',
+      'desc'     => '填写歌曲歌词如果未填写则输出<b class="Len_emphasis_fonts">未知歌词</b>',
+    ),
+  ),
+));
 
 //侧边栏模块功能
 
@@ -257,34 +294,64 @@ CSF::createMetabox($Module_Post_Sidebars_2, array(
 
 ));
 
-CSF::createSection($Module_Post_Sidebars_2, array(
-  'fields' => array(
-    array(
-      'id'    => 'Module_Switcher_User_Show',
-      'type'  => 'switcher',
-      'title' => '是否开启文章内嵌用户展示模块',
-      'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为Yes</b><br><b class="Len_emphasis_fonts">此功能脱离全局模块控制</b>',
-      'text_on'  => 'Yes',
-      'text_off' => 'No',
-      'default' => true,
-    ),
-    array(
-      'id'    => 'Module_Switcher_Copyright',
-      'type'  => 'switcher',
-      'title' => '是否开版权告示模块',
-      'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能脱离全局模块控制</b>',
-      'text_on'  => 'Yes',
-      'text_off' => 'No',
-      'default' => false,
-    ),
-    array(
-      'id'    => 'Module_Switcher_Source',
-      'type'  => 'switcher',
-      'title' => '是否开启文章来源地址模块',
-      'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能脱离全局模块控制</b>',
-      'text_on'  => 'Yes',
-      'text_off' => 'No',
-      'default' => false,
-    ),
-  )
-));
+if (_len('Post_Content_Show_Module_1') == true) {
+  CSF::createSection($Module_Post_Sidebars_2, array(
+    'fields' => array(
+      array(
+        'id'    => 'Module_Switcher_User_Show',
+        'type'  => 'switcher',
+        'title' => '是否开启文章内嵌用户展示模块',
+        'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为Yes</b><br><b class="Len_emphasis_fonts">此功能显示顺序展示模块开启【全部】>文章内容模块展示>模块展示开关</b>',
+        'text_on'  => 'Yes',
+        'text_off' => 'No',
+        'default' => true,
+      ),
+      array(
+        'id'    => 'Module_Switcher_Copyright',
+        'type'  => 'switcher',
+        'title' => '是否开版权告示模块',
+        'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能显示顺序展示模块开启【全部】>文章内容模块展示>模块展示开关</b>',
+        'text_on'  => 'Yes',
+        'text_off' => 'No',
+        'default' => false,
+      ),
+      array(
+        'id'    => 'Module_Switcher_Source',
+        'type'  => 'switcher',
+        'title' => '是否开启文章来源地址模块',
+        'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能显示顺序展示模块开启【全部】>文章内容模块展示>模块展示开关</b>',
+        'text_on'  => 'Yes',
+        'text_off' => 'No',
+        'default' => false,
+      ),
+      array(
+        'id'    => 'Module_Switcher_Music',
+        'type'  => 'switcher',
+        'title' => '是否开启文章音乐模块',
+        'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为No</b><br><b class="Len_emphasis_fonts">此功能显示顺序展示模块开启【全部】>文章内容模块展示>模块展示开关</b>',
+        'text_on'  => 'Yes',
+        'text_off' => 'No',
+        'default' => false,
+      ),
+      array(
+        'id'    => 'Module_Switcher_Comments',
+        'type'  => 'switcher',
+        'title' => '是否开启文章评论模块',
+        'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为Yes</b><br><b class="Len_emphasis_fonts">此功能显示顺序展示模块开启【全部】>文章内容模块展示>模块展示开关</b>',
+        'text_on'  => 'Yes',
+        'text_off' => 'No',
+        'default' => false,
+      ),
+    )
+  ));
+} else {
+  CSF::createSection($Module_Post_Sidebars_2, array(
+    'fields' => array(
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '此功能需要全局设置>文章模块>展示模块开启【全部】>启用',
+      ),
+    )
+  ));
+}

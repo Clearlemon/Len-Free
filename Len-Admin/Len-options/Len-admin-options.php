@@ -123,6 +123,147 @@ if (class_exists('CSF')) {
       ),
       array(
         'type'    => 'subheading',
+        'content' => '展示模块 | 互动模块 | 评论模块',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是全局模块展示设置区',
+      ),
+      array(
+        'id'    => 'Post_Content_Show_Module_1',
+        'type'  => 'switcher',
+        'title' => '展示模块开启【全部】',
+      ),
+      array(
+        'id'         => 'Post_Content_Show_Module_1_1',
+        'type'       => 'checkbox',
+        'title'      => '文章内容模块展示',
+        'class' => 'Horizontally',
+        'options'    => array(
+          'user' => '用户展示',
+          'copyright' => '版权声明',
+          'source' => '文章来源',
+          'music' => '底部音乐',
+          'comments' => '评论模块',
+        ),
+        'default'    => array('comments'),
+        'dependency' => array('Post_Content_Show_Module_1', '==', true),
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是文章底部音乐播放器模块',
+      ),
+      array(
+        'id'    => 'Music_Module_All',
+        'type'  => 'switcher',
+        'title' => '是否开启全局播放器锁定',
+      ),
+      array(
+        'id'      => 'Module_Music_Post_All_1',
+        'type'    => 'text',
+        'title'   => '音乐[作曲名]',
+        'desc'     => '填写歌曲名如果未填写则输出<b class="Len_emphasis_fonts">未知歌曲</b>',
+        'dependency' => array('Music_Module_All', '==', true),
+      ),
+      array(
+        'id'      => 'Module_Music_Post_All_2',
+        'type'    => 'text',
+        'title'   => '音乐[作者名]',
+        'desc'     => '填写歌曲作者名如果未填写则输出<b class="Len_emphasis_fonts">未知作者</b>',
+        'dependency' => array('Music_Module_All', '==', true),
+      ),
+      array(
+        'id'      => 'Module_Music_Post_All_3',
+        'type'    => 'text',
+        'title'   => '音乐[作曲链接]',
+        'desc'     => '填写歌曲链接如果未填写则输出<b class="Len_emphasis_fonts">未知链接</b>',
+        'dependency' => array('Music_Module_All', '==', true),
+      ),
+      array(
+        'id'      => 'Module_Music_Post_All_4',
+        'type'    => 'text',
+        'title'   => '音乐[作曲图封面]',
+        'desc'     => '填写歌曲封面如果未填写则<b class="Len_emphasis_fonts">不输出内容</b>',
+        'dependency' => array('Music_Module_All', '==', true),
+      ),
+      array(
+        'id'      => 'Module_Music_Post_All_5',
+        'type'    => 'text',
+        'title'   => '音乐[作曲歌词]',
+        'desc'     => '填写歌曲歌词如果未填写则输出<b class="Len_emphasis_fonts">未知歌词</b>',
+        'dependency' => array('Music_Module_All', '==', true),
+      ),
+    )
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '分类模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '标签模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '搜索模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '说说模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '归档模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Global',
+    'title'       => '友链模块',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  //页面设置
+  CSF::createSection($Module, array(
+    'title'  => '页面设置',
+    'icon' => 'icon-yemianshezhi',
+    'id'  => 'Page',
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '首页设置',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array()
+  ));
+  CSF::createSection($Module, array(
+    'parent'      => 'Page',
+    'title'       => '文章设置',
+    'icon'        => 'icon-yezi-',
+    'description' => '',
+    'fields'      => array(
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----文章页面模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
         'content' => '版权模块 | 互动模块 | 评论模块',
       ),
       array(
@@ -267,68 +408,6 @@ if (class_exists('CSF')) {
         ),
       ),
     )
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '分类模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '标签模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '搜索模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '说说模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '归档模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '友链模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  //页面设置
-  CSF::createSection($Module, array(
-    'title'  => '页面设置',
-    'icon' => 'icon-yemianshezhi',
-    'id'  => 'Page',
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '首页设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '文章设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
   ));
   CSF::createSection($Module, array(
     'parent'      => 'Page',

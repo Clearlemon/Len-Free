@@ -40,11 +40,13 @@
     border-radius: 15px;
     margin-right: 10px;
 }
+
 .say-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .say-information-name {
     display: flex;
     align-items: center;
@@ -59,10 +61,12 @@
     color: #fff;
     margin-top: 5px;
 }
+
 .say-substance {
     padding: 20px;
     color: #fff;
 }
+
 /* 复用 */
 .len-say-nav-blcok {
     display: flex;

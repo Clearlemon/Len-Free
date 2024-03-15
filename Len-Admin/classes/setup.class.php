@@ -585,11 +585,10 @@ if (!class_exists('CSF_Setup')) {
 
       // Check for developer mode
       $min = (self::$premium && SCRIPT_DEBUG) ? '' : '.min';
-
+      global $var;
       // Main style
       wp_enqueue_style('csf', self::include_plugin_url('assets/css/style' . $min . '.css'), array(), self::$version, 'all');
-      wp_enqueue_style('leaf', CSF::include_plugin_url('assets/css/len.css'), array(), '1.0.0', 'all');
-      wp_enqueue_style('leaf', CSF::include_plugin_url('assets/css/len.min.css'), array(), '1.0.0', 'all');
+      wp_enqueue_style('leaf', CSF::include_plugin_url('assets/css/len' . $min . '.css'), array(), $var, 'all');
 
 
 
@@ -601,9 +600,9 @@ if (!class_exists('CSF_Setup')) {
       // Main scripts
       wp_enqueue_script('csf-plugins', self::include_plugin_url('assets/js/plugins' . $min . '.js'), array(), self::$version, true);
       wp_enqueue_script('csf', self::include_plugin_url('assets/js/main' . $min . '.js'), array('csf-plugins'), self::$version, true);
-      wp_enqueue_script('len', CSF::include_plugin_url('assets/js/len.js'), array(), '1.0.0', 'all');
-      wp_enqueue_script('len-min', CSF::include_plugin_url('assets/js/len.min.js'), array(), '1.0.0', 'all');
-      wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4398276_fd8voicbj9.js', array(), '1.0.0', true);
+      wp_enqueue_script('len', CSF::include_plugin_url('assets/js/len.js'), array(), $var, 'all');
+      wp_enqueue_script('len-min', CSF::include_plugin_url('assets/js/len' . $min . '.js'), array(), $var, 'all');
+      wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4398276_fd8voicbj9.js', array(), $var, true);
 
 
       // Main variables

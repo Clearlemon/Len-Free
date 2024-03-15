@@ -49,10 +49,10 @@ function Len_Index_Seo()
 function  Len_Post_Seo()
 {
     // 如果是单篇文章页的逻辑
-    if (_Len_Post_Module('Module_Switcher_SEO', '', '', '', get_the_ID()) == true) {
-        $Title = _Len_Post_Module('Module_Title_SEO', '', '', '', get_the_ID());
-        $Keywords = _Len_Post_Module('Module_Keywords_SEO', '', '', '', get_the_ID());
-        $Description = _Len_Post_Module('Module_Description_SEO', '', '', '', get_the_ID());
+    if (_Len_Post_Module('Module_Switcher_SEO', '', '', '', '', get_the_ID()) == true) {
+        $Title = _Len_Post_Module('Module_Title_SEO', '', '', '', '', get_the_ID());
+        $Keywords = _Len_Post_Module('Module_Keywords_SEO', '', '', '', '', get_the_ID());
+        $Description = _Len_Post_Module('Module_Description_SEO', '', '', '', '', get_the_ID());
         $site_title = get_bloginfo('name');
     ?>
         <title><?php echo $Title . ' - ' . $site_title; ?></title>
@@ -64,7 +64,7 @@ function  Len_Post_Seo()
         $Post_title = get_the_title();
         // 获取文章标签
         $Post_tags = get_the_tags();
-        $tag_names = array();
+        $Tag_names = array();
         if ($Post_tags) {
             foreach ($Post_tags as $tag) {
                 $Tag_names[] = $tag->name;

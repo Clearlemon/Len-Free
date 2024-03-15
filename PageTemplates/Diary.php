@@ -8,7 +8,6 @@ Template Name: Diary【日记】
  */
 wp_head();
 ?>
-<link rel="stylesheet" href="wp-content/themes/Len-Free/Assets/Len-Css/index-say.css">
 
 <body>
     <img class="bady-background-block" src="wp-content/themes/Len-Free/Assets/Len-Images/body-background.jpg" alt="">

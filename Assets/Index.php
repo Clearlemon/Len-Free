@@ -54,19 +54,8 @@ add_action('wp_enqueue_scripts', 'Len_scripts_styles');
 
 function Len_footer_content()
 {
+    Len_Module_Switcher(false, false, false, false, true, false);
 ?>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> -->
-    <script type="text/javascript">
-        const ap = new APlayer({
-            container: document.getElementById('aplayer'),
-            audio: [{
-                name: 'name',
-                artist: 'artist',
-                url: 'url.mp3',
-                cover: 'cover.jpg'
-            }]
-        });
-    </script>
     <script type="text/javascript">
         Fancybox.bind('[data-fancybox="gallery"]', {
             Toolbar: {
@@ -92,7 +81,6 @@ function Len_footer_content()
 function Len_content_before_hade()
 {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">' . PHP_EOL;
-    // echo '<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />';
     echo Len_Seo_Module();
 }
 

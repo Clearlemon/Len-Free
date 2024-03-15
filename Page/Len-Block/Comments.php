@@ -39,6 +39,7 @@
 
     <?php endif; ?>
 </div>
+
 <?php
 $cpage = get_query_var('cpage') ? get_query_var('cpage') : 1;
 if ($cpage > 1) {

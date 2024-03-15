@@ -8,15 +8,12 @@ function Len_Say_Showcase()
     );
 
     $diary_query = new WP_Query($args);
-
     if ($diary_query->have_posts()) :
         while ($diary_query->have_posts()) : $diary_query->the_post();
             // 在这里输出日记文章的内容，可以调用需要的函数
             Len_say_article();
         endwhile;
         wp_reset_postdata();
-    else :
-        echo '没有找到相关日记。';
     endif;
 }
 

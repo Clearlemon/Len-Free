@@ -254,15 +254,17 @@ function Len_Comments_Js_Module()
 {
 ?>
     <script>
+        var apiUrl = window.location.origin + '/wp-content/themes/Len-Free/Assets/Lne-JavaScript/memes.json';
         var OwO_demo = new OwO({
-            logo: 'OωO表情',
+            logo: '表情包',
             container: document.getElementsByClassName('OwO')[0],
             target: document.getElementsByClassName('OwO-textarea')[0],
-            api: '<?php echo esc_url(get_template_directory_uri()); ?>/Assets/Lne-JavaScript/123.json',
+            api: apiUrl,
             position: 'down',
             width: '50%',
             maxHeight: '250px'
         });
+
         jQuery(document).ready(function($) {
             var initialFormLocation = $('#commentform').parent();
             var replyTargetId = null;
@@ -350,4 +352,25 @@ function Len_Comments_Js_Module()
         });
     </script>
 <?php
+}
+
+function Len_Comments_Ajax()
+{
+
+
+?>
+    <div class="len_comment_pagination_block_all">
+        <?php
+        $post_info = get_post(get_the_ID(), ARRAY_A);
+        if (!$post_info['comment_count']) {
+        ?>
+        <?php }
+        if ($post_info['comment_count']) {
+            paginate_comments_links(array(
+                'prev_next' => true
+            ));
+        }
+        ?>
+    </div>
+<?
 }
