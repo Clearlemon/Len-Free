@@ -41,13 +41,6 @@
 </div>
 
 <?php
-$cpage = get_query_var('cpage') ? get_query_var('cpage') : 1;
-if ($cpage > 1) {
-    echo '<div class="comment_loadmore">加载更多评论</div>
-	<script>
-	var ajaxurl = "' . admin_url('admin-ajax.php') . '",parent_post_id = ' . get_the_ID() . ',cpage = ' . $cpage . ';
-	</script>';
-}
-
+Len_Comments_Ajax();
 Len_Comments_Js_Module()
 ?>

@@ -272,3 +272,15 @@ function Len_Content_Class($content)
 
 // 添加 Len_Content_Class 函数为 'the_content' 过滤器
 add_filter('the_content', 'Len_Content_Class');
+
+
+function custom_image_style_on_publish($content)
+{
+    // 查找文章内容中的img标签，并进行替换
+    $pattern = '/<img([^>]*)class="([^"]*)"([^>]*)src="([^"]*)"[^>]*>/i';
+    $replacement = '<a data-fancybox="gallery" href="$4"><img$1 class="len_post_content_img lazy" src="https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg" data-src="$4"$3></a>';
+    $content = preg_replace($pattern, $replacement, $content);
+
+    return $content;
+}
+add_filter('the_content', 'custom_image_style_on_publish');

@@ -40,8 +40,3 @@
          </div>
      </div>
  </footer>
- <script>
-     var mySwiper = new Swiper('#len-swiper', {
-         loop: true, // 循环模式选项
-     })
- </script>

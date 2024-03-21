@@ -133,20 +133,93 @@ function Len_Thumbnail_Module($post_id = '')
 
     // 如果最终没有获取到缩略图 URL，则返回默认 URL
     if (!$Thumbnail) {
-        return '/wp-content/themes/Len-Free/Assets/Len-Images/post-background-1.png';
+        $Home_Module_4_1 = _len('Home_Module_4_1');
+        $Home_Module_4 = _len('Home_Module_4');
+        if ($Home_Module_4_1 == 'featured_1' && $Home_Module_4 == true) {
+            $Thumbnail_Module = _len('Home_Module_4_2');
+            $Thumbnail_lot = '';
+            $Thumbnail_list = '';
+            if (strpos($Thumbnail_Module, ',') !== false) {
+                // 包含逗号，表示是多个值
+                $Thumbnail_lot = explode(',', $Thumbnail_Module);
+                // 随机选择一个索引
+                $random_index = array_rand($Thumbnail_lot);
+                // 获取随机选择的元素
+                $random_thumbnail = $Thumbnail_lot[$random_index];
+                // 输出随机选择的图片链接
+                $Thumbnail_lot_str = wp_get_attachment_url($random_thumbnail, 'full');
+            } else {
+                // 不包含逗号，表示是单个值
+                $Thumbnail_list = $Thumbnail_Module;
+            }
+
+            return $Thumbnail_lot_str . $Thumbnail_list;
+        } elseif ($Home_Module_4_1 == 'featured_2' && $Home_Module_4 == true) {
+            $Thumbnail_API = _len('Home_Module_4_3');
+            return $Thumbnail_API;
+        }
     }
+
 
     // 返回缩略图 URL
     return $Thumbnail;
 }
 
+/**
+ * 生成图片标签。
+ *
+ * @param array $args 包含图片属性的关联数组，必须包含 'src'、'alt' 和 'data-src' 属性。
+ * @return string 返回生成的图片标签。
+ */
+function Len_Get_Img($args)
+{
+    // 检查参数是否设置
+    if (isset($args['src']) && isset($args['alt']) && isset($args['data-src'])) {
+        // 根据参数生成 img 标签
+        $img_tag = '<img  src="' . $args['src'] . '" data-src="' . $args['data-src'] . '"';
+
+        // 检查 class 是否设置
+        if (isset($args['class']) && is_array($args['class'])) {
+            $class_str = implode(' ', $args['class']);
+            $img_tag .= ' class="' . $class_str . '"';
+        }
+
+        if (isset($args['id'])) {
+            $img_tag .= ' id="' . $args['id'] . '"';
+        }
+        // 添加 alt 属性
+        $img_tag .= ' alt="' . $args['alt'] . '" />';
+
+        // 返回生成的 img 标签
+        return $img_tag;
+    } else {
+        // 如果缺少必要参数，返回空字符串
+        return '';
+    }
+}
+
+
+
+
+/**
+ * 根据条件动态生成音乐播放器
+ *
+ * 根据指定条件动态生成音乐播放器，支持根据是否存在特定模块来决定显示的音乐列表。
+ * 如果指定条件为真，则输出指定模块的音乐信息，否则输出另一组音乐信息。
+ *
+ * @return void
+ */
 function Len_Modeule_Music_Js()
 {
-
+    // 获取音乐模块状态
     $Music_Module_All = _len('Music_Module_All');
 
+    // 如果音乐模块状态为假
     if ($Music_Module_All == false) {
+        // 获取当前文章 ID
         $Post_ID = get_the_ID();
+
+        // 获取当前文章的音乐信息
         $Module_Music_1 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_1', $Post_ID);
         $Module_Music_2 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_2', $Post_ID);
         $Module_Music_3 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_3', $Post_ID);
@@ -154,6 +227,7 @@ function Len_Modeule_Music_Js()
         $Module_Music_5 = _Len_Post_Module('', '', '', '', 'Module_Music_Post_5', $Post_ID);
     ?>
         <script type="text/javascript">
+            // 创建音乐播放器实例
             const ap = new APlayer({
                 container: document.getElementById('aplayer'),
                 audio: [{
@@ -167,6 +241,7 @@ function Len_Modeule_Music_Js()
         </script>
     <?php
     } else {
+        // 获取另一组音乐信息
         $Module_Music_All_1 = _len('Module_Music_Post_All_1');
         $Module_Music_All_2 = _len('Module_Music_Post_All_2');
         $Module_Music_All_3 = _len('Module_Music_Post_All_3');
@@ -174,6 +249,7 @@ function Len_Modeule_Music_Js()
         $Module_Music_All_5 = _len('Module_Music_Post_All_5');
     ?>
         <script type="text/javascript">
+            // 创建音乐播放器实例
             const ap = new APlayer({
                 container: document.getElementById('aplayer'),
                 audio: [{
@@ -188,6 +264,7 @@ function Len_Modeule_Music_Js()
     <?php
     }
 }
+
 
 /**
  * 根据条件执行相应的模块函数

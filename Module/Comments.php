@@ -351,26 +351,35 @@ function Len_Comments_Js_Module()
             });
         });
     </script>
-<?php
+    <?php
 }
 
 function Len_Comments_Ajax()
 {
-
-
-?>
-    <div class="len_comment_pagination_block_all">
-        <?php
-        $post_info = get_post(get_the_ID(), ARRAY_A);
-        if (!$post_info['comment_count']) {
-        ?>
-        <?php }
-        if ($post_info['comment_count']) {
-            paginate_comments_links(array(
-                'prev_next' => true
-            ));
+    $Post_Comments_Module_3 = _len('Post_Comments_Module_3');
+    if ($Post_Comments_Module_3 == 'pagination_2') {
+        $cpage = get_query_var('cpage') ? get_query_var('cpage') : 1;
+        if ($cpage > 1) {
+            echo '<div class="comment_loadmore">加载更多评论</div>
+        <script>
+        var ajaxurl = "' . admin_url('admin-ajax.php') . '",parent_post_id = ' . get_the_ID() . ',cpage = ' . $cpage . ';
+        </script>';
         }
-        ?>
-    </div>
+    } else {
+    ?>
+        <div class="len_comment_pagination_block_all">
+            <?php
+            $post_info = get_post(get_the_ID(), ARRAY_A);
+            if (!$post_info['comment_count']) {
+            ?>
+            <?php }
+            if ($post_info['comment_count']) {
+                paginate_comments_links(array(
+                    'prev_next' => true
+                ));
+            }
+            ?>
+        </div>
 <?
+    }
 }

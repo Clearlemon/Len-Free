@@ -28,6 +28,10 @@
     border-radius: 15px 15px 0px 0px;
 }
 
+.len_post_content_img {
+    width: 100%;
+}
+
 .len-article-thumbnail-block-min {
     height: 350px;
     width: 100%;
@@ -291,6 +295,7 @@
     max-width: 370px;
     overflow: hidden;
     height: 60px;
+    text-align: right;
 }
 
 .len-arrow-icon {

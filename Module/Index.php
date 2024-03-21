@@ -26,13 +26,20 @@ function Len_Article_Showcase()
 function Len_index_article()
 {
     //获取文章ID
-    $Post_Id = get_the_ID();
+    $Post_ID = get_the_ID();
     //获取文章内容
     $Content = Len_Article_Content($excerpt_length = 140, $Post_Id);
     //获取文章标题
     $Title = get_the_title();
     //获取文章特色图
-    $Thumbnail = Len_Thumbnail_Module($Post_Id);
+    $img_args = array(
+        'src' => 'https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg',
+        'alt' => $Title,
+        'data-src' => Len_Thumbnail_Module($Post_ID),
+        'class' => array('thumbnail-background-min', 'lazy'),
+        'id' => '',
+    );
+    $Thumbnail = Len_Get_Img($img_args);
     // 获取文章发布时间
     $Post_Time = Len_Like_Comments_Browse_Time_Module('', '', '', $Post_ID);
     //获取评论数量
@@ -48,7 +55,7 @@ function Len_index_article()
     <div class="len-post-block">
         <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
             <div class="len-post-thumbnail-blcok">
-                <img class="thumbnail-background-min" src="<?php echo $Thumbnail; ?>" alt="">
+                <?php echo $Thumbnail; ?>
                 <div class="len-classify-box-blcok">
                     <p class="len-classify-title-blcok">其他</p>
                 </div>

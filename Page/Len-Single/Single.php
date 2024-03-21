@@ -1,5 +1,3 @@
-<html>
-
 <body>
     <img class="bady-background-block" src="/wp-content/themes/Len-Free/Assets/Len-Images/body-background.jpg" alt="">
     <main class="len-body-main len-body-m">
@@ -26,7 +24,16 @@
                             <?php Len_Post_Bread_Navigation_Module() ?>
                             <div class="len-article-min-blcok">
                                 <div class="len-article-thumbnail-block-min">
-                                    <img class="len-thumbnail-block" src="<?php echo  Len_Thumbnail_Module(get_the_ID()); ?>" alt="">
+                                    <?php
+                                    $img_args = array(
+                                        'src' => 'https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg',
+                                        'alt' => '',
+                                        'data-src' => Len_Thumbnail_Module(get_the_ID()),
+                                        'class' => array('len-thumbnail-block', 'lazy'),
+                                        'id' => '',
+                                    );
+                                    echo Len_Get_Img($img_args);
+                                    ?>
                                 </div>
                                 <div class="len-article-block-min">
                                     <div class="len-article-showcase-main">
@@ -183,6 +190,3 @@
     </main>
 
 </body>
-
-
-</html>

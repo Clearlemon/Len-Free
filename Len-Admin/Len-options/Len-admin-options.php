@@ -20,102 +20,19 @@ if (class_exists('CSF')) {
     'title'  => '模块设置',
     'icon' => 'icon-mokuai',
     'id'  => 'Module',
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Module',
-    'title'       => '头部模块',
-    'icon'        => 'icon-line-layouttopdingbubuju-02',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Module',
-    'title'       => '底部模块',
-    'icon'        => 'icon-dibu',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Module',
-    'title'       => 'Seo模块',
-    'icon'        => 'icon-SEO',
-    'description' => '',
     'fields'      => array(
       array(
         'type'    => 'heading',
-        'content' => '<h3>   ----Seo模块设置----    </h3>',
-      ),
-      array(
-        'type'    => 'submessage',
-        'style'   => 'danger',
-        'content' => '注：此功能模块可能与其他插件冲突！慎重开启！！！',
-      ),
-      array(
-        'id'    => 'Seo_Module_1',
-        'type'  => 'switcher',
-        'title' => 'Seo模块开启',
-      ),
-      array(
-        'title'    => "SEO标题",
-        'id'       => 'Seo_Module_2',
-        'type' => 'text',
-        'class' => 'fields_no_padding-bottom fields_no_padding-top',
-        'desc'     => '用于推动给SEO标题',
-        'dependency' => array('Seo_Module_1', '==', true),
-      ),
-      array(
-        'title'    => "SEO标题",
-        'id'       => 'Seo_Module_2_1',
-        'type' => 'text',
-        'class' => 'fields_no_padding-bottom fields_no_padding-top',
-        'desc'     => '用于推动给SEO标题',
-        'dependency' => array('Seo_Module_1', '==', true),
-      ),
-      array(
-        'title'    => "SEO关键字",
-        'id'       => 'Seo_Module_3',
-        'type' => 'text',
-        'class' => 'fields_no_padding-bottom fields_no_padding-top',
-        'desc'     => '用于推送给SEO关键字',
-        'dependency' => array('Seo_Module_1', '==', true),
+        'content' => '<h3>   ----幻灯片模块设置----    </h3>',
       ),
 
-      array(
-        'title'    => "SEO内容",
-        'id'       => 'Seo_Module_4',
-        'type' => 'textarea',
-        'class' => 'fields_no_padding-bottom fields_no_padding-top',
-        'desc'     => '用于推送给SEO内容',
-        'dependency' => array('Seo_Module_1', '==', true),
-      ),
     )
   ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Module',
-    'title'       => '网站图标模块',
-    'icon'        => 'icon-icon_61308998f3924',
-    'description' => '',
-    'fields'      => array()
-  ));
-
   //全局设置
   CSF::createSection($Module, array(
     'title'  => '全局设置',
     'icon' => 'icon-qjpz',
     'id'  => 'Global',
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '首页模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '文章模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
     'fields'      => array(
       array(
         'type'    => 'heading',
@@ -123,7 +40,7 @@ if (class_exists('CSF')) {
       ),
       array(
         'type'    => 'subheading',
-        'content' => '展示模块 | 互动模块 | 评论模块',
+        'content' => '展示模块 | 音乐模块 ',
       ),
       array(
         'type'    => 'submessage',
@@ -139,7 +56,7 @@ if (class_exists('CSF')) {
         'id'         => 'Post_Content_Show_Module_1_1',
         'type'       => 'checkbox',
         'title'      => '文章内容模块展示',
-        'class' => 'Horizontally',
+        'class' => 'Horizontally fields_no_padding-top',
         'options'    => array(
           'user' => '用户展示',
           'copyright' => '版权声明',
@@ -197,67 +114,137 @@ if (class_exists('CSF')) {
       ),
     )
   ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '分类模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '标签模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '搜索模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '说说模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '归档模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Global',
-    'title'       => '友链模块',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
   //页面设置
   CSF::createSection($Module, array(
     'title'  => '页面设置',
     'icon' => 'icon-yemianshezhi',
     'id'  => 'Page',
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '首页设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '文章设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
     'fields'      => array(
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----首页模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
+        'content' => '幻灯片模块 | 翻页模块 | 顶部导航模块 | 懒加载  | 默认特色图 ',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '幻灯片模块展示设置',
+      ),
+      array(
+        'id'    => 'Home_Module_1',
+        'type'  => 'switcher',
+        'title' => '幻灯片模块展示开启',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '底部翻页模块展示设置',
+      ),
+      array(
+        'id'         => 'Home_Module_2',
+        'type'       => 'button_set',
+        'title'      => '底部翻页模块展示设置',
+        'options'    => array(
+          'pagination_1'  => '传统分页',
+          'pagination_2' => 'Ajax分页',
+        ),
+        'default'    => 'pagination_2'
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '如启用此功能，主题 > 外观 > 菜单 | 会多出一个显示位置名为【顶部菜单】<br>
+        此菜单不支持二级菜单！！！',
+        'dependency' => array('Home_Module_3', '==', true),
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'danger',
+        'content' => '如不启用则前台和后台不输出相关设置和样式。',
+        'dependency' => array('Home_Module_3', '==', false),
+      ),
+      array(
+        'id'    => 'Home_Module_3',
+        'type'  => 'switcher',
+        'title' => '顶部导航模块展示开启',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '如启用此功能则会为未添加图片的文章增加默认特色图',
+        'dependency' => array('Home_Module_4', '==', true),
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'danger',
+        'content' => '如不启用此功能则未添加图片的文章，缩略图不会加载',
+        'dependency' => array('Home_Module_4', '==', false),
+      ),
+      array(
+        'id'    => 'Home_Module_4',
+        'type'  => 'switcher',
+        'title' => '默认特色图模块',
+      ),
+      array(
+        'id'         => 'Home_Module_4_1',
+        'type'       => 'button_set',
+        'title'      => '默认特色图选择设置',
+        'class' => ' fields_no_padding-top',
+        'dependency' => array('Home_Module_4', '==', true),
+        'options'    => array(
+          'featured_1'  => '自定义特色图',
+          'featured_2' => 'API特色图',
+        ),
+        'default'    => 'featured_2'
+
+      ),
+      array(
+        'id'          => 'Home_Module_4_2',
+        'type'        => 'gallery',
+        'title'       => '自定义单张OR多张特色图',
+        'add_title'   => '添加幻灯片',
+        'edit_title'  => '编辑幻灯片',
+        'clear_title' => '删除幻灯片',
+        'dependency' => array(
+          array('Home_Module_4_1', '==', 'featured_1'),
+          array('Home_Module_4', '==', true),
+        ),
+        'class' => ' fields_no_padding-top',
+      ),
+      array(
+        'id'      => 'Home_Module_4_3',
+        'type'  => 'upload',
+        'preview' => true,
+        'library'      => 'image',
+        'title'   => 'API特色图',
+        'dependency' => array(
+          array('Home_Module_4_1', '==', 'featured_2'),
+          array('Home_Module_4', '==', true),
+        ),
+        'class' => 'fields_no_padding-top',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是文章特色图的懒加载模块',
+      ),
+      array(
+        'id'    => 'Home_Module_5',
+        'type'  => 'switcher',
+        'title' => '懒加载模块',
+      ),
+      array(
+        'id'      => 'Home_Module_5_1',
+        'type'  => 'upload',
+        'preview' => true,
+        'library'      => 'image',
+        'title'   => '懒加载图片',
+        'dependency' => array('Home_Module_5', '==', true),
+        'class' => 'fields_no_padding-top',
+      ),
       array(
         'type'    => 'heading',
         'content' => '<h3>   ----文章页面模块设置----    </h3>',
@@ -329,7 +316,6 @@ if (class_exists('CSF')) {
         'type'   => 'fieldset',
         'title'  => '评论模块功能',
         'fields' => array(
-
           array(
             'id'    => 'Post_Comments_Module_2_1',
             'type'  => 'switcher',
@@ -406,58 +392,90 @@ if (class_exists('CSF')) {
           'Post_Comments_Module_2_8'     => $Image_Url . 'wx' . $Image_Format,
           'Post_Comments_Module_2_9'     => '未成熟的小青柠',
         ),
+        'dependency' => array('Post_Comments_Module_1', '==', true),
+      ),
+      array(
+        'id'         => 'Post_Comments_Module_3',
+        'type'       => 'button_set',
+        'title'      => '底部翻页模块展示设置',
+        'options'    => array(
+          'pagination_1'  => '传统分页',
+          'pagination_2' => 'Ajax分页',
+        ),
+        'default'    => 'pagination_2',
+        'dependency' => array('Post_Comments_Module_1', '==', true),
       ),
     )
   ));
   CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '搜索设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '分类设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '标签设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '说说设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '归档设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-  CSF::createSection($Module, array(
-    'parent'      => 'Page',
-    'title'       => '友链设置',
-    'icon'        => 'icon-yezi-',
-    'description' => '',
-    'fields'      => array()
-  ));
-
-
-
-  CSF::createSection($Module, array(
     'title'  => '其他设置',
     'icon' => 'icon-beifenhuifu',
     'id'  => 'Other',
+    'fields'      => array(
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----Seo设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'danger',
+        'content' => '注：此功能模块可能与其他插件冲突！慎重开启！！！',
+      ),
+      array(
+        'id'    => 'Seo_Module_1',
+        'type'  => 'switcher',
+        'title' => 'Seo模块开启',
+      ),
+      array(
+        'title'    => "SEO标题",
+        'id'       => 'Seo_Module_2',
+        'type' => 'text',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推动给SEO标题',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+      array(
+        'title'    => "SEO标题",
+        'id'       => 'Seo_Module_2_1',
+        'type' => 'text',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推动给SEO标题',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+      array(
+        'title'    => "SEO关键字",
+        'id'       => 'Seo_Module_3',
+        'type' => 'text',
+        'class' => 'fields_no_padding-bottom fields_no_padding-top',
+        'desc'     => '用于推送给SEO关键字',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+
+      array(
+        'title'    => "SEO内容",
+        'id'       => 'Seo_Module_4',
+        'type' => 'textarea',
+        'class' => 'fields_no_padding-top',
+        'desc'     => '用于推送给SEO内容',
+        'dependency' => array('Seo_Module_1', '==', true),
+      ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----网站设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
+        'content' => '网站ICO | 网站Logo ',
+      ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----用户设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
+        'content' => '自定义CSS&JS | 自定义模块设置 ',
+      ),
+    )
   ));
 
   CSF::createSection($Module, array(

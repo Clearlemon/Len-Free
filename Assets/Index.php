@@ -1,5 +1,5 @@
 <?php
-$var = '1.0.0';
+$var = '1.5.0';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -28,6 +28,7 @@ function Len_scripts_styles()
     wp_enqueue_script('Len-menmes-js', get_template_directory_uri() . '/Assets/Lne-JavaScript/menmes.js', array(), $var, false);
     wp_enqueue_script('fancybox-umd', get_template_directory_uri() . '/Assets/Lne-JavaScript/fancybox.umd.js', array(), $var, true);
     wp_enqueue_script('music-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/music.min.js', array(), $var, true);
+    wp_enqueue_script('lazyload-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/lazyload.min.js', array(), $var, true);
 
 
     //引用Css样式文件
@@ -56,6 +57,17 @@ function Len_footer_content()
 {
     Len_Module_Switcher(false, false, false, false, true, false);
 ?>
+    <script>
+        var mySwiper = new Swiper('#len-swiper', {
+            loop: true, // 循环模式选项
+        })
+    </script>
+    <script>
+        // 初始化 Vanilla Lazyload
+        var lazyload = new LazyLoad({
+            // 可选配置项
+        });
+    </script>
     <script type="text/javascript">
         Fancybox.bind('[data-fancybox="gallery"]', {
             Toolbar: {
@@ -72,6 +84,7 @@ function Len_footer_content()
             },
         });
     </script>
+
 <?php
 }
 

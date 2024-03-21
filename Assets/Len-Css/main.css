@@ -7,6 +7,22 @@ body {
     color: #000;
 }
 
+img[data-src]:not(.loaded) {
+    filter: blur(10px) brightness(1);
+}
+
+img[data-src].error {
+    filter: none;
+}
+
+img {
+    -webkit-transition: filter 375ms ease-in .2s, -webkit-transform .6s;
+    -moz-transition: filter 375ms ease-in .2s, -moz-transform .6s;
+    -o-transition: filter 375ms ease-in .2s, -o-transform .6s;
+    -ms-transition: filter 375ms ease-in .2s, -ms-transform .6s;
+    transition: filter 375ms ease-in .2s, transform .6s;
+}
+
 .bady-background-block {
     height: 100%;
     width: 100%;
