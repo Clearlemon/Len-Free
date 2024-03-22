@@ -28,7 +28,7 @@ function Len_index_article()
     //获取文章ID
     $Post_ID = get_the_ID();
     //获取文章内容
-    $Content = Len_Article_Content($excerpt_length = 140, $Post_Id);
+    $Content = Len_Article_Content($excerpt_length = 140, $Post_ID);
     //获取文章标题
     $Title = get_the_title();
     //获取文章特色图
@@ -46,6 +46,7 @@ function Len_index_article()
     $Post_Comments = Len_Like_Comments_Browse_Time_Module('', $Post_ID, '', '');
     //获取喜欢数量
     $Post_Like = Len_Like_Comments_Browse_Time_Module($Post_ID, '', '', '');
+    //获取文章的分类
     //获取文章用户ID以及信息
     $Author_ID = get_post_field('post_author', $Post_ID);
     $User = get_user_by('ID', $Author_ID);
@@ -57,7 +58,7 @@ function Len_index_article()
             <div class="len-post-thumbnail-blcok">
                 <?php echo $Thumbnail; ?>
                 <div class="len-classify-box-blcok">
-                    <p class="len-classify-title-blcok">其他</p>
+                    <p class="len-classify-title-blcok"><?php echo Len_Parent_Category_Module($Post_ID, true, false, false); ?></p>
                 </div>
             </div>
         </a>

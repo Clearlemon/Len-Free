@@ -39,7 +39,7 @@
                                     <div class="len-article-showcase-main">
                                         <div class="len-article-title-min">
                                             <h1 class="len-article-title-block"><?php the_title(); ?></h1>
-                                            <?php echo Len_Parent_Category_Module(get_the_ID()) ?>
+                                            <?php echo Len_Parent_Category_Module(get_the_ID(), false, false, true) ?>
                                         </div>
                                         <?php Len_Module_Switcher(true, false, false, false, false, false); ?>
                                         <div class="len-article-showcase-content">

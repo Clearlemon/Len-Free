@@ -737,31 +737,65 @@ function Len_Post_Tag_Module()
  *
  * @param int $Post_ID 文章ID，默认为空，使用当前文章的ID。
  */
-function Len_Parent_Category_Module($Post_ID = '')
+function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $Post = true)
 {
     // 获取当前文章的分类列表
     $categories = get_the_category($Post_ID);
-
     if ($categories) {
-        // 只考虑第一个分类，因为通常一个文章只属于一个主要分类
-        $parent_category = $categories[0];
+        // 存储所有父级分类的名称和链接
+        $parent_categories_html = '';
 
-        // 循环获取父级分类，直到没有父级分类为止
-        while ($parent_category->parent) {
-            $parent_category = get_category($parent_category->parent);
+        foreach ($categories as $category) {
+            // 获取当前分类的所有父级分类
+            $parent_categories = get_ancestors($category->term_id, 'category');
+
+            // 如果有父级分类
+            if ($parent_categories) {
+                // 获取所有父级分类的名称和链接
+                foreach (array_reverse($parent_categories) as $parent_category_id) {
+                    $parent_category = get_category($parent_category_id);
+                    $category_name = $parent_category->name;
+                    $category_link = get_category_link($parent_category->term_id);
+
+                    // 添加父级分类的名称和链接到存储变量
+                    $parent_categories_html .= '<a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
+                }
+            }
         }
 
-        $category_name = $parent_category->name; // 获取父级分类的名称
-        $category_link = get_category_link($parent_category->term_id); // 获取父级分类的链接
+        // 去除最后一个逗号和空格
+        $parent_categories_html = rtrim($parent_categories_html, ' | ');
 
-        // 输出分类名称和链接
-        if ($category_name && $category_link) {
-            echo '<div class="article-parent-classification"><span><a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a></span></div>';
-        } else {
-            echo esc_html($category_name);
+        // 输出父级分类名称和链接
+
+    }
+    if ($Post == true) {
+        if ($parent_categories_html) {
+            echo '<div class="article-parent-classification"><span>' . $parent_categories_html . '</span></div>';
+        }
+    } elseif ($Nav == true) {
+        if ($parent_categories_html) {
+            echo $parent_categories_html;
+        }
+    } elseif ($Index == true) {
+        if ($categories) {
+            $parent_categories = array();
+            foreach ($categories as $category) {
+                if ($category->parent) {
+                    continue; // Skip if not a parent category
+                }
+                $parent_categories[] = $category->name;
+            }
+
+            $category_output = implode('|', $parent_categories);
+
+
+            echo $category_output;
         }
     }
 }
+
+
 
 
 add_filter('pre_option_link_manager_enabled', '__return_true');
@@ -771,6 +805,7 @@ function Len_modify_link_manager_name($name)
 {
     return '友情链接';
 }
+
 add_filter('admin_menu', 'Len_modify_link_manager_menu');
 
 // 修改链接管理菜单
@@ -816,20 +851,7 @@ function Len_Post_Bread_Navigation_Module()
 ?>
     <div class="len-article-banner-nav-blcok">
         <div class="len-article-nav-block"><a href="<?php echo esc_url($home_url); ?>" class="len-article-links-block len-pjax-link-all-blcok" href="">首页</a> </div>
-        <div class="len-article-nav-block"><a href="<?php if (!empty($categories)) {
-                                                        // 获取第一个分类的ID
-                                                        $category_id = $categories[0]->term_id;
-
-                                                        // 获取分类链接
-                                                        $category_link = get_category_link($category_id);
-
-                                                        // 输出链接
-                                                        echo esc_url($category_link);
-                                                    } ?>" class="len-article-links-block len-pjax-link-all-blcok" href="">
-                <?php
-                foreach ($categories as $category) {
-                    echo '<a href="' . esc_url(get_category_link($category->term_id)) . '">' . esc_html($category->name) . '</a>';
-                } ?></a> </div>
+        <div class="len-article-nav-block"><?php echo Len_Parent_Category_Module(get_the_ID(), false, true, false); ?></div>
         <div class="len-article-block"><?php the_title(); ?></div>
     </div><?php
         }

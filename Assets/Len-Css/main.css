@@ -244,8 +244,8 @@ li>.iconfont {
 
 .len-swiper-content-background {
     position: fixed;
+    width: 100%;
     bottom: 0;
-    width: 90%;
     height: 60px;
     padding: 3% 5% 2% 5%;
     background: linear-gradient(180deg, hsl(0deg 3.64% 68.62% / 0%), hsl(0deg 0% 77.95% / 95%) 85%, #d4d4d4);
@@ -275,15 +275,14 @@ li>.iconfont {
 .len-classify-box-blcok {
     opacity: 0;
     transition: opacity 0.3s ease-in;
-    background: linear-gradient(180deg, hsl(164, 49%, 64%), hsla(180, 26%, 96%, 0.95)ecdc);
 }
 
 .len-links-post:hover .len-classify-box-blcok {
     position: absolute;
-    left: 5px;
+    left: -20px;
     font-size: 14px;
-    top: 3px;
-    border-radius: 4px;
+    top: 20px;
+    border-radius: 5px 0px 0px 5px;
     z-index: 1;
     background: linear-gradient(180deg, hsl(165.05deg 20.7% 89.67%), hsl(176.12deg 71.91% 84.3% / 95%) 85%, #ccecdc);
     display: block;

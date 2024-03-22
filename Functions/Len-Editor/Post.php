@@ -274,13 +274,52 @@ function Len_Content_Class($content)
 add_filter('the_content', 'Len_Content_Class');
 
 
-function custom_image_style_on_publish($content)
+/**
+ * 在文章内容中的img标签上增加额外的类、data-src属性，并包裹在a标签中
+ *
+ * @param string $content 文章内容
+ * @return string 修改后的文章内容
+ */
+function Fetch_Post_Content_IMG($content)
 {
-    // 查找文章内容中的img标签，并进行替换
-    $pattern = '/<img([^>]*)class="([^"]*)"([^>]*)src="([^"]*)"[^>]*>/i';
-    $replacement = '<a data-fancybox="gallery" href="$4"><img$1 class="len_post_content_img lazy" src="https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg" data-src="$4"$3></a>';
-    $content = preg_replace($pattern, $replacement, $content);
+    // 定义查找img标签的正则表达式模式
+    $pattern = '/<img([^>]*)>/i';
 
+    // 使用正则表达式匹配文章内容中的img标签，并在匹配到的每个标签上执行回调函数
+    $content = preg_replace_callback($pattern, 'Parse_Post_Content_IMG', $content);
+
+    // 返回修改后的文章内容
     return $content;
 }
-add_filter('the_content', 'custom_image_style_on_publish');
+add_filter('the_content', 'Fetch_Post_Content_IMG');
+
+/**
+ * 回调函数：在img标签上增加额外的类、data-src属性，并包裹在a标签中
+ *
+ * @param array $matches 匹配到的img标签
+ * @return string 修改后的img标签
+ */
+function Parse_Post_Content_IMG($matches)
+{
+    // 原始的img标签
+    $img_tag = $matches[0];
+
+    // 原始img标签的属性字符串
+    $attributes = $matches[1];
+
+    // 获取原始img标签的src属性值
+    preg_match('/src="([^"]+)"/i', $attributes, $src_match);
+    $src = isset($src_match[1]) ? $src_match[1] : '';
+
+    // 在原始img标签的类属性中增加额外的类
+    $new_img_tag = str_replace('class="', 'class="len_post_content_img lazy ', $img_tag);
+
+    // 添加data-src属性
+    $new_img_tag = preg_replace('/src="([^"]+)"/i', 'src="' . $src . '" data-src="$1"', $new_img_tag);
+
+    // 包裹在a标签中
+    $new_img_tag = '<a data-fancybox="gallery" href="' . $src . '">' . $new_img_tag . '</a>';
+
+    // 返回修改后的img标签
+    return $new_img_tag;
+}

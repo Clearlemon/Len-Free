@@ -1,5 +1,5 @@
 .len-article-nav-block::after {
-    content: ">";
+    content: " > ";
 }
 
 .len-article-showcase-main {
@@ -29,7 +29,8 @@
 }
 
 .len_post_content_img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
 }
 
 .len-article-thumbnail-block-min {
