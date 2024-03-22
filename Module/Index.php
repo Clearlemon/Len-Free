@@ -32,14 +32,7 @@ function Len_index_article()
     //获取文章标题
     $Title = get_the_title();
     //获取文章特色图
-    $img_args = array(
-        'src' => 'https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg',
-        'alt' => $Title,
-        'data-src' => Len_Thumbnail_Module($Post_ID),
-        'class' => array('thumbnail-background-min', 'lazy'),
-        'id' => '',
-    );
-    $Thumbnail = Len_Get_Img($img_args);
+    $Thumbnail = Len_Get_Img(array('src' => 'https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg', 'alt' => $Title, 'data-src' => Len_Thumbnail_Module($Post_ID), 'class' => array('thumbnail-background-min', 'lazy'), 'id' => '',));
     // 获取文章发布时间
     $Post_Time = Len_Like_Comments_Browse_Time_Module('', '', '', $Post_ID);
     //获取评论数量
@@ -68,9 +61,7 @@ function Len_index_article()
                     <h3 class="len-post-title-block"><?php echo $Title; ?></h3>
                 </a>
                 <hr>
-                <p class="len-post-part-block">
-                    <?php echo $Content; ?>
-                </p>
+                <p class="len-post-part-block"><?php echo $Content; ?></p>
                 <div class="len-like-comments-browse-avatar-name-time-block-min">
                     <div class="len-post-statistics-user">
                         <div class="len-avatar-block-min">
@@ -80,13 +71,11 @@ function Len_index_article()
                             <p class="name-text-block"><?php echo $User_name; ?></p>
                         </div>
                     </div>
-
                     <div class="len-post-statistics-block">
                         <div class="len-browse-blcok-min">
                             <svg class="len-left-post-icon" aria-hidden="true">
                                 <use xlink:href="#icon-liulan"></use>
-                            </svg>
-                            <?php echo Len_post_views($Post_ID); ?>
+                            </svg><?php echo Len_post_views($Post_ID); ?>
                         </div>
                         <div class="len-comments-block-min">
                             <svg class="len-left-post-icon" aria-hidden="true">
@@ -139,6 +128,8 @@ function Len_Article_Content($excerpt_length = 55, $post_id = '')
     if ($post_content) {
         // 对文章内容进行处理：去除HTML标签，应用内容过滤器，然后使用 mb_strimwidth 截取摘要
         $excerpt = mb_strimwidth(strip_tags(apply_filters('the_content', $post_content)), 0, $excerpt_length, '…');
+    } else {
+        $excerpt = '啊哦！这是一篇空荡荡的文章哦~';
     }
 
     return $excerpt;

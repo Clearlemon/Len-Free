@@ -338,14 +338,17 @@ li>.iconfont {
 
 
 .len-post-content-block {
-    width: 90%;
-    margin-left: 20px;
+    max-width: 70%;
+    margin-left: 30px;
+    width: 100%;
     padding: 10px 0px 0px 0px;
 }
 
 .len-post-title-block {
     padding: 0px 0px 10px 0px;
     font-size: 21px;
+    height: 20px;
+    overflow: hidden;
 }
 
 .len-post-part-block {

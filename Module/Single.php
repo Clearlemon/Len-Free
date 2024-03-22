@@ -741,59 +741,73 @@ function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $
 {
     // 获取当前文章的分类列表
     $categories = get_the_category($Post_ID);
+
     if ($categories) {
+        // 存储已输出的父级分类的 ID
+        $printed_parents = array();
         // 存储所有父级分类的名称和链接
         $parent_categories_html = '';
 
         foreach ($categories as $category) {
-            // 获取当前分类的所有父级分类
-            $parent_categories = get_ancestors($category->term_id, 'category');
-
-            // 如果有父级分类
-            if ($parent_categories) {
-                // 获取所有父级分类的名称和链接
-                foreach (array_reverse($parent_categories) as $parent_category_id) {
-                    $parent_category = get_category($parent_category_id);
-                    $category_name = $parent_category->name;
-                    $category_link = get_category_link($parent_category->term_id);
-
-                    // 添加父级分类的名称和链接到存储变量
+            if ($category->parent === 0) { // 检查是否为父级分类
+                if (!in_array($category->term_id, $printed_parents)) {
+                    // 获取父级分类的名称和链接
+                    $category_name = $category->name;
+                    $category_link = get_category_link($category->term_id);
+                    // 添加到输出内容中
                     $parent_categories_html .= '<a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
+                    // 将父级分类的 ID 添加到已输出数组中
+                    $printed_parents[] = $category->term_id;
+                }
+            } else {
+                // 获取当前分类的所有父级分类
+                $parent_categories = get_ancestors($category->term_id, 'category');
+                // 如果有父级分类
+                if ($parent_categories) {
+                    // 获取所有父级分类的名称和链接
+                    foreach (array_reverse($parent_categories) as $parent_category_id) {
+                        if (!in_array($parent_category_id, $printed_parents)) {
+                            $parent_category = get_category($parent_category_id);
+                            $category_name = $parent_category->name;
+                            $category_link = get_category_link($parent_category->term_id);
+                            // 添加到输出内容中
+                            $parent_categories_html .= '<a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
+                            // 将父级分类的 ID 添加到已输出数组中
+                            $printed_parents[] = $parent_category_id;
+                        }
+                    }
                 }
             }
         }
 
-        // 去除最后一个逗号和空格
+        // 去除最后一个分隔符
         $parent_categories_html = rtrim($parent_categories_html, ' | ');
 
-        // 输出父级分类名称和链接
-
-    }
-    if ($Post == true) {
-        if ($parent_categories_html) {
-            echo '<div class="article-parent-classification"><span>' . $parent_categories_html . '</span></div>';
-        }
-    } elseif ($Nav == true) {
-        if ($parent_categories_html) {
-            echo $parent_categories_html;
-        }
-    } elseif ($Index == true) {
-        if ($categories) {
-            $parent_categories = array();
-            foreach ($categories as $category) {
-                if ($category->parent) {
-                    continue; // Skip if not a parent category
-                }
-                $parent_categories[] = $category->name;
+        // 根据条件输出
+        if ($Post) {
+            if ($parent_categories_html) {
+                echo '<div class="article-parent-classification"><span>' . $parent_categories_html . '</span></div>';
             }
-
-            $category_output = implode('|', $parent_categories);
-
-
-            echo $category_output;
+        } elseif ($Nav) {
+            if ($parent_categories_html) {
+                echo $parent_categories_html;
+            }
+        } elseif ($Index) {
+            if ($categories) {
+                $parent_categories_output = array();
+                foreach ($categories as $category) {
+                    if ($category->parent === 0) {
+                        $parent_categories_output[] = $category->name;
+                    }
+                }
+                $category_output = implode('|', $parent_categories_output);
+                echo $category_output;
+            }
         }
     }
 }
+
+
 
 
 

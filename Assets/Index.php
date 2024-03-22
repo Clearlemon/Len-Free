@@ -1,5 +1,5 @@
 <?php
-$var = '1.5.0';
+$var = '1.7.0';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -94,6 +94,7 @@ function Len_footer_content()
 function Len_content_before_hade()
 {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">' . PHP_EOL;
+    echo '<meta charset="UTF-8">';
     echo Len_Seo_Module();
 }
 

@@ -1,7 +1,7 @@
  <footer class="len-footer">
      <div class="len-footer-min">
          <div class="len-footer-left">
-             <div class="len-footer-web-copyright">@主题所持版权归柠檬主题所有-2023-2023</div>
+             <div class="len-footer-web-copyright">@主题所持版权归柠檬主题所有 | 2023-2024</div>
              <div class="len-footer-web-icp">
                  <div class="len-moe-icp">
                      <svg class="len-left-footer-icp-icon" aria-hidden="true">
@@ -10,10 +10,10 @@
 
                  </div>
                  <div class="len-gov-icp">
-                     <a href="">
+                     <a href="https://beian.miit.gov.cn/">
                          <svg class="len-left-footer-icp-icon" aria-hidden="true">
                              <use xlink:href="#icon-beian"></use>
-                         </svg>2022010177号-2
+                         </svg>黔ICP备2024020920号
                  </div>
                  </a>
              </div>
