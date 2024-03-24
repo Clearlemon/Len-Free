@@ -1,5 +1,5 @@
 <?php
-$var = '1.7.5';
+$var = '2.0.0';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -32,6 +32,7 @@ function Len_scripts_styles()
 
 
     //引用Css样式文件
+    wp_enqueue_style('fasicon', get_template_directory_uri() . '/Assets/Len-Font/fasicon.css', array(), $var, 'all');
     wp_enqueue_style('Len-header', get_template_directory_uri() . '/Assets/Len-Css/header.css', array(), $var, 'all');
     wp_enqueue_style('fancybox', get_template_directory_uri() . '/Assets/Len-Css/fancybox.css', array(), $var, 'all');
     wp_enqueue_style('Len-menmes-css', get_template_directory_uri() . '/Assets/Len-Css/menmes.css', array(), $var, 'all');
@@ -57,6 +58,7 @@ function Len_footer_content()
 {
     Len_Module_Switcher(false, false, false, false, true, false);
 ?>
+
     <script>
         var mySwiper = new Swiper('#len-swiper', {
             loop: true, // 循环模式选项
@@ -95,6 +97,8 @@ function Len_content_before_hade()
 {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">' . PHP_EOL;
     echo '<meta charset="UTF-8">';
+    //echo '<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css"/>';
+    echo Len_Web_Background();
     echo Len_Seo_Module();
 }
 

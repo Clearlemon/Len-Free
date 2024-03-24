@@ -9,6 +9,7 @@ body {
 
 img[data-src]:not(.loaded) {
     filter: blur(10px) brightness(1);
+    object-fit: contain;
 }
 
 img[data-src].error {

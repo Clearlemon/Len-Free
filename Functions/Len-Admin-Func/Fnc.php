@@ -35,11 +35,15 @@ $files = array(
      * 'Module/Comments.php',| 主题文章评论函数模块文件
      * 'Module/Index.php',| 首页文章函数模块文件
      * 'Module/PageTemplates/Diary.php',| 说说页函数模块文件
+     * 'Module/Slide.php', | 头部幻灯片模块
+     * 'Module/Nav.php', | 头部导航栏模块
      */
     'Module/Single.php',
     'Module/Comments.php',
     'Module/Index.php',
     'Module/PageTemplates/Diary.php',
+    'Module/Slide.php',
+    'Module/Nav.php',
     /**
  * 此引用链接是用户自定义设置
  * 如想自定义设置和主题则删除链接的注释

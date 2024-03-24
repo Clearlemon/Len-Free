@@ -9,6 +9,7 @@ if (class_exists('CSF')) {
   $Image_Url = get_template_directory_uri() . '/Assets/Len-Images/';
   $Image_Url_Admin = get_template_directory_uri() . '/Assets/Len-Images/Admin/';
 
+
   CSF::createOptions($Module, array(
     'menu_title' => 'Len主题设置',
     'menu_slug'  => 'Len-Free',
@@ -25,7 +26,67 @@ if (class_exists('CSF')) {
         'type'    => 'heading',
         'content' => '<h3>   ----幻灯片模块设置----    </h3>',
       ),
-
+      array(
+        'type'    => 'submessage',
+        'style'   => 'danger',
+        'content' => '这是幻灯片模块【如果你没有开启 | 首页模块设置>幻灯片模块展示设置>幻灯片模块展示开启 | 则无法启用此模块】</br>
+        增加一个幻灯片没写内容也会有一个占位标签哦~',
+      ),
+      array(
+        'id'     => 'Module_1',
+        'type'   => 'repeater',
+        'title'  => '幻灯片',
+        'fields' => array(
+          array(
+            'id'      => 'Module_1_1',
+            'type'  => 'upload',
+            'preview' => true,
+            'library'      => 'image',
+            'title'   => '幻灯片[图片]',
+          ),
+          array(
+            'id'    => 'Module_1_2',
+            'type'  => 'text',
+            'title'   => '幻灯片[标题]',
+            'class' => 'fields_no_padding-top',
+          ),
+          array(
+            'id'    => 'Module_1_3',
+            'type'  => 'text',
+            'title'   => '幻灯片[内容]',
+            'class' => 'fields_no_padding-top',
+          ),
+          array(
+            'id'    => 'Module_1_4',
+            'type'  => 'text',
+            'title'   => '幻灯片[链接]',
+            'class' => 'fields_no_padding-top',
+          ),
+        ),
+      ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----网站背景图模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是网站的背景模块',
+      ),
+      array(
+        'id'    => 'Module_2',
+        'type'  => 'switcher',
+        'title' => '网站背景模块',
+      ),
+      array(
+        'id'      => 'Module_2_1',
+        'type'  => 'upload',
+        'preview' => true,
+        'library'      => 'image',
+        'title'   => '背景图片',
+        'dependency' => array('Module_2', '==', true),
+        'class' => 'fields_no_padding-top',
+      ),
     )
   ));
   //全局设置
@@ -34,6 +95,20 @@ if (class_exists('CSF')) {
     'icon' => 'icon-qjpz',
     'id'  => 'Global',
     'fields'      => array(
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----链接跳转全局模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是全局模块展示设置区',
+      ),
+      array(
+        'id'    => 'Jump_Module_1',
+        'type'  => 'switcher',
+        'title' => '展示模块开启【全部】',
+      ),
       array(
         'type'    => 'heading',
         'content' => '<h3>   ----文章页面全局模块设置----    </h3>',
@@ -244,6 +319,7 @@ if (class_exists('CSF')) {
         'title'   => '懒加载图片',
         'dependency' => array('Home_Module_5', '==', true),
         'class' => 'fields_no_padding-top',
+        'default' => $Image_Url . 'lazy.gif',
       ),
       array(
         'type'    => 'heading',

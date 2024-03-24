@@ -2,94 +2,44 @@
   die;
 }
 
-//主题导航栏模块设置
+$Module = 'Len_Nav';
 
-$prefix = '_prefix_menu_options';
-
-//
-// Create menu options
-//
-CSF::createNavMenuOptions($prefix, array(
-  'data_type' => 'serialize'
+CSF::createNavMenuOptions($Module, array(
+  'data_type' => 'nav_1'
 ));
 
-//
-// Create a section
-//
-CSF::createSection($prefix, array(
+CSF::createSection($Module, array(
   'fields' => array(
+    array(
+      'id'         => 'Nav_Module_1',
+      'type'       => 'button_set',
+      'title'      => '默认特色图选择设置',
+      'class' => ' fields_no_padding-top',
+      'options'    => array(
+        'icon_1'  => '自定义图标',
+        'icon_2' => 'fontawesome',
+        'icon_3' => '阿里巴巴',
+      ),
+      'default'    => 'icon_1'
 
-    //
-    // A text field
-    //
-    // array(
-    //   'id'    => 'opt-text',
-    //   'type'  => 'text',
-    //   'title' => 'Text',
-    // ),
-
-    // array(
-    //   'id'    => 'opt-textarea',
-    //   'type'  => 'textarea',
-    //   'title' => 'Textarea',
-    //   'help'  => 'The help text of the field.',
-    // ),
-
-    // array(
-    //   'id'    => 'opt-upload',
-    //   'type'  => 'upload',
-    //   'title' => 'Upload',
-    // ),
-
-    // array(
-    //   'id'    => 'opt-icon',
-    //   'type'  => 'icon',
-    //   'title' => 'Icon',
-    // ),
-
-    // array(
-    //   'id'    => 'opt-switcher',
-    //   'type'  => 'switcher',
-    //   'title' => 'Switcher',
-    //   'label' => 'The label text of the switcher.',
-    // ),
-
-    // array(
-    //   'id'      => 'opt-color',
-    //   'type'    => 'color',
-    //   'title'   => 'Color',
-    //   'default' => '#3498db',
-    // ),
-
-    // array(
-    //   'id'    => 'opt-checkbox',
-    //   'type'  => 'checkbox',
-    //   'title' => 'Checkbox',
-    //   'label' => 'The label text of the checkbox.',
-    // ),
-
-    // array(
-    //   'id'      => 'opt-radio',
-    //   'type'    => 'radio',
-    //   'title'   => 'Radio',
-    //   'options' => array(
-    //     'yes'   => 'Yes, Please.',
-    //     'no'    => 'No, Thank you.',
-    //   ),
-    //   'default' => 'yes',
-    // ),
-
-    // array(
-    //   'id'          => 'opt-select',
-    //   'type'        => 'select',
-    //   'title'       => 'Select',
-    //   'placeholder' => 'Select an option',
-    //   'options'     => array(
-    //     'opt-1'     => 'Option 1',
-    //     'opt-2'     => 'Option 2',
-    //     'opt-3'     => 'Option 3',
-    //   ),
-    // ),
-
+    ),
+    array(
+      'id'    => 'Nav_Module_1_1',
+      'type'  => 'text',
+      'title' => '自定义图标',
+      'dependency' => array('Nav_Module_1', '==', 'icon_1'),
+    ),
+    array(
+      'id'    => 'Nav_Module_1_2',
+      'type'  => 'text',
+      'title' => 'fontawesome',
+      'dependency' => array('Nav_Module_1', '==', 'icon_2'),
+    ),
+    array(
+      'id'    => 'Nav_Module_1_3',
+      'type'  => 'text',
+      'title' => '阿里图标',
+      'dependency' => array('Nav_Module_1', '==', 'icon_3'),
+    ),
   )
 ));

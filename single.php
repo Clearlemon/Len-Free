@@ -5,6 +5,8 @@
  * wp_footer(); @引用Wordpress自带的顶部样式文件
  */
 wp_head();
+?>
+<?php
 require_once get_theme_file_path('/Page/Len-Single/Single.php');
 
 /**

@@ -99,7 +99,7 @@ function Len_index_article()
         </div>
     </div>
 
-<?php
+    <?php
 }
 
 /**
@@ -133,4 +133,15 @@ function Len_Article_Content($excerpt_length = 55, $post_id = '')
     }
 
     return $excerpt;
+}
+
+function Len_Web_Background()
+{
+    $Module_2 = _('Module_2');
+    if ($Module_2 == true) {
+        $Module_2_1 = _len('Module_2_1');
+    ?>
+        <img class="bady-background-block" src="<?php echo $Module_2_1 ?>">
+<?php
+    }
 }

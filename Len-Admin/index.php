@@ -7,7 +7,7 @@ $files = array(
     //主题文章独立功能模块设置
     'Len-Admin/Len-options/Len-metabox-options.php',
     // //主题导航模块设置
-    // 'admin-function/leaf-options/leaf-nav-menu-options.php',
+    'Len-Admin/Len-options/Len-nav-menu-options.php',
     // //主题用户模块设置
     // 'admin-function/leaf-options/leaf-profile-options.php',
     // //主题分类模块设置

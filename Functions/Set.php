@@ -80,3 +80,22 @@ if (!function_exists('Len_Post_Module')) {
         }
     }
 }
+
+/**
+ * 检查函数 _Len_Nav_Module 是否存在，如果不存在则定义它。
+ * 此函数使用 get_post_meta 检索菜单项的特定选项值。
+ *
+ * @param int    $item_id 菜单项的ID。
+ * @param string $option  要检索的选项名称。
+ * @param mixed  $default 如果选项未设置，则返回的默认值。
+ * @return mixed 如果选项存在，则返回其值；否则返回默认值。
+ */
+if (!function_exists('_Len_Nav_Module')) {
+    function _Len_Nav_Module($item_id, $option = '', $default = null)
+    {
+        // 检索菜单项的指定选项值
+        $value = get_post_meta($item_id, $option, true);
+        // 如果值存在，则返回该值；否则返回默认值
+        return ($value !== '') ? $value : $default;
+    }
+}
