@@ -322,6 +322,12 @@ if (class_exists('CSF')) {
             'title' => '评论表情包模块开启',
           ),
           array(
+            'id'    => 'Post_Comments_Module_2_10',
+            'type'  => 'switcher',
+            'title' => '是否启用登录评论',
+            'default' => true,
+          ),
+          array(
             'id'    => 'Post_Comments_Module_2_2',
             'class' => '',
             'type'  => 'text',

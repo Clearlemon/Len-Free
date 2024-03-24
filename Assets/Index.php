@@ -1,5 +1,5 @@
 <?php
-$var = '1.7.0';
+$var = '1.7.5';
 function enqueue_custom_admin_styles()
 {
     global $var;

@@ -198,7 +198,17 @@ function Len_Get_Img($args)
     }
 }
 
-
+function Len_Lazy_Thumbnail()
+{
+    $Home_Module_5 = _len('Home_Module_5');
+    $Home_Module_5_1 = _len('Home_Module_5_1');
+    $default = get_template_directory_uri() . '/Assets/Len-Images/lazy.gif';
+    if ($Home_Module_5 == true && !empty($Home_Module_5_1)) {
+        return $Home_Module_5_1;
+    } else {
+        return $default;
+    }
+}
 
 
 /**
@@ -727,7 +737,6 @@ function Len_Post_Tag_Module()
         }
     }
 }
-
 
 
 /**

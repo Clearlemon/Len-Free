@@ -333,6 +333,7 @@
 
 .len-article-title-min {
     position: relative;
+    padding-top: 20px;
 }
 
 .len_comment_pagination_block_all>.next.page-numbers {
@@ -411,6 +412,7 @@
     line-height: 1.4;
     /* overflow: hidden; */
     overflow: auto;
+    padding: 5px;
 }
 
 .len-comments-input {
@@ -420,6 +422,7 @@
     border-radius: 5px;
     border: 1px solid #e1e8ed;
     background: #f4f5f7;
+    padding: 5px;
 }
 
 .comments-submit-button {
@@ -569,7 +572,7 @@
     font-size: 14px;
     color: #999999;
     transition: 3s;
-    margin-top: 25px;
+    background: white;
 }
 
 .len-comments-reply {

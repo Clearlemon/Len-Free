@@ -310,12 +310,12 @@ function Parse_Post_Content_IMG($matches)
     // 获取原始img标签的src属性值
     preg_match('/src="([^"]+)"/i', $attributes, $src_match);
     $src = isset($src_match[1]) ? $src_match[1] : '';
-
+    $Lazy = Len_Lazy_Thumbnail();
     // 在原始img标签的类属性中增加额外的类
     $new_img_tag = str_replace('class="', 'class="len_post_content_img lazy ', $img_tag);
 
     // 添加data-src属性
-    $new_img_tag = preg_replace('/src="([^"]+)"/i', 'src="' . $src . '" data-src="$1"', $new_img_tag);
+    $new_img_tag = preg_replace('/src="([^"]+)"/i', 'src="' . $Lazy . '" data-src="$1"', $new_img_tag);
 
     // 包裹在a标签中
     $new_img_tag = '<a data-fancybox="gallery" href="' . $src . '">' . $new_img_tag . '</a>';

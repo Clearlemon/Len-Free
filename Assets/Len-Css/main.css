@@ -236,6 +236,29 @@ li>.iconfont {
     border-radius: 15px;
 }
 
+.len-swipre.swiper-commend-title {
+    display: flex;
+    align-items: center;
+    padding: 10px 0px;
+    color: white;
+}
+
+.len-swiper.swiper-content {
+    color: #a5a5a5;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.len-swiper.swiper-commend {
+    padding: 2px;
+    margin: 2px;
+    background: #f05050;
+    font-weight: 700;
+    border-radius: 5px;
+
+    font-size: 14px;
+}
+
 .len-swiper-slide-img {
     object-fit: cover;
     width: 100%;
@@ -244,11 +267,11 @@ li>.iconfont {
 
 .len-swiper-content-background {
     position: fixed;
+    max-width: 90%;
     width: 100%;
     bottom: 0;
-    height: 60px;
     padding: 3% 5% 2% 5%;
-    background: linear-gradient(180deg, hsl(0deg 3.64% 68.62% / 0%), hsl(0deg 0% 77.95% / 95%) 85%, #d4d4d4);
+    background: linear-gradient(180deg, hsl(0deg 3.64% 68.62% / 0%), hsl(0deg 0% 100% / 100%) 100%, #d4d4d4);
 }
 
 .len-swiper-block-min {

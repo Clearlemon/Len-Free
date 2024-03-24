@@ -25,14 +25,7 @@
                             <div class="len-article-min-blcok">
                                 <div class="len-article-thumbnail-block-min">
                                     <?php
-                                    $img_args = array(
-                                        'src' => 'https://www.tqlen.com/wp-content/themes/b2/Assets/fontend/images/default-img.jpg',
-                                        'alt' => '',
-                                        'data-src' => Len_Thumbnail_Module(get_the_ID()),
-                                        'class' => array('len-thumbnail-block', 'lazy'),
-                                        'id' => '',
-                                    );
-                                    echo Len_Get_Img($img_args);
+                                    echo Len_Get_Img(array('src' => Len_Lazy_Thumbnail(), 'alt' => get_the_title(), 'data-src' => Len_Thumbnail_Module(get_the_ID()), 'class' => array('len-thumbnail-block', 'lazy'), 'id' => '',));
                                     ?>
                                 </div>
                                 <div class="len-article-block-min">
@@ -53,7 +46,7 @@
                                             <svg class="len-tag-post-icon" aria-hidden="true">
                                                 <use xlink:href="#icon-biaoqian1"></use>标签
                                                 <ul class="article-tag-ul-blcok">
-                                                    <?php Len_Post_Tag_Module() ?>
+                                                    <?php Len_Post_Tag_Module(); ?>
                                                 </ul>
                                             </svg>
                                         </div>
