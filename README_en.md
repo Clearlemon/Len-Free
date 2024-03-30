@@ -1,4 +1,4 @@
- **简体中文** | [繁体中文](README_tw.md) | [English](README_en.md) | [日本語](README_jp.md)
+ [简体中文](README.md) | [繁体中文](README_tw.md) | **English** | [日本語](README_jp.md)
 
 # Len-Free
 一个简约清新的个人博客主题

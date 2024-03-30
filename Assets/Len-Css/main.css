@@ -59,6 +59,7 @@ img {
 .len-showcase-main {
     width: 830px;
     padding: 10px;
+    padding-top: 0px;
 }
 
 .len-right-sidebar {
