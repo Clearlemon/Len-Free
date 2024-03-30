@@ -38,6 +38,7 @@
                                         <?php the_content(); ?>
 
                                     </div>
+                            
 
                                     <?php Len_Module_Switcher(false, true, false, false, false, false); ?>
                                     <div class="len-article-tag">

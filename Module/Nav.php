@@ -107,7 +107,7 @@ class Leaf_Sidebar_Nav extends Walker_Nav_Menu
 
         // 使用动态设置的值构建 $item_output
         if ($depth === 0 && !empty($item->classes) && in_array('menu-item-has-children', $item->classes)) {
-            $icon = '<i class="fa-solid fa-caret-left"></i>';
+            $icon = '<i id="toggleButton" class="ico-0009 fa-solid fa-caret-right" onclick="toggleIcon()"></i>';
         } else {
             $icon = '';
         }

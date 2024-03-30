@@ -279,3 +279,22 @@ setInterval(() => {
     )}: ${`${timer.getSeconds()}`.padStart(2, '0')}`;
     todayShowTime.textContent = formateTimer;
 }, 1000);
+// 文章
+document.getElementById('toggleButton').addEventListener('click', function() {
+    var ul = document.querySelector('.len-nav-ul-second');
+    if (ul.style.display === 'none') {
+        ul.style.display = 'block';
+    } else {
+        ul.style.display = 'none';
+    }
+});
+function toggleIcon() {
+    var icon = document.getElementById("toggleButton");
+    if (icon.classList.contains("fa-caret-down")) {
+        icon.classList.remove("fa-caret-down");
+        icon.classList.add("fa-caret-right");
+    } else {
+        icon.classList.remove("fa-caret-right");
+        icon.classList.add("fa-caret-down");
+    }
+}
