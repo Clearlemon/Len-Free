@@ -107,7 +107,7 @@ class Leaf_Sidebar_Nav extends Walker_Nav_Menu
 
         // 使用动态设置的值构建 $item_output
         if ($depth === 0 && !empty($item->classes) && in_array('menu-item-has-children', $item->classes)) {
-            $icon = '<i id="toggleButton" class="ico-0009 fa-solid fa-caret-right" onclick="toggleIcon()"></i>';
+            $icon = '<i id="toggleButton" style="" class="ico-0009 fa-solid fa-caret-right" onclick="toggleIcon()"></i>';
         } else {
             $icon = '';
         }
@@ -136,8 +136,7 @@ class Leaf_Sidebar_Nav extends Walker_Nav_Menu
         $sub_menu_class = ($depth === 1) ? 'len-nav-ul-second' : '';
 
         // 寻找现有的ul元素，并添加新的类
-        $output = str_replace('<ul class="sub-menu">', '<ul class="' . $sub_menu_class . '">', $output);
-    }
+        $output = str_replace('<ul class="sub-menu">', '<ul class="' . $sub_menu_class . '" style="display: none;">', $output);    }
 }
 
 class Leaf_Top_Nav extends Walker_Nav_Menu

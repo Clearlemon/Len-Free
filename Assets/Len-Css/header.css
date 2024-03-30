@@ -49,3 +49,13 @@ a {
     height: 100%;
     object-fit: cover;
 }
+
+ul.len-nav-ul-second {
+    /* content: ""; */
+    position: relative;
+    right: 10px;
+    border-left: 3px solid rgb(151, 150, 240);
+    margin-left: 22px;
+    margin-top: 5px;
+    padding-left: 5px;
+}
