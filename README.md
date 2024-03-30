@@ -9,3 +9,5 @@
 [2024-1-14柠檬主题开发日志](https://dmyblog.cn/1485.html)
 [2024-2-5-Len主题更新日志：注重用户体验与功能创新](https://dmyblog.cn/1524.html)
 
+## 仓库统计
+![Alt](https://repobeats.axiom.co/api/embed/3ab181d1c1fea7dd03a53c66da67d991d1aeef1a.svg "Repobeats analytics image")
