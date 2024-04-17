@@ -21,13 +21,13 @@ function Len_Say_Showcase()
 function Len_say_article()
 {
     //获取文章ID
-    $Post_Id = get_the_ID();
+    $Post_ID = get_the_ID();
     //获取文章内容
-    $Content = Len_Article_Content($excerpt_length = 99999, $Post_Id);
+    $Content = Len_Article_Content($excerpt_length = 99999, $Post_ID);
     //获取文章标题
     $Title = get_the_title();
     //获取文章特色图
-    $Thumbnail = Len_Thumbnail_Module($Post_Id);
+    $Thumbnail = Len_Thumbnail_Module($Post_ID);
     // 获取文章发布时间
     $Post_Time = Len_Like_Comments_Browse_Time_Module('', '', '', $Post_ID);
     //获取评论数量

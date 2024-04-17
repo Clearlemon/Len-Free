@@ -320,6 +320,21 @@ li>.iconfont {
     display: block;
 }
 
+
+
+.len-top-title-blcok {
+    position: absolute;
+    top: -5px;
+    color: white;
+    right: -20px;
+    padding: 2px;
+    margin: 2px;
+    background: #f05050;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
 .len-classify-title-blcok {
 
     display: none;
@@ -366,6 +381,7 @@ li>.iconfont {
     max-width: 70%;
     margin-left: 30px;
     width: 100%;
+    position: relative;
     padding: 10px 0px 0px 0px;
 }
 
@@ -783,9 +799,33 @@ li>.iconfont {
         margin: 5px 0px;
     }
 }
-.ico-0009{
+
+.ico-0009 {
     float: right;
 }
+
 ul.len-nav-ul-second {
     display: none;
+}
+
+/*首页分页样式*/
+.len_post_page_block_all {
+    display: flex;
+    justify-content: center;
+    backdrop-filter: saturate(200%) blur(30px);
+    background-color: hsl(0deg 0% 100% / 50%);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+span.page-numbers.current {
+    color: #8483d3;
+    background: #9796f066;
+}
+
+.page-numbers {
+    padding: 10px 15px 10px;
+    border-radius: 5px;
+    background: #eff2ff;
+    color: #868787;
 }

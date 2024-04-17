@@ -62,7 +62,7 @@ if (!is_user_logged_in() && $Comments_Switcher == true) {
 
         <?php if (have_comments()) : ?>
             <div id="comments" class="len-have-comments-block-min">
-                <ol class="len-comments-ol-block">
+                <ol id="ajax-comment" class="len-comments-ol-block">
                     <?php wp_list_comments(array('callback' => 'Len_Comments_Module',)); ?>
                 </ol>
             </div>
@@ -76,5 +76,4 @@ if (!is_user_logged_in() && $Comments_Switcher == true) {
 <?php } ?>
 <?php
 Len_Comments_Ajax();
-Len_Comments_Js_Module()
 ?>

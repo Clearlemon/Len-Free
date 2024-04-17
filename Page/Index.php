@@ -43,7 +43,9 @@
                 <div class="len-showcase-post-block-main">
 
 
-                    <?php Len_Article_Showcase(); ?>
+                    <?php Len_Article_Showcase();
+
+                    Len_Post_Page() ?>
 
                 </div>
                 <!-- 文章展示模块结束 -->

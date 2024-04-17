@@ -224,7 +224,7 @@ if (class_exists('CSF')) {
         'title'      => '底部翻页模块展示设置',
         'options'    => array(
           'pagination_1'  => '传统分页',
-          'pagination_2' => 'Ajax分页',
+          'pagination_2' => 'Ajax下拉',
         ),
         'default'    => 'pagination_2'
       ),

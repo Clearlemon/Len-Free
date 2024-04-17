@@ -2,6 +2,7 @@
 
 function Len_Article_Showcase()
 {
+    // 输出置顶文章
     if (is_home() && !is_paged() && is_sticky()) {
         $args = array(
             'posts_per_page' => -1,
@@ -11,15 +12,25 @@ function Len_Article_Showcase()
         $sticky_posts = new WP_Query($args);
 
         while ($sticky_posts->have_posts()) : $sticky_posts->the_post();
+            Len_index_article(); // 替换成您的文章输出函数
         endwhile;
-        wp_reset_query();
+        wp_reset_postdata();
     }
-    //普通文章输出
+
+    // 输出普通文章
     while (have_posts()) {
         the_post();
-        Len_index_article();
+
+        // 检查当前文章是否是置顶文章，如果是则跳过输出
+        if (is_sticky()) {
+            continue;
+        }
+
+        Len_index_article(); // 替换成您的文章输出函数
     }
 }
+
+
 
 
 
@@ -50,8 +61,10 @@ function Len_index_article()
         <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
             <div class="len-post-thumbnail-blcok">
                 <?php echo $Thumbnail; ?>
+
                 <div class="len-classify-box-blcok">
                     <p class="len-classify-title-blcok"><?php echo Len_Parent_Category_Module($Post_ID, true, false, false); ?></p>
+
                 </div>
             </div>
         </a>
@@ -59,6 +72,9 @@ function Len_index_article()
             <div class="len-post-content-min">
                 <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
                     <h3 class="len-post-title-block"><?php echo $Title; ?></h3>
+                    <?php if (is_sticky()) { ?>
+                        <p class="len-top-title-blcok">置顶</p>
+                    <?php } ?>
                 </a>
                 <hr>
                 <p class="len-post-part-block"><?php echo $Content; ?></p>
@@ -69,6 +85,7 @@ function Len_index_article()
                         </div>
                         <div class="len-name-block-min">
                             <p class="name-text-block"><?php echo $User_name; ?></p>
+
                         </div>
                     </div>
                     <div class="len-post-statistics-block">
@@ -143,5 +160,47 @@ function Len_Web_Background()
     ?>
         <img class="bady-background-block" src="<?php echo $Module_2_1 ?>">
 <?php
+    }
+}
+
+
+function Len_Post_Page()
+{
+    global $wp_query;
+
+    // 获取当前页码
+    $current_page = max(1, get_query_var('paged'));
+    $total_pages = $wp_query->max_num_pages;
+
+
+    // 获取首页链接
+    $home_url = esc_url(home_url('/'));
+
+    // 添加第一页和最后一页链接
+    $first_page_link = esc_url(get_pagenum_link(1));
+    $last_page_link = esc_url(add_query_arg('paged', $wp_query->max_num_pages, $home_url));
+
+    // 获取分页链接
+    $paginate_links = paginate_links(array(
+        'current' => $current_page,
+        'mid_size' => 2,
+        'prev_text' => '上一页',
+        'next_text' => '下一页',
+        'end_size' => 2, // 设置最后一页链接的数量
+    ));
+
+    // 输出分页链接
+    if ($paginate_links) {
+        echo '<div class="len_post_page_block_all">';
+        if ($current_page >= 2) {
+            echo '<span class="page-numbers"><a href="' . $first_page_link . '">首页</a></span>'; // 输出第一页链接
+        }
+
+        echo $paginate_links;
+        if ($current_page < ($total_pages - 1)) {
+            echo '<span class="page-numbers"><a href="' . $last_page_link . '">末页</a></span>'; // 输出最后一页链接
+        }
+
+        echo '</div>';
     }
 }

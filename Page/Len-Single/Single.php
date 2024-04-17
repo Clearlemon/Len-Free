@@ -37,8 +37,9 @@
 
                                         <?php the_content(); ?>
 
+
                                     </div>
-                            
+
 
                                     <?php Len_Module_Switcher(false, true, false, false, false, false); ?>
                                     <div class="len-article-tag">
@@ -56,9 +57,9 @@
                         </div>
 
                 <?php
-                            Len_Module_Switcher(false, false, false, true, false, false);
-                        endwhile;
-                    endif; ?>
+                        Len_Module_Switcher(false, false, false, true, false, false);
+                    endwhile;
+                endif; ?>
                 <!-- 互动模块开始 -->
                 <div class="len-article-mutual-min">
                     <div class="len-article-mutual-blcok">

@@ -1,5 +1,5 @@
 <?php
-$var = '2.0.0';
+$var = '2.1.7';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -29,7 +29,8 @@ function Len_scripts_styles()
     wp_enqueue_script('fancybox-umd', get_template_directory_uri() . '/Assets/Lne-JavaScript/fancybox.umd.js', array(), $var, true);
     wp_enqueue_script('music-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/music.min.js', array(), $var, true);
     wp_enqueue_script('lazyload-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/lazyload.min.js', array(), $var, true);
-
+    wp_enqueue_script('axios-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/axios.min.js', array(), $var, true);
+    wp_enqueue_script('message-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/message.min.js', array(), $var, true);
 
     //引用Css样式文件
     wp_enqueue_style('fasicon', get_template_directory_uri() . '/Assets/Len-Font/fasicon.css', array(), $var, 'all');
@@ -40,6 +41,7 @@ function Len_scripts_styles()
     wp_enqueue_style('Len-footer', get_template_directory_uri() . '/Assets/Len-Css/footer.css', array(), $var, 'all');
     wp_enqueue_style('Len-diary', get_template_directory_uri() . '/Assets/Len-Css/diary.css', array(), $var, 'all');
     wp_enqueue_style('music-min', get_template_directory_uri() . '/Assets/Len-Css/music.min.css', array(), $var, 'all');
+    wp_enqueue_style('message-min', get_template_directory_uri() . '/Assets/Len-Css/message.min.css', array(), $var, 'all');
 
 
     //幻灯片样式
@@ -57,37 +59,6 @@ add_action('wp_enqueue_scripts', 'Len_scripts_styles');
 function Len_footer_content()
 {
     Len_Module_Switcher(false, false, false, false, true, false);
-?>
-
-    <script>
-        var mySwiper = new Swiper('#len-swiper', {
-            loop: true, // 循环模式选项
-        })
-    </script>
-    <script>
-        // 初始化 Vanilla Lazyload
-        var lazyload = new LazyLoad({
-            // 可选配置项
-        });
-    </script>
-    <script type="text/javascript">
-        Fancybox.bind('[data-fancybox="gallery"]', {
-            Toolbar: {
-                display: {
-                    left: ["infobar"],
-                    middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY", ],
-                    right: ["iterateZoom",
-                        "slideshow",
-                        "fullscreen",
-                        "thumbs",
-                        "close",
-                    ],
-                },
-            },
-        });
-    </script>
-
-<?php
 }
 
 /**

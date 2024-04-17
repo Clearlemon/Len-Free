@@ -40,7 +40,7 @@ function Len_Comments_Module($comment, $args, $depth)
     }
 
     if ($is_reply) { ?>
-        <div id="comment-<?php echo $comment_id; ?>" class="len-comments-reply-body len-comments-reply">
+        <div id="comment-<?php echo $comment_id; ?> " class="len-comments-reply-body len-comments-reply">
             <div class="len-comment-author len-comment-name">
                 <img alt="" src="<?php echo $avatar_url; ?>" class="" height="40" width="40" loading="lazy" decoding="async">
                 <cite class="len-comment-cite">
@@ -69,8 +69,6 @@ function Len_Comments_Module($comment, $args, $depth)
                 <br />
             <?php endif; ?>
             <p class="len-reply-content"><?php echo get_comment_text(); ?></p>
-
-
         </div>
     <?php
     } else { ?>
@@ -192,7 +190,7 @@ function Len_Comments_Blcok_Module()
             <?php } ?>
         </div>
     </div>
-<?php
+    <?php
 }
 
 function preprocess_comment_content($commentdata)
@@ -250,124 +248,21 @@ function preprocess_comment_content($commentdata)
 add_filter('preprocess_comment', 'preprocess_comment_content');
 
 
-function Len_Comments_Js_Module()
-{
-?>
-    <script>
-        var apiUrl = window.location.origin + '/wp-content/themes/Len-Free/Assets/Lne-JavaScript/memes.json';
-        var OwO_demo = new OwO({
-            logo: '表情包',
-            container: document.getElementsByClassName('OwO')[0],
-            target: document.getElementsByClassName('OwO-textarea')[0],
-            api: apiUrl,
-            position: 'down',
-            width: '50%',
-            maxHeight: '250px'
-        });
-
-        jQuery(document).ready(function($) {
-            var initialFormLocation = $('#commentform').parent();
-            var replyTargetId = null;
-
-            // 提交评论
-            $('#commentform').submit(function(event) {
-                event.preventDefault();
-
-                var formData = $(this).serialize();
-
-                $.ajax({
-                    url: '/wp-comments-post.php',
-                    method: 'POST',
-                    data: formData,
-                    dataType: 'html',
-                    success: function(response) {
-                        $('#commentform')[0].reset();
-                        $('#comments').load(location.href + ' #comments');
-
-                        // 如果存在回复目标 ID，则将表单放回原始位置
-                        if (replyTargetId !== null) {
-                            $('#commentform').detach().appendTo(initialFormLocation);
-                            replyTargetId = null;
-                        }
-                    },
-                    error: function(error) {
-                        console.error('Error:', error);
-                    },
-                });
-            });
-            // 回复评论
-            $('.comment-reply-link').click(function(event) {
-                event.preventDefault();
-
-                var parentCommentId = $(this).data('commentid');
-
-                // 更新回复链接的参数
-                var replyLink = $(this).attr('href');
-                replyLink += (replyLink.indexOf('?') !== -1 ? '&' : '?') + 'replytocom=' + parentCommentId + '#respond';
-                $(this).attr('href', replyLink);
-
-                // 如果用户再次点击相同的回复链接，将表单放回原始位置
-                if (replyTargetId === parentCommentId) {
-                    $('#commentform').detach().appendTo(initialFormLocation);
-                    replyTargetId = null;
-                } else {
-                    // 否则，将表单移到新的回复目标位置
-                    $('#commentform').detach().appendTo('#comment-' + parentCommentId);
-                    replyTargetId = parentCommentId;
-                }
-
-                $('#comment_parent').val(parentCommentId);
-            });
-        });
-        jQuery(function($) {
-            $('.comment_loadmore').click(function() {
-                var button = $(this);
-                // 减少当前评论页面的值
-                cpage--;
-                $.ajax({
-                    url: ajaxurl,
-                    data: {
-                        'action': 'cloadmore',
-                        'post_id': parent_post_id, // 当前文章
-                        'cpage': cpage, // 当前评论页
-                    },
-                    type: 'POST',
-                    beforeSend: function(xhr) {
-                        button.text('加载中...');
-                    },
-                    success: function(data) {
-                        if (data) {
-                            $('ol.len-comments-ol-block').append(data);
-                            button.text('加载更多');
-                            // 如果最后一页，则删除按钮
-                            if (cpage == 1)
-                                button.remove();
-                        } else {
-                            button.remove();
-                        }
-                    }
-                });
-                return false;
-            });
-        });
-    </script>
-    <?php
-}
 
 function Len_Comments_Ajax()
 {
     $Post_Comments_Module_3 = _len('Post_Comments_Module_3');
+    $cpage = get_query_var('cpage') ? get_query_var('cpage') : 1;
+    $max_pages = get_comment_pages_count(); // 获取评论的最大页数
     if ($Post_Comments_Module_3 == 'pagination_2') {
-        $cpage = get_query_var('cpage') ? get_query_var('cpage') : 1;
         if ($cpage > 1) {
-            echo '<div class="comment_loadmore">加载更多评论</div>
-        <script>
-        var ajaxurl = "' . admin_url('admin-ajax.php') . '",parent_post_id = ' . get_the_ID() . ',cpage = ' . $cpage . ';
-        </script>';
+            echo '<div max-comments="' . $max_pages . '" post-id="' . get_the_ID() . '" page-id="' . $cpage . ' "class="comment_loadmore">加载更多评论</div>';
+        } else {
+            echo '<div max-comments="' . $max_pages . '" post-id="' . get_the_ID() . '" page-id="' . $cpage . ' "class="comment_loadmore">加载更多评论</div>';
         }
     } else {
     ?>
-        <div class="len_comment_pagination_block_all">
+        <div id="<?php echo $cpage; ?>" class="len_comment_pagination_block_all">
             <?php
             $post_info = get_post(get_the_ID(), ARRAY_A);
             if (!$post_info['comment_count']) {

@@ -1,127 +1,28 @@
-// //无刷新加载页面JS
-// document.addEventListener('DOMContentLoaded', function () {
-//     // 获取所有的<a>标签
-//     var navLinks = document.querySelectorAll('.len-pjax-link-all-blcok');
+window.addEventListener('DOMContentLoaded', () => {
+    Fancybox.bind('[data-fancybox="gallery"]', {
+        Toolbar: {
+            display: {
+                left: ["infobar"],
+                middle: ["zoomIn", "zoomOut", "toggle1to1", "rotateCCW", "rotateCW", "flipX", "flipY",],
+                right: ["iterateZoom",
+                    "slideshow",
+                    "fullscreen",
+                    "thumbs",
+                    "close",
+                ],
+            },
+        },
+    });
 
-//     // 获取要展示内容的容器
-//     var showcaseMain = document.querySelector('.len-showcase-main');
+    var lazyload = new LazyLoad({
+        // 可选配置项
+    });
 
-//     // 获取加载动画的容器
-//     var loadingSpinner = document.createElement('div');
-//     loadingSpinner.className = 'loading-spinner';
+    var mySwiper = new Swiper('#len-swiper', {
+        loop: true, // 循环模式选项
+    })
+});
 
-//     // 保存旧内容
-//     var oldContent = '';
-
-//     // 给所有的<a>标签添加点击事件
-//     navLinks.forEach(function (link) {
-//         link.addEventListener('click', function (event) {
-//             // 阻止默认的跳转行为
-//             event.preventDefault();
-
-//             // 检查是否点击的是当前已经显示的页面
-//             if (link.classList.contains('active')) {
-//                 return;
-//             }
-
-//             // 获取目标链接
-//             var targetUrl = link.getAttribute('href');
-
-//             // 检查链接是否为 # 或为空
-//             if (targetUrl === '#' || targetUrl.trim() === '') {
-//                 // 刷新当前页面
-//                 location.reload();
-//                 return;
-//             }
-
-//             // 显示加载动画
-//             showcaseMain.innerHTML = '';
-//             showcaseMain.appendChild(loadingSpinner);
-
-//             // 保存旧内容
-//             oldContent = showcaseMain.innerHTML;
-
-//             // 使用 Fetch API 加载目标链接的内容
-//             fetch(targetUrl)
-//                 .then(response => response.text())
-//                 .then(data => {
-//                     // 隐藏加载动画，将内容插入到展示容器中
-//                     showcaseMain.removeChild(loadingSpinner);
-//                     showcaseMain.innerHTML = data;
-
-//                     // 标记当前链接为活动状态
-//                     navLinks.forEach(function (navLink) {
-//                         navLink.classList.remove('active');
-//                     });
-//                     link.classList.add('active');
-//                 })
-//                 .catch(error => {
-//                     console.error('Error fetching content:', error);
-//                     // 如果加载出错，恢复旧内容
-//                     showcaseMain.innerHTML = oldContent;
-//                 });
-//         });
-//     });
-// });
-
-
-
-
-
-
-//等待优化的无刷新加载页面JS
-// document.addEventListener('DOMContentLoaded', function () {
-//     // 获取<a>标签
-//     var diaryLink = document.querySelector('.len-nav-link-block[href="Page/diary.html"]');
-
-//     // 获取要展示内容的容器
-//     var showcaseMain = document.querySelector('.len-showcase-main');
-
-//     // 获取加载动画的容器
-//     var loadingSpinner = document.createElement('div');
-//     loadingSpinner.className = 'loading-spinner';
-
-//     // 给<a>标签添加点击事件
-//     diaryLink.addEventListener('click', function (event) {
-//         // 阻止默认的跳转行为
-//         event.preventDefault();
-
-//         // 显示加载动画
-//         showcaseMain.innerHTML = '';
-//         showcaseMain.appendChild(loadingSpinner);
-
-//         // 获取目标链接
-//         var targetUrl = diaryLink.getAttribute('href');
-
-//         // 使用Fetch API加载目标链接的内容
-//         fetch(targetUrl)
-//             .then(response => response.text())
-//             .then(data => {
-//                 // 隐藏加载动画，将内容插入到展示容器中
-//                 showcaseMain.removeChild(loadingSpinner);
-//                 showcaseMain.innerHTML = data;
-
-//                 // 保存加载的内容到本地存储
-//                 localStorage.setItem('loadedContent', data);
-//             })
-//             .catch(error => {
-//                 console.error('Error fetching content:', error);
-//                 // 如果加载出错，恢复本地存储中的内容
-//                 var storedContent = localStorage.getItem('loadedContent');
-//                 if (storedContent) {
-//                     showcaseMain.innerHTML = storedContent;
-//                 } else {
-//                     showcaseMain.innerHTML = '<p>Failed to load content.</p>';
-//                 }
-//             });
-//     });
-
-//     // 页面加载时，尝试从本地存储中恢复内容
-//     var storedContent = localStorage.getItem('loadedContent');
-//     if (storedContent) {
-//         showcaseMain.innerHTML = storedContent;
-//     }
-// });
 
 //日期JS
 const isLeapYear = (year) => {
@@ -280,21 +181,21 @@ setInterval(() => {
     todayShowTime.textContent = formateTimer;
 }, 1000);
 // 文章
-document.getElementById('toggleButton').addEventListener('click', function() {
-    var ul = document.querySelector('.len-nav-ul-second');
-    if (ul.style.display === 'none') {
-        ul.style.display = 'block';
-    } else {
-        ul.style.display = 'none';
-    }
+
+var toggleButtons = document.querySelectorAll('.toggleButton');
+toggleButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        var ul = button.nextElementSibling;
+        if (ul.style.display === 'none' || ul.style.display === '') {
+            ul.style.display = 'block';
+            button.classList.remove("fa-caret-right");
+            button.classList.add("fa-caret-down");
+        } else {
+            ul.style.display = 'none';
+            button.classList.remove("fa-caret-down");
+            button.classList.add("fa-caret-right");
+        }
+    });
 });
-function toggleIcon() {
-    var icon = document.getElementById("toggleButton");
-    if (icon.classList.contains("fa-caret-down")) {
-        icon.classList.remove("fa-caret-down");
-        icon.classList.add("fa-caret-right");
-    } else {
-        icon.classList.remove("fa-caret-right");
-        icon.classList.add("fa-caret-down");
-    }
-}
+
+

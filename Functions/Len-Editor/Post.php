@@ -147,7 +147,7 @@ function Len_Diary_Post()
         'taxonomies'    => array('post_tag', 'diary_category'), // 添加 'post_tag' 到支持的分类法中
         'rewrite'       => array('with_front' => false, 'slug' => 'diary'),
         'capability_type' => 'post',
-        'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/saysay.svg',
+        'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/Diary.svg',
     );
 
     // 注册自定义文章类型 'diary'
@@ -229,7 +229,7 @@ function Len_Photo_Post()
         'taxonomies'    => array('post_tag', 'photo_category'), // 添加 'post_tag' 到支持的分类法中
         'rewrite'       => array('with_front' => false, 'slug' => 'photo'),
         'capability_type' => 'post',
-        'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/saysay.svg',
+        'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/Photo.svg',
     );
 
     // 注册自定义文章类型 'Photo'
