@@ -63,3 +63,8 @@
   opacity: .3;
   vertical-align: 0.2em;
 }
+
+.len-cat-card-title-block {
+  color: white;
+  font-weight: 500;
+}

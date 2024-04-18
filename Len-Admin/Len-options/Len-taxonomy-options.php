@@ -8,7 +8,7 @@ $prefix = 'Len-category-Module';
 
 
 CSF::createTaxonomyOptions($prefix, array(
-  'taxonomy' => 'category',
+  'taxonomy' => array('category', 'post_tag'),
   'data_type' => 'unserialize'
 ));
 
@@ -36,7 +36,7 @@ CSF::createSection($prefix, array(
         'Cat_Post_Top_2' => '当前分类置顶文章',
         'Cat_Post_Top_3' => '不置顶',
       ),
-      'default'    => 'pagination_2'
+      'default'    => 'Cat_Post_Top_3'
 
     ),
     array(

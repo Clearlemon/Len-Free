@@ -22,3 +22,10 @@ function Classify_Banner_Module($catid = '')
   </div>
 <?php
 }
+function Classify_Banner_Open_Module($catid = '')
+{
+  $Cat_Module_1 =  Len_Classify_Module($catid, 'Cat_Module_1', true);
+  if ($Cat_Module_1 == true) {
+    Classify_Banner_Module($catid);
+  }
+}

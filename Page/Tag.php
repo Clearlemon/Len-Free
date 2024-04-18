@@ -29,16 +29,11 @@
         require_once get_theme_file_path('Page/Len-Block/Nav.php');
         ?>
         <!-- 文章顶部导航区块Banner开始 -->
-        <!-- 幻灯片区块开始 -->
+        <!-- 分类头部展示块开始 -->
         <?php
-        /**
-         * 引用幻灯片样式
-         * require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
-         * 幻灯片模块样式文件目录
-         */
-        require_once get_theme_file_path('Page/Len-Slide/Slide.php');
+        Classify_Banner_Open_Module(get_queried_object_id())
         ?>
-        <!-- 幻灯片区块结束 -->
+        <!-- 分类头部展示块结束 -->
         <!-- 文章展示模块开始 -->
         <div id="pots-ajax-min" class="len-showcase-post-block-main">
 

@@ -31,14 +31,17 @@
         <!-- 文章顶部导航区块Banner开始 -->
         <!-- -->
         <!-- 分类头部展示块开始 -->
-        <?php Classify_Banner_Module(get_queried_object_id()) ?>
+        <?php
+        Classify_Banner_Open_Module(get_queried_object_id())
+        ?>
         <!-- 分类头部展示块结束 -->
         <!-- 文章展示模块开始 -->
         <div id="pots-ajax-min" class="len-showcase-post-block-main">
           <?php Len_Article_Showcase();   ?>
         </div>
         <?php
-        Len_Post_Page_Tradition_Ajax();
+        Len_Post_Page_Tradition_Ajax(get_queried_object());
+
         ?>
         <!-- 文章展示模块结束 -->
       </div>

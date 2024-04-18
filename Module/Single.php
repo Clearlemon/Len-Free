@@ -8,9 +8,9 @@
 
 /**
  * 文章转载功能函数模块
- * 
+ *
  * 这个函数获取转载文章的值并判断输出结果
- * 
+ *
  * @param string $Address            要获取的 '_Len_Post_Module('', 'Module_Source_Address', '','','', '');' 中的键。
  * @param string $Author_Name        要获取的 '_Len_Post_Module('', 'Module_Source_Author_Name', '','','', '');' 中的键。
  * @param string $Link               要获取的 '_Len_Post_Module('', 'Module_Source_Link', '','','', '');' 中的键。
@@ -807,6 +807,7 @@ function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $
                 foreach ($categories as $category) {
                     if ($category->parent === 0) {
                         $parent_categories_output[] = $category->name;
+                        break;
                     }
                 }
                 $category_output = implode('|', $parent_categories_output);
