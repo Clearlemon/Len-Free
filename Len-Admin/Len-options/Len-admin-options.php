@@ -87,6 +87,15 @@ if (class_exists('CSF')) {
         'dependency' => array('Module_2', '==', true),
         'class' => 'fields_no_padding-top',
       ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----底部模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是全局模块展示设置区',
+      ),
     )
   ));
   //全局设置
@@ -487,6 +496,7 @@ if (class_exists('CSF')) {
         'default'    => 'pagination_2',
         'dependency' => array('Post_Comments_Module_1', '==', true),
       ),
+      
     )
   ));
   CSF::createSection($Module, array(

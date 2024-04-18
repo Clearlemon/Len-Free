@@ -37,6 +37,7 @@ $files = array(
      * 'Module/PageTemplates/Diary.php',| 说说页函数模块文件
      * 'Module/Slide.php', | 头部幻灯片模块
      * 'Module/Nav.php', | 头部导航栏模块
+     * 'Module/Classify.php', | 分类页模块-
      */
     'Module/Single.php',
     'Module/Comments.php',
@@ -44,6 +45,7 @@ $files = array(
     'Module/PageTemplates/Diary.php',
     'Module/Slide.php',
     'Module/Nav.php',
+    'Module/Classify.php',
     /**
  * 此引用链接是用户自定义设置
  * 如想自定义设置和主题则删除链接的注释

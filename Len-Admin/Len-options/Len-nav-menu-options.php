@@ -2,6 +2,7 @@
   die;
 }
 
+//菜单导航设置
 $Module = 'Len_Nav';
 
 CSF::createNavMenuOptions($Module, array(

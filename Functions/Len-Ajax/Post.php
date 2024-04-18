@@ -1,31 +1,36 @@
 <?php
-add_action('wp_ajax_nopriv_ajax_index_post', 'Len_Post_Ajax');
-add_action('wp_ajax_ajax_index_post', 'Len_Post_Ajax');
 function Len_Post_Ajax()
 {
-  $paged = $_POST["paged"];
-  $total = $_POST["total"];
-  $category_id = $_POST["category_id"];
-  $tag_id = $_POST["tag_id"];
-  $search_keyword = $_POST["search_keyword"];
+  $selected_category = $_POST['category'];
+  $posts_per_page = $_POST['posts_per_page'];
+  $paged = $_POST['paged'];
+
 
   $args = array(
     'post_type' => 'post',
-    'posts_per_page' => get_option('posts_per_page'),
+    'posts_per_page' => $posts_per_page,
     'paged' => $paged,
-    'orderby' => 'date',
-    'cat' => $category_id,
-    's' => $search_keyword,
-    'tag_id' => $tag_id,
+    'post_status' => 'publish',
   );
-  $the_query = new WP_Query($args);
-  while ($the_query->have_posts()) {
-    $the_query->the_post();
 
-    if (!is_sticky() || is_paged()) {
-    }
+  if (!empty($selected_category)) {
+    $args['cat'] = $selected_category;
   }
-  wp_reset_postdata();
-  if ($total > $paged) echo '';
+
+  $query = new WP_Query($args);
+
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+
+      if (!is_sticky() || is_paged()) {
+        Len_index_article();
+      }
+    }
+    wp_reset_postdata();
+  }
+
   die();
 }
+add_action('wp_ajax_Len_Post_Ajax', 'Len_Post_Ajax');
+add_action('wp_ajax_nopriv_Len_Post_Ajax', 'Len_Post_Ajax');

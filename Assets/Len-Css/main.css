@@ -829,3 +829,18 @@ span.page-numbers.current {
     background: #eff2ff;
     color: #868787;
 }
+
+.len-post-ajax-button {
+    background: aliceblue;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+    border-radius: 10px;
+}
+
+.len-post-block-min {
+    border: none;
+    background: #fbfbfb00;
+    font-size: 16px;
+}

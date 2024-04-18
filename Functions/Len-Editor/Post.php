@@ -27,9 +27,9 @@ if (function_exists('add_theme_support')) {
 function Len_Post_Link($url, $post)
 {
     if ($post->post_type == 'diary') {
-        $url = trailingslashit(home_url('/diary/') . $post->ID);
+        $url = trailingslashit(home_url('/diary/archives/') . $post->ID);
     } elseif ($post->post_type == 'photo') {
-        $url = trailingslashit(home_url('/photo/') . $post->ID);
+        $url = trailingslashit(home_url('/photo/archives/') . $post->ID);
     }
     return $url;
 }
@@ -49,10 +49,10 @@ function Len_Rewrite_Rules($rules)
     $new_rules = array();
 
     // 添加 'diary' 文章类型的规则
-    $new_rules['diary/([0-9]+)/?$'] = 'index.php?post_type=diary&p=$matches[1]';
+    $new_rules['diary/archives/([0-9]+)/?$'] = 'index.php?post_type=diary&p=$matches[1]';
 
     // 添加 'photo' 文章类型的规则
-    $new_rules['photo/([0-9]+)/?$'] = 'index.php?post_type=photo&p=$matches[1]';
+    $new_rules['photo/archives/([0-9]+)/?$'] = 'index.php?post_type=photo&p=$matches[1]';
 
     return $new_rules + $rules;
 }
@@ -70,45 +70,6 @@ function Len_Rewrite_Rules_Flush()
     $wp_rewrite->flush_rules();
 }
 add_action('init', 'Len_Rewrite_Rules_Flush');
-
-
-
-
-/**
- * Len_Taxonomies_Diary 函数用于注册自定义分类标签 '日记分类' 并将其关联到自定义文章类型 '日记'。
- *
- * 该函数定义了分类标签的名称、搜索和显示等相关信息，并设置了分类标签为层级结构。
- * 然后，通过 register_taxonomy 函数将 'diary_category' 注册到 'diary' 文章类型。
- *
- * @return void
- */
-function Len_Taxonomies_Diary()
-{
-    // 设置分类标签的显示名称等信息
-    $labels = array(
-        'name'              => '日记分类',
-        'singular_name'     => '日记分类',
-        'search_items'      => '搜索日记分类',
-        'all_items'         => '所有日记分类',
-        'parent_item'       => '该日记分类的上级分类',
-        'parent_item_colon' => '该日记分类的上级分类：',
-        'edit_item'         => '编辑日记分类',
-        'update_item'       => '更新日记分类',
-        'add_new_item'      => '添加新的日记分类',
-        'new_item_name'     => '新日记分类',
-        'menu_name'         => '日记分类',
-    );
-
-    // 设置分类标签的参数
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true,
-    );
-
-    // 注册分类标签 'diary_category' 到 'diary' 文章类型
-    register_taxonomy('diary_category', 'diary', $args);
-}
-add_action('init', 'Len_Taxonomies_Diary', 0);
 
 /**
  * Len_Diary_Post 函数用于注册自定义文章类型 '日记'，并设置相关参数和支持的功能。
@@ -155,42 +116,6 @@ function Len_Diary_Post()
 }
 add_action('init', 'Len_Diary_Post');
 
-
-/**
- * Len_Taxonomies_Photo 函数用于注册自定义分类标签 '相册分类' 并将其关联到自定义文章类型 '相册'。
- *
- * 该函数定义了分类标签的名称、搜索和显示等相关信息，并设置了分类标签为层级结构。
- * 然后，通过 register_taxonomy 函数将 'Photo_category' 注册到 'Photo' 文章类型。
- *
- * @return void
- */
-function Len_Taxonomies_Photo()
-{
-    // 设置分类标签的显示名称等信息
-    $labels = array(
-        'name'              => '相册分类',
-        'singular_name'     => '相册分类',
-        'search_items'      => '搜索相册分类',
-        'all_items'         => '所有相册分类',
-        'parent_item'       => '该相册分类的上级分类',
-        'parent_item_colon' => '该相册分类的上级分类：',
-        'edit_item'         => '编辑相册分类',
-        'update_item'       => '更新相册分类',
-        'add_new_item'      => '添加新的相册分类',
-        'new_item_name'     => '新相册分类',
-        'menu_name'         => '相册分类',
-    );
-
-    // 设置分类标签的参数
-    $args = array(
-        'labels' => $labels,
-        'hierarchical' => true,
-    );
-
-    // 注册分类标签 'Photo_category' 到 'Photo' 文章类型
-    register_taxonomy('photo_category', 'photo', $args);
-}
-add_action('init', 'Len_Taxonomies_Photo', 0);
 
 /**
  * Len_Photo_Post 函数用于注册自定义文章类型 '相册'，并设置相关参数和支持的功能。

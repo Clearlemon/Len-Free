@@ -40,14 +40,16 @@
                 ?>
                 <!-- 幻灯片区块结束 -->
                 <!-- 文章展示模块开始 -->
-                <div class="len-showcase-post-block-main">
+                <div id="pots-ajax-min" class="len-showcase-post-block-main">
 
 
-                    <?php Len_Article_Showcase();
+                    <?php Len_Article_Showcase();   ?>
 
-                    Len_Post_Page() ?>
 
                 </div>
+                <?php
+                Len_Post_Page_Tradition_Ajax();
+                ?>
                 <!-- 文章展示模块结束 -->
             </div>
             <?php

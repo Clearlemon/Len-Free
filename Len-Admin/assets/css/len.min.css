@@ -457,3 +457,10 @@ b.Len_emphasis_fonts {
 .Horizontally>.csf-fieldset>ul>li {
     padding: 0px 5px;
 }
+
+.csf.csf-taxonomy.csf-show-all.csf-onload.csf-taxonomy-add-fields,
+.csf.csf-taxonomy.csf-show-all.csf-onload.csf-taxonomy-edit-fields {
+    background: white;
+    padding: 20px;
+    margin: 0px 25px 0px 3px;
+}

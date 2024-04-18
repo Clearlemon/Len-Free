@@ -1,86 +1,53 @@
-<?php if (!defined('ABSPATH')) {
+<?php
+if (!defined('ABSPATH')) {
   die;
 }
 
-
-
 //分类页设置扩展
-// $prefix = '_prefix_taxonomy_options';
+$prefix = 'Len-category-Module';
 
 
-// CSF::createTaxonomyOptions($prefix, array(
-//   'taxonomy' => 'category',
-// ));
+CSF::createTaxonomyOptions($prefix, array(
+  'taxonomy' => 'category',
+  'data_type' => 'unserialize'
+));
 
-// //
-// // Create a section
-// //
-// CSF::createSection($prefix, array(
-//   'fields' => array(
+CSF::createSection($prefix, array(
+  'fields' => array(
+    array(
+      'id'    => 'Cat_Module_1',
+      'type'  => 'switcher',
+      'title' => '分类Banner图模块开启',
+    ),
+    array(
+      'id'      => 'Cat_Module_2',
+      'type'  => 'upload',
+      'preview' => true,
+      'library'      => 'image',
+      'dependency' => array('Cat_Module_1', '==', true),
+      'title'   => '分类[Banner图片]',
+    ),
+    array(
+      'id'         => 'Cat_Module_3',
+      'type'       => 'button_set',
+      'title'      => '文章置顶选择',
+      'options'    => array(
+        'Cat_Post_Top_1'  => '所有置顶文章',
+        'Cat_Post_Top_2' => '当前分类置顶文章',
+        'Cat_Post_Top_3' => '不置顶',
+      ),
+      'default'    => 'pagination_2'
 
-
-//     array(
-//       'id'    => 'opt-text',
-//       'type'  => 'text',
-//       'title' => 'Text',
-//     ),
-
-//     array(
-//       'id'    => 'opt-textarea',
-//       'type'  => 'textarea',
-//       'title' => 'Textarea',
-//       'help'  => 'The help text of the field.',
-//     ),
-
-//     array(
-//       'id'    => 'opt-upload',
-//       'type'  => 'upload',
-//       'title' => 'Upload',
-//     ),
-
-//     array(
-//       'id'    => 'opt-switcher',
-//       'type'  => 'switcher',
-//       'title' => 'Switcher',
-//       'label' => 'The label text of the switcher.',
-//     ),
-
-//     array(
-//       'id'      => 'opt-color',
-//       'type'    => 'color',
-//       'title'   => 'Color',
-//       'default' => '#3498db',
-//     ),
-
-//     array(
-//       'id'    => 'opt-checkbox',
-//       'type'  => 'checkbox',
-//       'title' => 'Checkbox',
-//       'label' => 'The label text of the checkbox.',
-//     ),
-
-//     array(
-//       'id'      => 'opt-radio',
-//       'type'    => 'radio',
-//       'title'   => 'Radio',
-//       'options' => array(
-//         'yes'   => 'Yes, Please.',
-//         'no'    => 'No, Thank you.',
-//       ),
-//       'default' => 'yes',
-//     ),
-
-//     array(
-//       'id'          => 'opt-select',
-//       'type'        => 'select',
-//       'title'       => 'Select',
-//       'placeholder' => 'Select an option',
-//       'options'     => array(
-//         'opt-1'     => 'Option 1',
-//         'opt-2'     => 'Option 2',
-//         'opt-3'     => 'Option 3',
-//       ),
-//     ),
-
-//   )
-// ));
+    ),
+    array(
+      'id'         => 'Cat_Module_4',
+      'type'       => 'button_set',
+      'title'      => '底部翻页模块展示设置',
+      'options'    => array(
+        'Cat_Page_1'  => '传统分页',
+        'Cat_Page_2' => 'Ajax下拉',
+      ),
+      'default'    => 'Cat_Page_1'
+    ),
+  )
+));

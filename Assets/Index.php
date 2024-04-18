@@ -1,5 +1,5 @@
 <?php
-$var = '2.1.7';
+$var = '2.2.1';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -16,16 +16,18 @@ function Len_scripts_styles()
     global $var;
     //引用JavaScript文件
     if (is_home()) {
+        wp_enqueue_script('Len-swiper', get_template_directory_uri() . '/Assets/Lne-JavaScript/swiper-bundle.min.js', array(), $var, true);
     } elseif (is_search()) {
     } elseif (is_archive()) {
     } elseif (is_single()) {
         wp_enqueue_script('article', get_template_directory_uri() . '/Assets/Lne-JavaScript/article.js', array(), $var, true);
+        wp_enqueue_script('Len-menmes-js', get_template_directory_uri() . '/Assets/Lne-JavaScript/menmes.js', array(), $var, false);
     }
-    wp_enqueue_script('Len-swiper', get_template_directory_uri() . '/Assets/Lne-JavaScript/swiper-bundle.min.js', array(), $var, true);
+
     wp_enqueue_script('main', get_template_directory_uri() . '/Assets/Lne-JavaScript/main.js', array(), $var, true);
 
     wp_enqueue_script('Len-jquery', get_template_directory_uri() . '/Assets/Lne-JavaScript/jquery.js', array(), $var, false);
-    wp_enqueue_script('Len-menmes-js', get_template_directory_uri() . '/Assets/Lne-JavaScript/menmes.js', array(), $var, false);
+
     wp_enqueue_script('fancybox-umd', get_template_directory_uri() . '/Assets/Lne-JavaScript/fancybox.umd.js', array(), $var, true);
     wp_enqueue_script('music-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/music.min.js', array(), $var, true);
     wp_enqueue_script('lazyload-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/lazyload.min.js', array(), $var, true);
@@ -33,6 +35,7 @@ function Len_scripts_styles()
     wp_enqueue_script('message-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/message.min.js', array(), $var, true);
 
     //引用Css样式文件
+    wp_enqueue_style('classify-min', get_template_directory_uri() . '/Assets/Len-Css/classify.css', array(), $var, 'all');
     wp_enqueue_style('fasicon', get_template_directory_uri() . '/Assets/Len-Font/fasicon.css', array(), $var, 'all');
     wp_enqueue_style('Len-header', get_template_directory_uri() . '/Assets/Len-Css/header.css', array(), $var, 'all');
     wp_enqueue_style('fancybox', get_template_directory_uri() . '/Assets/Len-Css/fancybox.css', array(), $var, 'all');

@@ -1,4 +1,5 @@
-window.addEventListener('DOMContentLoaded', () => {
+// 定义初始化函数
+function initializePlugins() {
     Fancybox.bind('[data-fancybox="gallery"]', {
         Toolbar: {
             display: {
@@ -20,8 +21,51 @@ window.addEventListener('DOMContentLoaded', () => {
 
     var mySwiper = new Swiper('#len-swiper', {
         loop: true, // 循环模式选项
-    })
+    });
+}
+
+// 在页面加载完成时执行初始化函数
+document.addEventListener('DOMContentLoaded', function () {
+    initializePlugins();
 });
+
+// 定义点击加载更多按钮时执行的函数
+jQuery(document).ready(function ($) {
+    var button = $('#len-ajax-post'); // 选中按钮元素
+    var page = 1; // 初始页码
+    var category = parseInt(button.attr('category-id')); // 分类，默认为空
+    var showcase = parseInt(button.attr('showcase')); // 获取按钮属性值
+
+
+    // 点击加载更多按钮时执行的函数
+    $('#len-ajax-post').click(function () {
+        page++; // 增加页码
+
+        // AJAX 请求
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                category: category, // 分类（可选）
+                posts_per_page: showcase, // 每页文章数量
+                paged: page // 当前页码
+            },
+            success: function (response) {
+                // 在 #pots-ajax-min 元素中追加返回的文章内容
+                $('#pots-ajax-min').append(response);
+
+                // 每次加载更多后重新初始化插件
+                initializePlugins();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+});
+
+
 
 
 //日期JS
@@ -199,3 +243,43 @@ toggleButtons.forEach(function (button) {
 });
 
 
+//文章AJAX加载
+// function loadPage(pageNumber) {
+//     $.ajax({
+//         url: '/wp-admin/admin-ajax.php', // AJAX 请求的 URL
+//         type: 'POST',
+//         data: {
+//             action: 'Len_Post_Ajax', // AJAX 处理函数的名称
+//             paged: pageNumber // 当前页码
+//         },
+//         success: function (response) {
+//             // 将 AJAX 返回的文章列表 HTML 替换到页面中
+//             $('#pots-ajax-min').html(response);
+//         },
+//         error: function (xhr, status, error) {
+//             console.error('AJAX Error:', error);
+//         }
+//     });
+//     $.ajax({
+//         url: '/wp-admin/admin-ajax.php', // 当前页面 URL
+//         type: 'POST',
+//         data: { 'paged': pageNumber }, // 向服务器发送的数据，包括页码
+//         success: function (response) {
+//             // 将 AJAX 返回的内容替换到页面中
+//             var newContent = $(response).find('.len_post_page_block_all');
+//             $('.len_post_page_block_all').replaceWith(newContent);
+//         },
+//         error: function (xhr, status, error) {
+//             console.error('AJAX Error:', error);
+//             initializePlugins();
+//         }
+//     });
+// }
+
+
+// $(document).on('click', '.len_post_page_block_all a.page-numbers', function (event) {
+//     event.preventDefault(); // 阻止默认行为
+
+//     var pageNumber = $(this).attr('href').split('/').pop(); // 获取页码
+//     loadPage(pageNumber); // 加载页面
+// });

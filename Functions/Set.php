@@ -17,6 +17,29 @@ if (!function_exists('_len')) {
 }
 
 /**
+ * 获取指定分类的指定元数据值
+ *
+ * @param int $cat_id 要获取元数据的分类ID
+ * @param string $key 要获取的元数据键名
+ * @param bool $bool 是否返回单个值或数组（默认为true，返回单个值）
+ * @return mixed 返回分类的指定元数据值，如果未找到则返回false
+ */
+if (!function_exists('Len_Classify_Module')) {
+    function Len_Classify_Module($cat_id = 0, $key = '', $bool = true)
+    {
+        // 检查 $cat_id 和 $key 是否为空
+        if (empty($cat_id) || empty($key)) {
+            return false;
+        }
+
+        // 获取分类的元数据
+        $meta = get_term_meta($cat_id, $key, $bool);
+        return $meta;
+    }
+}
+
+
+/**
  * Len 主题自定义获取文章元数据的函数 _Len_Post_Module
  *
  * 这段代码定义了一个名为 _Len_Post_Module 的函数，用于获取当前文章的自定义元数据。
@@ -66,11 +89,11 @@ if (!function_exists('Len_Post_Module')) {
         elseif ($Len_Post_Module_Thumbnail_Sidebars_key !== '' && isset($Len_Post_Module_Thumbnail_Sidebars[$Len_Post_Module_Thumbnail_Sidebars_key])) {
             return $Len_Post_Module_Thumbnail_Sidebars[$Len_Post_Module_Thumbnail_Sidebars_key];
         }
-        // 如果给定了 $Len_Post_Module_Switcher_Sidebars_key 并且存在于 'Len_Post_Module_Switcher_Sidebars' 中，返回对应值 
+        // 如果给定了 $Len_Post_Module_Switcher_Sidebars_key 并且存在于 'Len_Post_Module_Switcher_Sidebars' 中，返回对应值
         elseif ($Len_Post_Module_Switcher_Sidebars_key !== '' && isset($Len_Post_Module_Switcher_Sidebars[$Len_Post_Module_Switcher_Sidebars_key])) {
             return $Len_Post_Module_Switcher_Sidebars[$Len_Post_Module_Switcher_Sidebars_key];
         }
-        // 如果给定了 $Len_Post_Module_Music_key 并且存在于 'Len_Post_Module_Music' 中，返回对应值 
+        // 如果给定了 $Len_Post_Module_Music_key 并且存在于 'Len_Post_Module_Music' 中，返回对应值
         elseif ($Len_Post_Module_Music_key !== '' && isset($Len_Post_Module_Music[$Len_Post_Module_Music_key])) {
             return $Len_Post_Module_Music[$Len_Post_Module_Music_key];
         }
