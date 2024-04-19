@@ -11,7 +11,7 @@ function Tag_Banner_Module($catid = '')
     <img class="len-cat-card-back" src="<?php echo Len_Classify_Module($catid, 'Cat_Module_2', true); ?>" alt="">
     <div class="len-cat-card-block">
       <div class="len-cat-min-blcok">
-        <!-- <i class="fa fa-address-book" aria-hidden="true"></i> -->
+        <i class="fa fa-address-book" aria-hidden="true"></i>
         <svg class="len-cat-card-icon" aria-hidden="true">
           <use xlink:href="#icon-mianxingningmeng"></use>
         </svg>

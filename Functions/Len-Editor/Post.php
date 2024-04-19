@@ -183,7 +183,7 @@ function Len_Photo_Post()
         'menu_position' => 5,
         'supports'      => array('title', 'editor', 'thumbnail', 'author', 'tags'),
         'has_archive'   => false,
-        'taxonomies'    => array('post_tag', 'photo_category'), // 添加 'post_tag' 到支持的分类法中
+        'taxonomies'    => array('photo_tag', 'photo_category'),
         'rewrite'       => array('with_front' => false, 'slug' => 'photo'),
         'capability_type' => 'post',
         'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/Photo.svg',
@@ -218,7 +218,7 @@ function Len_Photo_Tag()
         'show_ui'           => true,
         'show_admin_column' => true,
         'query_var'         => true,
-        'rewrite'           => array('slug' => 'diary-tag'),
+        'rewrite'           => array('slug' => 'photo-tag'),
     );
 
     register_taxonomy('photo_tag', array('photo'), $args);
@@ -308,4 +308,159 @@ function Parse_Post_Content_IMG($matches)
 
     // 返回修改后的img标签
     return $new_img_tag;
+}
+
+if (!function_exists('Len_All_Icons')) {
+
+    function Len_All_Icons($icons)
+    {
+
+        $icons[]  = array(
+            'title' => 'Len主题自用的SVG',
+            'icons' => array(
+                'icon-gitee',
+                'icon-beianxinxi-ICP-gonganbeian',
+                'icon-biaoqingbao1',
+                'icon-zantianchongxiao',
+                'icon-icon-plq',
+                'icon-biaoqian1',
+                'icon-dian',
+                'icon-tupian',
+                'icon-arrow_left',
+                'icon-arrow_right',
+                'icon-cuowu',
+                'icon-weixin',
+                'icon-weibo',
+                'icon-QQ',
+                'icon-youxiang',
+                'icon-moe-beian',
+                'icon-xieyi',
+                'icon-xieyi',
+                'icon-guanyuwomen',
+                'icon-beian',
+                'icon-wordpress',
+                'icon-mianxingningmeng',
+                'icon-dianzan',
+                'icon-toubi',
+                'icon-fenxiang',
+                'icon-xihuan',
+                'icon-liulan',
+                'icon-pinglun',
+                'icon-shijianzhouqi',
+                'icon-Rss',
+                'icon-github',
+                'icon-set-up-dot',
+                'icon-biaoqian',
+                'icon-xiangce',
+                'icon-guidang',
+                'icon-sort',
+                'icon-shouye5-copy',
+                'icon-kantanriji',
+                //占位SVG
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                'icon-',
+                //占位SVG开始
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                'icon-Other-18',
+                //占位SVG结束
+                //第一版SVG
+                'icon-kefuguanli',
+                'icon-laodonghetong',
+                'icon-kaoqinguanli',
+                'icon-kaizhibaoxiao',
+                'icon-guanlishezhi',
+                'icon-gongzuorenwu',
+                'icon-huiyuanshenqing',
+                'icon-guanyuwomen1',
+                'icon-gongzimingxi',
+                'icon-gengduoyingyong',
+                'icon-gongzuorizhi',
+                'icon-dianzimingpian',
+                'icon-gongzichaxun',
+                'icon-bukashenqing',
+                'icon-dakaguanli',
+                'icon-chuchashenqing',
+                //第二版SVG
+                'icon-zhujiaotongji',
+                'icon-zhujiaoguanli',
+                'icon-yuezhangdan',
+                'icon-zhangdantongji_1',
+                'icon-youhuiquanfenlei',
+                'icon-jiejiari',
+                'icon-tongjifenxi',
+                'icon-shangpinguanli',
+                'icon-benyueyingshoupaihang',
+                'icon-qiuzhuoshezhi',
+                'icon-zhujiaoticheng',
+                'icon-shangpintongji',
+                'icon-huiyuanliebiao',
+                'icon-jiaobanjilu',
+                'icon-huiyuanpaihang',
+                'icon-chongzhijilu',
+                //第三版SVG
+                'icon-anquan',
+                'icon-yun',
+                'icon-bofang',
+                'icon-liebiao',
+                'icon-yanjing',
+                'icon-xiaoxi',
+                'icon-dianzan1',
+                'icon-dingwei',
+                'icon-gengduo',
+                'icon-shoucang',
+                'icon-shezhi',
+                'icon-shijian',
+                'icon-sousuo',
+                'icon-faxian',
+                'icon-xinxi',
+                'icon-shanchu',
+                //第四版SVG
+                'icon-qiyexiangce',
+                'icon-gongsigonggao',
+                'icon-kaoqinguanli1',
+                'icon-qiyebumen',
+                'icon-lizhishenqing',
+                'icon-kefuguanli1',
+                'icon-dianzimingpian1',
+                'icon-liuchengshenpi',
+                'icon-guanlishezhi1',
+                'icon-huiyuanshenqing1',
+                'icon-gongzuorenwu1',
+                'icon-gongzimingxi1',
+                'icon-gengduoyingyong1',
+                'icon-guanyuwomen2',
+                'icon-gongzuorizhi1',
+                'icon-chuchashenqing1',
+            ),
+        );
+
+        //
+        // Move custom icons to top of the list.
+        $icons = array_reverse($icons);
+
+        return $icons;
+    }
+    add_filter('csf_field_icon_add_icons', 'Len_All_Icons');
 }

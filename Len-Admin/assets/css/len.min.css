@@ -464,3 +464,11 @@ b.Len_emphasis_fonts {
     padding: 20px;
     margin: 0px 25px 0px 3px;
 }
+
+.len-admin-icon {
+    width: 1em;
+    height: 35px;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}

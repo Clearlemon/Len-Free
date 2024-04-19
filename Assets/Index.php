@@ -1,12 +1,13 @@
 <?php
-$var = '2.4.3';
+$var = '2.5.0';
 function enqueue_custom_admin_styles()
 {
     global $var;
     //引用主题的设置样式文件
     wp_enqueue_style('Len-min', CSF::include_plugin_url('assets/css/len.min.css'), array(), $var, 'all');
     wp_enqueue_script('len-min', CSF::include_plugin_url('assets/js/len.min.js'), array(), $var, 'all');
-    wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4398276_fd8voicbj9.js', array(), $var, true);
+    wp_enqueue_script('ali-set-min', '//at.alicdn.com/t/c/font_4398276_fd8voicbj9.js', array(), $var, true);
+    wp_enqueue_script('ali-svg-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/alisvg.min.js', array(), $var, true);
 }
 add_action('admin_enqueue_scripts', 'enqueue_custom_admin_styles');
 
@@ -59,7 +60,7 @@ function Len_scripts_styles()
     wp_enqueue_style('article-min', get_template_directory_uri() . '/Assets/Len-Css/article.min.css', array(), $var, 'all');
 
     //图标引用
-    wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4353348_xzwrx72u9bc.js', array(), $var, true);
+    wp_enqueue_script('ali-svg-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/alisvg.min.js', array(), $var, true);
     add_action('wp_footer', 'Len_footer_content', 20);
 }
 add_action('wp_enqueue_scripts', 'Len_scripts_styles');
