@@ -1,8 +1,6 @@
 <?php
-
-// PHP代码（在functions.php中）
-add_action('wp_ajax_cloadmore', 'Len_Commenst_Ajax'); // wp_ajax_{action}
-add_action('wp_ajax_nopriv_cloadmore', 'Len_Commenst_Ajax'); // wp_ajax_nopriv_{action}
+add_action('wp_ajax_cloadmore', 'Len_Commenst_Ajax');
+add_action('wp_ajax_nopriv_cloadmore', 'Len_Commenst_Ajax');
 
 function Len_Commenst_Ajax()
 {

@@ -49,5 +49,11 @@ CSF::createSection($prefix, array(
       ),
       'default'    => 'Cat_Page_1'
     ),
+    array(
+      'id'    => 'Cat_Module_5',
+      'type'  => 'icon',
+      'title' => 'Banner图标',
+    ),
+
   )
 ));

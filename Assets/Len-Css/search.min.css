@@ -1,0 +1,13 @@
+/*搜索页Banner*/
+.len-search-title {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 14px;
+  backdrop-filter: saturate(200%) blur(30px);
+  background-color: hsl(81deg 91% 82%);
+  border-radius: 15px;
+}
+
+.len-post-block-min>b {
+  display: none;
+}

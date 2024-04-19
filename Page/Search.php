@@ -28,17 +28,7 @@
                  */
                 require_once get_theme_file_path('Page/Len-Block/Nav.php');
                 ?>
-                <!-- 文章顶部导航区块Banner开始 -->
-                <!-- 幻灯片区块开始 -->
-                <?php
-                /**
-                 * 引用幻灯片样式
-                 * require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
-                 * 幻灯片模块样式文件目录
-                 */
-                require_once get_theme_file_path('Page/Len-Slide/Slide.php');
-                ?>
-                <!-- 幻灯片区块结束 -->
+                <?php Len_Search_Banner() ?>
                 <!-- 文章展示模块开始 -->
                 <div id="pots-ajax-min" class="len-showcase-post-block-main">
 
@@ -48,6 +38,7 @@
 
                 </div>
                 <?php
+
                 Len_Post_Page_Tradition_Ajax();
                 ?>
                 <!-- 文章展示模块结束 -->

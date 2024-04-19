@@ -1,4 +1,19 @@
-// 定义初始化函数
+document.addEventListener('DOMContentLoaded', function () {
+    // 检查页面中是否存在具有指定ID的元素
+    var swiperElement = document.getElementById('len-swiper');
+
+    // 如果存在，则创建Swiper实例
+    if (swiperElement) {
+        var mySwiper = new Swiper('#len-swiper', {
+            loop: true, // 循环模式选项
+            // 其他Swiper选项...
+        });
+    }
+});
+
+
+
+
 function initializePlugins() {
     Fancybox.bind('[data-fancybox="gallery"]', {
         Toolbar: {
@@ -14,13 +29,8 @@ function initializePlugins() {
             },
         },
     });
-
     var lazyload = new LazyLoad({
         // 可选配置项
-    });
-
-    var mySwiper = new Swiper('#len-swiper', {
-        loop: true, // 循环模式选项
     });
 }
 
@@ -31,15 +41,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // 定义点击加载更多按钮时执行的函数
 jQuery(document).ready(function ($) {
-    var button = $('#len-ajax-post'); // 选中按钮元素
-    var page = 1; // 初始页码
-    var category = parseInt(button.attr('category-id')); // 分类，默认为空
-    var showcase = parseInt(button.attr('showcase')); // 获取按钮属性值
+    var categoryButton = $('#len-ajax-post-category'); // 分类页按钮
+    var tagButton = $('#len-ajax-post-tag'); // 标签页按钮
+    var searchButton = $('#len-ajax-post-search'); // 标签页按钮
 
-
-    // 点击加载更多按钮时执行的函数
-    $('#len-ajax-post').click(function () {
-        page++; // 增加页码
+    // 点击分类页加载更多按钮时执行的函数
+    categoryButton.click(function () {
+        var page = parseInt($(this).attr('page')) + 1; // 增加页码
+        var category = parseInt($(this).attr('category-id')); // 获取分类 ID
+        var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
 
         // AJAX 请求
         $.ajax({
@@ -47,13 +57,78 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             data: {
                 action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
-                category: category, // 分类（可选）
+                category: category,
                 posts_per_page: showcase, // 每页文章数量
                 paged: page // 当前页码
             },
             success: function (response) {
                 // 在 #pots-ajax-min 元素中追加返回的文章内容
                 $('#pots-ajax-min').append(response);
+
+                // 更新按钮的页码属性
+                categoryButton.attr('page', page);
+
+                // 每次加载更多后重新初始化插件
+                initializePlugins();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+
+    // 点击标签页加载更多按钮时执行的函数
+    tagButton.click(function () {
+        var page = parseInt($(this).attr('page')) + 1; // 增加页码
+        var tag = parseInt($(this).attr('tag-id')); // 获取标签 ID
+        var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
+
+        // AJAX 请求
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                tag: tag,
+                posts_per_page: showcase, // 每页文章数量
+                paged: page // 当前页码
+            },
+            success: function (response) {
+                // 在 #pots-ajax-min 元素中追加返回的文章内容
+                $('#pots-ajax-min').append(response);
+
+                // 更新按钮的页码属性
+                tagButton.attr('page', page);
+
+                // 每次加载更多后重新初始化插件
+                initializePlugins();
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+    searchButton.click(function () {
+        var page = parseInt($(this).attr('page')) + 1; // 增加页码
+        var searchKeyword = $(this).attr('search-key'); // 获取搜索关键词
+        var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
+
+        // AJAX 请求
+        $.ajax({
+            url: '/wp-admin/admin-ajax.php',
+            type: 'POST',
+            data: {
+                action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                search: searchKeyword, // 使用正确的搜索关键词
+                posts_per_page: showcase, // 每页文章数量
+                paged: page // 当前页码
+            },
+            success: function (response) {
+                // 在 #pots-ajax-min 元素中追加返回的文章内容
+                $('#pots-ajax-min').append(response);
+
+                // 更新按钮的页码属性
+                searchButton.attr('page', page);
 
                 // 每次加载更多后重新初始化插件
                 initializePlugins();
@@ -64,6 +139,7 @@ jQuery(document).ready(function ($) {
         });
     });
 });
+
 
 
 

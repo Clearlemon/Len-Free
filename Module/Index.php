@@ -11,7 +11,8 @@ function Len_Article_Showcase()
             $args = array(
                 'posts_per_page' => -1,
                 'post_type' => 'post',
-                'post__in'  => get_option('sticky_posts')
+                'post__in'  => get_option('sticky_posts'),
+                'post_status' => 'publish', // 只查询发布状态的文章
             );
             $sticky_posts = new WP_Query($args);
 
@@ -38,189 +39,160 @@ function Len_Article_Showcase()
         }
     }
 
-
-    // if (is_category()) {
-    //     // 获取当前分类页的分类对象
-    //     $category = get_queried_object();
-
-    //     // 获取当前分类页的置顶文章ID
-    //     $sticky_posts = get_option('sticky_posts');
-
-    //     // 查询置顶文章
-    //     $sticky_args = array(
-    //         'post_type' => 'post',
-    //         'posts_per_page' => -1,
-    //         'cat' => $category->term_id,
-    //         'post__in' => $sticky_posts, // 只查询置顶文章
-    //     );
-
-    //     $sticky_query = new WP_Query($sticky_args);
-
-    //     // 输出置顶文章
-    //     if ($sticky_query->have_posts()) {
-    //         while ($sticky_query->have_posts()) {
-    //             $sticky_query->the_post();
-    //             // 替换成您的文章输出函数
-    //             Len_index_article();
-    //         }
-    //     }
-
-    //     // 查询普通文章
-    //     $args = array(
-    //         'post_type' => 'post',
-    //         'posts_per_page' => -1,
-    //         'cat' => $category->term_id,
-    //         'post__not_in' => $sticky_posts, // 排除置顶文章
-    //     );
-
-    //     $query = new WP_Query($args);
-
-    //     // 输出普通文章
-    //     if ($query->have_posts()) {
-    //         while ($query->have_posts()) {
-    //             $query->the_post();
-    //             // 替换成您的文章输出函数
-    //             Len_index_article();
-    //         }
-    //     }
-
-    //     wp_reset_postdata();
-    // }
-
+    //判断当前分类页文章输出
     if (is_category()) {
-        // 获取当前分类页的分类对象
+        // 输出置顶文章
+
+        $sticky_post_count = 0; // 记录已输出的置顶文章数量
         $category = get_queried_object();
-
-        // 获取当前分类页的置顶文章ID
-        $sticky_posts = get_option('sticky_posts');
-
-
         $Cat_Module_3 =  Len_Classify_Module($category->term_id, 'Cat_Module_3', true);
-        if ($Cat_Module_3 == 'Cat_Post_Top_2') {
-            // 查询当前分类页的置顶文章
-            $sticky_args = array(
-                'post_type' => 'post',
+        if ($Cat_Module_3 == 'Cat_Post_Top_1') {
+
+            $args = array(
                 'posts_per_page' => -1,
-                'cat' => $category->term_id,
-                'post__in' => $sticky_posts, // 只查询置顶文章
+                'post_type' => 'post',
+                'post__in'  => get_option('sticky_posts'),
                 'post_status' => 'publish', // 只查询发布状态的文章
             );
+            $sticky_posts = new WP_Query($args);
 
-            $sticky_query = new WP_Query($sticky_args);
-
-            // 输出当前分类页的置顶文章
-            while ($sticky_query->have_posts()) {
-                $sticky_query->the_post();
-                // 替换成您的文章输出函数
-                Len_index_article();
-            }
-        } elseif ($Cat_Module_3 == 'Cat_Post_Top_1') {
-            $sticky_args = array(
-                'post_type' => 'post',
+            while ($sticky_posts->have_posts()) : $sticky_posts->the_post();
+                Len_index_article(); // 替换成您的文章输出函数
+                $sticky_post_count++; // 每输出一篇置顶文章，计数器加一
+            endwhile;
+        } elseif ($Cat_Module_3 == 'Cat_Post_Top_2') {
+            $args = array(
                 'posts_per_page' => -1,
-                'post__in' => get_option('sticky_posts'), // 只查询置顶文章
+                'post_type' => 'post',
+                'post__in'  => get_option('sticky_posts'),
+                'post_status' => 'publish', // 只查询发布状态的文章
+                'category__in' => array($category->term_id) // 仅限当前分类
             );
+            $sticky_posts = new WP_Query($args);
 
-            $sticky_query = new WP_Query($sticky_args);
+            while ($sticky_posts->have_posts()) : $sticky_posts->the_post();
 
-            // 输出所有分类下的置顶文章
-            while ($sticky_query->have_posts()) {
-                $sticky_query->the_post();
-                // 替换成您的文章输出函数
-                Len_index_article();
-            }
-        }
-        // 查询当前分类页的普通文章，排除已经输出的置顶文章
-        $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => -1,
-            'cat' => $category->term_id,
-            'post__not_in' => $sticky_posts, // 排除置顶文章
-            'post_status' => 'publish', // 只查询发布状态的文章
-        );
-
-        $query = new WP_Query($args);
-
-        // 输出当前分类页的普通文章
-        $posts_per_page = get_option('posts_per_page'); // 获取每页文章数量
-        $normal_post_count = $posts_per_page - $sticky_query->post_count; // 计算需要输出的普通文章数量
-
-        while ($query->have_posts() && $normal_post_count > 0) {
-            $query->the_post();
-            // 替换成您的文章输出函数
-            Len_index_article();
-            $normal_post_count--; // 每输出一篇普通文章，计数器减一
+                Len_index_article(); // 替换成您的文章输出函数
+                $sticky_post_count++; // 每输出一篇置顶文章，计数器加一
+            endwhile;
         }
 
         wp_reset_postdata();
+        // 输出普通文章
+        $posts_per_page = get_option('posts_per_page'); // 获取每页文章数量
+        $normal_post_count = $posts_per_page - $sticky_post_count; // 计算需要输出的普通文章数量
+        $post = $normal_post_count + 1;
+        while (have_posts() && $post > 0) {
+            the_post();
+
+            if (is_sticky()) {
+                continue;
+            }
+
+            Len_index_article(); // 替换成您的文章输出函数
+            $post--; // 每输出一篇普通文章，计数器减一
+        }
     }
 
+    //输出当前标签页的所有文章
     if (is_tag()) {
         // 获取当前标签页的标签对象
+        $sticky_post_count = 0; // 记录已输出的置顶文章数量
         $tag = get_queried_object();
-
-        // 获取当前标签页的置顶文章ID
-        $sticky_posts = get_option('sticky_posts');
-
         $Cat_Module_3 =  Len_Classify_Module($tag->term_id, 'Cat_Module_3', true);
         if ($Cat_Module_3 == 'Cat_Post_Top_2') {
-            // 查询当前分类页的置顶文章
-            $sticky_args = array(
-                'post_type' => 'post',
+            $args = array(
                 'posts_per_page' => -1,
+                'post_type' => 'post',
                 'tag_id' => $tag->term_id,
-                'post__in' => $sticky_posts, // 只查询置顶文章
+                'post__in'  => get_option('sticky_posts'),
                 'post_status' => 'publish', // 只查询发布状态的文章
             );
+            $sticky_posts = new WP_Query($args);
 
-            $sticky_query = new WP_Query($sticky_args);
-
-            // 输出当前分类页的置顶文章
-            while ($sticky_query->have_posts()) {
-                $sticky_query->the_post();
-                // 替换成您的文章输出函数
-                Len_index_article();
-            }
+            while ($sticky_posts->have_posts()) : $sticky_posts->the_post();
+                Len_index_article(); // 替换成您的文章输出函数
+                $sticky_post_count++; // 每输出一篇置顶文章，计数器加一
+            endwhile;
         } elseif ($Cat_Module_3 == 'Cat_Post_Top_1') {
-            $sticky_args = array(
-                'post_type' => 'post',
+            $args = array(
                 'posts_per_page' => -1,
-                'tag_id' => $tag->term_id,
-                'post__in' => get_option('sticky_posts'), // 只查询置顶文章
+                'post_type' => 'post',
+                'post__in'  => get_option('sticky_posts'),
+                'post_status' => 'publish', // 只查询发布状态的文章
             );
+            $sticky_posts = new WP_Query($args);
 
-            $sticky_query = new WP_Query($sticky_args);
-
-            // 输出所有分类下的置顶文章
-            while ($sticky_query->have_posts()) {
-                $sticky_query->the_post();
-                // 替换成您的文章输出函数
-                Len_index_article();
-            }
-        }
-        // 查询当前分类页的普通文章，排除已经输出的置顶文章
-        $args = array(
-            'post_type' => 'post',
-            'posts_per_page' => -1,
-            'tag_id' => $tag->term_id,
-            'post__not_in' => $sticky_posts, // 排除置顶文章
-            'post_status' => 'publish', // 只查询发布状态的文章
-        );
-
-        $query = new WP_Query($args);
-
-        // 输出当前分类页的普通文章
-        $posts_per_page = get_option('posts_per_page'); // 获取每页文章数量
-        $normal_post_count = $posts_per_page - $sticky_query->post_count; // 计算需要输出的普通文章数量
-
-        while ($query->have_posts() && $normal_post_count > 0) {
-            $query->the_post();
-            // 替换成您的文章输出函数
-            Len_index_article();
-            $normal_post_count--; // 每输出一篇普通文章，计数器减一
+            while ($sticky_posts->have_posts()) : $sticky_posts->the_post();
+                Len_index_article(); // 替换成您的文章输出函数
+                $sticky_post_count++; // 每输出一篇置顶文章，计数器加一
+            endwhile;
         }
 
         wp_reset_postdata();
+        // 输出普通文章
+        $posts_per_page = get_option('posts_per_page'); // 获取每页文章数量
+        $normal_post_count = $posts_per_page - $sticky_post_count; // 计算需要输出的普通文章数量
+        $post_tag = $normal_post_count + 1;
+        while (have_posts() && $post_tag > 0) {
+            the_post();
+
+            if (is_sticky()) {
+                continue;
+            }
+
+            Len_index_article(); // 替换成您的文章输出函数
+            $post_tag--; // 每输出一篇普通文章，计数器减一
+        }
+    }
+
+    if (is_search()) {
+        $sticky_post_count = 0; // 记录已输出的置顶文章数量
+
+        // 获取搜索关键词
+        $search_query = get_search_query();
+
+        // 构建查询参数
+        $args = array(
+            'post_type' => 'post',
+            'posts_per_page' => -1,
+            's' => $search_query, // 设置搜索关键词
+            'post_status' => 'publish', // 只查询发布状态的文章
+        );
+
+        // 如果有置顶文章
+        if (is_sticky()) {
+            $args['post__in'] = get_option('sticky_posts');
+        }
+
+        $query = new WP_Query($args);
+
+        // 输出搜索结果
+        while ($query->have_posts()) {
+            $query->the_post();
+
+            if (is_sticky()) {
+                Len_index_article(); // 替换成您的文章输出函数
+                $sticky_post_count++; // 每输出一篇置顶文章，计数器加一
+            }
+        }
+
+        wp_reset_postdata();
+
+        // 输出普通文章
+        $posts_per_page = get_option('posts_per_page'); // 获取每页文章数量
+        $normal_post_count = $posts_per_page - $sticky_post_count; // 计算需要输出的普通文章数量
+        $post_tag = $normal_post_count + 1;
+        while (have_posts() && $post_tag > 0) {
+            the_post();
+
+            if (is_sticky()) {
+                continue;
+            }
+
+            Len_index_article(); // 替换成您的文章输出函数
+            $post_tag--; // 每输出一篇普通文章，计数器减一
+        }
     }
 }
 
@@ -365,13 +337,26 @@ function Len_Post_Page()
     $current_page = max(1, get_query_var('paged'));
     $total_pages = $wp_query->max_num_pages;
 
-
     // 获取首页链接
     $home_url = esc_url(home_url('/'));
 
+    // 获取当前页面链接
+    $current_page_link = '';
+    if (is_home()) {
+        $current_page_link = $home_url;
+    } elseif (is_category() || is_tag()) {
+        $current_page_link = esc_url(get_term_link(get_queried_object()));
+    } elseif (is_search()) {
+        $search_keyword = get_search_query();
+        // 生成搜索页链接，包含搜索关键词
+        $current_page_link = esc_url(home_url('/')) . '?s=' . urlencode($search_keyword);
+    } else {
+        $current_page_link = esc_url(get_pagenum_link($current_page));
+    }
+
     // 添加第一页和最后一页链接
-    $first_page_link = esc_url(get_pagenum_link(1));
-    $last_page_link = esc_url(add_query_arg('paged', $wp_query->max_num_pages, $home_url));
+    $first_page_link = esc_url(add_query_arg('paged', 1, $current_page_link));
+    $last_page_link = esc_url(add_query_arg('paged', $total_pages, $current_page_link));
 
     // 获取分页链接
     $paginate_links = paginate_links(array(
@@ -398,22 +383,40 @@ function Len_Post_Page()
     }
 }
 
+
 function Len_Post_Page_Ajax()
 {
-    $current_category = get_queried_object();
+    $current = get_queried_object();
     global $wp_query;
-    if (is_category() && !empty($current_category)) {
-        $category_id = $current_category->term_id;
+    if (is_category() && !empty($current)) {
+        $category_id = $current->term_id;
         $category =  $category_id;
     } else {
         $category = '';
     }
 
+    if (is_tag() && !empty($current)) {
+        $tag_id = $current->term_id;
+        $tag =  $tag_id;
+    } else {
+        $tag = '';
+    }
+    $search_number = get_search_query();
     $posts_per_page = get_option('posts_per_page');
     $current_page = max(1, get_query_var('paged'));
     $total_pages = $wp_query->max_num_pages;
-    if ($total_pages > 1) {
-        echo '<div  class="len-post-ajax-button"><button page="' . $current_page . '" category-id="' . $category . '" showcase="' . $posts_per_page . '" id="len-ajax-post" class="len-post-block-min">加载更多</button></div>';
+    if (is_tag()) {
+        if ($total_pages > 1) {
+            echo '<div  class="len-post-ajax-button"><button page="' . $current_page . '" tag-id="' . $tag . '" showcase="' . $posts_per_page . '" id="len-ajax-post-tag" class="len-post-block-min">加载更多</button></div>';
+        }
+    } elseif (is_category()) {
+        if ($total_pages > 1) {
+            echo '<div  class="len-post-ajax-button"><button page="' . $current_page . '"  category-id="' . $category . '" showcase="' . $posts_per_page . '" id="len-ajax-post-category" class="len-post-block-min">加载更多</button></div>';
+        }
+    } elseif (is_search()) {
+        if ($total_pages > 1) {
+            echo '<div  class="len-post-ajax-button"><button page="' . $current_page . '" search-key="' . $search_number . '" showcase="' . $posts_per_page . '" id="len-ajax-post-search" class="len-post-block-min">加载更多</button></div>';
+        }
     }
 }
 
@@ -432,6 +435,21 @@ function Len_Post_Page_Tradition_Ajax($catid = '')
         if ($Cat_Module_4 == 'Cat_Page_1') {
             Len_Post_Page();
         } elseif ($Cat_Module_4 == 'Cat_Page_2') {
+            Len_Post_Page_Ajax();
+        }
+    } elseif (is_tag()) {
+        $Cat_Module_4 = Len_Classify_Module($catid->term_id, 'Cat_Module_4', true);
+        $Cat_Module_4 = $Cat_Module_4 ? $Cat_Module_4 : 'Cat_Page_1';
+        if ($Cat_Module_4 == 'Cat_Page_1') {
+            Len_Post_Page();
+        } elseif ($Cat_Module_4 == 'Cat_Page_2') {
+            Len_Post_Page_Ajax();
+        }
+    } elseif (is_search()) {
+        $Home_Module_2 = _len('Home_Module_2');
+        if ($Home_Module_2 == 'pagination_1') {
+            Len_Post_Page();
+        } elseif ($Home_Module_2 == 'pagination_2') {
             Len_Post_Page_Ajax();
         }
     }

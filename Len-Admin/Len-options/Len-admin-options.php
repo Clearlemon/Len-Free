@@ -230,7 +230,7 @@ if (class_exists('CSF')) {
       array(
         'id'         => 'Home_Module_2',
         'type'       => 'button_set',
-        'title'      => '底部翻页模块展示设置',
+        'title'      => '底部翻页模块展示设置【包含搜索页】',
         'options'    => array(
           'pagination_1'  => '传统分页',
           'pagination_2' => 'Ajax下拉',
@@ -496,7 +496,7 @@ if (class_exists('CSF')) {
         'default'    => 'pagination_2',
         'dependency' => array('Post_Comments_Module_1', '==', true),
       ),
-      
+
     )
   ));
   CSF::createSection($Module, array(

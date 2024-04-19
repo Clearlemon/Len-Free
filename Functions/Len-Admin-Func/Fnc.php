@@ -38,6 +38,7 @@ $files = array(
      * 'Module/Slide.php', | 头部幻灯片模块
      * 'Module/Nav.php', | 头部导航栏模块
      * 'Module/Classify.php', | 分类页模块-
+     * 'Module/Tag.php', | 标签页模块-
      */
     'Module/Single.php',
     'Module/Comments.php',
@@ -46,6 +47,8 @@ $files = array(
     'Module/Slide.php',
     'Module/Nav.php',
     'Module/Classify.php',
+    'Module/Tag.php',
+    'Module/Search.php',
     /**
  * 此引用链接是用户自定义设置
  * 如想自定义设置和主题则删除链接的注释

@@ -1,7 +1,9 @@
 <?php
 function Len_Post_Ajax()
 {
-  $selected_category = $_POST['category'];
+  $selected_category = isset($_POST['category']) ? $_POST['category'] : '';
+  $selected_tag = isset($_POST['tag']) ? $_POST['tag'] : '';
+  $selected_search = isset($_POST['search']) ? $_POST['search'] : '';
   $posts_per_page = $_POST['posts_per_page'];
   $paged = $_POST['paged'];
 
@@ -17,6 +19,12 @@ function Len_Post_Ajax()
     $args['cat'] = $selected_category;
   }
 
+  if (!empty($selected_tag)) {
+    $args['tag__in'] = $selected_tag;
+  }
+  if (!empty($selected_search)) {
+    $args['s'] = $selected_search;
+  }
   $query = new WP_Query($args);
 
   if ($query->have_posts()) {

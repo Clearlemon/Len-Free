@@ -105,7 +105,7 @@ function Len_Diary_Post()
         'menu_position' => 5,
         'supports'      => array('title', 'editor', 'thumbnail', 'author', 'tags'),
         'has_archive'   => false,
-        'taxonomies'    => array('post_tag', 'diary_category'), // 添加 'post_tag' 到支持的分类法中
+        'taxonomies'    => array('diary_tag', 'diary_category'), // 添加 'post_tag' 到支持的分类法中
         'rewrite'       => array('with_front' => false, 'slug' => 'diary'),
         'capability_type' => 'post',
         'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/Diary.svg',
@@ -115,6 +115,38 @@ function Len_Diary_Post()
     register_post_type('diary', $args);
 }
 add_action('init', 'Len_Diary_Post');
+
+// 注册自定义标签分类法
+function Len_Diary_Tag()
+{
+    $labels = array(
+        'name'               => '日记标签',
+        'singular_name'      => 'diary_tag',
+        'add_new'            => '编写日记标签',
+        'add_new_item'       => '新写一个日记标签',
+        'edit_item'          => '编辑日记标签',
+        'new_item'           => '新日记标签',
+        'all_items'          => '所有日记标签',
+        'view_item'          => '查看日记标签',
+        'search_items'       => '搜索日记标签',
+        'not_found'          => '没有找到有关日记标签',
+        'not_found_in_trash' => '回收站里面没有相关日记标签',
+        'menu_name'          => '日记标签'
+    );
+
+    $args = array(
+        'labels'            => $labels,
+        'public'            => true,
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'diary-tag'),
+    );
+
+    register_taxonomy('diary_tag', array('diary'), $args);
+}
+add_action('init', 'Len_Diary_Tag');
 
 
 /**
@@ -162,7 +194,36 @@ function Len_Photo_Post()
 }
 add_action('init', 'Len_Photo_Post');
 
+function Len_Photo_Tag()
+{
+    $labels = array(
+        'name'               => '相册标签',
+        'singular_name'      => 'photo_tag',
+        'add_new'            => '编写相册标签',
+        'add_new_item'       => '新写一个相册标签',
+        'edit_item'          => '编辑相册标签',
+        'new_item'           => '新相册标签',
+        'all_items'          => '所有相册标签',
+        'view_item'          => '查看相册标签',
+        'search_items'       => '搜索相册标签',
+        'not_found'          => '没有找到有关相册标签',
+        'not_found_in_trash' => '回收站里面没有相关相册标签',
+        'menu_name'          => '相册标签'
+    );
 
+    $args = array(
+        'labels'            => $labels,
+        'public'            => true,
+        'hierarchical'      => false,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
+        'rewrite'           => array('slug' => 'diary-tag'),
+    );
+
+    register_taxonomy('photo_tag', array('photo'), $args);
+}
+add_action('init', 'Len_Photo_Tag');
 /**
  * Len_Content_Class 函数用于在文章内容中的标题标签（h1、h2、h3、h4、h5、h6）添加自定义样式类。
  *
@@ -247,4 +308,35 @@ function Parse_Post_Content_IMG($matches)
 
     // 返回修改后的img标签
     return $new_img_tag;
+}
+
+
+//添加Icon
+if (!function_exists('Len_All_Icons')) {
+
+    function my_custom_icons($icons)
+    {
+
+        //
+        // Use this for reset current icons
+        // $icons = array();
+
+        //
+        // Adding new icons
+        $icons[]  = array(
+            'title' => 'Len主题图标',
+            'icons' => array(
+                'my-icon my-icon-heart',
+                'my-icon my-icon-star',
+                'my-icon my-icon-gear',
+            )
+        );
+
+        //
+        // Move custom icons to top of the list.
+        $icons = array_reverse($icons);
+
+        return $icons;
+    }
+    add_filter('csf_field_icon_add_icons', 'my_custom_icons');
 }

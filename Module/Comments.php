@@ -184,7 +184,7 @@ function Len_Comments_Blcok_Module()
                 </div>
             </div>
             <?php if ($Expression == true) { ?>
-                <div class="OwO">
+                <div id="OwO" class="OwO">
                     <div class="OwO-logo"><span>OωO表情</span></div>
                 </div>
             <?php } ?>
