@@ -42,7 +42,7 @@ CSF::createSection($prefix, array(
     array(
       'id'         => 'Cat_Module_4',
       'type'       => 'button_set',
-      'title'      => '底部翻页模块展示设置',
+      'title'      => '翻页模块设置',
       'options'    => array(
         'Cat_Page_1'  => '传统分页',
         'Cat_Page_2' => 'Ajax下拉',

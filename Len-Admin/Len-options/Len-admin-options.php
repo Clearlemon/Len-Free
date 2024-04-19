@@ -96,6 +96,100 @@ if (class_exists('CSF')) {
         'style'   => 'success',
         'content' => '这是全局模块展示设置区',
       ),
+      array(
+        'type'    => 'subheading',
+        'content' => '版权 | 萌备案 | ICP备案 | 公安备案  | 数据库查询 | 一言API ',
+      ),
+      array(
+        'id'            => 'Footer_Module_1',
+        'type'          => 'accordion',
+        'title'         => '备案信息',
+        'accordions'    => array(
+          array(
+            'title'     => '萌备案',
+            'fields'    => array(
+              array(
+                'id'    => 'Footer_Module_1_1_1',
+                'type'  => 'switcher',
+                'title' => '网站背景模块',
+                'default' => false,
+              ),
+              array(
+                'id'    => 'Footer_Module_1_1_2',
+                'type'  => 'text',
+                'title' => '备案号',
+              ),
+              array(
+                'id'    => 'Footer_Module_1_1_3',
+                'type'  => 'text',
+                'title' => '备案链接',
+              ),
+            )
+          ),
+          array(
+            'title'     => '公安备案',
+            'fields'    => array(
+              array(
+                'id'    => 'Footer_Module_1_2_1',
+                'type'  => 'switcher',
+                'title' => '网站背景模块',
+                'default' => false,
+              ),
+              array(
+                'id'    => 'Footer_Module_1_2_2',
+                'type'  => 'text',
+                'title' => '备案号',
+              ),
+              array(
+                'id'    => 'Footer_Module_1_2_3',
+                'type'  => 'text',
+                'title' => '备案链接',
+              ),
+            )
+          ),
+          array(
+            'title'     => 'ICP备案',
+            'fields'    => array(
+              array(
+                'id'    => 'Footer_Module_1_3_1',
+                'type'  => 'switcher',
+                'title' => '网站背景模块',
+                'default' => false,
+              ),
+              array(
+                'id'    => 'Footer_Module_1_3_2',
+                'type'  => 'text',
+                'title' => '备案号',
+              ),
+              array(
+                'id'    => 'Footer_Module_1_3_3',
+                'type'  => 'text',
+                'title' => '备案链接',
+              ),
+            )
+          ),
+        )
+      ),
+      array(
+        'id'    => 'Footer_Module_2',
+        'type'  => 'text',
+        'title' => '底部自定义声明',
+        'class' => 'fields_no_padding-top',
+      ),
+      array(
+        'id'    => 'Footer_Module_3',
+        'type'  => 'switcher',
+        'title' => '是否开启数据库查询',
+        'class' => 'fields_no_padding-top',
+        'default' => false,
+      ),
+      array(
+        'id'    => 'Footer_Module_4',
+        'type'  => 'switcher',
+        'title' => '是否开启底部一言',
+        'class' => 'fields_no_padding-top',
+        'default' => false,
+      ),
     )
   ));
   //全局设置

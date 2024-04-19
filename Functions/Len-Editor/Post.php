@@ -309,34 +309,3 @@ function Parse_Post_Content_IMG($matches)
     // 返回修改后的img标签
     return $new_img_tag;
 }
-
-
-//添加Icon
-if (!function_exists('Len_All_Icons')) {
-
-    function my_custom_icons($icons)
-    {
-
-        //
-        // Use this for reset current icons
-        // $icons = array();
-
-        //
-        // Adding new icons
-        $icons[]  = array(
-            'title' => 'Len主题图标',
-            'icons' => array(
-                'my-icon my-icon-heart',
-                'my-icon my-icon-star',
-                'my-icon my-icon-gear',
-            )
-        );
-
-        //
-        // Move custom icons to top of the list.
-        $icons = array_reverse($icons);
-
-        return $icons;
-    }
-    add_filter('csf_field_icon_add_icons', 'my_custom_icons');
-}

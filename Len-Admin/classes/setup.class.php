@@ -600,9 +600,7 @@ if (!class_exists('CSF_Setup')) {
       // Main scripts
       wp_enqueue_script('csf-plugins', self::include_plugin_url('assets/js/plugins' . $min . '.js'), array(), self::$version, true);
       wp_enqueue_script('csf', self::include_plugin_url('assets/js/main' . $min . '.js'), array('csf-plugins'), self::$version, true);
-      wp_enqueue_script('len', CSF::include_plugin_url('assets/js/len.js'), array(), $var, 'all');
-      wp_enqueue_script('len-min', CSF::include_plugin_url('assets/js/len' . $min . '.js'), array(), $var, 'all');
-      wp_enqueue_script('ali', '//at.alicdn.com/t/c/font_4398276_fd8voicbj9.js', array(), $var, true);
+
 
 
       // Main variables
