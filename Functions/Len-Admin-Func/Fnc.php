@@ -41,6 +41,8 @@ $files = array(
      * 'Module/Tag.php', | 标签页模块-
      * 'Module/Footer.php', | 页脚模块-
      * 'Module/Header.php', | 头部模块-
+     * 'Module/Sidebar/Sidebar-Left.php',| 左侧边栏模块-
+     * 'Module/Sidebar/Sidebar-Right.php',| 右侧边栏模块-
      */
     'Module/Single.php',
     'Module/Comments.php',
@@ -53,6 +55,8 @@ $files = array(
     'Module/Search.php',
     'Module/Footer.php',
     'Module/Header.php',
+    'Module/Sidebar/Sidebar-Left.php',
+    'Module/Sidebar/Sidebar-Right.php',
     /**
  * 此引用链接是用户自定义设置
  * 如想自定义设置和主题则删除链接的注释

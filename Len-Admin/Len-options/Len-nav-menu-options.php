@@ -25,22 +25,17 @@ CSF::createSection($Module, array(
 
     ),
     array(
-      'id'    => 'Nav_Module_1_1',
+      'id'    => 'Nav_Module_2_1',
       'type'  => 'text',
       'title' => '自定义图标',
       'dependency' => array('Nav_Module_1', '==', 'icon_1'),
     ),
     array(
-      'id'    => 'Nav_Module_1_2',
-      'type'  => 'text',
-      'title' => 'fontawesome',
-      'dependency' => array('Nav_Module_1', '==', 'icon_2'),
-    ),
-    array(
-      'id'    => 'Nav_Module_1_3',
-      'type'  => 'text',
-      'title' => '阿里图标',
-      'dependency' => array('Nav_Module_1', '==', 'icon_3'),
+      'id'    => 'Nav_Module_2_2',
+      'type'  => 'icon',
+      'title' => 'fas|阿里图标库',
+      'dependency' => array('Nav_Module_1', 'any', 'icon_2,icon_3'),
+      'desc'     => '不选择则不输出内容这里<b class="Len_emphasis_fonts">【推荐SVG】</b>来做图标<b class="Len_emphasis_fonts"></br>',
     ),
   )
 ));

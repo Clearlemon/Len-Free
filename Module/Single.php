@@ -654,9 +654,6 @@ function Len_post_views($post_id)
  */
 function Set_post_views($post_id)
 {
-    global $post;
-
-    $post_id = $post->ID;
     $count_key = 'views';
     $count = get_post_meta($post_id, $count_key, true);
 
@@ -670,6 +667,7 @@ function Set_post_views($post_id)
         }
     }
 }
+
 
 // 使用 wp_head 钩子将 set_post_views 函数添加到文章页面头部
 add_action('wp_head', 'Set_post_views');

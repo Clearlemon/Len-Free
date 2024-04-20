@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @Author：青桔&dmy 
+ * @Author：青桔&dmy
  * @Url： lmeon.com/len-thems
  * @Time：2024-1-4
  * @Email: Len@tqlen.com
@@ -103,12 +103,12 @@ if (_len('optimize_3', true)) {
 /**
  * 条件性禁用 WordPress 自动保存和修订版本
  *
- * 这段代码使用 _len 函数检查 'optimize_8' 选项的值。
- * 如果 'optimize_8' 为真（评估为 true），则进行以下操作：
+ * 这段代码使用 _len 函数检查 'optimize_4' 选项的值。
+ * 如果 'optimize_4' 为真（评估为 true），则进行以下操作：
  *   1. 在 'wp_print_scripts' 动作中添加一个函数，用于注销自动保存的脚本。
  *   2. 在 'wp_revisions_to_keep' 过滤器中添加一个函数，用于将修订版本的保留数量设置为零。
  *
- * @param string $option   要检查的选项名称（在这个案例中是 'optimize_8'）。
+ * @param string $option   要检查的选项名称（在这个案例中是 'optimize_4'）。
  * @param bool   $default  如果选项未设置时要返回的默认值（在这个案例中是 true）。
  *
  * @return void 无返回值。
@@ -270,8 +270,76 @@ if (_len('optimize_8', true)) {
     // 添加一个过滤器，用于在插入编辑器的图片时移除宽度和高度属性
     add_filter('image_send_to_editor', 'remove_image_attributes');
 }
-
-
+/**
+ * 条件性移除文章特色图像和插入编辑器的图片标签中的宽度和高度属性
+ *
+ * 这段代码使用 _len 函数检查 'optimize_9' 选项的值。
+ * 如果 'optimize_9' 为真（评估为 true），则定义了一个名为 删除分类标签 的函数，
+ *
+ * @param string $option   要检查的选项名称（在这个案例中是 'optimize_8'）。
+ * @param bool   $default  如果选项未设置时要返回的默认值（在这个案例中是 true）。
+ *
+ * @return void 无返回值。
+ */
+if (_len('optimize_9', true)) {
+    add_action('load-themes.php',  'Len_Cat_Refresh_Rules');
+    add_action('created_category', 'Len_Cat_Refresh_Rules');
+    add_action('edited_category', 'Len_Cat_Refresh_Rules');
+    add_action('delete_category', 'Len_Cat_Refresh_Rules');
+    function Len_Cat_Refresh_Rules()
+    {
+        global $wp_rewrite;
+        $wp_rewrite->flush_rules();
+    }
+    add_action('init', 'Len_Cat_Permastruct');
+    function Len_Cat_Permastruct()
+    {
+        global $wp_rewrite, $wp_version;
+        if (version_compare($wp_version, '3.4', '<')) {
+            $wp_rewrite->extra_permastructs['category'][0] = '%category%';
+        } else {
+            $wp_rewrite->extra_permastructs['category']['struct'] = '%category%';
+        }
+    }
+    add_filter('category_rewrite_rules', 'Len_Cat_Rewrite_Rules');
+    function Len_Cat_Rewrite_Rules($category_rewrite)
+    {
+        $category_rewrite = array();
+        $categories = get_categories(array('hide_empty' => false));
+        foreach ($categories as $category) {
+            $category_nicename = $category->slug;
+            if ($category->parent == $category->cat_ID)
+                $category->parent = 0;
+            elseif ($category->parent != 0)
+                $category_nicename = get_category_parents($category->parent, false, '/', true) . $category_nicename;
+            $category_rewrite['(' . $category_nicename . ')/(?:feed/)?(feed|rdf|rss|rss2|atom)/?$'] = 'index.php?category_name=$matches[1]&feed=$matches[2]';
+            $category_rewrite['(' . $category_nicename . ')/page/?([0-9]{1,})/?$'] = 'index.php?category_name=$matches[1]&paged=$matches[2]';
+            $category_rewrite['(' . $category_nicename . ')/?$'] = 'index.php?category_name=$matches[1]';
+        }
+        global $wp_rewrite;
+        $old_category_base = get_option('category_base') ? get_option('category_base') : 'category';
+        $old_category_base = trim($old_category_base, '/');
+        $category_rewrite[$old_category_base . '/(.*)$'] = 'index.php?category_redirect=$matches[1]';
+        return $category_rewrite;
+    }
+    add_filter('query_vars', 'Len_Cat_Query_Vars');
+    function Len_Cat_Query_Vars($public_query_vars)
+    {
+        $public_query_vars[] = 'category_redirect';
+        return $public_query_vars;
+    }
+    add_filter('request', 'Len_Cat_Request');
+    function Len_Cat_Request($query_vars)
+    {
+        if (isset($query_vars['category_redirect'])) {
+            $catlink = trailingslashit(get_option('home')) . user_trailingslashit($query_vars['category_redirect'], 'category');
+            status_header(301);
+            header("Location: $catlink");
+            exit();
+        }
+        return $query_vars;
+    }
+}
 //前端优化函数模块
 
 /**

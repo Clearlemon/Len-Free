@@ -18,6 +18,7 @@ CSF::createSection($prefix, array(
       'id'    => 'Cat_Module_1',
       'type'  => 'switcher',
       'title' => '分类Banner图模块开启',
+      'default'    => true,
       'desc'     => '可单独开启<b class="Len_emphasis_fonts">【受全局影响】</b>将主题设置中的<b class="Len_emphasis_fonts">全局设置 > 分类页&&标签页 > 全局Banner模块设置 </b>',
     ),
     array(
@@ -26,15 +27,15 @@ CSF::createSection($prefix, array(
       'preview' => true,
       'library'      => 'image',
       'dependency' => array('Cat_Module_1', '==', true),
-
       'title'   => '分类[Banner图片]',
     ),
+
     array(
       'id'    => 'Cat_Module_5',
       'type'  => 'icon',
       'title' => 'Banner图标',
       'dependency' => array('Cat_Module_1', '==', true),
-      'desc'     => '不选择则不输出内容这里<b class="Len_emphasis_fonts">【推荐SVG】</b>来做图标<b class="Len_emphasis_fonts">【不支持自定义】</b>',
+      'desc'     => '不选择则不输出内容这里<b class="Len_emphasis_fonts">【推荐SVG】</b>来做图标<b class="Len_emphasis_fonts">【不支持自定义|不支持fas】</b></br>',
     ),
     array(
       'id'         => 'Cat_Module_3',

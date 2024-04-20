@@ -21,8 +21,8 @@ function Len_Search_Banner()
   <!-- 文章顶部导航区块Banner开始 -->
   <!-- 搜索查询Banner开始 -->
   <div class="len-search-block">
-    <div class="len-search-title">以下是关键字[<b id="search_keyword"><?php echo $search_number; ?></b>]文章，检索到的文章共有[<?php echo $search_count;
-                                                                                                              wp_reset_postdata(); ?>]篇</div>
+    <div class="len-search-title">以下是关键字[<b id="search_keyword"><?php echo $search_number; ?></b>]文章，检索到的文章共有<b>[<?php echo $search_count;
+                                                                                                                  wp_reset_postdata(); ?>]</b>篇</div>
   </div>
   <!-- 搜索查询Banner结束 -->
 <?php

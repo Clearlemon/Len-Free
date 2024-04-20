@@ -32,6 +32,7 @@
         <!-- 分类头部展示块开始 -->
         <?php
         Tag_Banner_Open_Module(get_queried_object_id());
+
         ?>
         <!-- 分类头部展示块结束 -->
         <!-- 文章展示模块开始 -->

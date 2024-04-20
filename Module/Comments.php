@@ -258,7 +258,6 @@ function Len_Comments_Ajax()
         if ($cpage > 1) {
             echo '<div max-comments="' . $max_pages . '" post-id="' . get_the_ID() . '" page-id="' . $cpage . ' "class="comment_loadmore">加载更多评论</div>';
         } else {
-            echo '<div max-comments="' . $max_pages . '" post-id="' . get_the_ID() . '" page-id="' . $cpage . ' "class="comment_loadmore">加载更多评论</div>';
         }
     } else {
     ?>

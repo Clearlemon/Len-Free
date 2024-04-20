@@ -1,3 +1,6 @@
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
     // 检查页面中是否存在具有指定ID的元素
     var swiperElement = document.getElementById('len-swiper');
@@ -32,8 +35,18 @@ function initializePlugins() {
     var lazyload = new LazyLoad({
         // 可选配置项
     });
-}
+    var fooReveal = {
+        origin: 'top',
+        delay: 10,
+        distance: '20px',
+        // easing: 'ease-in-out',
+        rotate: { y: 0 },
+        scale: 0.3
+    };
 
+    window.sr = ScrollReveal()
+        .reveal('.foo', fooReveal)
+}
 // 在页面加载完成时执行初始化函数
 document.addEventListener('DOMContentLoaded', function () {
     initializePlugins();
@@ -44,99 +57,170 @@ jQuery(document).ready(function ($) {
     var categoryButton = $('#len-ajax-post-category'); // 分类页按钮
     var tagButton = $('#len-ajax-post-tag'); // 标签页按钮
     var searchButton = $('#len-ajax-post-search'); // 标签页按钮
+    var homeButton = $('#len-ajax-post'); // 标签页按钮
+
+    homeButton.click(function () {
+        var page = parseInt($(this).attr('page')) + 1; // 增加页码
+        var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
+        var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
+
+        // 创建加载中的提示
+        var loadingDiv = $('<div>Loading...</div>');
+        $('#pots-ajax-min').append(loadingDiv);
+
+        // 延迟加载
+        setTimeout(function () {
+            // AJAX 请求
+            $.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                    posts_per_page: showcase, // 每页文章数量
+                    paged: page // 当前页码
+                },
+                success: function (response) {
+                    // 删除加载中的提示
+                    loadingDiv.remove();
+
+                    // 在 #pots-ajax-min 元素中追加返回的文章内容
+                    $('#pots-ajax-min').append(response);
+
+                    // 更新按钮的页码属性
+                    categoryButton.attr('page', page);
+
+                    // 每篇文章加载完成后的时间间隔
+                    setTimeout(function () {
+                        // 每次加载更多后重新初始化插件
+                        initializePlugins();
+                    }, 2000);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }, randomNumber);
+    });
 
     // 点击分类页加载更多按钮时执行的函数
     categoryButton.click(function () {
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var category = parseInt($(this).attr('category-id')); // 获取分类 ID
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
+        var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
 
-        // AJAX 请求
-        $.ajax({
-            url: '/wp-admin/admin-ajax.php',
-            type: 'POST',
-            data: {
-                action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
-                category: category,
-                posts_per_page: showcase, // 每页文章数量
-                paged: page // 当前页码
-            },
-            success: function (response) {
-                // 在 #pots-ajax-min 元素中追加返回的文章内容
-                $('#pots-ajax-min').append(response);
+        // 创建加载中的提示
+        var loadingDiv = $('<div>Loading...</div>');
+        $('#pots-ajax-min').append(loadingDiv);
 
-                // 更新按钮的页码属性
-                categoryButton.attr('page', page);
+        // 延迟加载
+        setTimeout(function () {
+            // AJAX 请求
+            $.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                    category: category,
+                    posts_per_page: showcase, // 每页文章数量
+                    paged: page // 当前页码
+                },
+                success: function (response) {
+                    // 删除加载中的提示
+                    loadingDiv.remove();
 
-                // 每次加载更多后重新初始化插件
-                initializePlugins();
-            },
-            error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
+                    // 在 #pots-ajax-min 元素中追加返回的文章内容
+                    $('#pots-ajax-min').append(response);
+
+                    // 更新按钮的页码属性
+                    categoryButton.attr('page', page);
+
+                    // 每篇文章加载完成后的时间间隔
+                    setTimeout(function () {
+                        // 每次加载更多后重新初始化插件
+                        initializePlugins();
+                    }, 2000);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }, randomNumber);
     });
+
+
 
     // 点击标签页加载更多按钮时执行的函数
     tagButton.click(function () {
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var tag = parseInt($(this).attr('tag-id')); // 获取标签 ID
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
+        var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
 
-        // AJAX 请求
-        $.ajax({
-            url: '/wp-admin/admin-ajax.php',
-            type: 'POST',
-            data: {
-                action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
-                tag: tag,
-                posts_per_page: showcase, // 每页文章数量
-                paged: page // 当前页码
-            },
-            success: function (response) {
-                // 在 #pots-ajax-min 元素中追加返回的文章内容
-                $('#pots-ajax-min').append(response);
+        // 延迟加载
+        setTimeout(function () {
+            // AJAX 请求
+            $.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                    tag: tag,
+                    posts_per_page: showcase, // 每页文章数量
+                    paged: page // 当前页码
+                },
+                success: function (response) {
+                    // 在 #pots-ajax-min 元素中追加返回的文章内容
+                    $('#pots-ajax-min').append(response);
 
-                // 更新按钮的页码属性
-                tagButton.attr('page', page);
+                    // 更新按钮的页码属性
+                    tagButton.attr('page', page);
 
-                // 每次加载更多后重新初始化插件
-                initializePlugins();
-            },
-            error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
+                    setTimeout(function () {
+                        // 每次加载更多后重新初始化插件
+                        initializePlugins();
+                    }, 2000);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }, randomNumber);
     });
     searchButton.click(function () {
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var searchKeyword = $(this).attr('search-key'); // 获取搜索关键词
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
+        var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
+        // 延迟加载
+        setTimeout(function () {
+            // AJAX 请求
+            $.ajax({
+                url: '/wp-admin/admin-ajax.php',
+                type: 'POST',
+                data: {
+                    action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
+                    search: searchKeyword, // 使用正确的搜索关键词
+                    posts_per_page: showcase, // 每页文章数量
+                    paged: page // 当前页码
+                },
+                success: function (response) {
+                    // 在 #pots-ajax-min 元素中追加返回的文章内容
+                    $('#pots-ajax-min').append(response);
 
-        // AJAX 请求
-        $.ajax({
-            url: '/wp-admin/admin-ajax.php',
-            type: 'POST',
-            data: {
-                action: 'Len_Post_Ajax', // 后端 AJAX 处理函数的名称
-                search: searchKeyword, // 使用正确的搜索关键词
-                posts_per_page: showcase, // 每页文章数量
-                paged: page // 当前页码
-            },
-            success: function (response) {
-                // 在 #pots-ajax-min 元素中追加返回的文章内容
-                $('#pots-ajax-min').append(response);
+                    // 更新按钮的页码属性
+                    searchButton.attr('page', page);
 
-                // 更新按钮的页码属性
-                searchButton.attr('page', page);
-
-                // 每次加载更多后重新初始化插件
-                initializePlugins();
-            },
-            error: function (xhr, status, error) {
-                console.error(xhr.responseText);
-            }
-        });
+                    setTimeout(function () {
+                        // 每次加载更多后重新初始化插件
+                        initializePlugins();
+                    }, 2000);
+                },
+                error: function (xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }, randomNumber);
     });
 });
 
@@ -300,8 +384,9 @@ setInterval(() => {
     )}: ${`${timer.getSeconds()}`.padStart(2, '0')}`;
     todayShowTime.textContent = formateTimer;
 }, 1000);
-// 文章
 
+
+//导航
 var toggleButtons = document.querySelectorAll('.toggleButton');
 toggleButtons.forEach(function (button) {
     button.addEventListener('click', function () {
@@ -318,44 +403,3 @@ toggleButtons.forEach(function (button) {
     });
 });
 
-
-//文章AJAX加载
-// function loadPage(pageNumber) {
-//     $.ajax({
-//         url: '/wp-admin/admin-ajax.php', // AJAX 请求的 URL
-//         type: 'POST',
-//         data: {
-//             action: 'Len_Post_Ajax', // AJAX 处理函数的名称
-//             paged: pageNumber // 当前页码
-//         },
-//         success: function (response) {
-//             // 将 AJAX 返回的文章列表 HTML 替换到页面中
-//             $('#pots-ajax-min').html(response);
-//         },
-//         error: function (xhr, status, error) {
-//             console.error('AJAX Error:', error);
-//         }
-//     });
-//     $.ajax({
-//         url: '/wp-admin/admin-ajax.php', // 当前页面 URL
-//         type: 'POST',
-//         data: { 'paged': pageNumber }, // 向服务器发送的数据，包括页码
-//         success: function (response) {
-//             // 将 AJAX 返回的内容替换到页面中
-//             var newContent = $(response).find('.len_post_page_block_all');
-//             $('.len_post_page_block_all').replaceWith(newContent);
-//         },
-//         error: function (xhr, status, error) {
-//             console.error('AJAX Error:', error);
-//             initializePlugins();
-//         }
-//     });
-// }
-
-
-// $(document).on('click', '.len_post_page_block_all a.page-numbers', function (event) {
-//     event.preventDefault(); // 阻止默认行为
-
-//     var pageNumber = $(this).attr('href').split('/').pop(); // 获取页码
-//     loadPage(pageNumber); // 加载页面
-// });

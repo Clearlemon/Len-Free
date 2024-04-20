@@ -50,7 +50,7 @@ a {
     object-fit: cover;
 }
 
-ul.len-nav-ul-second {
+.len-nav-ul-second {
     /* content: ""; */
     position: relative;
     right: 10px;
@@ -60,3 +60,6 @@ ul.len-nav-ul-second {
     padding-left: 5px;
 }
 
+.len-nav-li-second>i {
+    margin-right: 5px;
+}

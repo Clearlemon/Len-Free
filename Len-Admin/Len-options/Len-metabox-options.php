@@ -195,7 +195,7 @@ if (_len('Post_Content_Show_Module_1') == true) {
         'desc'     => '谨慎选择模块是否开启<b class="Len_emphasis_fonts">默认为Yes</b><br><b class="Len_emphasis_fonts">此功能显示顺序展示模块开启【全部】>文章内容模块展示>模块展示开关</b>',
         'text_on'  => 'Yes',
         'text_off' => 'No',
-        'default' => false,
+        'default' => true,
       ),
     )
   ));

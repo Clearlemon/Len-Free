@@ -1,3 +1,7 @@
+<?php
+
+
+?>
 <div id="respond" class="len-post-comments">
     <form method="post" id="commentform" class="comment-form">
         <div class="len-comments-blcok">
@@ -26,17 +30,9 @@
 </div>
 <?php
 
-
-
 // 检查评论模块设置是否不为空
-if (!empty($comments_module)) {
-    // 遍历评论模块设置
-    foreach ($comments_module as $key => $value) {
-        if ($key === 'Post_Comments_Module_2_10') {
-            $Comments_Switcher = $value;
-        }
-    }
-}
+$comments_module = _len('Post_Comments_Module_2');
+$Comments_Switcher = $comments_module['Post_Comments_Module_2_10'];
 if (!is_user_logged_in() && $Comments_Switcher == true) {
 ?>
     <div class="len-comment-logincomments">
@@ -55,7 +51,7 @@ if (!is_user_logged_in() && $Comments_Switcher == true) {
 
         // 检查是否需要密码才能查看评论
         if (post_password_required()) { ?>
-            <p class="nocomments">This post is password protected. Enter the password to view comments.</p>
+            <p class="nocomments">这篇文章需要密码才能查看</p>
         <?php
             return; // 终止脚本执行
         } ?>

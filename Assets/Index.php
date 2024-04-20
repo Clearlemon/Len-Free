@@ -1,5 +1,5 @@
 <?php
-$var = '2.5.0';
+$var = '2.5.8';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -26,18 +26,22 @@ function Len_scripts_styles()
         wp_enqueue_script('Len-menmes', get_template_directory_uri() . '/Assets/Lne-JavaScript/menmes.min.js', array(), $var, false);
         wp_enqueue_style('music-min', get_template_directory_uri() . '/Assets/Len-Css/music.min.css', array(), $var, 'all');
         wp_enqueue_script('music-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/music.min.js', array(), $var, true);
+    } elseif (is_page()) {
     }
-
+    wp_enqueue_script('scrollreveal-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/scrollreveal.min.js', array(), $var, false);
     wp_enqueue_script('index-main', get_template_directory_uri() . '/Assets/Lne-JavaScript/index.main.js', array(), $var, true);
-
     wp_enqueue_script('jquery-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/jquery.min.js', array(), $var, false);
+    wp_enqueue_style('comments-min', get_template_directory_uri() . '/Assets/Len-Css/comments.min.css', array(), $var, 'all');
+    wp_enqueue_script('comments-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/comments.min.js', array(), $var, false);
 
     wp_enqueue_script('fancybox-umd-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/fancybox.umd.js', array(), $var, true);
 
     wp_enqueue_script('lazyload-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/lazyload.min.js', array(), $var, true);
     wp_enqueue_script('message-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/message.min.js', array(), $var, true);
+    wp_enqueue_script('smoothscroll-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/smoothscroll.min.js', array(), $var, true);
 
     //引用Css样式文件
+    wp_enqueue_style('animate-min', get_template_directory_uri() . '/Assets/Len-Css/animate.min.css', array(), $var, 'all');
     wp_enqueue_style('classify-min', get_template_directory_uri() . '/Assets/Len-Css/classify.min.css', array(), $var, 'all');
     wp_enqueue_style('fasicon-min', get_template_directory_uri() . '/Assets/Len-Font/fasicon.min.css', array(), $var, 'all');
     wp_enqueue_style('header-min', get_template_directory_uri() . '/Assets/Len-Css/header.min.css', array(), $var, 'all');
@@ -67,6 +71,9 @@ add_action('wp_enqueue_scripts', 'Len_scripts_styles');
 
 function Len_footer_content()
 {
+    if (is_single()) {
+        Len_Modeule_Music_Js();
+    }
 }
 
 /**

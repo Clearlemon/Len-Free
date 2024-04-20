@@ -4,7 +4,7 @@
   padding: 10px;
   font-size: 14px;
   backdrop-filter: saturate(200%) blur(30px);
-  background-color: hsl(81deg 91% 82%);
+  background-color: hsl(0deg 0% 100% / 50%);
   border-radius: 15px;
 }
 

@@ -27,9 +27,9 @@ if (function_exists('add_theme_support')) {
 function Len_Post_Link($url, $post)
 {
     if ($post->post_type == 'diary') {
-        $url = trailingslashit(home_url('/diary/archives/') . $post->ID);
+        $url = trailingslashit(home_url('/diary/') . $post->ID);
     } elseif ($post->post_type == 'photo') {
-        $url = trailingslashit(home_url('/photo/archives/') . $post->ID);
+        $url = trailingslashit(home_url('/photo/') . $post->ID);
     }
     return $url;
 }
@@ -49,10 +49,10 @@ function Len_Rewrite_Rules($rules)
     $new_rules = array();
 
     // 添加 'diary' 文章类型的规则
-    $new_rules['diary/archives/([0-9]+)/?$'] = 'index.php?post_type=diary&p=$matches[1]';
+    $new_rules['diary/([0-9]+)/?$'] = 'index.php?post_type=diary&p=$matches[1]';
 
     // 添加 'photo' 文章类型的规则
-    $new_rules['photo/archives/([0-9]+)/?$'] = 'index.php?post_type=photo&p=$matches[1]';
+    $new_rules['photo/([0-9]+)/?$'] = 'index.php?post_type=photo&p=$matches[1]';
 
     return $new_rules + $rules;
 }
@@ -309,6 +309,8 @@ function Parse_Post_Content_IMG($matches)
     // 返回修改后的img标签
     return $new_img_tag;
 }
+
+
 
 if (!function_exists('Len_All_Icons')) {
 

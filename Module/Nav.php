@@ -2,14 +2,14 @@
 
 /**
  * @About: Len主题幻灯片模块函数
- * @Author：青桔&dmy 
+ * @Author：青桔&dmy
  * @Url： lmeon.com/len-thems
  * @Time：2024-3-24
  * @Email: Len@tqlen.com
  * @Project: Len主题
  * */
 
-// 
+//
 $Home_Module_3  = _len('Home_Module_3');
 if ($Home_Module_3 == true) {
     $nav_array = array('nav_1' => '侧边栏导航', 'nav_2' => '头部导航');
@@ -19,7 +19,6 @@ if ($Home_Module_3 == true) {
 register_nav_menus($nav_array);
 function Len_Nav_Module($Top = true, $Sidebar = true)
 {
-    $Home_Module_3  = _len('Home_Module_3');
     $locations = get_nav_menu_locations();
     if ($Sidebar == true) {
         if (isset($locations['nav_1'])) {
@@ -42,7 +41,7 @@ function Len_Nav_Module($Top = true, $Sidebar = true)
                 array(
                     'menu' => 'nav_2',
                     'theme_location' => 'nav_2',
-                    'depth' => 3,
+                    'depth' => 1,
                     'container' => 'div',
                     'container_class' => 'len-showcase-banner-nav-blcok',
                     'menu_class' => 'banner-nav-ul',
@@ -76,22 +75,21 @@ class Leaf_Sidebar_Nav extends Walker_Nav_Menu
         $output .= $indent . '<li class="' . $depth_class_names . ' ' . $class_names . '">';
 
         // 处理图标
-        $Nav_Module_1_3 = _Len_Nav_Module($item->ID, 'Nav_Module_1_3');
-        $Nav_Module_1_2 = _Len_Nav_Module($item->ID, 'Nav_Module_1_2');
-        $Nav_Module_1_1 = _Len_Nav_Module($item->ID, 'Nav_Module_1_1');
+        $Nav_Module_2_2 = _Len_Nav_Module($item->ID, 'Nav_Module_2_2');
+        $Nav_Module_2_1 = _Len_Nav_Module($item->ID, 'Nav_Module_2_1');
         $Nav_Module_1 = _Len_Nav_Module($item->ID, 'Nav_Module_1');
         if ($Nav_Module_1 == 'icon_1') {
-            if (!empty($Nav_Module_1_1)) {
-                $output .=  $Nav_Module_1_1;
+            if (!empty($Nav_Module_2_1)) {
+                $output .=  $Nav_Module_2_1;
             }
         } elseif ($Nav_Module_1 == 'icon_2') {
-            if (!empty($Nav_Module_1_2)) {
-                $output .= '<i class="fas ' . $Nav_Module_1_2 . '"></i>'; // 输出图标的 HTML
+            if (!empty($Nav_Module_2_2)) {
+                $output .= '<i class="fas ' . $Nav_Module_2_2 . '"></i>'; // 输出图标的 HTML
             }
         } elseif ($Nav_Module_1 == 'icon_3') {
-            if (!empty($Nav_Module_1_3)) {
+            if (!empty($Nav_Module_2_2) && substr($Nav_Module_2_2, 0, 5) === 'icon-') {
                 $output .= '<svg class="len-banner-nav-icon" aria-hidden="true">
-            <use xlink:href="#icon-' . $Nav_Module_1_3 . '"></use>
+            <use xlink:href="#' . $Nav_Module_2_2 . '"></use>
         </svg>'; // 输出图标的 HTML
             }
         }
@@ -107,7 +105,7 @@ class Leaf_Sidebar_Nav extends Walker_Nav_Menu
 
         // 使用动态设置的值构建 $item_output
         if ($depth === 0 && !empty($item->classes) && in_array('menu-item-has-children', $item->classes)) {
-            $icon = '<i style="" class="toggleButton ico-0009 fa-solid fa-caret-right" onclick="toggleIcon(this)"></i>';
+            $icon = '<i style="" class="toggleButton ico-0009 fa-solid fa-caret-right" ></i>';
         } else {
             $icon = '';
         }
@@ -161,22 +159,21 @@ class Leaf_Top_Nav extends Walker_Nav_Menu
         $output .= $indent . '<li class="' . $depth_class_names . ' ' . $class_names . '">';
 
         // 处理图标
-        $Nav_Module_1_3 = _Len_Nav_Module($item->ID, 'Nav_Module_1_3');
-        $Nav_Module_1_2 = _Len_Nav_Module($item->ID, 'Nav_Module_1_2');
-        $Nav_Module_1_1 = _Len_Nav_Module($item->ID, 'Nav_Module_1_1');
+        $Nav_Module_2_2 = _Len_Nav_Module($item->ID, 'Nav_Module_2_2');
+        $Nav_Module_2_1 = _Len_Nav_Module($item->ID, 'Nav_Module_2_1');
         $Nav_Module_1 = _Len_Nav_Module($item->ID, 'Nav_Module_1');
         if ($Nav_Module_1 == 'icon_1') {
-            if (!empty($Nav_Module_1_1)) {
-                $output .=  $Nav_Module_1_1;
+            if (!empty($Nav_Module_2_1)) {
+                $output .=  $Nav_Module_2_1;
             }
         } elseif ($Nav_Module_1 == 'icon_2') {
-            if (!empty($Nav_Module_1_2)) {
-                $output .= '<i class="fas ' . $Nav_Module_1_2 . '"></i>'; // 输出图标的 HTML
+            if (!empty($Nav_Module_2_2)) {
+                $output .= '<i class="fas ' . $Nav_Module_2_2 . '"></i>'; // 输出图标的 HTML
             }
         } elseif ($Nav_Module_1 == 'icon_3') {
-            if (!empty($Nav_Module_1_3)) {
+            if (!empty($Nav_Module_2_2) && substr($Nav_Module_2_2, 0, 5) === 'icon-') {
                 $output .= '<svg class="len-banner-nav-icon" aria-hidden="true">
-            <use xlink:href="#icon-' . $Nav_Module_1_3 . '"></use>
+            <use xlink:href="#' . $Nav_Module_2_2 . '"></use>
         </svg>'; // 输出图标的 HTML
             }
         }

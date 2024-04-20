@@ -30,32 +30,19 @@
     </div>
 
     <?php
-    Len_Nav_Module(false, true)
+    Len_Nav_Module(false, true);
+    if (current_user_can('manage_options')) {
+        $link = '/wp-admin';
+    } else {
+        $link = '/wp-login.php';
+    }
     ?>
     <div class="len-sidebar-links">
         <div class="links-display">
-            <a class="sidebar-link-block" href="">
-                <span class="links-svg-block">
-                    <svg class="len-left-bottom-icon" aria-hidden="true">
-                        <use xlink:href="#icon-Rss"></use>
-                    </svg>
-                </span>
-            </a>
-            <a class="sidebar-link-block" href="">
-                <span class="links-svg-block">
-                    <svg class="len-left-bottom-icon" aria-hidden="true">
-                        <use xlink:href="#icon-github"></use>
-                    </svg>
-                </span>
-            </a>
-            <a class="sidebar-link-block" href="">
-                <span class="links-svg-block">
-                    <svg class="len-left-bottom-icon" aria-hidden="true">
-                        <use xlink:href="#icon-gitee"></use>
-                    </svg>
-                </span>
-            </a>
-            <a class="sidebar-link-block" href="">
+
+            <?php Len_Sidebar_Bottom_Module();
+            ?>
+            <a class="sidebar-link-block" href="<?php echo $link; ?>">
                 <span class="links-svg-block">
                     <svg class="len-left-bottom-icon" aria-hidden="true">
                         <use xlink:href="#icon-set-up-dot"></use>

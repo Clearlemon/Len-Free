@@ -7,6 +7,10 @@ body {
     color: #000;
 }
 
+:root {
+    --animate-duration: 0.5s;
+}
+
 img[data-src]:not(.loaded) {
     filter: blur(10px) brightness(1);
     object-fit: contain;
@@ -183,7 +187,7 @@ li>.iconfont {
     height: 50px;
     box-shadow: inset 0 0 2px #c5c5c5d1;
     backdrop-filter: saturate(200%) blur(30px);
-    background-color: hsl(0deg 0% 100% / 50%) !important;
+    background-color: hsl(0deg 0% 100% / 50%);
     border-radius: 10px;
 }
 
@@ -198,25 +202,6 @@ li>.iconfont {
     color: var(--len-a-link-color);
 }
 
-/* 后期要用到的玩意 */
-/* .banner-nav-li::after {
-    content: "";
-    padding: 5px 7px;
-    position: absolute;
-    left: 15px;
-    bottom: 6px;
-    border-bottom: 3px solid #6fa97e;
-    transition: padding 0.3s ease, border-color 0.3s ease;
-}
-
-.banner-nav-li:hover::after {
-    content: "";
-    padding: 5px 30px;
-    position: absolute;
-    left: 15px;
-    bottom: 6px;
-    border-bottom: 3px solid #8b908f99;
-} */
 
 .len-banner-nav-icon {
     height: 15px;
