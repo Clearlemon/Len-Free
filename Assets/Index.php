@@ -83,7 +83,6 @@ function Len_content_before_hade()
 {
     echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">' . PHP_EOL;
     echo '<meta charset="UTF-8">';
-    //echo '<link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.css"/>';
     echo Len_Web_Background();
     echo Len_Seo_Module();
 }

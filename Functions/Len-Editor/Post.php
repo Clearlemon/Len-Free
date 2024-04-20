@@ -35,41 +35,42 @@ function Len_Post_Link($url, $post)
 }
 add_filter('post_type_link', 'Len_Post_Link', 10, 2);
 
-/**
- * Len_Rewrite_Rules 函数用于添加自定义的重写规则。
- *
- * 该函数通过 add_filter 将自己添加为 'rewrite_rules_array' 过滤器，以便在生成重写规则时应用这个功能。
- * 分别为 'diary' 和 'photo' 文章类型添加自定义的规则，将文章 ID 包含在链接中。
- *
- * @param array $rules 默认的重写规则数组。
- * @return array 处理后的重写规则数组。
- */
-function Len_Rewrite_Rules($rules)
-{
-    $new_rules = array();
+// /**
+//  * Len_Rewrite_Rules 函数用于添加自定义的重写规则。
+//  *
+//  * 该函数通过 add_filter 将自己添加为 'rewrite_rules_array' 过滤器，以便在生成重写规则时应用这个功能。
+//  * 分别为 'diary' 和 'photo' 文章类型添加自定义的规则，将文章 ID 包含在链接中。
+//  *
+//  * @param array $rules 默认的重写规则数组。
+//  * @return array 处理后的重写规则数组。
+//  */
+// function Len_Rewrite_Rules($rules)
+// {
+//     $new_rules = array();
 
-    // 添加 'diary' 文章类型的规则
-    $new_rules['diary/([0-9]+)/?$'] = 'index.php?post_type=diary&p=$matches[1]';
+//     // 添加 'diary' 文章类型的规则
+//     $new_rules['diary/([0-9]+)/?$'] = 'index.php?post_type=diary&p=$matches[1]';
 
-    // 添加 'photo' 文章类型的规则
-    $new_rules['photo/([0-9]+)/?$'] = 'index.php?post_type=photo&p=$matches[1]';
+//     // 添加 'photo' 文章类型的规则
+//     $new_rules['photo/([0-9]+)/?$'] = 'index.php?post_type=photo&p=$matches[1]';
 
-    return $new_rules + $rules;
-}
-add_filter('rewrite_rules_array', 'Len_Rewrite_Rules');
 
-/**
- * Len_Rewrite_Rules_Flush 函数用于在 WordPress 初始化时刷新重写规则。
- *
- * 该函数通过 add_action 将自己添加为 'init' 动作，以便在 WordPress 初始化时应用这个功能。
- * 主要目的是在修改了重写规则后，刷新规则，确保新规则生效。
- */
-function Len_Rewrite_Rules_Flush()
-{
-    global $wp_rewrite;
-    $wp_rewrite->flush_rules();
-}
-add_action('init', 'Len_Rewrite_Rules_Flush');
+//     return $new_rules + $rules;
+// }
+// add_filter('rewrite_rules_array', 'Len_Rewrite_Rules');
+
+// /**
+//  * Len_Rewrite_Rules_Flush 函数用于在 WordPress 初始化时刷新重写规则。
+//  *
+//  * 该函数通过 add_action 将自己添加为 'init' 动作，以便在 WordPress 初始化时应用这个功能。
+//  * 主要目的是在修改了重写规则后，刷新规则，确保新规则生效。
+//  */
+// function Len_Rewrite_Rules_Flush()
+// {
+//     global $wp_rewrite;
+//     $wp_rewrite->flush_rules();
+// }
+// add_action('init', 'Len_Rewrite_Rules_Flush');
 
 /**
  * Len_Diary_Post 函数用于注册自定义文章类型 '日记'，并设置相关参数和支持的功能。

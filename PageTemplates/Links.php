@@ -1,0 +1,61 @@
+<?php
+/*
+Template Name: Link【友联页面】
+*/
+
+/**
+ * wp_footer(); @引用Wordpress自带的顶部样式文件
+ */
+wp_head(); ?>
+<main class="len-body-main len-body-m">
+  <?php
+  /**
+   * 引用底部样式
+   * require_once get_theme_file_path('Page/Len-Block/Header.php');
+   * Logo栏目模块样式文件目录
+   */
+  require_once get_theme_file_path('Page/Len-Block/Header.php');
+  ?>
+  <div id="len-content" class="len-content">
+    <div class="len-content-min">
+      <?php
+      /**
+       * 引用底部样式
+       * require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
+       * 左侧边栏模块样式文件目录
+       */
+      require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
+      ?>
+      <div class="len-showcase-main">
+        <!-- 友联开始 -->
+
+        <!-- 友联结束 -->
+      </div>
+
+      <?php
+      /**
+       * 引用右侧边栏样式
+       * require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
+       * 右侧边栏模块样式文件目录
+       */
+      require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
+      ?>
+    </div>
+  </div>
+  </div>
+  <?php
+  /**
+   * 引用底部样式
+   * require_once get_theme_file_path('Page/Len-Block/Footer.php');
+   * 底部模块样式文件目录
+   */
+  require_once get_theme_file_path('Page/Len-Block/Footer.php');
+
+
+  /**
+   * wp_footer(); @引用Wordpress自带的底部样式文件
+   */
+  wp_footer();
+  ?>
+
+</main>

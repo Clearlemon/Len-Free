@@ -9,7 +9,6 @@
     ?>
     <div id="len-content" class="len-content">
         <div class="len-content-min">
-
             <?php
             /**
              * 引用底部样式
