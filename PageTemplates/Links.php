@@ -27,9 +27,51 @@ wp_head(); ?>
       require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
       ?>
       <div class="len-showcase-main">
-        <!-- 友联开始 -->
+        <!-- 友链开始 -->
+        <div class="len-link-content">
+                  <!-- NO:1 -->
+          <div class="len-link-url">
+              <div class="len-link-information">
+                  <div class="len-link-cardbody">
+                      <div class="len-link-detailed">
+                          <div class="len-link-api-img">
+                            <!-- 这里是公司的网站获取 -->
+                              <img src="http://api.yangjuantech.com/favicon/get.php?url=dmyblog.cn" alt="Image">
+                          </div>
+                          <div class="len-link-website-info">
+                              <div class="len-link-website-title">
+                                <a href="https://dmyblog.cn/" title="大绵羊博客" target="_blank"><strong>大绵羊博客</strong></a>
+                              </div>
+                              <p class="len-link-introduce">有幸遇见，恰巧合拍</p> <!-- 移除了不必要的类 -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- NO:2 -->
+          <div class="len-link-url">
+            <div class="len-link-information">
+                <div class="len-link-cardbody">
+                    <div class="len-link-detailed">
+                        <div class="len-link-api-img">
+                          <!-- 这里是公司的网站获取 -->
+                            <img src="http://api.yangjuantech.com/favicon/get.php?url=dmyblog.cn" alt="Image">
+                        </div>
+                        <div class="len-link-website-info">
+                            <div class="len-link-website-title">
+                              <a href="https://dmyblog.cn/" title="大绵羊博客" target="_blank"><strong>大绵羊博客</strong></a>
+                            </div>
+                            <p class="len-link-introduce">有幸遇见，恰巧合拍</p> <!-- 移除了不必要的类 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+          
+      </div>
+      
 
-        <!-- 友联结束 -->
+        <!-- 友链结束 -->
       </div>
 
       <?php

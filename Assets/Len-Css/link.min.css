@@ -1,0 +1,65 @@
+  /* 使用CSS变量 */
+  :root {
+    --primary-color: #282a2d;
+    --box-shadow-color: rgba(32, 160, 255, 0.15);
+}
+
+.len-link-content {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.len-link-url  {
+    width: 25%;
+    padding: 15px;
+}
+
+.len-link-information{
+    background-color: #fff;
+    border-radius: .25rem;
+    box-shadow: 0 3px 5px var(--box-shadow-color);
+    overflow: hidden;
+}
+
+.len-link-cardbody {
+    /* 添加了display: flex; */
+    /* display: flex; */
+     /* 添加了align-items: center; */
+    /* align-items: center;  */
+    padding: .938rem;
+}
+.len-link-detailed{
+    display: flex;
+}
+.len-link-api-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    overflow: hidden;
+}
+
+.len-link-api-img img {
+    width: 100%;
+    height: auto;
+}
+
+.len-link-website-info {
+    flex-grow: 1; /* 确保.url-info占据剩余空间 */
+    overflow: hidden;
+}
+
+.len-link-website-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.len-link-website-title a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.len-link-introduce {
+    font-size: .75rem;
+}
