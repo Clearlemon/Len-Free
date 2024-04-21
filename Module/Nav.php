@@ -3,7 +3,7 @@
 /**
  * @About: Len主题幻灯片模块函数
  * @Author：青桔&dmy
- * @Url： lmeon.com/len-thems
+ * @Url： https://github.com/Clearlemon/Len-Free
  * @Time：2024-3-24
  * @Email: Len@tqlen.com
  * @Project: Len主题
@@ -28,8 +28,8 @@ function Len_Nav_Module($Top = true, $Sidebar = true)
                     'theme_location' => 'nav_1',
                     'depth' => 2,
                     'container' => 'div',
-                    'container_class' => 'len-sidebar-nav',
-                    'menu_class' => 'len-nav-ul',
+                    'container_class' => 'len-sidebar-nav animate__animated animate__slideInLeft',
+                    'menu_class' => 'len-nav-ul ',
                     'items_wrap' => '<ul class="%2$s">%3$s</ul>',
                     'walker' => new Leaf_Sidebar_Nav,
                 )

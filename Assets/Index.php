@@ -26,13 +26,23 @@ function Len_scripts_styles()
         wp_enqueue_script('Len-menmes', get_template_directory_uri() . '/Assets/Lne-JavaScript/menmes.min.js', array(), $var, false);
         wp_enqueue_style('music-min', get_template_directory_uri() . '/Assets/Len-Css/music.min.css', array(), $var, 'all');
         wp_enqueue_script('music-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/music.min.js', array(), $var, true);
+
+        wp_enqueue_style('tocbot-min', get_template_directory_uri() . '/Assets/Len-Css/tocbot.min.css', array(), $var, 'all');
+        wp_enqueue_script('tocbot-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/tocbot.min.js', array(), $var, true);
     } elseif (is_page()) {
     }
-    wp_enqueue_script('scrollreveal-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/scrollreveal.min.js', array(), $var, false);
+    wp_enqueue_style('link-min', get_template_directory_uri() . '/Assets/Len-Css/link.min.css', array(), $var, 'all');
+    wp_enqueue_style('sidebar-min', get_template_directory_uri() . '/Assets/Len-Css/sidebar.min.css', array(), $var, 'all');
+    wp_enqueue_script('sidebar-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/sidebar.min.js', array(), $var, true);
+
+
+
+    wp_enqueue_script('scrollreveal-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/scrollreveal.min.js', array(), $var, true);
     wp_enqueue_script('index-main', get_template_directory_uri() . '/Assets/Lne-JavaScript/index.main.js', array(), $var, true);
     wp_enqueue_script('jquery-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/jquery.min.js', array(), $var, false);
+    wp_enqueue_script('bootstrap-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/sticky-sidebar.min.js', array(), $var, true);
     wp_enqueue_style('comments-min', get_template_directory_uri() . '/Assets/Len-Css/comments.min.css', array(), $var, 'all');
-    wp_enqueue_script('comments-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/comments.min.js', array(), $var, false);
+    wp_enqueue_script('comments-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/comments.min.js', array(), $var, true);
 
     wp_enqueue_script('fancybox-umd-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/fancybox.umd.js', array(), $var, true);
 
@@ -72,7 +82,7 @@ add_action('wp_enqueue_scripts', 'Len_scripts_styles');
 function Len_footer_content()
 {
     if (is_single()) {
-        Len_Modeule_Music_Js();
+        Len_Module_Music_Js();
     }
 }
 

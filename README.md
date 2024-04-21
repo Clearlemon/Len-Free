@@ -1,9 +1,18 @@
  **简体中文** | [繁体中文](README_tw.md) | [English](README_en.md) | [日本語](README_jp.md)
 
+![工程图](https://pic.yyds3.top/A6Y2uu.jpg)
+
+[![Generic badge](https://img.shields.io/badge/author-Clearlemon-<COLOR>.svg)](https://github.com/Clearlemon)[![Generic badge](https://img.shields.io/badge/author-dmygzs-<COLOR>.svg)](https://github.com/dmygzs)
+
+
+
 # Len-Free
+
 一个简约清新的个人博客主题
-## 主题展示（工程图）
-![工程图](https://github.com/Clearlemon/Len-Free/assets/76205031/b9127bc7-63c0-4c2c-859d-7385a225d385)
+
+# 
+
+
 
 ## 柠檬主题开发日志
 [2024-1-14柠檬主题开发日志](https://dmyblog.cn/1485.html)

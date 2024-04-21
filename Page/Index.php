@@ -26,6 +26,8 @@
                  * 顶部导航栏模块样式文件目录
                  */
                 require_once get_theme_file_path('Page/Len-Block/Nav.php');
+                // 检查是否在后台标签编辑页
+
                 ?>
                 <!-- 文章顶部导航区块Banner开始 -->
                 <!-- 幻灯片区块开始 -->

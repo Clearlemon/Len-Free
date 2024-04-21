@@ -219,7 +219,7 @@ function Len_Lazy_Thumbnail()
  *
  * @return void
  */
-function Len_Modeule_Music_Js()
+function Len_Module_Music_Js()
 {
     // 获取音乐模块状态
     $Music_Module_All = _len('Music_Module_All');
@@ -308,13 +308,13 @@ function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = tru
     if ($Post_Content_Show_Module == true && isset($Global_User_Show) && in_array('user', $Global_User_Show) && $User_Show && $User_Show_key) {
         return User_Show_Static_Module();
     } elseif ($Post_Content_Show_Module == true && isset($Global_Copyright) && in_array('copyright', $Global_Copyright) && $Copyright && $Copyright_key) {
-        return Len_Modeule_Copyright();
+        return Len_Module_Copyright();
     } elseif ($Post_Content_Show_Module == true && isset($Global_Source) && in_array('source', $Global_Source) && $Source && $Source_key) {
         return Len_Source_Module();
     } elseif ($Post_Content_Show_Module == true && isset($Global_Music) && in_array('music', $Global_Music) && $Music && $Music_key) {
-        return Len_Modeule_Music();
+        return Len_Module_Music();
     } elseif ($Post_Content_Show_Module == true && isset($Global_Music) && in_array('music', $Global_Music) && $Music_Js && $Music_key) {
-        return Len_Modeule_Music_Js();
+        return Len_Module_Music_Js();
     } elseif ($Post_Content_Show_Module == true && isset($Global_Comments) && in_array('comments', $Global_Comments) && $Comments && $Comments_key) {
         if (comments_open()) {
             return  comments_template();
@@ -323,11 +323,11 @@ function Len_Module_Switcher($User_Show = true, $Copyright = true, $Source = tru
 }
 
 /**
- * Len_Modeule_Music 函数用于生成底部播放器模块的 HTML 结构。
+ * Len_Module_Music 函数用于生成底部播放器模块的 HTML 结构。
  *
  * 最终将生成的 HTML 结构输出到页面上。
  */
-function Len_Modeule_Music()
+function Len_Module_Music()
 {
     echo '<div id="aplayer"></div>';
 }
@@ -336,13 +336,13 @@ function Len_Modeule_Music()
 
 
 /**
- * Len_Modeule_Copyright 函数用于生成版权声明模块的 HTML 结构。
+ * Len_Module_Copyright 函数用于生成版权声明模块的 HTML 结构。
  *
  * 该函数首先获取版权声明模块的背景图片路径、文本内容部分1和文本内容部分2。
  * 然后，根据获取到的内容，生成版权声明模块的 HTML 结构，包括背景图片、文本内容部分1和文本内容部分2。
  * 最终将生成的 HTML 结构输出到页面上。
  */
-function Len_Modeule_Copyright()
+function Len_Module_Copyright()
 {
     // 获取版权声明模块的背景图片路径
     $Img = _len('Post_Copyright_Module_1');

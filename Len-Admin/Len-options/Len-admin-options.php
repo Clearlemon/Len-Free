@@ -248,13 +248,28 @@ if (class_exists('CSF')) {
       array(
         'type'    => 'submessage',
         'style'   => 'success',
-        'content' => '这是全局模块展示设置区',
+        'content' => '这是全局链接跳转模块设置区',
       ),
       array(
         'id'    => 'Jump_Module_1',
         'type'  => 'switcher',
         'title' => '展示模块开启【全部】',
       ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----侧边栏模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是全局侧边栏模块设置区',
+      ),
+      array(
+        'id'    => 'Sidebar_Stickup_Module_1',
+        'type'  => 'switcher',
+        'title' => '是否开启侧边栏粘性',
+      ),
+
       array(
         'type'    => 'heading',
         'content' => '<h3>   ----文章页面全局模块设置----    </h3>',
