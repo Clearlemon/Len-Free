@@ -1,0 +1,50 @@
+<main class="len-body-main len-body-m">
+  <?php
+  /**
+   * 引用底部样式
+   * require_once get_theme_file_path('Page/Len-Block/Header.php');
+   * Logo栏目模块样式文件目录
+   */
+  require_once get_theme_file_path('Page/Len-Block/Header.php');
+  ?>
+  <div id="len-content" class="len-content">
+    <div class="len-content-min">
+
+      <?php
+      /**
+       * 引用底部样式
+       * require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
+       * 左侧边栏模块样式文件目录
+       */
+      require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
+      ?>
+      <div class="len-showcase-main">
+        <!-- 文章展示模块开始 -->
+        <div class="">404了</div>
+
+        <?php
+        Len_Post_Page_Tradition_Ajax(get_queried_object());
+
+        ?>
+        <!-- 文章展示模块结束 -->
+      </div>
+      <?php
+      /**
+       * 引用右侧边栏样式
+       * require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
+       * 右侧边栏模块样式文件目录
+       */
+      require_once get_theme_file_path('Sidebars/Right-Sidebars.php');
+      ?>
+    </div>
+  </div>
+  </div>
+  <?php
+  /**
+   * 引用底部样式
+   * require_once get_theme_file_path('Page/Len-Block/Footer.php');
+   * 底部模块样式文件目录
+   */
+  require_once get_theme_file_path('Page/Len-Block/Footer.php');
+  ?>
+</main>

@@ -546,3 +546,11 @@ a.comment-reply-link {
     transform: translateY(10px);
     /* transition: all 0.3s; */
 }
+
+.no-single {
+    width: 100%;
+    text-align: center;
+    padding: 300px 0px;
+    background: white;
+    border-radius: 15px;
+}

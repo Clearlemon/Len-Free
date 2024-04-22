@@ -94,12 +94,7 @@ img {
 }
 
 
-.len-banner-nav-icon {
-    height: 15px;
-    width: 15px;
-    padding: 0px 2px;
-    vertical-align: -1px;
-}
+
 
 .len-showcase-banner-nav-blcok {
     padding-bottom: 10px;
@@ -425,3 +420,8 @@ span.page-numbers.current {
     background: #fbfbfb00;
     font-size: 16px;
 }
+
+/* pre {
+    width: 100%;
+    overflow: auto;
+} */

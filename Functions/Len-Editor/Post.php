@@ -24,16 +24,16 @@ if (function_exists('add_theme_support')) {
  * @param WP_Post $post 当前文章的 WP_Post 对象。
  * @return string 处理后的文章链接。
  */
-function Len_Post_Link($url, $post)
-{
-    if ($post->post_type == 'diary') {
-        $url = trailingslashit(home_url('/diary/') . $post->ID);
-    } elseif ($post->post_type == 'photo') {
-        $url = trailingslashit(home_url('/photo/') . $post->ID);
-    }
-    return $url;
-}
-add_filter('post_type_link', 'Len_Post_Link', 10, 2);
+// function Len_Post_Link($url, $post)
+// {
+//     if ($post->post_type == 'diary') {
+//         $url = trailingslashit(home_url('/diary/') . $post->ID);
+//     } elseif ($post->post_type == 'photo') {
+//         $url = trailingslashit(home_url('/photo/') . $post->ID);
+//     }
+//     return $url;
+// }
+// add_filter('post_type_link', 'Len_Post_Link', 10, 2);
 
 // /**
 //  * Len_Rewrite_Rules 函数用于添加自定义的重写规则。
@@ -101,14 +101,19 @@ function Len_Diary_Post()
     // 设置自定义文章类型的参数
     $args = array(
         'labels'        => $labels,
-        'description'   => '我们网站的日记信息',
-        'public'        => true,
+        'description'   => '网站的日记信息',
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'rewrite' => true,
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
         'menu_position' => 5,
         'supports'      => array('title', 'editor', 'thumbnail', 'author', 'tags'),
-        'has_archive'   => false,
-        'taxonomies'    => array('diary_tag', 'diary_category'), // 添加 'post_tag' 到支持的分类法中
-        'rewrite'       => array('with_front' => false, 'slug' => 'diary'),
-        'capability_type' => 'post',
+        'taxonomies'    => array('diary_tag'), // 添加 'post_tag' 到支持的分类法中
         'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/Diary.svg',
     );
 
@@ -179,13 +184,18 @@ function Len_Photo_Post()
     // 设置自定义文章类型的参数
     $args = array(
         'labels'        => $labels,
-        'description'   => '我们网站的相册信息',
-        'public'        => true,
+        'description'   => '网站的相册信息',
+        'public' => true,
+        'publicly_queryable' => true,
+        'show_ui' => true,
+        'show_in_menu' => true,
+        'query_var' => true,
+        'capability_type' => 'post',
+        'has_archive' => true,
+        'hierarchical' => false,
         'menu_position' => 5,
         'supports'      => array('title', 'editor', 'thumbnail', 'author', 'tags'),
-        'has_archive'   => false,
-        'taxonomies'    => array('photo_tag', 'photo_category'),
-        'rewrite'       => array('with_front' => false, 'slug' => 'photo'),
+        'taxonomies'    => array('photo_tag'),
         'capability_type' => 'post',
         'menu_icon'     => get_template_directory_uri() . '/Assets/Len-Images/Admin/Photo.svg',
     );

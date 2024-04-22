@@ -199,6 +199,25 @@ li>.iconfont {
   display: none;
 }
 
-ol.toc-list.is-collapsible>li {
+
+.sidebar-time {
+  padding: 20px 0px;
+}
+
+ol.toc-list>li {
   padding: 5px 0px;
+  font-size: 14px;
+}
+
+.len-banner-nav-icon {
+  height: 17px;
+  width: 17px;
+  padding-right: 5px;
+  vertical-align: -3px;
+}
+
+.len-nav-li-first>i {
+  padding-right: 5px;
+  font-size: 15px;
+  padding-left: 2px;
 }

@@ -53,7 +53,7 @@ CSF::createSection($Module_Post_1, array(
 
 CSF::createMetabox($Module_Post_2, array(
   'title'     => '文章来源地址模块',
-  'post_type'    => array('post', 'photo'),
+  'post_type'    => array('post'),
 ));
 
 CSF::createSection($Module_Post_2, array(
@@ -81,7 +81,7 @@ CSF::createSection($Module_Post_2, array(
 
 CSF::createMetabox($Module_Post_3, array(
   'title'     => '文章底部音乐播放器模块',
-  'post_type'    => array('post', 'photo'),
+  'post_type'    => array('post'),
 ));
 
 CSF::createSection($Module_Post_3, array(

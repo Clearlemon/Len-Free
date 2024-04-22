@@ -5,6 +5,7 @@
     position: relative;
     height: 11vw;
     border-radius: 10px;
+    margin-top: 10px;
 }
 
 .say-main {
@@ -19,26 +20,34 @@
 }
 
 .say-bode {
-    background: linear-gradient(180.00deg, rgba(125, 125, 125, 0.77), rgb(125 125 125 / 29%) 100%);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(50px);
     border-radius: 10px;
-
+    background: #faebd700;
 }
 
 .say-information {
     display: flex;
-    /* border: 46px; */
-    /* padding-top: 15px; */
+
     padding: 15px 15px 0px;
     margin-bottom: 15px;
     margin-top: 10px;
+    justify-content: space-between;
 }
 
-.say-information>img {
-    width: 100px;
-    height: 100px;
+.say-title {
+    color: white;
+    max-width: 500px;
+}
+
+.say-body-name-avatar-time>img {
+    width: 60px;
+    height: 60px;
     border-radius: 15px;
     margin-right: 10px;
+}
+
+.say-body-name-avatar-time {
+    display: flex;
 }
 
 .say-content {
@@ -63,7 +72,7 @@
 }
 
 .say-substance {
-    padding: 20px;
+    padding: 0px 20px 20px 20px;
     color: #fff;
 }
 

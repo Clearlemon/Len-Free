@@ -36,6 +36,7 @@ $files = array(
      * 'Module/Comments.php',| 主题文章评论函数模块文件
      * 'Module/Index.php',| 首页文章函数模块文件
      * 'Module/PageTemplates/Diary.php',| 说说页函数模块文件
+     * 'Module/PageTemplates/Diary.php',| 相册页函数模块文件
      * 'Module/Slide.php', | 头部幻灯片模块
      * 'Module/Nav.php', | 头部导航栏模块
      * 'Module/Classify.php', | 分类页模块-
@@ -48,6 +49,7 @@ $files = array(
     'Module/Comments.php',
     'Module/Index.php',
     'Module/PageTemplates/Diary.php',
+    'Module/PageTemplates/Photo.php',
     'Module/Slide.php',
     'Module/Nav.php',
     'Module/Classify.php',

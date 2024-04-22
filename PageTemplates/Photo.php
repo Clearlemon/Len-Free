@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <?php
 /*
 Template Name: Photo【相册】
@@ -33,41 +32,16 @@ wp_head();
             <div class="len-showcase-main">
                 <!-- 图片开始 -->
                 <div id="len-waterfall">
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" >
-                            <img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2023/12/2023122813134040.jpg" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp"><img src="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp"><img src="https://dmyblog.cn/wp-content/uploads/2024/03/2024030913355347.webp" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024021408193873.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024021408193873.jpg" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a  data-source="大绵羊yyds"data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt="大绵羊"></a>
-                    </div>
-                    <div class="len-waterfall-content">
-                        <a data-source="大绵羊yyds" data-fancybox="gallery" data-download-src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" href="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg"><img src="https://dmyblog.cn/wp-content/uploads/2024/02/2024020417410171.jpg" alt=""></a>
-                    </div>
+                    <?php
+                    Len_Photo_Showcase();
+
+                    ?>
                 </div>
                 <!-- 图片结束 -->
+                <?php
+                Len_Photo_Diary_Page();
+                ?>
             </div>
-            <!-- <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script> -->
-
-
-
 
             <?php
             /**
@@ -96,30 +70,32 @@ wp_head();
     ?>
 
 </main>
-<style>#len-waterfall {
-    columns: 4;
-    column-gap: 6px;
-    margin: 10px auto;
-}
+<style>
+    #len-waterfall {
+        columns: 4;
+        column-gap: 6px;
+        margin: 10px auto;
+    }
 
-.len-waterfall-content {
-    width: 100%;
-    break-inside: avoid;
-    margin-bottom: 4px;
-}
+    .len-waterfall-content {
+        width: 100%;
+        break-inside: avoid;
+        margin-bottom: 4px;
+    }
 
-.len-waterfall-content a img {
-    width: 100%;
-    border-radius: 15px;
-}
+    .len-waterfall-content a img {
+        width: 100%;
+        border-radius: 15px;
+    }
 
-.len-waterfall-content a img:hover {
-    filter: gray;
-    /* filter为滤镜 gray为颜色 */
-    filter: grayscale(100);
-    /* 将图像转换为灰度图像 */
-    opacity: 0.7;
-    /* 透明度 */
-    transition: all 0.3s;
-    /* 上边那个加了之后 移入移出都会有过渡 */
-}</style>
+    .len-waterfall-content a img:hover {
+        filter: gray;
+        /* filter为滤镜 gray为颜色 */
+        filter: grayscale(100);
+        /* 将图像转换为灰度图像 */
+        opacity: 0.7;
+        /* 透明度 */
+        transition: all 0.3s;
+        /* 上边那个加了之后 移入移出都会有过渡 */
+    }
+</style>

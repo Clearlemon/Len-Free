@@ -238,16 +238,19 @@ function Len_Module_Music_Js()
     ?>
         <script type="text/javascript">
             // 创建音乐播放器实例
-            const ap = new APlayer({
-                container: document.getElementById('aplayer'),
-                audio: [{
-                    name: '<?php echo $Module_Music_1; ?>',
-                    artist: '<?php echo $Module_Music_2; ?>',
-                    url: '<?php echo $Module_Music_3; ?>',
-                    cover: '<?php echo $Module_Music_4; ?>',
-                    lrc: '<?php echo $Module_Music_5; ?>',
-                }]
-            });
+            var aplayerElement = document.getElementById('aplayer');
+            if (aplayerElement) {
+                const ap = new APlayer({
+                    container: document.getElementById('aplayer'),
+                    audio: [{
+                        name: '<?php echo $Module_Music_1; ?>',
+                        artist: '<?php echo $Module_Music_2; ?>',
+                        url: '<?php echo $Module_Music_3; ?>',
+                        cover: '<?php echo $Module_Music_4; ?>',
+                        lrc: '<?php echo $Module_Music_5; ?>',
+                    }]
+                });
+            }
         </script>
     <?php
     } else {
@@ -259,17 +262,19 @@ function Len_Module_Music_Js()
         $Module_Music_All_5 = _len('Module_Music_Post_All_5');
     ?>
         <script type="text/javascript">
-            // 创建音乐播放器实例
-            const ap = new APlayer({
-                container: document.getElementById('aplayer'),
-                audio: [{
-                    name: '<?php echo $Module_Music_All_1; ?>',
-                    artist: '<?php echo $Module_Music_All_2; ?>',
-                    url: '<?php echo $Module_Music_All_3; ?>',
-                    cover: '<?php echo $Module_Music_All_4; ?>',
-                    lrc: '<?php echo $Module_Music_All_5; ?>',
-                }]
-            });
+            var aplayerElement = document.getElementById('aplayer');
+            if (aplayerElement) {
+                const ap = new APlayer({
+                    container: document.getElementById('aplayer'),
+                    audio: [{
+                        name: '<?php echo $Module_Music_All_1; ?>',
+                        artist: '<?php echo $Module_Music_All_2; ?>',
+                        url: '<?php echo $Module_Music_All_3; ?>',
+                        cover: '<?php echo $Module_Music_All_4; ?>',
+                        lrc: '<?php echo $Module_Music_All_5; ?>',
+                    }]
+                });
+            }
         </script>
     <?php
     }

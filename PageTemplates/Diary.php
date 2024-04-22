@@ -30,15 +30,14 @@ wp_head();
             ?>
             <div class="len-showcase-main">
                 <!-- 说说开始 -->
-                <div class="say">
-                    <img class="say" src="../Images/say.jpg" alt="" class="img-night" style="">
-                </div>
-
-                <?php Len_Say_Showcase(); ?>
+                <?php
+                Diary_Banner_Module();
+                Len_Say_Showcase();
+                Len_Photo_Diary_Page();
+                ?>
                 <!-- 说说结束 -->
+
             </div>
-
-
 
 
             <?php

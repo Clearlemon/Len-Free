@@ -304,7 +304,7 @@ if (class_exists('CSF')) {
   CSF::createWidget('len_post_title_module', array(
     'title'       => '🍋 Len-文章导航目录',
     'classname'   => 'Len_Post_Title_Module',
-    'description' => '此小工具只适用于文章页适用于各种页面',
+    'description' => '此小工具只适用于文章页',
     'fields'      => array(
       array(
         'id'      => 'Len_Post_Title_Module_title',
@@ -346,11 +346,133 @@ if (class_exists('CSF')) {
           <div class="len-toc">
           </div>
         </div>
-<?php
+      <?php
         echo $args['after_widget'];
       } else {
         echo '';
       }
+    }
+  }
+
+
+  CSF::createWidget('len_time_module', array(
+    'title'       => '🍋 Len-粒子跳动时间',
+    'classname'   => 'Len_Time_Module',
+    'description' => '此小工具适用于各种页面',
+    'fields'      => array(
+      array(
+        'id'      => 'Len_Time_Module_title',
+        'type'    => 'text',
+        'title'   => '小工具标题名称',
+        'default' => '粒子跳动时间',
+      ),
+      array(
+        'id'         => 'Len_All_Sidebar_Module_Show',
+        'type'       => 'radio',
+        'title'      => '选择哪个端是否显示',
+        'options'    => array(
+          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
+          'Show_Pc' => '只显示[PC]',
+          'Show_PcMobile' => '只显示[移动设备]',
+        ),
+        'default'    => 'Show_Pc_And_Mobile',
+      ),
+    ),
+  ));
+  if (!function_exists('Len_Time_Module')) {
+    function Len_Time_Module($args, $Time_Module)
+    {
+
+      $Len_Time_Module_title = $Time_Module['Len_Time_Module_title'];
+
+      $Len_All_Sidebar_Module_Show = $Time_Module['Len_All_Sidebar_Module_Show'];
+      if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
+        $Show = 'sidebar-show-all';
+      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
+        $Show = 'sidebar-show-pc';
+      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
+        $Show = 'sidebar-show-mobile';
+      }
+      echo $args['before_widget'];
+      ?>
+      <div class="len-pos-nav-int-min">
+        <div class="len-pos-nav-title"><i class="fa-solid fa-calendar-days"></i><?php echo $Len_Time_Module_title; ?> </div>
+        <canvas class="sidebar-time" id="canvas" style="width: 100%;" height="100" width="700"></canvas>
+      </div>
+    <?php
+      echo $args['after_widget'];
+    }
+  }
+
+  CSF::createWidget('len_post_module', array(
+    'title'       => '🍋 Len-文章聚合',
+    'classname'   => 'Len_Post_Module',
+    'description' => '此小工具适用于各种页面',
+    'fields'      => array(
+      array(
+        'id'      => 'Len_Post_Module_title',
+        'type'    => 'text',
+        'title'   => '小工具标题名称',
+        'default' => '文章聚合',
+      ),
+      array(
+        'id'         => 'Len_All_Sidebar_Module_Show',
+        'type'       => 'radio',
+        'title'      => '选择哪个端是否显示',
+        'options'    => array(
+          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
+          'Show_Pc' => '只显示[PC]',
+          'Show_PcMobile' => '只显示[移动设备]',
+        ),
+        'default'    => 'Show_Pc_And_Mobile',
+      ),
+    ),
+  ));
+  if (!function_exists('Len_Post_Module')) {
+    function Len_Post_Module($args, $Post_Module)
+    {
+
+      $Len_Post_Module_title = $Post_Module['Len_Post_Module_title'];
+
+      $Len_All_Sidebar_Module_Show = $Post_Module['Len_All_Sidebar_Module_Show'];
+      if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
+        $Show = 'sidebar-show-all';
+      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
+        $Show = 'sidebar-show-pc';
+      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
+        $Show = 'sidebar-show-mobile';
+      }
+      echo $args['before_widget'];
+    ?>
+      <div class="len-pos-nav-int-min">
+        <div class="len-pos-nav-title"><i class="fa-solid fa-calendar-days"></i><?php echo $Len_Post_Module_title; ?> </div>
+        <div class="">
+
+        </div>
+        <?php
+
+        // $args = array(
+        //   'post_type' => 'post',
+        //   'posts_per_page' => -1, // -1 表示检索所有文章
+        // );
+
+        // $query = new WP_Query($args);
+
+        // if ($query->have_posts()) :
+        //   while ($query->have_posts()) : $query->the_post();
+        //     // 输出文章标题和内容等
+        //     Len_index_article();
+        //   endwhile;
+        //   wp_reset_postdata(); // 重置查询
+        // else :
+        // // 没有找到文章的处理逻辑
+        // endif;
+
+
+        ?>
+      </div>
+<?php
+      echo $args['after_widget'];
     }
   }
 }

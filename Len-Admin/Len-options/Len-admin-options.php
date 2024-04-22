@@ -269,7 +269,6 @@ if (class_exists('CSF')) {
         'type'  => 'switcher',
         'title' => '是否开启侧边栏粘性',
       ),
-
       array(
         'type'    => 'heading',
         'content' => '<h3>   ----文章页面全局模块设置----    </h3>',
@@ -694,7 +693,54 @@ if (class_exists('CSF')) {
         'default'    => 'pagination_2',
         'dependency' => array('Post_Comments_Module_1', '==', true),
       ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----说说页面模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
+        'content' => 'Banner图 | 文章显示数量',
+      ),
+      array(
+        'id'    => 'Diary_Module_1',
+        'type'  => 'upload',
+        'title' => '【Banner】图片',
+        'preview' => true,
+        'desc'     => '说说页【Banner】图片设置 | <b class="Len_emphasis_fonts">图片格式建议为webp</b>',
+        'library'      => 'image',
+        'default' => $Image_Url . 'wx' . $Image_Format,
+      ),
+      array(
+        'id'          => 'Diary_Module_2',
+        'type'        => 'number',
+        'title'       => '显示数量',
+        'unit'        => '篇',
+        'default'     => 50,
+      ),
 
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----相册页面模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'subheading',
+        'content' => ' 图片显示数量',
+      ),
+      array(
+        'id'          => 'Photo_Module_1',
+        'type'        => 'number',
+        'title'       => '显示数量',
+        'unit'        => '张',
+        'default'     => 50,
+      ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----友链页面模块设置----    </h3>',
+      ),
+      // array(
+      //   'type'    => 'subheading',
+      //   'content' => '展示模块 | 音乐模块 ',
+      // ),
     )
   ));
   CSF::createSection($Module, array(

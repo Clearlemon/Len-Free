@@ -386,23 +386,24 @@ function Len_Post_Page()
     }
 
     // 添加第一页和最后一页链接
-    $first_page_link = esc_url(add_query_arg('paged', 1, $current_page_link));
     $last_page_link = esc_url(add_query_arg('paged', $total_pages, $current_page_link));
 
     // 获取分页链接
     $paginate_links = paginate_links(array(
         'current' => $current_page,
         'mid_size' => 2,
+        'total' => $total_pages,
         'prev_text' => '上一页',
         'next_text' => '下一页',
         'end_size' => 2, // 设置最后一页链接的数量
     ));
 
+
     // 输出分页链接
     if ($paginate_links) {
         echo '<div class="len_post_page_block_all">';
         if ($current_page >= 2) {
-            echo '<span class="page-numbers"><a href="' . $first_page_link . '">首页</a></span>'; // 输出第一页链接
+            echo '<span class="page-numbers"><a href="' . $home_url . '">首页</a></span>'; // 输出第一页链接
         }
 
         echo $paginate_links;
@@ -432,7 +433,7 @@ function Len_Post_Page_Ajax()
     } else {
         $tag = '';
     }
-    $search_number = get_search_query();
+    $search_key = get_search_query();
     $posts_per_page = get_option('posts_per_page');
     $current_page = max(1, get_query_var('paged'));
     $total_pages = $wp_query->max_num_pages;
@@ -448,7 +449,7 @@ function Len_Post_Page_Ajax()
         }
     } elseif (is_search()) {
         if ($total_pages > 1) {
-            echo '<div  class="len-post-ajax-button"><button page="' . $current_page . '" search-key="' . $search_number . '" showcase="' . $posts_per_page . '" id="len-ajax-post-search" class="len-post-block-min">加载更多</button></div>';
+            echo '<div  class="len-post-ajax-button"><button page="' . $current_page . '" search-key="' . $search_key . '" showcase="' . $posts_per_page . '" id="len-ajax-post-search" class="len-post-block-min">加载更多</button></div>';
         }
     }
 }
@@ -488,4 +489,67 @@ function Len_Post_Page_Tradition_Ajax($catid = '')
             Len_Post_Page_Ajax();
         }
     }
+}
+
+
+function Len_Photo_Diary_Page()
+{
+    global $wp_query;
+    $blog_posts_per_page = get_option('posts_per_page');
+    $total_pages = $wp_query->max_num_pages;
+    $current_page = get_queried_object(); // 获取当前页面的信息
+    $page_slug = $current_page->post_name; // 获取当前页面的别名
+    $home_url = esc_url(home_url('/' . $page_slug));
+    $Diary_post_max = _len('Diary_Module_2');
+    $Photo_post_max = _len('Photo_Module_1');
+
+
+    // 获取当前页数
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    $last_page_link = esc_url(add_query_arg('paged', $total_pages, $paged));
+
+
+    if (is_page_template('PageTemplates/Diary.php')) {
+        $args = array(
+            'post_type'      => 'diary', // 假设你要输出的是博客文章，如果是其他类型需要修改
+            'posts_per_page' => $Diary_post_max, // 使用后台设置的博客页面至多显示数量
+            'paged'          => $paged, // 指定当前页数
+        );
+    } elseif (is_page_template('PageTemplates/Photo.php')) {
+        $args = array(
+            'post_type'      => 'photo', // 假设你要输出的是博客文章，如果是其他类型需要修改
+            'posts_per_page' => $Photo_post_max, // 使用后台设置的博客页面至多显示数量
+            'paged'          => $paged, // 指定当前页数
+        );
+    }
+    // 查询文章
+    $blog_query = new WP_Query($args);
+
+    $paginate_links = paginate_links(array(
+        'total'     => $blog_query->max_num_pages,
+        'current'   => max(1, $paged),
+        'prev_text' => '上一页',
+        'next_text' => '下一页',
+    ));
+
+    // 输出文章
+    if ($blog_query->have_posts()) :
+        if ($paginate_links) {
+            echo '<div class="len_post_page_block_all">';
+            // 输出翻页链接
+            if ($paged >= 2) {
+                echo '<span class="page-numbers"><a href="' . $home_url . '">首页</a></span>'; // 输出第一页链接
+            }
+
+            echo $paginate_links;
+
+            if ($paged < ($total_pages - 1)) {
+                echo '<span class="page-numbers"><a href="' . $last_page_link . '">末页</a></span>'; // 输出最后一页链接
+            }
+            echo '</div>';
+        }
+
+        // 重置查询
+        wp_reset_postdata();
+    endif;
 }
