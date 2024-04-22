@@ -496,7 +496,8 @@ a.comment-reply-link {
     width: 100%;
     break-inside: avoid;
     margin-bottom: 5px;
-    position: relative; /* 为工具提示定位做准备 */
+    position: relative;
+    /* 为工具提示定位做准备 */
 }
 
 .len-waterfall-content a {

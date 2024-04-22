@@ -1,5 +1,5 @@
-  /* 使用CSS变量 */
-  :root {
+/* 使用CSS变量 */
+:root {
     --primary-color: #282a2d;
     --box-shadow-color: rgba(32, 160, 255, 0.15);
 }
@@ -7,14 +7,18 @@
 .len-link-content {
     display: flex;
     flex-wrap: wrap;
+    background: white;
+    border-radius: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
-.len-link-url  {
-    width: 25%;
+.len-link-url {
+    width: 28%;
     padding: 15px;
 }
 
-.len-link-information{
+.len-link-information {
     background-color: #fff;
     border-radius: .25rem;
     box-shadow: 0 3px 5px var(--box-shadow-color);
@@ -24,13 +28,15 @@
 .len-link-cardbody {
     /* 添加了display: flex; */
     /* display: flex; */
-     /* 添加了align-items: center; */
+    /* 添加了align-items: center; */
     /* align-items: center;  */
     padding: .938rem;
 }
-.len-link-detailed{
+
+.len-link-detailed {
     display: flex;
 }
+
 .len-link-api-img {
     width: 40px;
     height: 40px;
@@ -45,7 +51,8 @@
 }
 
 .len-link-website-info {
-    flex-grow: 1; /* 确保.url-info占据剩余空间 */
+    flex-grow: 1;
+    /* 确保.url-info占据剩余空间 */
     overflow: hidden;
 }
 

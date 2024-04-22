@@ -294,7 +294,7 @@ if (class_exists('CSF')) {
           <?php echo $Len_User_Module_html; ?>
         </div>
       </div>
-<?php
+      <?php
 
       echo '</div>';
       echo $args['after_widget'];
@@ -340,7 +340,13 @@ if (class_exists('CSF')) {
           $Show = 'sidebar-show-mobile';
         }
         echo $args['before_widget'];
-        echo '111' . $Len_Post_Title_Module_title;
+      ?>
+        <div class="len-pos-nav-int-min">
+          <div class="len-pos-nav-title"><i class="fa-solid fa-plus"></i><?php echo $Len_Post_Title_Module_title; ?> </div>
+          <div class="len-toc">
+          </div>
+        </div>
+<?php
         echo $args['after_widget'];
       } else {
         echo '';

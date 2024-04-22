@@ -1,5 +1,5 @@
 <?php
-$var = '2.5.8';
+$var = '2.7.1';
 function enqueue_custom_admin_styles()
 {
     global $var;
@@ -32,9 +32,12 @@ function Len_scripts_styles()
     } elseif (is_page()) {
     }
     wp_enqueue_style('link-min', get_template_directory_uri() . '/Assets/Len-Css/link.min.css', array(), $var, 'all');
+    wp_enqueue_style('prism-min', get_template_directory_uri() . '/Assets/Len-Css/prism.min.css', array(), $var, 'all');
+    wp_enqueue_script('prism-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/prism.min.js', array(), $var, true);
+
+
     wp_enqueue_style('sidebar-min', get_template_directory_uri() . '/Assets/Len-Css/sidebar.min.css', array(), $var, 'all');
     wp_enqueue_script('sidebar-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/sidebar.min.js', array(), $var, true);
-
 
 
     wp_enqueue_script('scrollreveal-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/scrollreveal.min.js', array(), $var, true);

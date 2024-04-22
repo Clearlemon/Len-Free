@@ -472,3 +472,8 @@ b.Len_emphasis_fonts {
     fill: currentColor;
     overflow: hidden;
 }
+
+:not(pre)>code[class*="language-"],
+pre[class*="language-"] {
+    background: #f5f2f0;
+}

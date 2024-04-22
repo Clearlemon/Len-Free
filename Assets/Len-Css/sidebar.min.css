@@ -176,3 +176,29 @@ li>.iconfont {
   max-width: 250px;
   width: 250px;
 }
+
+.len-pos-nav-title {
+  padding: 5px;
+}
+
+.len-pos-nav-title>i {
+  padding-right: 5px;
+}
+
+.len-pos-nav-int-min {
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.len-toc {
+  padding: 10px 20px;
+}
+
+.toc-link::before {
+  display: none;
+}
+
+ol.toc-list.is-collapsible>li {
+  padding: 5px 0px;
+}

@@ -22,6 +22,7 @@ $files = array(
      * 引用主题编辑器函数功能
      */
     'Functions/Len-Editor/Post.php',
+    'Functions/Len-Editor/Short-Codes.php',
 
     /**
      * 引用主题AJAX功能

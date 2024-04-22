@@ -467,3 +467,47 @@ if (!function_exists('Len_All_Icons')) {
     }
     add_filter('csf_field_icon_add_icons', 'Len_All_Icons');
 }
+
+
+/**
+ * 后台编辑器函数引用
+ */
+
+add_filter('mce_external_plugins', 'add_tinymce_plugin');
+add_filter('mce_buttons', 'register_mce_button');
+add_filter('mce_buttons_2', 'register_mce_button2');
+add_filter('mce_buttons_3', 'register_mce_button3');
+
+function add_tinymce_plugin($plugin_array)
+{
+
+    $plugin_array['codesample'] =  get_template_directory_uri() . '/Assets/Admin/Short-Code/plugin.min.js';
+    $plugin_array['cntent_hidden'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Hide-Codes/Hide.js'; // 后台短代码按钮的js路径
+    //}
+    return $plugin_array;
+}
+
+//注册第一行按钮
+function register_mce_button($buttons)
+{
+    array_push($buttons, "|", "codesample",);
+
+
+    return $buttons;
+}
+
+function register_mce_button2($buttons)
+{
+    array_push($buttons, "|", "cntent_hidden");
+
+
+    return $buttons;
+}
+
+function register_mce_button3($buttons)
+{
+    array_push($buttons, "codesample");
+
+
+    return $buttons;
+}
