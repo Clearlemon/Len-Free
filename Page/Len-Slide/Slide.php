@@ -19,6 +19,8 @@ if ($Home_Module_1 == true) {
                 <div class="swiper-wrapper">
                     <?php Len_Slide_Module() ?>
                 </div>
+                <div class="swiper-pagination"></div>
+
             </div>
         </div>
 <?php }

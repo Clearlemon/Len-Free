@@ -24,9 +24,6 @@
           <div class="page-content">
 
             <img src="<?php echo get_template_directory_uri(); ?>/Assets/Len-Images/404.svg" alt="404 Image">
-
-            <!-- <img style="padding-top: 50px;" echo get_template_directory_uri() . '/Assets/Len-Images/404.svg';"> -->
-
             <div class="error-404">
               <h1>404 评论啦</h1>
               <p>当前页面已丢失 或者是可恶的站长不想让你康</p>
@@ -58,44 +55,3 @@
   ?>
 
 </main>
-<style>
-        /* 定义呼吸灯动画 */
-        @keyframes breathing {
-            0%, 100% {
-              border-color: #ff0000;
-                box-shadow: 0 0 20px #ff0000;
-            }
-            50% {
-              border-color: #ff6666;
-                box-shadow: 0 0 5px #ff6666;
-            }
-        }
-
-
-  .len-top-404{
-    animation: breathing 3s ease-in-out infinite;
-          background-color: #efef7b;
-          /* border: 3px solid #efef7b; */
-          box-shadow: 0 0 5px #efef7b;; /* 初始阴影 */
-            border-radius: 50%;
-  }
-  .len-top-404 {
-    background: #fff;
-    min-height: 500px;
-    border-radius: 15px;
-  }
-  .error-404 h1 {
-    font-size: 20px;
-    margin: 26px 0 16px;
-    font-weight: 600;
-    text-align: center;
-  }
-  .error-404 p {
-    text-align: center;
-    margin-bottom: 5px;
-  }
-  .page-content img {
-    width: 100%;
-  }
-
-</style>

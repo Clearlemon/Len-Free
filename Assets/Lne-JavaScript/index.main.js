@@ -1,19 +1,65 @@
-
-
-
 document.addEventListener('DOMContentLoaded', function () {
-    // 检查页面中是否存在具有指定ID的元素
+    var button = document.getElementById('random-post');
+    var currentUrl = window.location.protocol + '//' + window.location.host; // 获取当前页面的协议和主机名
+    var searchBtn = document.getElementById('search-btn');
     var swiperElement = document.getElementById('len-swiper');
+
+
+    // 点击按钮时触发
+    button.addEventListener('click', function () {
+        // 发送 AJAX 请求获取所有文章
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', currentUrl + '/wp-json/wp/v2/posts');
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                var posts = JSON.parse(xhr.responseText);
+                // 从文章数组中随机选择一篇文章
+                var randomIndex = Math.floor(Math.random() * posts.length);
+                var randomPost = posts[randomIndex];
+                // 跳转到随机选择的文章链接
+                setTimeout(function () {
+                    window.location.href = randomPost.link;
+
+                }, 2000); // 3秒延迟
+                Qmsg.loading({
+                    content: '正在随机跳转请等待2秒',
+                    position: 'top',
+                    showClose: true,
+                    autoClose: true
+                });
+            } else {
+                console.error('获取文章失败：' + xhr.status);
+            }
+        };
+        xhr.send();
+    });
+
+
+    searchBtn.addEventListener('click', function () {
+        document.getElementById('searchform').submit();
+    });
 
     // 如果存在，则创建Swiper实例
     if (swiperElement) {
         var mySwiper = new Swiper('#len-swiper', {
-            loop: true, // 循环模式选项
-            // 其他Swiper选项...
+            loop: true,
+            speed: 2000,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
         });
     }
 
 });
+
 
 
 
@@ -37,19 +83,22 @@ function initializePlugins() {
         // 可选配置项
     });
 
-    var fooReveal = {
-        origin: 'top',
-        delay: 10,
-        distance: '20px',
-        // easing: 'ease-in-out',
-        rotate: { y: 0 },
-        scale: 0.3
-    };
+
 
     window.sr = ScrollReveal()
         .reveal('.foo', fooReveal)
 
 }
+
+var fooReveal = {
+    origin: 'top',
+    delay: 10,
+    distance: '20px',
+    // easing: 'ease-in-out',
+    rotate: { y: 0 },
+    scale: 0.1
+};
+
 // 在页面加载完成时执行初始化函数
 document.addEventListener('DOMContentLoaded', function () {
     initializePlugins();

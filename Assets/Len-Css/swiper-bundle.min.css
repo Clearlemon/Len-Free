@@ -9,6 +9,11 @@
  *
  * Released on: October 26, 2023
  */
+.swiper-pagination-bullet {
+    height: 3px !important;
+    border-radius: initial !important;
+    width: 20px !important;
+}
 
 @font-face {
     font-family: swiper-icons;
@@ -367,7 +372,8 @@
 
 .swiper-pagination {
     position: absolute;
-    text-align: center;
+    text-align: inherit;
+    margin-left: 20px;
     transition: .3s opacity;
     transform: translate3d(0, 0, 0);
     z-index: 10
@@ -386,7 +392,7 @@
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
-    bottom: var(--swiper-pagination-bottom, 8px);
+    bottom: var(--swiper-pagination-bottom, 2px);
     top: var(--swiper-pagination-top, auto);
     left: 0;
     width: 100%
