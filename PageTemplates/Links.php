@@ -2,11 +2,20 @@
 /*
 Template Name: Link【友联页面】
 */
+?>
+<?php
+Len_Links_Submit_Module(true, false)
+?>
+<?php
 
 /**
  * wp_footer(); @引用Wordpress自带的顶部样式文件
  */
-wp_head(); ?>
+
+wp_head();
+
+
+?>
 <main class="len-body-main len-body-m">
   <?php
   /**
@@ -28,44 +37,30 @@ wp_head(); ?>
       ?>
       <div class="len-showcase-main">
         <!-- 友链开始 -->
-        <div class="len-link-content">
-          <!-- NO:1 -->
-          <div class="len-link-url">
-            <div class="len-link-information">
-              <div class="len-link-cardbody">
-                <div class="len-link-detailed">
-                  <div class="len-link-api-img">
-                    <!-- 这里是公司的网站获取 -->
-                    <img src="http://api.yangjuantech.com/favicon/get.php?url=dmyblog.cn" alt="Image">
-                  </div>
-                  <div class="len-link-website-info">
-                    <div class="len-link-website-title">
-                      <a href="https://dmyblog.cn/" title="大绵羊博客" target="_blank"><strong>大绵羊博客</strong></a>
-                    </div>
-                    <p class="len-link-introduce">有幸遇见，恰巧合拍</p> <!-- 移除了不必要的类 -->
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="len-link-block-cat animate__animated animate__fadeIn">
+
+          <div class="lenk-content-main">
+            <?php
+            if (have_posts()) : while (have_posts()) : the_post();
+                the_content();
+              endwhile;
+            endif;
+            Len_Links_Submit_Module(false, true)
+            ?>
+
           </div>
-          <!-- NO:2 -->
-          <div class="len-link-url">
-            <div class="len-link-information">
-              <div class="len-link-cardbody">
-                <div class="len-link-detailed">
-                  <div class="len-link-api-img">
-                    <!-- 这里是公司的网站获取 -->
-                    <img src="http://api.yangjuantech.com/favicon/get.php?url=dmyblog.cn" alt="Image">
-                  </div>
-                  <div class="len-link-website-info">
-                    <div class="len-link-website-title">
-                      <a href="https://dmyblog.cn/" title="大绵羊博客" target="_blank"><strong>大绵羊博客</strong></a>
-                    </div>
-                    <p class="len-link-introduce">有幸遇见，恰巧合拍</p> <!-- 移除了不必要的类 -->
-                  </div>
-                </div>
-              </div>
-            </div>
+
+          <?php if (function_exists('cmp_breadcrumbs')) cmp_breadcrumbs(); ?>
+
+
+
+
+          <div class="len-links-block-main">
+            <?php
+            $Links_Module_1 = _len('Links_Module_1');
+            if ($Links_Module_1 == true) {
+              Len_Links_Module();
+            } ?>
           </div>
 
         </div>

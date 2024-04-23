@@ -70,32 +70,3 @@ wp_head();
     ?>
 
 </main>
-<style>
-    #len-waterfall {
-        columns: 4;
-        column-gap: 6px;
-        margin: 10px auto;
-    }
-
-    .len-waterfall-content {
-        width: 100%;
-        break-inside: avoid;
-        margin-bottom: 4px;
-    }
-
-    .len-waterfall-content a img {
-        width: 100%;
-        border-radius: 15px;
-    }
-
-    .len-waterfall-content a img:hover {
-        filter: gray;
-        /* filter为滤镜 gray为颜色 */
-        filter: grayscale(100);
-        /* 将图像转换为灰度图像 */
-        opacity: 0.7;
-        /* 透明度 */
-        transition: all 0.3s;
-        /* 上边那个加了之后 移入移出都会有过渡 */
-    }
-</style>

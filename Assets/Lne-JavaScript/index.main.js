@@ -61,15 +61,23 @@ jQuery(document).ready(function ($) {
     var tagButton = $('#len-ajax-post-tag'); // 标签页按钮
     var searchButton = $('#len-ajax-post-search'); // 标签页按钮
     var homeButton = $('#len-ajax-post'); // 标签页按钮
+    var canClick = true; // 控制按钮是否可点击的标志
 
     homeButton.click(function () {
+        if (!canClick) return; // 如果按钮不可点击，直接返回
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
         var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
-
         // 创建加载中的提示
-        var loadingDiv = $('<div>Loading...</div>');
+        var loadingDiv = Qmsg.loading({
+            autoClose: true,
+            content: "正在加载"
+        });
+
         $('#pots-ajax-min').append(loadingDiv);
+
+        // 禁用按钮点击
+        canClick = false;
 
         // 延迟加载
         setTimeout(function () {
@@ -84,8 +92,7 @@ jQuery(document).ready(function ($) {
                 },
                 success: function (response) {
                     // 删除加载中的提示
-                    loadingDiv.remove();
-
+                    loadingDiv.close();
                     // 在 #pots-ajax-min 元素中追加返回的文章内容
                     $('#pots-ajax-min').append(response);
 
@@ -96,10 +103,14 @@ jQuery(document).ready(function ($) {
                     setTimeout(function () {
                         // 每次加载更多后重新初始化插件
                         initializePlugins();
+                        // 重新启用按钮点击
+                        canClick = true;
                     }, 2000);
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
+                    // 发生错误时也要重新启用按钮点击
+                    canClick = true;
                 }
             });
         }, randomNumber);
@@ -107,14 +118,19 @@ jQuery(document).ready(function ($) {
 
     // 点击分类页加载更多按钮时执行的函数
     categoryButton.click(function () {
+        if (!canClick) return; // 如果按钮不可点击，直接返回
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var category = parseInt($(this).attr('category-id')); // 获取分类 ID
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
         var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
 
         // 创建加载中的提示
-        var loadingDiv = $('<div>Loading...</div>');
+        var loadingDiv = Qmsg.loading({
+            autoClose: true,
+            content: "正在加载"
+        });
         $('#pots-ajax-min').append(loadingDiv);
+        canClick = false;
 
         // 延迟加载
         setTimeout(function () {
@@ -130,7 +146,7 @@ jQuery(document).ready(function ($) {
                 },
                 success: function (response) {
                     // 删除加载中的提示
-                    loadingDiv.remove();
+                    loadingDiv.close();
 
                     // 在 #pots-ajax-min 元素中追加返回的文章内容
                     $('#pots-ajax-min').append(response);
@@ -142,10 +158,14 @@ jQuery(document).ready(function ($) {
                     setTimeout(function () {
                         // 每次加载更多后重新初始化插件
                         initializePlugins();
+
+                        canClick = true;
                     }, 2000);
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
+
+                    canClick = true;
                 }
             });
         }, randomNumber);
@@ -155,10 +175,20 @@ jQuery(document).ready(function ($) {
 
     // 点击标签页加载更多按钮时执行的函数
     tagButton.click(function () {
+        if (!canClick) return; // 如果按钮不可点击，直接返回
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var tag = parseInt($(this).attr('tag-id')); // 获取标签 ID
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
         var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
+
+        var loadingDiv = Qmsg.loading({
+            autoClose: true,
+            content: "正在加载"
+        });
+        $('#pots-ajax-min').append(loadingDiv);
+
+        canClick = false;
+
 
         // 延迟加载
         setTimeout(function () {
@@ -173,28 +203,46 @@ jQuery(document).ready(function ($) {
                     paged: page // 当前页码
                 },
                 success: function (response) {
+                    // 删除加载中的提示
+                    loadingDiv.close();
+
                     // 在 #pots-ajax-min 元素中追加返回的文章内容
                     $('#pots-ajax-min').append(response);
-
                     // 更新按钮的页码属性
                     tagButton.attr('page', page);
 
                     setTimeout(function () {
                         // 每次加载更多后重新初始化插件
                         initializePlugins();
+
+                        canClick = true;
                     }, 2000);
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
+
+                    canClick = true;
                 }
             });
         }, randomNumber);
     });
+
+
     searchButton.click(function () {
+        if (!canClick) return; // 如果按钮不可点击，直接返回
         var page = parseInt($(this).attr('page')) + 1; // 增加页码
         var searchKeyword = $(this).attr('search-key'); // 获取搜索关键词
         var showcase = parseInt($(this).attr('showcase')); // 获取每页文章数量
         var randomNumber = Math.floor(Math.random() * (1000 - 200 + 1)) + 0;
+
+        var loadingDiv = Qmsg.loading({
+            autoClose: true,
+            content: "正在加载"
+        });
+        $('#pots-ajax-min').append(loadingDiv);
+
+        canClick = false;
+
         // 延迟加载
         setTimeout(function () {
             // AJAX 请求
@@ -208,6 +256,9 @@ jQuery(document).ready(function ($) {
                     paged: page // 当前页码
                 },
                 success: function (response) {
+                    // 删除加载中的提示
+                    loadingDiv.close();
+
                     // 在 #pots-ajax-min 元素中追加返回的文章内容
                     $('#pots-ajax-min').append(response);
 
@@ -217,14 +268,19 @@ jQuery(document).ready(function ($) {
                     setTimeout(function () {
                         // 每次加载更多后重新初始化插件
                         initializePlugins();
+
+                        canClick = true;
                     }, 2000);
                 },
                 error: function (xhr, status, error) {
                     console.error(xhr.responseText);
+
+                    canClick = true;
                 }
             });
         }, randomNumber);
     });
+
 });
 
 

@@ -257,8 +257,45 @@ if (class_exists('CSF')) {
       $Len_User_Module_name = $User_Module['Len_User_Module_name'];
       $Len_User_Module_text = $User_Module['Len_User_Module_text'];
       $Len_User_Module_html = $User_Module['Len_User_Module_html'];
+      $Len_Post_Counts = wp_count_posts();
+      $Len_Comment_Count = wp_count_comments();
+
+
       if (!empty($Len_User_Module_html)) {
         echo '';
+      }
+
+      $Len_Like_Count = 0;
+
+      // 构建一个查询以获取所有文章
+      $link_args = array(
+        'post_type' => 'post', // 文章类型
+        'posts_per_page' => -1, // 获取所有文章
+        'post_status' => 'publish', // 只获取已发布的文章
+      );
+
+      $query = new WP_Query($link_args);
+
+      // 检查是否有文章
+      if ($query->have_posts()) {
+        // 循环遍历文章
+        while ($query->have_posts()) {
+          $query->the_post();
+
+          // 获取当前文章的ID
+          $post_id = get_the_ID();
+
+          // 获取当前文章的点赞数量
+          $likes = get_post_meta($post_id, 'bigfa_ding', true);
+
+          // 如果点赞数量不为空，则将其加到总数中
+          if (!empty($likes)) {
+            $Len_Like_Count += intval($likes);
+          }
+        }
+
+        // 重置文章查询
+        wp_reset_postdata();
       }
 
       ?>
@@ -284,9 +321,9 @@ if (class_exists('CSF')) {
           <p class="user-word-title"><?php echo $Len_User_Module_text; ?></p>
         </div>
         <div class="user-statistics-right">
-          <li class="user-statistics-li user-statistics-article">8<span class="user-statistics-span">文章</span></li>
-          <li class="user-statistics-li user-statistics-comment">624<span class="user-statistics-span">评论</span></li>
-          <li class="user-statistics-li user-statistics-like-none">43<span class="user-statistics-span">点赞</span></li>
+          <li class="user-statistics-li user-statistics-article"><?PHP echo $Len_Post_Counts->publish; ?><span class="user-statistics-span">文章</span></li>
+          <li class="user-statistics-li user-statistics-comment"><?php echo $Len_Comment_Count->total_comments; ?><span class="user-statistics-span">评论</span></li>
+          <li class="user-statistics-li user-statistics-like-none"><?php echo $Len_Like_Count ?><span class="user-statistics-span">点赞</span></li>
         </div>
 
         <div>

@@ -737,10 +737,21 @@ if (class_exists('CSF')) {
         'type'    => 'heading',
         'content' => '<h3>   ----友链页面模块设置----    </h3>',
       ),
-      // array(
-      //   'type'    => 'subheading',
-      //   'content' => '展示模块 | 音乐模块 ',
-      // ),
+      array(
+        'type'    => 'subheading',
+        'content' => '展示模块 | 自助提交模块 ',
+      ),
+      array(
+        'id'    => 'Links_Module_1',
+        'type'  => 'switcher',
+        'title' => '[友链]展示模块开启',
+        'default'     => true,
+      ),
+      array(
+        'id'    => 'Links_Module_2',
+        'type'  => 'switcher',
+        'title' => '[自助提交模块]展示模块开启',
+      ),
     )
   ));
   CSF::createSection($Module, array(

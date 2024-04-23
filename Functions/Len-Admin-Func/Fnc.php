@@ -37,6 +37,7 @@ $files = array(
      * 'Module/Index.php',| 首页文章函数模块文件
      * 'Module/PageTemplates/Diary.php',| 说说页函数模块文件
      * 'Module/PageTemplates/Diary.php',| 相册页函数模块文件
+     * 'Module/PageTemplates/Diary.php',| 友联页函数模块文件
      * 'Module/Slide.php', | 头部幻灯片模块
      * 'Module/Nav.php', | 头部导航栏模块
      * 'Module/Classify.php', | 分类页模块-
@@ -50,6 +51,7 @@ $files = array(
     'Module/Index.php',
     'Module/PageTemplates/Diary.php',
     'Module/PageTemplates/Photo.php',
+    'Module/PageTemplates/Links.php',
     'Module/Slide.php',
     'Module/Nav.php',
     'Module/Classify.php',
