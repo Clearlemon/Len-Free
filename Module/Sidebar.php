@@ -481,10 +481,27 @@ if (class_exists('CSF')) {
       }
       echo $args['before_widget'];
     ?>
-      <div class="len-pos-nav-int-min">
-        <div class="len-pos-nav-title"><i class="fa-solid fa-calendar-days"></i><?php echo $Len_Post_Module_title; ?> </div>
-        <div class="">
+    <div class="len-pos-nav-int-min">
+       <div class="len-pos-nav-title "><i class="fa-solid fa-calendar-days"></i><?php echo $Len_Post_Module_title; ?> 
+        
+        </div>
+        <div class="len-polymerization-top">
+          <!-- 图片 -->
+          <div class="len-polymerization-pic">
+            <a href="">
+              <img src="https://dmyblog.cn/wp-content/uploads/thumb/2024/02/fill_w1410_h840_g0_mark_2024021013001461.webp" alt="">
+            </a>
+          </div>
+          <!-- 文字 -->
+          <div class="len-polymerization-txt">
+            <a href="#"> WordPress主题编写</a>
+            <!-- 标签 -->
+            <!-- <div >
+              <a href=""></a>
 
+            </div> -->
+          </div>
+         
         </div>
         <?php
 
