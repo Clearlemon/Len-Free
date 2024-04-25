@@ -44,7 +44,7 @@ function Len_photo_article()
   $Thumbnail = Len_Get_Img(array('src' => Len_Lazy_Thumbnail(), 'alt' =>  $User_name, 'data-src' => Len_Thumbnail_Module($Post_ID), 'class' => array('lazy'), 'id' => '',));
 ?>
   <div class="len-waterfall-content">
-    <a data-source="<?php echo $Title; ?>" data-fancybox="gallery" href="<?php echo $Thumbnail; ?>">
+    <a data-source="<?php echo $Title; ?>" data-fancybox="gallery" href="<?php echo Len_Thumbnail_Module($Post_ID); ?>">
       <?php echo $Thumbnail;  ?>
     </a>
   </div>

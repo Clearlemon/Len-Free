@@ -37,7 +37,7 @@ function Len_say_article()
     //获取文章ID
     $Post_ID = get_the_ID();
     //获取文章内容
-    $Content = Len_Article_Content($excerpt_length = 99999, $Post_ID);
+    $Content = Len_Article_Content(99999, $Post_ID);
     //获取文章标题
     $Title = get_the_title();
     // 获取文章发布时间

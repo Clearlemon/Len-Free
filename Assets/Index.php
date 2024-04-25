@@ -43,7 +43,10 @@ function Len_scripts_styles()
     wp_enqueue_script('default-passive-events-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/default-passive-events.min.js', array(), $var, false);
 
     wp_enqueue_script('scrollreveal-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/scrollreveal.min.js', array(), $var, true);
-    wp_enqueue_script('index-main', get_template_directory_uri() . '/Assets/Lne-JavaScript/index.main.js', array(), $var, true);
+    wp_enqueue_script('index-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/index.min.js', array(), $var, true);
+    wp_enqueue_script('header-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/header.min.js', array(), $var, true);
+    wp_enqueue_script('footer-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/footer.min.js', array(), $var, true);
+
     wp_enqueue_script('jquery-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/jquery.min.js', array(), $var, false);
 
     wp_enqueue_script('sticky-sidebar-min', get_template_directory_uri() . '/Assets/Lne-JavaScript/sticky-sidebar.min.js', array(), $var, true);
@@ -64,7 +67,7 @@ function Len_scripts_styles()
     wp_enqueue_style('404-min', get_template_directory_uri() . '/Assets/Len-Css/404.min.css', array(), $var, 'all');
     wp_enqueue_style('fancybox-min', get_template_directory_uri() . '/Assets/Len-Css/fancybox.min.css', array(), $var, 'all');
     wp_enqueue_style('menmes-min', get_template_directory_uri() . '/Assets/Len-Css/menmes.min.css', array(), $var, 'all');
-    wp_enqueue_style('index-main', get_template_directory_uri() . '/Assets/Len-Css/index.main.css', array(), $var, 'all');
+    wp_enqueue_style('index-min', get_template_directory_uri() . '/Assets/Len-Css/index.min.css', array(), $var, 'all');
     wp_enqueue_style('footer-min', get_template_directory_uri() . '/Assets/Len-Css/footer.min.css', array(), $var, 'all');
     wp_enqueue_style('diary-min', get_template_directory_uri() . '/Assets/Len-Css/diary.min.css', array(), $var, 'all');
 

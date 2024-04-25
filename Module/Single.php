@@ -198,6 +198,51 @@ function Len_Get_Img($args)
     }
 }
 
+/**
+ * 生成超链接标签。
+ *
+ * @param array $args 包含图片属性的关联数组
+ * @return string 返回生成的图片标签。
+ */
+function Len_Links_ALL_Module($args)
+{
+    // 检查必要参数是否设置
+    if (isset($args['href']) && isset($args['content']) || isset($args['data-fancybox'])) {
+        // 根据参数生成 a 标签
+        $Jump_Module_1 = _len('Jump_Module_1');
+        $target = ($Jump_Module_1 == true) ? '_blank' : '';
+
+        $a_tag = '<a href="' . $args['href'] . '" data-fancybox="' . $args['data-fancybox'] . '" target="' . $target . '"';
+
+        // 检查 class 是否设置
+        if (isset($args['class']) && is_array($args['class'])) {
+            $class_str = implode(' ', $args['class']);
+            $a_tag .= ' class="len-all-link ' . $class_str . '"';
+        }
+
+        // 添加 id 属性
+        if (isset($args['id'])) {
+            $a_tag .= ' id="' . $args['id'] . '"';
+        }
+
+        if (isset($args['title'])) {
+            $a_tag .= ' title="' . $args['title'] . '"';
+        }
+
+        // 这里你可能需要根据需要设置其他属性，比如 title 等
+
+        // 添加闭合标签
+        $a_tag .= '>' . $args['content'] . '</a>';
+
+        // 返回生成的 a 标签
+        return $a_tag;
+    } else {
+        // 如果缺少必要参数，返回空字符串
+        return '';
+    }
+}
+
+
 function Len_Lazy_Thumbnail()
 {
     $Home_Module_5 = _len('Home_Module_5');
@@ -798,11 +843,11 @@ function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $
         // 根据条件输出
         if ($Post) {
             if ($parent_categories_html) {
-                echo '<div class="article-parent-classification"><span>' . $parent_categories_html . '</span></div>';
+                return '<div class="article-parent-classification"><span>' . $parent_categories_html . '</span></div>';
             }
         } elseif ($Nav) {
             if ($parent_categories_html) {
-                echo $parent_categories_html;
+                return $parent_categories_html;
             }
         } elseif ($Index) {
             if ($categories) {
@@ -814,7 +859,7 @@ function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $
                     }
                 }
                 $category_output = implode('|', $parent_categories_output);
-                echo $category_output;
+                return $category_output;
             }
         }
     }

@@ -236,7 +236,7 @@ function Len_index_article()
     //获取文章ID
     $Post_ID = get_the_ID();
     //获取文章内容
-    $Content = Len_Article_Content($excerpt_length = 140, $Post_ID);
+    $Content = Len_Article_Content(60, $Post_ID);
     //获取文章标题
     $Title = get_the_title();
     //获取文章特色图
@@ -253,12 +253,14 @@ function Len_index_article()
     $User = get_user_by('ID', $Author_ID);
     $User_avatar = get_avatar_url($Author_ID);
     $User_name = $User->display_name;
+    if (empty($Title)) {
+        $Title = "这篇文章貌似没有写标题";
+    }
 ?>
     <div id="chocolate" class="foo len-post-block">
-        <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
+        <a class="len-all-link len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
             <div class="len-post-thumbnail-blcok">
                 <?php echo $Thumbnail; ?>
-
                 <div class="len-classify-box-blcok">
                     <p class="len-classify-title-blcok"><?php echo Len_Parent_Category_Module($Post_ID, true, false, false); ?></p>
                 </div>
@@ -266,7 +268,7 @@ function Len_index_article()
         </a>
         <div class="len-post-content-block">
             <div class="len-post-content-min">
-                <a class="len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
+                <a class="len-all-link len-links-post len-pjax-link-all-blcok" href="<?php echo the_permalink(); ?>">
                     <h3 class="len-post-title-block"><?php echo $Title; ?></h3>
                     <?php if (is_sticky()) { ?>
                         <p class="len-top-title-blcok">置顶</p>
@@ -339,14 +341,25 @@ function Len_Article_Content($excerpt_length = 55, $post_id = '')
 
     // 如果文章内容存在
     if ($post_content) {
-        // 对文章内容进行处理：去除HTML标签，应用内容过滤器，然后使用 mb_strimwidth 截取摘要
-        $excerpt = mb_strimwidth(strip_tags(apply_filters('the_content', $post_content)), 0, $excerpt_length, '…');
+        // 去除HTML标签并应用内容过滤器
+        $content_without_tags = strip_tags(apply_filters('the_content', $post_content));
+
+        // 获取纯文本内容的长度（字符数）
+        $content_length = mb_strlen($content_without_tags);
+
+        // 如果内容长度超过截取长度，则截取摘要
+        if ($content_length > $excerpt_length) {
+            $excerpt = mb_substr($content_without_tags, 0, $excerpt_length, 'utf-8') . '…';
+        } else {
+            $excerpt = $content_without_tags;
+        }
     } else {
         $excerpt = '啊哦！这是一篇空荡荡的文章哦~';
     }
 
     return $excerpt;
 }
+
 
 function Len_Web_Background()
 {

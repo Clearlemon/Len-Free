@@ -8,7 +8,7 @@ Template Name: Diary【日记】
  */
 wp_head();
 ?>
-<main class="len-body-main len-body-m">
+
     <?php
     /**
      * 引用底部样式
@@ -28,7 +28,13 @@ wp_head();
              */
             require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
             ?>
-            <div class="len-showcase-main">
+        <div style="width:<?php
+                            $Home_Module_6_2 = _len('Home_Module_6_2');
+                            if (empty($Home_Module_6_2)) {
+                                $Home_Module_6_2 = "20";
+                            }
+                            echo $Home_Module_6_2;
+                            ?>%;" class="len-showcase-main">
                 <!-- 说说开始 -->
                 <?php
                 Diary_Banner_Module();
@@ -66,4 +72,3 @@ wp_head();
     wp_footer();
     ?>
 
-</main>

@@ -4,6 +4,14 @@ function Len_Login_Module()
 
   if (is_user_logged_in()) {
 ?>
+    <div id="random-post" class="len-message-boards">
+      <svg class="len-header-random-post" aria-hidden="true">
+        <use xlink:href="#icon-wenzhangliebiao"></use>
+      </svg>
+      <div id="random-show" class="random-post-illustrate">
+        文章黑洞?探索看看吧！
+      </div>
+    </div>
     <div id="user-login" class="len-login-avatar">
       <img class="user-avatar-login" src="http://0.gravatar.com/avatar/cb709f7b417e8dde3a152aa1e6c37721?s=96&d=mm&r=g" alt="">
     </div>

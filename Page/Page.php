@@ -1,4 +1,4 @@
-<main class="len-body-main len-body-m">
+
   <?php
   /**
    * 引用底部样式
@@ -17,7 +17,13 @@
        */
       require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
       ?> <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-          <div class="len-showcase-main">
+        <div style="width:<?php
+                            $Home_Module_6_2 = _len('Home_Module_6_2');
+                            if (empty($Home_Module_6_2)) {
+                                $Home_Module_6_2 = "20";
+                            }
+                            echo $Home_Module_6_2;
+                            ?>%;" class="len-showcase-main">
             <!-- 文章展示模块开始 -->
             <div class="len-article-min-blcok">
               <div class="len-article-block-min">
@@ -83,4 +89,3 @@
    */
   require_once get_theme_file_path('Page/Len-Block/Footer.php');
   ?>
-</main>

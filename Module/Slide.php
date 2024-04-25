@@ -23,7 +23,7 @@ function Len_Slide_Module()
 ?>
 
             <div class="swiper-slide">
-                <a class="len-swiper swiper-link" href="<?php echo $Slide_Url; ?>">
+                <a class="len-all-link len-swiper swiper-link" href="<?php echo $Slide_Url; ?>">
                     <?php echo $Slide_img; ?>
                     <div class="len-swiper-content-background">
                         <div class="len-swipre swiper-commend-title">

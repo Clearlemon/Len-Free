@@ -16,6 +16,10 @@ a {
     text-decoration: none
 }
 
+.len-all-link {
+    color: var(--len-a-link-color);
+}
+
 /*字体*/
 @font-face {
     font-family: "LXGWWenKaiGBScreen";

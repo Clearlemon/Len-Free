@@ -407,7 +407,7 @@ if (class_exists('CSF')) {
       ),
       array(
         'type'    => 'subheading',
-        'content' => '幻灯片模块 | 翻页模块 | 顶部导航模块 | 懒加载  | 默认特色图 | ',
+        'content' => '幻灯片模块 | 翻页模块 | 顶部导航模块 | 懒加载  | 默认特色图 | 宽度设置【包括侧边栏】',
       ),
       array(
         'type'    => 'submessage',
@@ -526,6 +526,27 @@ if (class_exists('CSF')) {
         'dependency' => array('Home_Module_5', '==', true),
         'class' => 'fields_no_padding-top',
         'default' => $Image_Url . 'lazy.gif',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是首页宽度布局设置模块',
+      ),
+      array(
+        'id'      => 'Home_Module_6_1',
+        'type'    => 'number',
+        'title'   => '整体页面宽度',
+        'unit'        => 'px',
+        'default'     => 1350,
+        'desc'     => '默认值为<b class="Len_emphasis_fonts">【1350px】</b>|最小值不建议小于默认值<b class="Len_emphasis_fonts">【65%】</b>|最大值请根据自身情况来设置建议为<b class="Len_emphasis_fonts">【1500px】</b>足以',
+      ),
+      array(
+        'id'      => 'Home_Module_6_2',
+        'type'    => 'number',
+        'title'   => '三栏中间展示宽度',
+        'unit'        => '%',
+        'default'     => 60,
+        'desc'     => '控制三栏的宽度如果<b class="Len_emphasis_fonts">【整体页面宽度】</b>变大次选项可以适当变大，建议是每次0.5增加即可|最大设置不建议超过<b class="Len_emphasis_fonts">【65%】</b>|最小设置不建议超过<b class="Len_emphasis_fonts">【50%】</b>',
       ),
       array(
         'type'    => 'heading',
@@ -821,6 +842,54 @@ if (class_exists('CSF')) {
       array(
         'type'    => 'subheading',
         'content' => '自定义CSS&JS | 自定义模块设置 ',
+      ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----邮箱设置----    </h3>',
+      ),
+      array(
+        'id' => 'Len_Smtp_Module_1',
+        'type' => 'switcher',
+        'title' => 'SMTP',
+        'subtitle' => '是否启用smtp功能',
+        'default' => false,
+      ),
+      array(
+        'id' => 'Len_Smtp_Module_2',
+        'type' => 'text',
+        'title' => '邮件服务器',
+        'subtitle' => '填写发件服务器地址',
+        'placeholder' => 'smtp.example.com',
+      ),
+      array(
+        'id' => 'Len_Smtp_Module_3',
+        'type' => 'text',
+        'title' => '服务器端口',
+        'subtitle' => '填写发件服务器端口',
+        'placeholder' => '465',
+      ),
+      array(
+        'id' => 'Len_Smtp_Module_4',
+        'type' => 'text',
+        'title' => '授权方式',
+        'subtitle' => '填写登录鉴权的方式',
+        'placeholder' => 'ssl',
+      ),
+      array(
+        'id' => 'Len_Smtp_Module_5',
+        'type' => 'text',
+        'title' => '邮箱帐号',
+        'subtitle' => '填写邮箱账号',
+        'placeholder' => 'user@example.com',
+      ),
+      array(
+        'id' => 'Len_Smtp_Module_6',
+        'type' => 'text',
+        'title' => '邮箱密码',
+        'subtitle' => '填写邮箱密码',
+        'attributes' => array(
+          'type' => 'password',
+        ),
       ),
     )
   ));
