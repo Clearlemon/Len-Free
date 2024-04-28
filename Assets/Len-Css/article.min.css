@@ -521,3 +521,26 @@ a.comment-reply-link {
     background: white;
     border-radius: 15px;
 }
+
+/*ol和ul标签*/
+.len_post_ul_blcok,
+.len_post_ol_blcok {
+    margin-top: 10px;
+    padding: 10px;
+    position: relative;
+}
+
+.len-ol-li-2::before {
+    top: 36px;
+}
+
+.len_post_ul_blcok>li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    margin-top: 8px;
+    height: 6px;
+    width: 6px;
+    border-radius: 20px;
+    background-color: #888cdc;
+}

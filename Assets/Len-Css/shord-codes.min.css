@@ -1,0 +1,145 @@
+/*登录可见短代码*/
+.len-article-showcase-content>.len-shored-codes-all {
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.not-logged-in {
+  border-radius: 10px;
+  border: 4px dashed black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logged-in {
+  border-radius: 10px;
+  border: 4px dashed black;
+}
+
+.not-logged-in>i {
+  margin-right: 5px;
+  color: red;
+  font-size: 20px;
+}
+
+/*视频解析&&视频样式*/
+.len-tx iframe,
+.len-bilbil iframe {
+  width: 100%;
+  min-height: 35.5vh;
+  height: 100%;
+}
+
+.len-bilbil,
+.len-tx {
+  padding: 0;
+  width: 100%;
+  min-height: 35.5vh;
+  height: 100%;
+}
+
+/*回复查看文章内容*/
+.len-no-reply {
+  border-radius: 10px;
+  border: 4px dashed black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*密码查看短代码内容*/
+.len-password-viewing-all-block {
+  background: aliceblue;
+  padding: 10px;
+  width: 250px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.len-block-center {
+  margin: auto;
+  width: 200px;
+}
+
+.len-password-input {
+  width: 70%;
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  background: #e7e7e7;
+}
+
+.len-password-title {
+  font-size: 16px;
+}
+
+.len-password-button {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  background: #ebebeb;
+}
+
+/*折叠面板*/
+.len-fold-title {
+  padding: 10px;
+  background: whitesmoke;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.len-fold-hide-text {
+  border: 1px solid #eee;
+  padding: 10px;
+}
+
+.len-fold-hide-text {
+  display: none;
+}
+
+.fold-show {
+  display: block;
+  ;
+}
+
+/*背景颜色短代码*/
+.background-red {
+  background: rgba(225, 85, 84, .85);
+}
+
+.background-green {
+  background: rgba(59, 178, 115, .85);
+}
+
+.background-blue {
+  background: rgba(77, 157, 224, .85);
+}
+
+.background-yellow {
+  background: rgba(255, 195, 32, .85);
+}
+
+.len-shored-codes-background {
+  padding: 10px;
+  color: black;
+}
+
+/**/
+.click-view {
+  margin-top: 20px;
+  padding: 5px;
+  color: #ffffff00;
+  border: dashed 2px #ede6e6;
+  max-width: 100%;
+  user-select: none;
+  display: inline-block;
+}
+
+.click-show {
+  color: black !important;
+}
+

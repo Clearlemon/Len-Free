@@ -255,6 +255,8 @@ function Len_Content_Class($content)
         'h4' => 'len_post_title_h4',
         'h5' => 'len_post_title_h5',
         'h6' => 'len_post_title_h6',
+        'ul' => 'len_post_ul_blcok',
+        'ol' => 'len_post_ol_blcok',
     );
 
     // 使用正则表达式匹配文章内容中的标题并添加自定义类
@@ -507,8 +509,14 @@ function add_tinymce_plugin($plugin_array)
 {
 
     $plugin_array['codesample'] =  get_template_directory_uri() . '/Assets/Admin/Short-Code/plugin.min.js';
-    $plugin_array['cntent_hidden'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Hide-Codes/Hide.js'; // 后台短代码按钮的js路径
-    //}
+    $plugin_array['cntent_hidden'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Hide-Codes/Hide.js';
+    $plugin_array['cntent_video'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Video-Codes/Video.js';
+    $plugin_array['cntent_reply_view'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Reply-View-Codes/Reply.js';
+    $plugin_array['cntent_password_viewing'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Password-Viewing-Codes/Password.js';
+    $plugin_array['cntent_fold'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Fold-Codes/Fold.js';
+    $plugin_array['cntent_background'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Background-Codes/Background.js';
+    $plugin_array['cntent_click_view'] = get_template_directory_uri() . '/Assets/Admin/Short-Code/Click-View-Codes/Cick.js';
+
     return $plugin_array;
 }
 
@@ -523,7 +531,7 @@ function register_mce_button($buttons)
 
 function register_mce_button2($buttons)
 {
-    array_push($buttons, "|", "cntent_hidden");
+    array_push($buttons, "|", "cntent_hidden", "cntent_reply_view", "cntent_password_viewing", "cntent_fold", "cntent_click_view");
 
 
     return $buttons;
@@ -531,7 +539,7 @@ function register_mce_button2($buttons)
 
 function register_mce_button3($buttons)
 {
-    array_push($buttons, "codesample");
+    array_push($buttons, "cntent_video", "cntent_background");
 
 
     return $buttons;

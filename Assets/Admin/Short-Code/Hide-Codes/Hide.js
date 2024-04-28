@@ -15,4 +15,3 @@
     });
     tinymce.PluginManager.add('cntent_hidden', tinymce.plugins.cntent_hidden); //注意这里有两个 cntent_hidden
 })(window.tinymce);
-

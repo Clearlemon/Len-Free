@@ -15,7 +15,7 @@
 
 
 .len-top-404 {
-  animation: breathing 3s ease-in-out infinite;
+  /* animation: breathing 3s ease-in-out infinite; */
   background-color: #efef7b;
   /* border: 3px solid #efef7b; */
   box-shadow: 0 0 5px #efef7b;
