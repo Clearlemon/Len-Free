@@ -2,29 +2,64 @@
 function Len_Seo_Module()
 {
     if (is_home()) {
+        //如果时首页
         Len_Index_Seo();
     } elseif (is_search()) {
         // 如果是搜索页的逻辑
+        Len_Search_Seo();
     } elseif (is_archive()) {
-        // 如果是归档页的逻辑
-
-        // 获取当前分类的名称
-        $archive_title = single_cat_title('', false);
-
-        // 获取当前分类的描述（如果有）
-        $archive_description = category_description();
-
-        // 输出标题和描述
-?>
-        <title><?php echo esc_html($archive_title); ?></title>
-        <meta name="keywords" content="<?php echo esc_attr($archive_title); ?>">
-        <meta name="description" content="<?php echo esc_attr($archive_description); ?>">
-    <?php
+        //如果是分类页
+        Len_cat_Seo();
     } elseif (is_single()) {
+        //如果时文章页
         Len_Post_Seo();
+    } elseif (is_page()) {
+        Len_Page_Seo();
+    } elseif (is_404()) {
+        Len_404_Seo();
     }
 }
 
+function Len_404_Seo()
+{
+    $Deputy_Title = get_bloginfo('description');
+?>
+    <title><?php echo '404页 - ' . $Deputy_Title; ?></title>
+<?php
+}
+
+function Len_cat_Seo()
+{
+    $Deputy_Title = get_bloginfo('description');
+    $archive_title = single_cat_title('', false);
+    // 获取当前分类的描述（如果有）
+    $archive_description = category_description();
+    // 输出标题和描述
+?>
+    <title><?php echo esc_html($archive_title) . ' - ' . $Deputy_Title; ?></title>
+    <meta name="keywords" content="<?php echo esc_attr($archive_title); ?>">
+    <meta name="description" content="<?php echo esc_attr($archive_description); ?>">
+<?php
+}
+
+
+function Len_Search_Seo()
+{
+    $Site_title = get_search_query();
+    $Deputy_Title = get_bloginfo('description');
+?>
+    <title><?php echo '搜索词:' . $Site_title . ' - ' . $Deputy_Title; ?></title>
+<?php
+}
+
+function Len_Page_Seo()
+{
+    $Site_title = get_the_title();
+    $Deputy_Title = get_bloginfo('description');
+?>
+    <title><?php echo $Site_title . ' - ' . $Deputy_Title; ?></title>
+    <?php
+}
 function Len_Index_Seo()
 {
     if (_len('Seo_Module_1') == true) {
@@ -46,7 +81,7 @@ function Len_Index_Seo()
     }
 }
 
-function  Len_Post_Seo()
+function Len_Post_Seo()
 {
     // 如果是单篇文章页的逻辑
     if (_Len_Post_Module('Module_Switcher_SEO', '', '', '', '', get_the_ID()) == true) {

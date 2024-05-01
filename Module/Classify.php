@@ -31,7 +31,7 @@ function Classify_Banner_Module($catid = '')
     $Cat_Banner_Img_Module_All = $Cat_Tag_Module_2;
   } else {
 
-    $Cat_Banner_Img_Module_All = get_template_directory_uri() . '/Assets/Len-Images/body-background.jpg';
+    $Cat_Banner_Img_Module_All = get_template_directory_uri() . '/Assets/Len-Images/background.jpg';
   }
 ?>
   <div class="animate__animated animate__zoomIn len-cat-showcase-card">

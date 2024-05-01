@@ -634,7 +634,7 @@ function Len_Post_Above_Next_Module()
         // 如果上一篇有文章的话则输出这些HTML，如果没有则不会输出相关内容
         if ($previous_post) {
             echo '<div class="len-arrow-above-post positioning-right">
-            <a href="' . get_permalink($previous_post->ID) . '">
+            <a class="len-all-link" href="' . get_permalink($previous_post->ID) . '">
                 <img class="above-post-background" src="' . Len_Thumbnail_Module($previous_post_id) . '" alt="">
                 <div class="arrow-text-blcok-right">
                     <span>
@@ -650,7 +650,7 @@ function Len_Post_Above_Next_Module()
         // 如果下一篇有文章的话则输出这些HTML，如果没有则不会输出相关内容
         if ($next_post) {
             echo '<div class="len-arrow-under-post positioning-left">
-            <a href="' . get_permalink($next_post->ID) . '">
+            <a class="len-all-link" href="' . get_permalink($next_post->ID) . '">
                 <img class="under-post-background" src="' . Len_Thumbnail_Module($next_post_id) . '" alt="">
                 <div class="arrow-text-blcok-left">
                     <span>
@@ -779,9 +779,11 @@ function Len_Post_Tag_Module()
     // 检查是否存在标签
     if ($tags) {
         // 遍历每个标签
+        $i = 1;
         foreach ($tags as $tag) {
             // 输出每个标签的名称和链接
-            echo '<a class="len-link-all" href="' . esc_url(get_tag_link($tag->term_id)) . '"><li class="article-tag-li">' . esc_html($tag->name) . '</li></a>';
+            echo '<a class="len-all-link" href="' . esc_url(get_tag_link($tag->term_id)) . '"><li class="article-tag-li  tag-color-' . $i . '">' . esc_html($tag->name) . '</li></a>';
+            $i++;
         }
     }
 }
@@ -812,7 +814,7 @@ function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $
                     $category_name = $category->name;
                     $category_link = get_category_link($category->term_id);
                     // 添加到输出内容中
-                    $parent_categories_html .= '<a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
+                    $parent_categories_html .= '<a class="len-all-link" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
                     // 将父级分类的 ID 添加到已输出数组中
                     $printed_parents[] = $category->term_id;
                 }
@@ -828,7 +830,7 @@ function Len_Parent_Category_Module($Post_ID = '', $Index = true, $Nav = true, $
                             $category_name = $parent_category->name;
                             $category_link = get_category_link($parent_category->term_id);
                             // 添加到输出内容中
-                            $parent_categories_html .= '<a class="len-link-all" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
+                            $parent_categories_html .= '<a class="len-all-link" href="' . esc_url($category_link) . '">' . esc_html($category_name) . '</a> | ';
                             // 将父级分类的 ID 添加到已输出数组中
                             $printed_parents[] = $parent_category_id;
                         }
@@ -922,7 +924,7 @@ function Len_Post_Bread_Navigation_Module()
 
 ?>
     <div class="len-article-banner-nav-blcok">
-        <div class="len-article-nav-block"><a href="<?php echo esc_url($home_url); ?>" class="len-article-links-block len-pjax-link-all-blcok" href="">首页</a> </div>
+        <div class="len-article-nav-block"><a class="len-all-link" href="<?php echo esc_url($home_url); ?>" class="len-article-links-block len-pjax-link-all-blcok" href="">首页</a> </div>
         <div class="len-article-nav-block"><?php echo Len_Parent_Category_Module(get_the_ID(), false, true, false); ?></div>
         <div class="len-article-block"><?php the_title(); ?></div>
     </div><?php

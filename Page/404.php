@@ -18,13 +18,7 @@ require_once get_theme_file_path('Page/Len-Block/Header.php');
      */
     require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
     ?>
-        <div style="width:<?php
-                            $Home_Module_6_2 = _len('Home_Module_6_2');
-                            if (empty($Home_Module_6_2)) {
-                                $Home_Module_6_2 = "20";
-                            }
-                            echo $Home_Module_6_2;
-                            ?>%;" class="len-showcase-main">
+    <div s class="len-showcase-main">
       <!-- 文章展示模块开始 -->
       <section class="animate__bounceIn len-top-404">
         <div class="page-content">

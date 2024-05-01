@@ -1,7 +1,4 @@
 <?php
-
-use function PHPSTORM_META\type;
-
 if (class_exists('CSF')) {
 
   $Module = 'Len_Free';
@@ -81,6 +78,7 @@ if (class_exists('CSF')) {
       array(
         'id'      => 'Module_2_1',
         'type'  => 'upload',
+        'default' => $Image_Url . 'background' . $Image_Format,
         'preview' => true,
         'library'      => 'image',
         'title'   => '背景图片',
@@ -111,18 +109,20 @@ if (class_exists('CSF')) {
               array(
                 'id'    => 'Footer_Module_1_1_1',
                 'type'  => 'switcher',
-                'title' => '网站背景模块',
-                'default' => false,
+                'title' => '是否开启萌备案模块',
+                'default' => true,
               ),
               array(
                 'id'    => 'Footer_Module_1_1_2',
                 'type'  => 'text',
                 'title' => '备案号',
+                'default' => '20249944号',
               ),
               array(
                 'id'    => 'Footer_Module_1_1_3',
                 'type'  => 'text',
                 'title' => '备案链接',
+                'default' => 'https://icp.gov.moe/?keyword=20249944',
               ),
             )
           ),
@@ -132,18 +132,20 @@ if (class_exists('CSF')) {
               array(
                 'id'    => 'Footer_Module_1_2_1',
                 'type'  => 'switcher',
-                'title' => '网站背景模块',
-                'default' => false,
+                'title' => '是否开启公安备案模块',
+                'default' => true,
               ),
               array(
                 'id'    => 'Footer_Module_1_2_2',
                 'type'  => 'text',
                 'title' => '备案号',
+                'default' => '2023012418号-4',
               ),
               array(
                 'id'    => 'Footer_Module_1_2_3',
                 'type'  => 'text',
                 'title' => '备案链接',
+                'default' => 'https://ywtb.mps.gov.cn/',
               ),
             )
           ),
@@ -153,18 +155,20 @@ if (class_exists('CSF')) {
               array(
                 'id'    => 'Footer_Module_1_3_1',
                 'type'  => 'switcher',
-                'title' => '网站背景模块',
-                'default' => false,
+                'title' => '是否开启ICP备案模块',
+                'default' => true,
               ),
               array(
                 'id'    => 'Footer_Module_1_3_2',
                 'type'  => 'text',
                 'title' => '备案号',
+                'default' => '2023012418号-4',
               ),
               array(
                 'id'    => 'Footer_Module_1_3_3',
                 'type'  => 'text',
                 'title' => '备案链接',
+                'default' => 'https://beian.miit.gov.cn/',
               ),
             )
           ),
@@ -175,6 +179,7 @@ if (class_exists('CSF')) {
         'type'  => 'text',
         'title' => '底部自定义声明',
         'class' => 'fields_no_padding-top',
+        'default' => 'Len-Free主题 @2024-2024',
       ),
       array(
         'id'    => 'Footer_Module_3',
@@ -232,7 +237,6 @@ if (class_exists('CSF')) {
           ),
         )
       ),
-
     )
   ));
   //全局设置
@@ -253,7 +257,16 @@ if (class_exists('CSF')) {
       array(
         'id'    => 'Jump_Module_1',
         'type'  => 'switcher',
-        'title' => '展示模块开启【全部】',
+        'title' => '全局跳转模块开启【全部】',
+      ),
+      array(
+        'type'    => 'heading',
+        'content' => '<h3>   ----全局颜色模块设置----    </h3>',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是全局颜色模块设置区',
       ),
       array(
         'type'    => 'heading',
@@ -286,6 +299,7 @@ if (class_exists('CSF')) {
         'id'    => 'Post_Content_Show_Module_1',
         'type'  => 'switcher',
         'title' => '展示模块开启【全部】',
+        'default'     => true,
       ),
       array(
         'id'         => 'Post_Content_Show_Module_1_1',
@@ -407,7 +421,7 @@ if (class_exists('CSF')) {
       ),
       array(
         'type'    => 'subheading',
-        'content' => '幻灯片模块 | 翻页模块 | 顶部导航模块 | 懒加载  | 默认特色图 | 宽度设置【包括侧边栏】',
+        'content' => '幻灯片模块 | 翻页模块 | 顶部导航模块 | 懒加载  | 默认特色图 ',
       ),
       array(
         'type'    => 'submessage',
@@ -528,27 +542,6 @@ if (class_exists('CSF')) {
         'default' => $Image_Url . 'lazy.gif',
       ),
       array(
-        'type'    => 'submessage',
-        'style'   => 'success',
-        'content' => '这是首页宽度布局设置模块',
-      ),
-      array(
-        'id'      => 'Home_Module_6_1',
-        'type'    => 'number',
-        'title'   => '整体页面宽度',
-        'unit'        => 'px',
-        'default'     => 1350,
-        'desc'     => '默认值为<b class="Len_emphasis_fonts">【1350px】</b>|最小值不建议小于默认值<b class="Len_emphasis_fonts">【65%】</b>|最大值请根据自身情况来设置建议为<b class="Len_emphasis_fonts">【1500px】</b>足以',
-      ),
-      array(
-        'id'      => 'Home_Module_6_2',
-        'type'    => 'number',
-        'title'   => '三栏中间展示宽度',
-        'unit'        => '%',
-        'default'     => 60,
-        'desc'     => '控制三栏的宽度如果<b class="Len_emphasis_fonts">【整体页面宽度】</b>变大次选项可以适当变大，建议是每次0.5增加即可|最大设置不建议超过<b class="Len_emphasis_fonts">【65%】</b>|最小设置不建议超过<b class="Len_emphasis_fonts">【50%】</b>',
-      ),
-      array(
         'type'    => 'heading',
         'content' => '<h3>   ----文章页面模块设置----    </h3>',
       ),
@@ -628,7 +621,7 @@ if (class_exists('CSF')) {
             'id'    => 'Post_Comments_Module_2_10',
             'type'  => 'switcher',
             'title' => '是否启用登录评论',
-            'default' => true,
+            'default' => false,
           ),
           array(
             'id'    => 'Post_Comments_Module_2_2',
@@ -663,7 +656,6 @@ if (class_exists('CSF')) {
             'preview' => true,
             'desc'     => '用户头像图片上传<b class="Len_emphasis_fonts">图片大小建议80*80，格式建议为webp</b>',
             'library'      => 'image',
-            'default' => $Image_Url . 'wx' . $Image_Format,
           ),
           array(
             'id'    => 'Post_Comments_Module_2_7',
@@ -682,7 +674,6 @@ if (class_exists('CSF')) {
             'preview' => true,
             'desc'     => '用户头像图片上传<b class="Len_emphasis_fonts">图片大小建议80*80，格式建议为webp</b>',
             'library'      => 'image',
-            'default' => $Image_Url . 'wx' . $Image_Format,
           ),
           array(
             'id'    => 'Post_Comments_Module_2_9',
@@ -696,9 +687,9 @@ if (class_exists('CSF')) {
           'Post_Comments_Module_2_3'     => '邮箱',
           'Post_Comments_Module_2_4'     => '网址',
           'Post_Comments_Module_2_5'     => '接下来由我来简单的喵喵两句',
-          'Post_Comments_Module_2_6'     => $Image_Url . 'wx' . $Image_Format,
+          'Post_Comments_Module_2_6'     => $Image_Url . 'commens_in' . $Image_Format,
           'Post_Comments_Module_2_7'     => '小青柠',
-          'Post_Comments_Module_2_8'     => $Image_Url . 'wx' . $Image_Format,
+          'Post_Comments_Module_2_8'     => $Image_Url . 'commens_no' . $Image_Format,
           'Post_Comments_Module_2_9'     => '未成熟的小青柠',
         ),
         'dependency' => array('Post_Comments_Module_1', '==', true),
@@ -729,7 +720,7 @@ if (class_exists('CSF')) {
         'preview' => true,
         'desc'     => '说说页【Banner】图片设置 | <b class="Len_emphasis_fonts">图片格式建议为webp</b>',
         'library'      => 'image',
-        'default' => $Image_Url . 'wx' . $Image_Format,
+        'default' => $Image_Url . 'say-background.jpg',
       ),
       array(
         'id'          => 'Diary_Module_2',
@@ -836,12 +827,61 @@ if (class_exists('CSF')) {
         'content' => '网站ICO | 网站Logo ',
       ),
       array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是网站的seo和logo模块设置',
+      ),
+
+      array(
+        'id'    => 'Len_Logo_Module_1',
+        'type'  => 'upload',
+        'title' => 'ico图片',
+        'preview' => true,
+        'default' => $Image_Url . 'ico.ico',
+        'desc'     => '图标icon|<b class="Len_emphasis_fonts">图片大小建议64*64，格式建议为ico</b>',
+        'library'      => 'image',
+
+      ),
+      array(
+        'id'    => 'Len_Logo_Module_2',
+        'type'  => 'upload',
+        'title' => 'Logo图片',
+        'preview' => true,
+        'default' => $Image_Url . 'logo.png',
+        'desc'     => '网站Logo|<b class="Len_emphasis_fonts">图片大小建议200*50，格式建议为png</b>',
+        'library'      => 'image',
+      ),
+      array(
         'type'    => 'heading',
         'content' => '<h3>   ----用户设置----    </h3>',
       ),
       array(
         'type'    => 'subheading',
         'content' => '自定义CSS&JS | 自定义模块设置 ',
+      ),
+      array(
+        'type'    => 'submessage',
+        'style'   => 'success',
+        'content' => '这是网站的自定义样式模块设置',
+      ),
+      array(
+        'id'       => 'Len_code_Module_1',
+        'type'     => 'code_editor',
+        'title'    => 'CSS Editor',
+        'settings' => array(
+          'theme'  => 'mbo',
+          'mode'   => 'css',
+        ),
+
+      ),
+      array(
+        'id'       => 'Len_code_Module_2',
+        'type'     => 'code_editor',
+        'title'    => '自定义底部Javascript',
+        'settings' => array(
+          'theme'  => 'monokai',
+          'mode'   => 'javascript',
+        ),
       ),
       array(
         'type'    => 'heading',
@@ -1122,11 +1162,6 @@ if (class_exists('CSF')) {
         'type' => 'backup',
       ),
     ),
-  ));
-  CSF::createSection($Module, array(
-    'title'  => '待开发',
-    'icon' => 'icon-beifenhuifu',
-    'fields' => array()
   ));
 }
 add_filter('admin_footer_text', 'admin_footer', 99999);

@@ -31,11 +31,10 @@
 
             </div>
             <div josn-url="https://api.yangjuantech.com/api/yiyan/index.php?type=json&word=anime" class="len-footer-one-word">
-
-                <div class="len-on-word-source"></div>
-                <div class="len-on-word-dictum"></div>
+                <?php echo Footer_Module(false, false, false, false, true, false); ?>
             </div>
         </div>
     </div>
 </footer>
 </main>
+<?php echo Len_Diy_Cods_(false, true); ?>

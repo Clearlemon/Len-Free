@@ -1,8 +1,8 @@
-<main style="width:<?php $Home_Module_6_1 = _len('Home_Module_6_1');if (empty($Home_Module_6_1)) {$Home_Module_6_1 = "1500";}echo $Home_Module_6_1; ?>px;" class="len-body-main len-body-m">
+<main  class="len-body-main len-body-m">
     <header class="len-head ">
         <div class="len-header-main">
             <div class="len-logo-search-min">
-                <div class="len-logo-fig"><img src="wp-content/themes/Len-Free/Assets/Len-Images/logo.png" alt=""></div>
+                <?php echo Len_Logo_Module(); ?>
                 <div class="len-search-block">
                     <form class="mobile_navbar-form" id="searchform" action="<?php echo esc_url(home_url('/')); ?>" method="get">
                         <div class="leaf-banner_search">

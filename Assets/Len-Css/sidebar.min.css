@@ -1,7 +1,9 @@
 .len-left-sidebar,
 .len-right-sidebar {
   position: relative;
+  width: 15vw;
 }
+
 
 
 .len-sidebar-title {

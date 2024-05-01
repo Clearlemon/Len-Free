@@ -78,13 +78,10 @@
 /*后台logo开始*/
 .admin-logo {
     background-image: url(./images-font/admin-logo.png);
-    width: 340px;
-    height: 100px;
+    width: 200px;
+    height: 50px;
 }
 
-.csf-header-right {
-    margin-top: 35px;
-}
 
 /*后台logo结束*/
 /*后台ico的开始*/
@@ -103,21 +100,10 @@
     padding: 10px 10px 0px 10px;
 }
 
-/*后台ico的结束*/
-/*后台字体开始*/
-@font-face {
-    font-family: 'YouSheYuFeiTeJianKangTi-2';
-    src: url(./images-font//YouSheYuFeiTeJianKangTi-2.ttf);
-}
-
-body {
-    font-family: YouSheYuFeiTeJianKangTi-2;
-}
 
 /*后台字体结束*/
 /*头部图片开始*/
 .csf-theme-dark .csf-header-inner {
-    background-image: url(./images-font/maple-admin-head-img.webp);
     background-position-x: center;
     background-size: cover;
 }

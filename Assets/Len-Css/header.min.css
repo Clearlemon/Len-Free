@@ -2,28 +2,21 @@
     margin: 0;
     padding: 0;
     font-family: "LXGWWenKaiGBScreen";
+    text-decoration: none;
+    list-style-type: none;
 }
 
 :root {
     --len-a-link-color: black;
-}
-
-li {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none
+    --len-a-link-hover-color: rgb(152, 248, 151);
 }
 
 .len-all-link {
     color: var(--len-a-link-color);
 }
 
-/*字体*/
-@font-face {
-    font-family: "LXGWWenKaiGBScreen";
-    src: url(/wp-content/themes/Len-Free/Assets/Len-Font/LXGWWenKaiGBScreen.ttf);
+.len-all-link:hover {
+    color: var(--len-a-link-hover-color);
 }
 
 .len-header-main {
@@ -44,7 +37,6 @@ a {
 }
 
 .len-nav-ul-second {
-    /* content: ""; */
     position: relative;
     right: 10px;
     border-left: 3px solid rgb(151, 150, 240);
@@ -187,3 +179,4 @@ svg.len-header-random-post {
     margin-right: 20px;
     height: 100%;
 }
+

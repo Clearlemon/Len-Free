@@ -16,7 +16,7 @@ function Len_Sidebar_Bottom_Module()
       $link = $key['Sidebar_Module_1_1'];
       $icon = $key['Sidebar_Module_1_2'];
 ?>
-      <a class="sidebar-link-block" href="<?php echo $link; ?>">
+      <a class="len-all-link sidebar-link-block" href="<?php echo $link; ?>">
         <span class="links-svg-block">
           <svg class="len-left-bottom-icon" aria-hidden="true">
             <use xlink:href="#<?php echo $icon; ?>"></use>
@@ -115,17 +115,6 @@ if (class_exists('CSF')) {
         ),
       ),
 
-      array(
-        'id'         => 'Len_All_Sidebar_Module_Show',
-        'type'       => 'radio',
-        'title'      => '选择哪个端是否显示',
-        'options'    => array(
-          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
-          'Show_Pc' => '只显示[PC]',
-          'Show_PcMobile' => '只显示[移动设备]',
-        ),
-        'default'    => 'Show_Pc_And_Mobile',
-      ),
     ),
   ));
   if (!function_exists('Len_Linked_Module')) {
@@ -137,15 +126,7 @@ if (class_exists('CSF')) {
 
         $Len_Linked_Module_title = $Linked_Module['Len_Linked_Module_title'];
 
-        $Len_All_Sidebar_Module_Show = $Linked_Module['Len_All_Sidebar_Module_Show'];
-        if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
-          $Show = 'sidebar-show-all';
-        } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
-          $Show = 'sidebar-show-pc';
-        } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
-          $Show = 'sidebar-show-mobile';
-        }
-        echo '<div class="len-thirdparty ' .  $Show . '">
+        echo '<div class="len-thirdparty">
         <div class="len-sidebar-title"><p class="len-sidebar-title_block">
         <i class="fa-solid fa-bars"></i>' . $Len_Linked_Module_title . '</p>
         </div>
@@ -162,7 +143,7 @@ if (class_exists('CSF')) {
           <div class="len-thirdparty-line">
             <?php
             if (!empty($key_link)) {
-              echo '<a href="' . $key_link . '">';
+              echo '<a class="len-all-link" href="' . $key_link . '">';
             }  ?>
             <svg class="len-thirdparty-icon" aria-hidden="true">
               <use xlink:href="#<?php echo $key_svg ?>"></use>
@@ -227,17 +208,7 @@ if (class_exists('CSF')) {
         'type'  => 'textarea',
         'title'   => '自定义区',
       ),
-      array(
-        'id'         => 'Len_All_Sidebar_Module_Show',
-        'type'       => 'radio',
-        'title'      => '选择哪个端是否显示',
-        'options'    => array(
-          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
-          'Show_Pc' => '只显示[PC]',
-          'Show_PcMobile' => '只显示[移动设备]',
-        ),
-        'default'    => 'Show_Pc_And_Mobile',
-      ),
+
     ),
   ));
 
@@ -247,15 +218,7 @@ if (class_exists('CSF')) {
 
       echo $args['before_widget'];
 
-      $Len_All_Sidebar_Module_Show = $User_Module['Len_All_Sidebar_Module_Show'];
-      if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
-        $Show = 'sidebar-show-all';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
-        $Show = 'sidebar-show-pc';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
-        $Show = 'sidebar-show-mobile';
-      }
-      echo '<div class="len-sidebar-content ' . $Show . '">';
+      echo '<div class="len-sidebar-content">';
 
       $Len_User_Module_backerground = $User_Module['Len_User_Module_backerground'];
       $Len_User_Module_avatar = $User_Module['Len_User_Module_avatar'];
@@ -354,33 +317,17 @@ if (class_exists('CSF')) {
         'title'   => '小工具标题名称',
         'default' => '导航目录',
       ),
-      array(
-        'id'         => 'Len_All_Sidebar_Module_Show',
-        'type'       => 'radio',
-        'title'      => '选择哪个端是否显示',
-        'options'    => array(
-          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
-          'Show_Pc' => '只显示[PC]',
-          'Show_PcMobile' => '只显示[移动设备]',
-        ),
-        'default'    => 'Show_Pc_And_Mobile',
-      ),
+
     ),
   ));
   if (!function_exists('Len_Post_Title_Module')) {
     function Len_Post_Title_Module($args, $Post_Title_Module)
     {
-      if (is_single()) {
+      if (is_page_template('PageTemplates/Links.php') || is_page_template('PageTemplates/Diary.php') || is_page_template('PageTemplates/Login.php') || is_page_template('PageTemplates/Photo.php') || is_page_template('PageTemplates/Registered.php') || is_page_template('PageTemplates/Retrieve.php')) {
+        echo '';
+      } elseif (is_single() || is_page()) {
         $Len_Post_Title_Module_title = $Post_Title_Module['Len_Post_Title_Module_title'];
 
-        $Len_All_Sidebar_Module_Show = $Post_Title_Module['Len_All_Sidebar_Module_Show'];
-        if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
-          $Show = 'sidebar-show-all';
-        } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
-          $Show = 'sidebar-show-pc';
-        } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
-          $Show = 'sidebar-show-mobile';
-        }
         echo $args['before_widget'];
       ?>
         <div class="len-pos-nav-int-min">
@@ -390,8 +337,6 @@ if (class_exists('CSF')) {
         </div>
       <?php
         echo $args['after_widget'];
-      } else {
-        echo '';
       }
     }
   }
@@ -408,17 +353,7 @@ if (class_exists('CSF')) {
         'title'   => '小工具标题名称',
         'default' => '粒子跳动时间',
       ),
-      array(
-        'id'         => 'Len_All_Sidebar_Module_Show',
-        'type'       => 'radio',
-        'title'      => '选择哪个端是否显示',
-        'options'    => array(
-          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
-          'Show_Pc' => '只显示[PC]',
-          'Show_PcMobile' => '只显示[移动设备]',
-        ),
-        'default'    => 'Show_Pc_And_Mobile',
-      ),
+
     ),
   ));
   if (!function_exists('Len_Time_Module')) {
@@ -427,14 +362,7 @@ if (class_exists('CSF')) {
 
       $Len_Time_Module_title = $Time_Module['Len_Time_Module_title'];
 
-      $Len_All_Sidebar_Module_Show = $Time_Module['Len_All_Sidebar_Module_Show'];
-      if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
-        $Show = 'sidebar-show-all';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
-        $Show = 'sidebar-show-pc';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
-        $Show = 'sidebar-show-mobile';
-      }
+
       echo $args['before_widget'];
       ?>
       <div class="len-pos-nav-int-min">
@@ -477,17 +405,7 @@ if (class_exists('CSF')) {
         'default'     => 10,
       ),
 
-      array(
-        'id'         => 'Len_All_Sidebar_Module_Show',
-        'type'       => 'radio',
-        'title'      => '选择哪个端是否显示',
-        'options'    => array(
-          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
-          'Show_Pc' => '只显示[PC]',
-          'Show_PcMobile' => '只显示[移动设备]',
-        ),
-        'default'    => 'Show_Pc_And_Mobile',
-      ),
+
     ),
   ));
 
@@ -497,20 +415,12 @@ if (class_exists('CSF')) {
 
       $Len_Post_Module_title = $Post_Module['Len_Post_Module_title'];
 
-      $Len_All_Sidebar_Module_Show = $Post_Module['Len_All_Sidebar_Module_Show'];
-      if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
-        $Show = 'sidebar-show-all';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
-        $Show = 'sidebar-show-pc';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
-        $Show = 'sidebar-show-mobile';
-      }
       // $Len_Post_Mode = $Post_Module['Len_Post_Mode'];
       $Len_Post_Number = $Post_Module['Len_Post_Number'];
 
       echo $args['before_widget'];
     ?>
-      <div class="len-pos-nav-int-min <?php echo $Show; ?>">
+      <div class="len-pos-nav-int-min">
         <div class="len-pos-nav-title ">
           <i class="fa-solid fa-calendar-days"></i><?php echo $Len_Post_Module_title; ?>
         </div>
@@ -604,17 +514,7 @@ if (class_exists('CSF')) {
         'unit'        => '篇',
         'default'     => 10,
       ),
-      array(
-        'id'         => 'Len_All_Sidebar_Module_Show',
-        'type'       => 'radio',
-        'title'      => '选择哪个端是否显示',
-        'options'    => array(
-          'Show_Pc_And_Mobile' => '[PC]和[移动设备]都显示',
-          'Show_Pc' => '只显示[PC]',
-          'Show_PcMobile' => '只显示[移动设备]',
-        ),
-        'default'    => 'Show_Pc_And_Mobile',
-      ),
+
     ),
   ));
 
@@ -624,19 +524,12 @@ if (class_exists('CSF')) {
 
       $Len_Sidebar_Comments_Module_title = $Comments_Module['Len_Sidebar_Comments_Module_title'];
 
-      $Len_All_Sidebar_Module_Show = $Comments_Module['Len_All_Sidebar_Module_Show'];
-      if ($Len_All_Sidebar_Module_Show == 'Show_Pc_And_Mobile') {
-        $Show = 'sidebar-show-all';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Pc') {
-        $Show = 'sidebar-show-pc';
-      } elseif ($Len_All_Sidebar_Module_Show == 'Show_Mobile') {
-        $Show = 'sidebar-show-mobile';
-      }
+
       $Len_Sidebar_Comments_Number = $Comments_Module['Len_Sidebar_Comments_Number'];
 
       echo $args['before_widget'];
     ?>
-      <div class="len-pos-nav-int-min <?php echo $Show; ?>">
+      <div class="len-pos-nav-int-min">
         <div class="len-pos-nav-title ">
           <i class="fa-solid fa-comment"></i><?php echo $Len_Sidebar_Comments_Module_title; ?>
         </div>
@@ -658,13 +551,19 @@ if (class_exists('CSF')) {
         ?>
             <div class="len-sidebar-block-min">
               <div class="sidebar-comments-avatar-blcok">
-                <img class="comments-avatar-sidebar" src="<?php echo get_avatar_url($comment->comment_author_email); ?>" alt="">
+                <img class="comments-avatar-sidebar" src="<?php echo esc_url(get_avatar_url($comment->comment_author_email)); ?>" alt="">
               </div>
               <div class="sidebar-comments-contents-blcok-min">
-                <div class="comments-time-name-sidebar"><span class="name-comments-sidebar"><?php if(empty($comment->comment_author)){ echo '匿名用户';} echo $comment->comment_author ; ?></span><span class="time-comments-sidebar"><?php echo $comment->comment_date; ?></span></div>
+                <div class="comments-time-name-sidebar">
+                  <span class="name-comments-sidebar"><?php if (empty($comment->comment_author)) {
+                                                        echo '匿名用户';
+                                                      } else {
+                                                        echo esc_html($comment->comment_author);
+                                                      } ?></span>
+                  <span class="time-comments-sidebar"><?php echo esc_html(get_comment_date('Y-m-d', $comment->comment_ID)); ?></span>
+                </div>
                 <div class="comments-contents-sidebar">
-                  <?php echo Len_Links_ALL_Module(array('href' => get_comment_link($comment->comment_ID), 'content' => '<p class="comments-contents-sidebar-p">' . $comment->comment_content . '</p>', 'data-fancybox' => '', 'class' => array('len-sidebar-comments sidebar-link-all'), 'title' => get_the_title($comment->comment_post_ID), 'id' => '',)); ?>
-
+                  <?php echo Len_Links_ALL_Module(array('href' => get_comment_link($comment->comment_ID), 'content' => '<p class="comments-contents-sidebar-p">' . esc_html($comment->comment_content) . '</p>', 'data-fancybox' => '', 'class' => array('len-sidebar-comments sidebar-link-all'), 'title' => get_the_title($comment->comment_post_ID), 'id' => '',)); ?>
                 </div>
               </div>
             </div>
