@@ -2,28 +2,21 @@
     margin: 0;
     padding: 0;
     font-family: "LXGWWenKaiGBScreen";
+    text-decoration: none;
+    list-style-type: none;
 }
 
 :root {
     --len-a-link-color: black;
-}
-
-li {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none
+    --len-a-link-hover-color: rgb(152, 248, 151);
 }
 
 .len-all-link {
     color: var(--len-a-link-color);
 }
 
-/*字体*/
-@font-face {
-    font-family: "LXGWWenKaiGBScreen";
-    src: url(/wp-content/themes/Len-Free/Assets/Len-Font/LXGWWenKaiGBScreen.ttf);
+.len-all-link:hover {
+    color: var(--len-a-link-hover-color);
 }
 
 .len-header-main {
@@ -44,7 +37,6 @@ a {
 }
 
 .len-nav-ul-second {
-    /* content: ""; */
     position: relative;
     right: 10px;
     border-left: 3px solid rgb(151, 150, 240);
@@ -143,10 +135,12 @@ svg.len-header-random-post {
     flex-direction: column;
     padding: 10px;
     top: 0px;
+    visibility: hidden;
 }
 
 .login-show {
     opacity: 1;
+    visibility: visible;
 }
 
 .len-form-item {
@@ -186,4 +180,45 @@ svg.len-header-random-post {
     width: 100%;
     margin-right: 20px;
     height: 100%;
+}
+
+.top-nav-blcok>i {
+    font-size: 22px;
+    padding: 10px;
+}
+
+
+
+.len-sidebar-nav-blcok {
+    opacity: 0;
+    left: -400;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 9999;
+    transition: all .3s ease-out 0s;
+}
+
+.show-sidebar-nav {
+    opacity: 1;
+    visibility: visible;
+    left: 0;
+}
+
+.len-sidebar-nav-blcok-main {
+    position: relative;
+    flex: 55%;
+    max-width: 400px;
+    background: #fffcfcf7;
+    overflow-y: auto;
+}
+
+.blank-background {
+    flex: 30%;
+    background: #000;
+    opacity: .4;
 }

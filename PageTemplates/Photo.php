@@ -29,13 +29,7 @@ require_once get_theme_file_path('Page/Len-Block/Header.php');
          */
         require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
         ?>
-        <div style="width:<?php
-                            $Home_Module_6_2 = _len('Home_Module_6_2');
-                            if (empty($Home_Module_6_2)) {
-                                $Home_Module_6_2 = "20";
-                            }
-                            echo $Home_Module_6_2;
-                            ?>%;" class="len-showcase-main">
+        <div  class="len-showcase-main">
             <!-- 图片开始 -->
             <div id="len-waterfall">
                 <?php

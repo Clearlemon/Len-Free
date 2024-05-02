@@ -404,11 +404,11 @@ function Len_Post_Page()
     // 获取分页链接
     $paginate_links = paginate_links(array(
         'current' => $current_page,
-        'mid_size' => 2,
+        'mid_size' => 1,
         'total' => $total_pages,
         'prev_text' => '上一页',
         'next_text' => '下一页',
-        'end_size' => 2, // 设置最后一页链接的数量
+        'end_size' => 1, // 设置最后一页链接的数量
     ));
 
 

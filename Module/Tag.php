@@ -27,7 +27,7 @@ function Tag_Banner_Module($catid = '')
     $Tag_Banner_Img_Module_All = $Tag_Tag_Module_2;
   } else {
 
-    $Tag_Banner_Img_Module_All = get_template_directory_uri() . '/Assets/Len-Images/body-background.jpg';
+    $Tag_Banner_Img_Module_All = get_template_directory_uri() . '/Assets/Len-Images/background.webp';
   }
 ?>
   <?php echo Len_Classify_Module($catid, 'Cat_Module_5', true); ?>

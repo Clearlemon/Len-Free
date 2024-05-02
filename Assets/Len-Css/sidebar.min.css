@@ -1,8 +1,8 @@
 .len-left-sidebar,
 .len-right-sidebar {
   position: relative;
+  width: 15vw;
 }
-
 
 .len-sidebar-title {
   position: relative;
@@ -22,6 +22,7 @@
 
 .is-affixed {
   background: rgb(251 251 251 / 0%);
+  margin-bottom: 70px;
 }
 
 .len-thirdparty-line {

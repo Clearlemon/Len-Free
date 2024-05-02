@@ -27,15 +27,15 @@
 .len-tx iframe,
 .len-bilbil iframe {
   width: 100%;
-  min-height: 35.5vh;
+  min-height: 25vw;
   height: 100%;
 }
 
 .len-bilbil,
 .len-tx {
-  padding: 0;
+  padding: 0px !important;
   width: 100%;
-  min-height: 35.5vh;
+  min-height: 25vw;
   height: 100%;
 }
 
@@ -142,4 +142,3 @@
 .click-show {
   color: black !important;
 }
-

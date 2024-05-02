@@ -17,13 +17,7 @@ require_once get_theme_file_path('Page/Len-Block/Header.php');
          */
         require_once get_theme_file_path('Sidebars/Left-Sidebars.php');
         ?>
-        <div style="width:<?php
-                            $Home_Module_6_2 = _len('Home_Module_6_2');
-                            if (empty($Home_Module_6_2)) {
-                                $Home_Module_6_2 = "20";
-                            }
-                            echo $Home_Module_6_2;
-                            ?>%;" class="len-showcase-main">
+        <div class="len-showcase-main">
             <!-- 文章顶部导航区块Banner开始 -->
             <?php
             /**
@@ -80,7 +74,6 @@ require_once get_theme_file_path('Page/Len-Block/Header.php');
  * require_once get_theme_file_path('Page/Len-Block/Footer.php');
  * 底部模块样式文件目录
  */
-// $Home_Module_6_2 = _len('Home_Module_6_2');
 
 require_once get_theme_file_path('Page/Len-Block/Footer.php');
 ?>

@@ -6,7 +6,8 @@
   display: flex;
   justify-content: center;
   background: white;
-  padding: 10px;
+  padding: 10px 0px;
+  width: 100%;
 }
 
 .len_comment_pagination_block_all>.prev {
@@ -25,7 +26,6 @@
 }
 
 .len_comment_pagination_block_all>.next.page-numbers {
-  padding: 10px 20px 10px;
   background-color: #f4f4f5;
   color: #606266;
   border-radius: 10px;
@@ -38,10 +38,7 @@
   color: #868787;
 }
 
-.page-numbers {
-  margin: 0 5px;
 
-}
 
 .len_comment_pagination_block_all>.page-numbers.current {
   color: #8483d3;
@@ -288,4 +285,19 @@
 .len-have-comments-block-min {
   background: white;
   padding: 10px 40px 20px 40px;
+}
+
+.len-post-comments,
+.len-comments-content {
+  width: 100%;
+}
+
+
+.comment_loadmore {
+  background: aliceblue;
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0px;
 }

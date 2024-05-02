@@ -25,6 +25,7 @@ function Len_Post_Ajax()
   if (!empty($selected_search)) {
     $args['s'] = $selected_search;
   }
+  
   $query = new WP_Query($args);
 
   if ($query->have_posts()) {

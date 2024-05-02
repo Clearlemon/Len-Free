@@ -31,8 +31,11 @@
 <?php
 
 // 检查评论模块设置是否不为空
-$comments_module = _len('Post_Comments_Module_2');
-$Comments_Switcher = $comments_module['Post_Comments_Module_2_10'];
+foreach ($comments_module as $key => $value) {
+    if ($key === 'Post_Comments_Module_2_10') {
+        $Comments_Switcher = $value;
+    }
+}
 if (!is_user_logged_in() && $Comments_Switcher == true) {
 ?>
     <div class="len-comment-logincomments">

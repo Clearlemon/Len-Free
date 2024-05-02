@@ -1,0 +1,27 @@
+.len-article-title-block::before {
+  content: "";
+  position: relative;
+  right: 10px;
+  border-left: .25em solid #ddd;
+}
+
+.len-article-showcase-content>p {
+  margin-bottom: 5px;
+}
+
+.len-article-min-blcok {
+  background: white;
+  border-radius: 15px 15px 0px 0px;
+  width: 100%;
+}
+
+.len-stats-post-icon {
+  height: 20px;
+  width: 20px;
+  vertical-align: -4px;
+}
+
+.len-article-showcase-main {
+  margin: 5px;
+  padding: 10px;
+}

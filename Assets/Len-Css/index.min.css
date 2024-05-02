@@ -7,10 +7,6 @@ body {
     color: #000;
 }
 
-:root {
-    --animate-duration: 0.5s;
-}
-
 img[data-src]:not(.loaded) {
     filter: blur(10px) brightness(1);
     object-fit: contain;
@@ -52,20 +48,21 @@ img {
     margin-right: auto;
     position: relative;
     top: 20px;
+    width: 75vw;
 }
 
 .len-showcase-main {
     padding: 10px;
     padding-top: 0px;
-    min-height: 800px;
     height: 100%;
+    width: 40vw;
 }
 
 
 /*展示块Banner导航样式*/
 .banner-nav-ul {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
@@ -74,6 +71,7 @@ img {
     backdrop-filter: saturate(200%) blur(30px);
     background-color: hsl(0deg 0% 100% / 50%);
     border-radius: 10px;
+    overflow: auto;
 }
 
 .banner-nav-li {
@@ -92,6 +90,7 @@ img {
 
 .len-showcase-banner-nav-blcok {
     padding-bottom: 10px;
+    width: 100%;
 }
 
 
@@ -99,7 +98,7 @@ img {
 /*幻灯片区块css*/
 .swiper {
     width: 100%;
-    height: 300px;
+    height: 15vw;
     border-radius: 15px;
 }
 
@@ -143,13 +142,15 @@ img {
 
 .len-swiper-block-min {
     margin-bottom: 20px;
+    transition: width 0.5s ease, height 0.5s ease;
+    width: 100%;
 }
 
 /*文章展示css*/
 .len-left-post-icon {
     height: 18px;
     width: 18px;
-    vertical-align: -5px;
+    vertical-align: -4px;
 }
 
 .name-text-block::after {
@@ -225,11 +226,17 @@ img {
     height: 150px;
     display: flex;
     flex-direction: row;
+    align-items: center;
     padding: 10px;
     background: white;
     box-shadow: 0 0 10px rgb(216 216 216 / 80%);
     border-radius: 15px;
     margin-bottom: 20px;
+    transition: width 0.5s ease, height 0.5s ease;
+}
+
+.len-showcase-post-block-main {
+    width: 100%;
 }
 
 .len-post-thumbnail-blcok {
@@ -246,7 +253,7 @@ img {
     margin-left: 30px;
     width: 100%;
     position: relative;
-    padding: 10px 0px 0px 0px;
+    gap: 10px;
 }
 
 .len-post-title-block {
@@ -387,7 +394,7 @@ ul.len-nav-ul-second {
     padding: 15px;
 }
 
-span.page-numbers.current {
+.page-numbers.current {
     color: #8483d3;
     background: #9796f066;
 }
@@ -397,6 +404,7 @@ span.page-numbers.current {
     border-radius: 5px;
     background: #eff2ff;
     color: #868787;
+    margin: 0 5px;
 }
 
 .len-post-ajax-button {
@@ -411,10 +419,5 @@ span.page-numbers.current {
 .len-post-block-min {
     border: none;
     background: #fbfbfb00;
-    font-size: 16px;
+    font-size: 13px;
 }
-
-/* pre {
-    width: 100%;
-    overflow: auto;
-} */
